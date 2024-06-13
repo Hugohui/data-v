@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const Globalstyle = createGlobalStyle`
   body {
-    background-color: #04060D;
+    background-color: rgb(30, 35, 48);
     overflow: hidden;
   }
   html, body, div, span, applet, object, iframe,

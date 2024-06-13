@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useRoutes } from "react-router-dom";
+import { Globalstyle } from "./style/global";
+import routers from "./router";
+import { previewFitScale } from "./utils/previewScale";
+import { useEffect, useRef } from "react";
+
 
 function App() {
+
+  const scaleRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const { calcRate, windowResize, unWindowResize} = previewFitScale(1920, 1080, scaleRef.current)
+    calcRate()
+    windowResize()
+    return () => {
+      unWindowResize()
+    } 
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      transform: ' translate(-50%, -50%)'
+    }}>
+      {/* 全局样式 */}
+      <Globalstyle></Globalstyle>
+      <div ref={scaleRef} >
+        { useRoutes(routers) }
+      </div>
+      
     </div>
   );
 }

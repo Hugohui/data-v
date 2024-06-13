@@ -1,27 +1,21 @@
-import { Test } from "./charts/test"
 import { Header } from "../../layout/Header"
+import { Footer } from "../../layout/Footer"
 import { IndexPageContent, PageLeft, PageCenter, PageRight } from "./style"
 
 export const IndexLayout = () => {
     return (
-        <>
-            <Header></Header>
-            
-            <IndexPageContent>
-                <PageLeft>
+        <IndexPageContent>
+            <PageLeft>
 
-                </PageLeft>
+            </PageLeft>
 
-                <PageCenter>
+            <PageCenter>
 
-                </PageCenter>
+            </PageCenter>
 
-                <PageRight>
-                    
-                </PageRight>
-            </IndexPageContent>
-            
-        </>
-        
+            <PageRight>
+
+            </PageRight>
+        </IndexPageContent>
     )
 }

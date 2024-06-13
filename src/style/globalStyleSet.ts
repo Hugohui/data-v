@@ -10,7 +10,7 @@ export const PageStyle = styled.div`
     height: 1080px;
     overflow: hidden;
     position: relative;
-    padding: 10px 0 0 0;
+    padding: 10px 0 50px 0;
     background: url(${pageBg}) center center no-repeat;
     background-size: cover;
 `

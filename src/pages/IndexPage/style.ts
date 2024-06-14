@@ -6,18 +6,20 @@ export const IndexPageContent = styled.div`
   flex-wrap: nowrap;
 `
 
-export const PageLeft = styled.div`
+export const PageLeftStyle = styled.div`
     width: 500px;
     height: auto;
     padding: 16px;
 `
 
-export const PageCenter = styled.div`
+export const PageCenterStyle = styled.div`
+    width: 800px;
+    height: 800px;
     flex: 1;
     align-items: center;
 `
 
-export const PageRight = styled.div`
+export const PageRightStyle = styled.div`
     width: 500px;
     height: auto;
     padding: 16px;

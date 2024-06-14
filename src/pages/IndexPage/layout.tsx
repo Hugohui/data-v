@@ -1,21 +1,16 @@
-import { Header } from "../../layout/Header"
-import { Footer } from "../../layout/Footer"
-import { IndexPageContent, PageLeft, PageCenter, PageRight } from "./style"
+import { IndexPageContent } from "./style"
+import { PageLeft } from "./PageLeft"
+import { PageCenter } from "./PageCenter"
+import { PageRight } from "./PageRight"
 
 export const IndexLayout = () => {
     return (
         <IndexPageContent>
-            <PageLeft>
+            <PageLeft></PageLeft>
 
-            </PageLeft>
+            <PageCenter></PageCenter>
 
-            <PageCenter>
-
-            </PageCenter>
-
-            <PageRight>
-
-            </PageRight>
+            <PageRight></PageRight>
         </IndexPageContent>
     )
 }

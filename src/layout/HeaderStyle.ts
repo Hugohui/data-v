@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import headerBg from '../assets/img/headerBg.png'
 import headerBgMenu from '../assets/img/headerBgMenu.png'
+import headerTitle from '../assets/img/headerTitle.png'
 
 export const HeaderStyle  = styled.div<{$menu?: Boolean}>`
     height: 106px;
@@ -27,6 +28,10 @@ export const HeaderTitle = styled.div`
     font-size: 46px;
     color: #1DF0BC;
     margin-bottom: 9px;
+    background-image: url(${headerTitle});
+    background-size: 486px 35px;
+    background-position: center center;
+    background-repeat: no-repeat;
     /* margin: 20px 0 9px 0; */
 `
 

@@ -7,7 +7,7 @@ export const HeaderMenu = () => {
         <>
             <HeaderStyle $menu={true}>
                 <HeaderInfo></HeaderInfo>
-                <HeaderTitle>产投奶山羊数智化平台</HeaderTitle>
+                <HeaderTitle></HeaderTitle>
                 <HeaderSubTitle>GOAT DIGITAL INTELLIGENCE PLATFORM</HeaderSubTitle>
                 <MenuList></MenuList>
             </HeaderStyle>

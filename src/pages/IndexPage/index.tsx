@@ -1,18 +1,19 @@
 import { IndexLayout } from './layout'
-import { LayoutStyle, PageStyle } from "../../style/globalStyleSet"
-import { Header } from '../../layout/Header'
+import { LayoutStyle } from "../../style/globalStyleSet"
+import { PageIndexStyle } from './style'
+import { HeaderIndex } from '../../layout/HeaderIndex'
 import { Footer } from '../../layout/Footer'
 
 export const IndexPage = () => {
     return (
         <LayoutStyle>
-            <PageStyle>
-                <Header></Header>
+            <PageIndexStyle>
+                <HeaderIndex></HeaderIndex>
 
                 <IndexLayout></IndexLayout>
 
                 <Footer></Footer>
-            </PageStyle>
+            </PageIndexStyle>
         </LayoutStyle>
         
     )

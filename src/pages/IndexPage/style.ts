@@ -1,4 +1,17 @@
 import styled from 'styled-components'
+import indexPageBg from '../../assets/img/indexPageBg.png';
+
+export const PageIndexStyle = styled.div`
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 50px 0;
+    background-color: rgb(30, 35, 48);
+    background-image: url(${indexPageBg});
+    background-size: cover;
+    background-repeat: no-repeat;
+`
 
 export const IndexPageContent = styled.div`
   display: flex;
@@ -7,20 +20,17 @@ export const IndexPageContent = styled.div`
 `
 
 export const PageLeftStyle = styled.div`
-    width: 500px;
+    width: 458px;
     height: auto;
-    padding: 16px;
 `
 
 export const PageCenterStyle = styled.div`
-    width: 800px;
-    height: 800px;
     flex: 1;
     align-items: center;
+    padding-top: 588px;
 `
 
 export const PageRightStyle = styled.div`
-    width: 500px;
+    width: 458px;
     height: auto;
-    padding: 16px;
 `

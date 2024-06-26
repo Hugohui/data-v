@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import pageBg from '../assets/img/pageBg.png'
 import Grid40 from '../assets/svg/grid_40.svg'
 
 export const LayoutStyle = styled.div`
@@ -11,10 +10,9 @@ export const PageStyle = styled.div`
     height: 1080px;
     overflow: hidden;
     position: relative;
-    padding: 10px 0 50px 0;
+    padding: 0 0 50px 0;
     background-color: rgb(30, 35, 48);
-    /* background: url(${pageBg}) center center no-repeat; */
-    background-image: url(${Grid40});
+    /* background-image: url(${Grid40}); */
     /* background-size: cover; */
 
     

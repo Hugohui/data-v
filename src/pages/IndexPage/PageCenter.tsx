@@ -6,8 +6,7 @@ import { PageCenterStyle } from "./style"
 // import { centerPageDataApi } from "../../api/mock"
 // import { ResultEnum } from "../../enums/httpEnum"
 import centerPageData from "../../api/mock/centerPageData"
-
-
+import { BorderBox } from "../../components/basic/BorderBox"
 
 
 export const PageCenter = () => {
@@ -27,7 +26,8 @@ export const PageCenter = () => {
 
     return (
         <PageCenterStyle>
-                <Map mapData={centerData.mapData}></Map>
+            {/* <Map mapData={centerData.mapData}></Map> */}
+            <BorderBox title="饲料使用情况" size="large"></BorderBox>
         </PageCenterStyle>
     )
 }

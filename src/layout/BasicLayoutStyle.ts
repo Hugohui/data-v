@@ -10,5 +10,5 @@ export const CurrentViewStyle =  styled.div`
 `
 
 export const MainStyle = styled.main`
-    padding: 8px 36px 17px 36px;
+    padding: 8px 30px 17px 30px;
 `

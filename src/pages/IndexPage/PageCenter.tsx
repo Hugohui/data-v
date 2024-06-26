@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom'
 
 import Map from "./charts/Map"
 import { PageCenterStyle } from "./style"
@@ -10,6 +11,7 @@ import { BorderBox } from "../../components/basic/BorderBox"
 
 
 export const PageCenter = () => {
+    const navigate = useNavigate()
     const [centerData, setCenterData] = useState<{mapData?: any}>({})
 
     const fetchMapData = async () => {
@@ -20,6 +22,10 @@ export const PageCenter = () => {
         setCenterData(centerPageData)
     }
 
+    const toDataV = () => {
+        navigate('/dataV')
+    }
+
     useEffect(() => {
         fetchMapData()
     }, [])
@@ -27,6 +33,15 @@ export const PageCenter = () => {
     return (
         <PageCenterStyle>
             {/* <Map mapData={centerData.mapData}></Map> */}
+            <div className="enterDialog">
+                <div className="name">陕西省</div>
+                <div className="info">
+                    <div><span>牧场名称</span>：产投集团</div>
+                    <div><span>存栏数</span>：5000只</div>
+                    <div><span>地址</span>：陕西省宝鸡市</div>
+                </div>
+                <div className="enter" onClick={toDataV}></div>
+            </div>
             <BorderBox title="饲料使用情况" size="large"></BorderBox>
         </PageCenterStyle>
     )

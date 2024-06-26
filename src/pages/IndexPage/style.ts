@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import indexPageBg from '../../assets/img/indexPageBg.png';
+import indexEnterDialog from '../../assets/img/indexEnterDialog.png'
 
 export const PageIndexStyle = styled.div`
     width: 1920px;
@@ -37,6 +38,53 @@ export const PageCenterStyle = styled.div`
     flex: 1;
     align-items: center;
     padding: 600px 6px 0 6px;
+    .enterDialog {
+        position: absolute;
+        left: 951px;
+        top: 158px;
+        width: 362px;
+        height: 290px;
+        background-image: url(${indexEnterDialog});
+        background-size: cover;
+        background-repeat: no-repeat;
+        .name {
+            position: absolute;
+            bottom: 20px;
+            left: -46px;
+            font-family: PingFang SC;
+            font-weight: bold;
+            font-size: 16px;
+            color: #76DDFE;
+        }
+        .info {
+            padding: 15px 10px 10px 10px;
+            width: 200px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-family: PingFang SC;
+            font-weight: 400;
+            font-size: 15px;
+            color: #FFFFFF;
+            div {
+                height: 32px;
+                line-height: 24px;
+            }
+            span {
+                display: inline-block;
+                width: 60px;
+            }
+            
+        }
+        .enter {
+            width: 160px;
+            height: 30px;
+            position: absolute;
+            top: 118px;
+            right: 25px;
+            cursor: pointer;
+        }
+    }
 `
 
 export const PageRightStyle = styled.div`

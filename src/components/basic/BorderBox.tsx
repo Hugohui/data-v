@@ -7,13 +7,14 @@ interface BorderBoxI {
     size?: string;
     title: string;
     children?: any;
+    className?: string
 }
 
 export const BorderBox: FC<BorderBoxI> = (props) => {
     return (
-        <BorderBoxStyle $height={props.height} $width={props.width} $size={props.size}>
-            <BorderBoxHeaderStyle $size={props.size}>{ props.title }</BorderBoxHeaderStyle>
-            <BorderBoxContentStyle>{ props.children }</BorderBoxContentStyle>
+        <BorderBoxStyle $height={props.height} $width={props.width} $size={props.size} className={props.className}>
+            <BorderBoxHeaderStyle className="BoxHeader" $size={props.size}>{ props.title }</BorderBoxHeaderStyle>
+            <BorderBoxContentStyle className="BoxContent">{ props.children }</BorderBoxContentStyle>
         </BorderBoxStyle>
     )
 }

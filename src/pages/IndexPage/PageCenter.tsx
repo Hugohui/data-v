@@ -42,7 +42,7 @@ export const PageCenter = () => {
                 </div>
                 <div className="enter" onClick={toDataV}></div>
             </div>
-            <BorderBox title="饲料使用情况" size="large"></BorderBox>
+            <BorderBox title="饲料使用情况" size="large" height="294"></BorderBox>
         </PageCenterStyle>
     )
 }

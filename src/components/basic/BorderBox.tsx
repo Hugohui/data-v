@@ -3,6 +3,7 @@ import { BorderBoxStyle, BorderBoxHeaderStyle, BorderBoxContentStyle } from './B
 
 interface BorderBoxI {
     height?: string;
+    width?: string;
     size?: string;
     title: string;
     children?: any;
@@ -10,7 +11,7 @@ interface BorderBoxI {
 
 export const BorderBox: FC<BorderBoxI> = (props) => {
     return (
-        <BorderBoxStyle $height={props.height} $size={props.size}>
+        <BorderBoxStyle $height={props.height} $width={props.width} $size={props.size}>
             <BorderBoxHeaderStyle $size={props.size}>{ props.title }</BorderBoxHeaderStyle>
             <BorderBoxContentStyle>{ props.children }</BorderBoxContentStyle>
         </BorderBoxStyle>

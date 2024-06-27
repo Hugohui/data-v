@@ -1,7 +1,7 @@
+import { FeedingLaout } from "./layout"
+
 export const Feeding = () => {
     return (
-        <>
-            Feeding
-        </>
+        <FeedingLaout />
     )
 }

@@ -1,6 +1,8 @@
+import { HealthLayout } from './layout'
+
 export const Health = () => {
     console.log("===Health init ===")
     return (
-        <>Health</>
+        <HealthLayout></HealthLayout>
     )
 }

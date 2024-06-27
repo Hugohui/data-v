@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import boxBg from '../../assets/img/boxBg.png'
 import boxLargeBg from '../../assets/img/boxLargeBg.png'
+import boxHeightBg from '../../assets/img/boxHeightBg.png'
 import boxLargestBg from '../../assets/img/boxLargestBg.png'
 import boxHeaderBg from '../../assets/img/boxHeaderBg.png'
 import boxHeaderLargeBg from '../../assets/img/boxHeaderLargeBg.png'
@@ -13,7 +14,7 @@ interface BorderBoxStyleI {
 }
 
 export const BorderBoxStyle = styled.div<BorderBoxStyleI>`
-    --default-height: 294px;
+    --default-height: 284px;
 
     height: var(--default-height);
     background-image: url(${boxBg});
@@ -36,6 +37,9 @@ export const BorderBoxStyle = styled.div<BorderBoxStyleI>`
 
     ${props => props.$size && props.$size === 'largest' && `
         background-image: url(${boxLargestBg});
+    `}
+    ${props => props.$size && props.$size === 'height' && `
+        background-image: url(${boxHeightBg});
     `}
 `
 

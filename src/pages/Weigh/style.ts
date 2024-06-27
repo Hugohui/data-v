@@ -6,8 +6,6 @@ export const PageContent = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
-  margin-top: 15px;
-  padding: 0 30px;
 `
 
 export const PageLeftStyle = styled.div`

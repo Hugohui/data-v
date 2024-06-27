@@ -1,6 +1,7 @@
+import { MilkLayout } from './layout'
+
 export const Milk = () => {
-    console.log("===Milk init ===")
     return (
-        <>Milk</>
+        <MilkLayout></MilkLayout>
     )
 }

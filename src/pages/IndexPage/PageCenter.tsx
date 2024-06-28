@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 
-import Map from "./charts/Map"
 import { PageCenterStyle } from "./style"
 // import { get } from "../../api/http"
 // import { centerPageDataApi } from "../../api/mock"
 // import { ResultEnum } from "../../enums/httpEnum"
 import centerPageData from "../../api/mock/centerPageData"
 import { BorderBox } from "../../components/basic/BorderBox"
+import FeedUsageLine from "./charts/FeedUsageLine"
 
 
 export const PageCenter = () => {
@@ -42,7 +42,9 @@ export const PageCenter = () => {
                 </div>
                 <div className="enter" onClick={toDataV}></div>
             </div>
-            <BorderBox title="饲料使用情况" size="large" height="294"></BorderBox>
+            <BorderBox title="饲料使用情况" size="large" height="294" className="FeedUsageLine">
+                <FeedUsageLine></FeedUsageLine>
+            </BorderBox>
         </PageCenterStyle>
     )
 }

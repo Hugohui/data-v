@@ -85,6 +85,15 @@ export const PageCenterStyle = styled.div`
             cursor: pointer;
         }
     }
+
+    .FeedUsageLine {
+        .BoxContent {
+            
+            .default-chart {
+                height: calc(100% - 24px) !important;
+            }
+        }
+    }
 `
 
 export const PageRightStyle = styled.div`

@@ -4,7 +4,7 @@ export const VideoBoxStyle = styled.div<{$height?: string, $width?: string}>`
     background: #000000;
     opacity: 0.2;
     /* width: 530px; */
-    height: 362px;
+    /* height: 362px; */
     padding: 8px;
 
     /* ${props => props.$width && `

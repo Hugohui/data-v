@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { useState } from 'react'
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { feedUsageOptions } from "./FeedUsageLineOptions"
@@ -12,7 +12,7 @@ const FeedUsageLine = () => {
     const [testData, setData] = useState(testYearData)
 
     const onChange = (value: string) => {
-        if (value == 'year') {
+        if (value === 'year') {
             setData(testYearData)
         } else {
             setData(testMonthData)

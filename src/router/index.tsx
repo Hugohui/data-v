@@ -5,6 +5,7 @@ import { Weigh } from "../pages/Weigh"
 import { Milk } from "../pages/Milk"
 import { WeighBridge } from "../pages/WeighBridge"
 import { DataV } from "../pages/DataV"
+import { DataVDetial } from "../pages/DataVDetial"
 import { IndexPage } from "../pages/IndexPage"
 import { Login } from "../pages/Login"
 import { NotFound } from "../pages/NotFound"
@@ -50,6 +51,12 @@ const routers = [
     {
         path: '/dataV',
         element: <DataV />,
+        name: "myPathName"
+    }, 
+    // 数据可视化详情
+    {
+        path: '/dataVDetail',
+        element: <DataVDetial />,
     }, 
     {
         path: '/login',

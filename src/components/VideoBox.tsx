@@ -15,7 +15,7 @@ interface VideoInfoI {
 
 const VideoItem: FC<VideoInfoI> = (item) => {
     return (
-        <VideoItemStyle $lineCont={item.lineCont}>
+        <VideoItemStyle $lineCont={item.lineCont} className="VideoItemStyle">
             <video src={item.url}></video>
         </VideoItemStyle>
     )
@@ -23,7 +23,7 @@ const VideoItem: FC<VideoInfoI> = (item) => {
 
 export const VideoBox: FC<VideoBoxI> = (props) => {
     return (
-        <VideoBoxStyle $height={props.height} $width={props.width}>
+        <VideoBoxStyle $height={props.height} $width={props.width} className="VideoBoxStyle">
             {
                 props.videoList.map((item: VideoInfoI) => {
                     return <VideoItem lineCont={props.lineCont} url={item.url}></VideoItem>

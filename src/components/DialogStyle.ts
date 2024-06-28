@@ -16,12 +16,10 @@ export const DialogBoxStyle = styled.div`
     width: 1108px;
     height: 568px;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0 auto;
-    /* transform: translate(-50%, -50%); */
+    top: 50%;
+    left: 50%;
+    margin-left: -554px;
+    margin-top: -284px;
     background-image: url(${dialogContentBg});
     background-size: 100% 100%;
     background-repeat: no-repeat;

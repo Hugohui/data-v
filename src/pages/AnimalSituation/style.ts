@@ -11,6 +11,15 @@ export const PageTopStyle = styled.div`
     & > div {
         flex: 1;
     }
+
+    .DungClearBox{
+        padding: 0 20px;
+        .DungClear {
+            float: left;
+            width: 33.33%;
+            height: 100%;
+        }
+    }
 `
 
 export const PageBottomStyle = styled.div`

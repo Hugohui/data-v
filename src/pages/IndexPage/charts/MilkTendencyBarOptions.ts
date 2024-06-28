@@ -3,10 +3,10 @@ import * as echarts from 'echarts';
 export const milkTendencyBarOptions = (data: any) => (
   {
     grid:{ // 让图表占满容器
-      ttop:"50px",
+      top:"30px",
       left:"50px",
       right:"50px",
-      bottom:"40px"
+      bottom:"20px"
     },
     xAxis: {
       type: 'category',

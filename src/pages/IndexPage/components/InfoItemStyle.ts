@@ -14,7 +14,7 @@ export const InfoItemNumStyle = styled.div`
     font-weight: bold;
     font-size: 32px;
     color: #04DEA8;
-    margin: 30px 0 13px 0;
+    margin: 25px 0 13px 0;
 `
 export const InfoItemTexttyle = styled.div`
     font-family: PingFang SC;

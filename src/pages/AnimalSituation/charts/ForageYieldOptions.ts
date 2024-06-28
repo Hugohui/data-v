@@ -3,9 +3,9 @@ import * as echarts from 'echarts';
 export const forageYieldOptions = (data: any) => (
   {
     grid:{ // 让图表占满容器
-      top:"50px",
-      left:"100px",
-      right:"60px",
+      top:"40px",
+      left:"80px",
+      right:"40px",
       bottom:"40px"
     },
     xAxis: {

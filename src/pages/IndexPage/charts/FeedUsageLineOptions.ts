@@ -3,10 +3,10 @@ import * as echarts from 'echarts';
 export const feedUsageOptions = (data: any) => (
   {
     grid:{ // 让图表占满容器
-      top:"20px",
-      left:"100px",
-      right:"60px",
-      bottom:"40px"
+      top:"10px",
+      left:"80px",
+      right:"40px",
+      bottom:"20px"
     },
     xAxis: {
       type: 'category',

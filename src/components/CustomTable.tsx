@@ -9,16 +9,17 @@ interface columnsI {
 interface TableI {
     columns: columnsI[]
     data: any[]
+    hiddenIndex?: boolean
 }
 
-const CustomTable: FC<TableI> = ({ columns, data }) => {
+const CustomTable: FC<TableI> = ({ columns, data, hiddenIndex }) => {
 
     return (
         <TableStyle>
             <table>
                 <thead>
                     <tr>
-                        <th key="index">序号</th>
+                        { !hiddenIndex ? <th key="index">序号</th> : ''}
                         {columns.map(column => (
                             <th key={column.key}>{column.name}</th>
                         ))}
@@ -27,7 +28,7 @@ const CustomTable: FC<TableI> = ({ columns, data }) => {
                 <tbody>
                     {data.map((row, index) => (
                         <tr key={index}>
-                            <td key={index}>{index + 1}</td>
+                            {!hiddenIndex ? <td key={index}>{index + 1}</td> : ''}
                             {columns.map(column => (
                                 <td key={column.key}>{row[column.key]}</td>
                             ))}

@@ -22,7 +22,7 @@ const FeedUsageLine = () => {
 
     return (
         <>
-            <MonthYearSwitch active='year' onChange={onChange}></MonthYearSwitch>
+            {/* <MonthYearSwitch active='year' onChange={onChange}></MonthYearSwitch> */}
             {(testData) ? (
                 <EChartsCommon
                     renderer={renderer}

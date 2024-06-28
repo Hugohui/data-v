@@ -6,7 +6,7 @@ export const sheepTendencyBarOptions = (data: any) => (
       top:"50px",
       left:"50px",
       right:"50px",
-      bottom:"50px"
+      bottom:"40px"
     },
     xAxis: {
       type: 'category',

@@ -90,7 +90,7 @@ export const PageCenterStyle = styled.div`
         .BoxContent {
             
             .default-chart {
-                height: calc(100% - 24px) !important;
+                /* height: calc(100% - 24px) !important; */
             }
         }
     }

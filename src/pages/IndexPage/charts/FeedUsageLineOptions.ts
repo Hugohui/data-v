@@ -6,7 +6,7 @@ export const feedUsageOptions = (data: any) => (
       top:"20px",
       left:"100px",
       right:"60px",
-      bottom:"60px"
+      bottom:"40px"
     },
     xAxis: {
       type: 'category',

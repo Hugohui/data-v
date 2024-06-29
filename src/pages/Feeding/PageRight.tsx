@@ -4,6 +4,7 @@ import { VideoBox } from "../../components/VideoBox"
 import { useState } from "react"
 import BlankErrorRateLine from "./charts/BlankErrorRateLine"
 import { FeedPlanInfo } from "./charts/FeedFlanInfo"
+import PlanLine from "./charts/PlanLine"
 
 const testVideoList = [
     {url: ""},
@@ -23,7 +24,12 @@ export const PageRight = () => {
                 <FeedPlanInfo></FeedPlanInfo>
             </PageRightFeedPlanStyle>
             <PageRightFeedBottomStyle>
-                <div className="bottomLeft"></div>
+                <div className="bottomLeft">
+                    <div className="funnel"></div>
+                    <div className="planLine">
+                        <PlanLine></PlanLine>
+                    </div>
+                </div>
                 <div className="bottomRight">
                     <div className="rightTop">
                         <VideoBox videoList={videoList}></VideoBox>

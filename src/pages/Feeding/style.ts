@@ -36,7 +36,16 @@ export const PageRightFeedBottomStyle = styled.div`
         width: 744px;
         height: 736px;
         border: 1px solid #00FFC6;
-        opacity: 0.5;
+        padding: 26px;
+        .funnel {
+            height: 350px;
+        }
+        .planLine {
+            padding-top: 30px;
+            padding-bottom: 20px;
+            height: 365px;
+            border-top: 1px solid #194E4F;
+        }
     }
     .bottomRight {
         flex: 1;

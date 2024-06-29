@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { DialogStyle, DialogBoxStyle, DialogHeaderStyle, DialogContentStyle } from "./DialogStyle"
-import { previewFitScale } from "../utils/previewScale";
+import { previewFitScale } from "../../utils/previewScale";
 
 interface DialogI {
     title?: string

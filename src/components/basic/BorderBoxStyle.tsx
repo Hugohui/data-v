@@ -6,6 +6,7 @@ import boxLargestBg from '../../assets/img/boxLargestBg.png'
 import boxHeaderBg from '../../assets/img/boxHeaderBg.png'
 import boxHeaderLargeBg from '../../assets/img/boxHeaderLargeBg.png'
 import boxHeaderLargestBg from '../../assets/img/boxHeaderLargestBg.png'
+import iconCloseBlcak from '../../assets/img/icons/iconCloseBlcak.png'
 
 interface BorderBoxStyleI {
     $height?: string;
@@ -55,6 +56,7 @@ export const BorderBoxHeaderStyle = styled.div<BorderBoxStyleI>`
     background-repeat: no-repeat;
     background-size: 95% 25px;
     background-position: 15px 32px;
+    position: relative;
 
     ${props => props.$size && props.$size === 'large' && `
         background-image: url(${boxHeaderLargeBg});
@@ -62,6 +64,30 @@ export const BorderBoxHeaderStyle = styled.div<BorderBoxStyleI>`
     ${props => props.$size && props.$size === 'largest' && `
         background-image: url(${boxHeaderLargestBg});
     `}
+
+    .MoreInfo{
+        position: absolute;
+        right: 5px;
+        top: 0;
+        padding-right: 44px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer;
+        &::after {
+            content: " ";
+            display: inline-block;
+            width: 8px;
+            height: 12px;
+            background-image: url(${iconCloseBlcak});
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: absolute;
+            right: 25px;
+            top: 22px;
+        }
+    }
 `
 
 export const BorderBoxContentStyle = styled.div`

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import dialogContentBg from '../assets/img/dialogContentBg.png'
-import iconClose from '../assets/img/icons/iconClose.png'
+import dialogContentBg from '../../assets/img/dialogContentBg.png'
+import iconClose from '../../assets/img/icons/iconClose.png'
 
 export const DialogStyle = styled.div`
     position: fixed;

@@ -2,6 +2,9 @@ import * as echarts from 'echarts';
 
 export const keepLineOptions = (data: any) => (
   {
+    tooltip: {
+      trigger: 'axis'
+    },
     grid:{ // 让图表占满容器
       top:"40px",
       left:"80px",

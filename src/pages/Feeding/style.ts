@@ -44,6 +44,14 @@ export const PageRightFeedBottomStyle = styled.div`
         padding-left: 10px;
         .rightTop{
             height: 362px;
+            .VideoBoxStyle {
+                gap: 14px;
+                padding: 11px 14px;
+                .VideoItemStyle {
+                    height: 165px;
+                }
+            }
+            
         }
         .rightBottom {
             height: 368px;

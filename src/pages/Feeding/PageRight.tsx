@@ -2,6 +2,7 @@ import { PageRightStyle, PageRightFeedPlanStyle, PageRightFeedBottomStyle } from
 import { BorderBox } from "../../components/basic/BorderBox"
 import { VideoBox } from "../../components/VideoBox"
 import { useState } from "react"
+import BlankErrorRateLine from "./charts/BlankErrorRateLine"
 
 const testVideoList = [
     {url: ""},
@@ -25,7 +26,9 @@ export const PageRight = () => {
                         <VideoBox videoList={videoList}></VideoBox>
                     </div>
                     <div className="rightBottom">
-                        <BorderBox height="368" title="下料误差率"></BorderBox>
+                        <BorderBox height="368" title="下料误差率">
+                            <BlankErrorRateLine></BlankErrorRateLine>
+                        </BorderBox>
                     </div>
                 </div>
             </PageRightFeedBottomStyle>

@@ -1,6 +1,10 @@
 import * as echarts from 'echarts';
 
-export const forageYieldOptions = (data: any) => (
+interface lineOptionsI {
+  data: any
+}
+
+export const lineOptions = ({ data }: lineOptionsI) => (
   {
     tooltip: {
       trigger: 'axis'
@@ -39,27 +43,22 @@ export const forageYieldOptions = (data: any) => (
         }
       }
     },
+    legend: {
+      data: ['Email']
+    },
     series: [
       {
         data: data,
         type: 'line',
+        name: "Email",
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 8, // 设置圆形标记的大小
         itemStyle: {
           normal: {
-            color: '#FFE013', // 设置圆点的填充颜色
-            borderColor: '#FFE013', // 设置圆点边框颜色
+            color: '#38D7FF', // 设置圆点的填充颜色
+            // borderColor: '#38D7FF', // 设置圆点边框颜色
             // borderWidth: 2 // 设置圆点边框宽度
           }
-        },
-        areaStyle: { // 添加区域样式
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-            offset: 0,
-            color: 'rgba(255, 224, 19, 0.8)' // 渐变颜色，起始颜色
-          }, {
-            offset: 1,
-            color: 'rgba(255, 224, 19, 0)' // 渐变颜色，结束颜色
-          }])
         }
       }
     ]

@@ -2,6 +2,9 @@ import * as echarts from 'echarts';
 
 export const feedUsageOptions = (data: any) => (
   {
+    tooltip: {
+      trigger: 'axis'
+    },
     grid:{ // 让图表占满容器
       top:"10px",
       left:"80px",

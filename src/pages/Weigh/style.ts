@@ -23,6 +23,7 @@ export const InfoBoxStyle = styled.div`
     background-image: url(${WeighInfoBg});
     background-size: 562px 355px;
     background-position: 73px 73px;
+    background-repeat: no-repeat;
     .infoBox {
         width: 100%;
         height: 100%;
@@ -66,4 +67,13 @@ export const InfoBoxStyle = styled.div`
 export const PageRightStyle = styled.div`
     width: 570px;
     height: auto;
+
+    .GaugeBox{
+        padding: 0 20px;
+        .GaugeBoxItem {
+            float: left;
+            width: 33.33%;
+            height: 100%;
+        }
+    }
 `

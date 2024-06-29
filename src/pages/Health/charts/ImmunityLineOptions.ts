@@ -44,7 +44,10 @@ export const lineOptions = ({ data }: lineOptionsI) => (
       trigger: 'axis'
     },
     legend: {
-      data: ['免疫一']
+      data: ['免疫一'],
+      textStyle: {
+        color: "#fff"
+      }
     },
     series: [
       {

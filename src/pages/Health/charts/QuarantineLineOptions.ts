@@ -44,13 +44,16 @@ export const lineOptions = ({ data }: lineOptionsI) => (
       }
     },
     legend: {
-      data: ['Email']
+      data: ['检疫1'],
+      textStyle: {
+        color: "#fff"
+      }
     },
     series: [
       {
         data: data,
         type: 'line',
-        name: "Email",
+        name: "检疫1",
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 8, // 设置圆形标记的大小
         itemStyle: {

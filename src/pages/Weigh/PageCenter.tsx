@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { PageCenterStyle, InfoBoxStyle } from "./style"
 import centerPageData from "../../api/mock/centerPageData"
 import { BorderBox } from "../../components/basic/BorderBox"
+import WeighScatter from "./charts/WeighScatter"
 
 
 export const PageCenter = () => {
@@ -51,7 +52,9 @@ export const PageCenter = () => {
                     </div>
                 </div>
             </InfoBoxStyle>
-            <BorderBox title="各月龄身高体重散点图" height="428"></BorderBox>
+            <BorderBox title="各月龄身高体重散点图" height="428">
+                <WeighScatter></WeighScatter>
+            </BorderBox>
         </PageCenterStyle>
     )
 }

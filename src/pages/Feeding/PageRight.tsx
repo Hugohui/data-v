@@ -3,6 +3,7 @@ import { BorderBox } from "../../components/basic/BorderBox"
 import { VideoBox } from "../../components/VideoBox"
 import { useState } from "react"
 import BlankErrorRateLine from "./charts/BlankErrorRateLine"
+import { FeedPlanInfo } from "./charts/FeedFlanInfo"
 
 const testVideoList = [
     {url: ""},
@@ -18,7 +19,9 @@ export const PageRight = () => {
 
     return (
        <PageRightStyle>
-            <PageRightFeedPlanStyle></PageRightFeedPlanStyle>
+            <PageRightFeedPlanStyle>
+                <FeedPlanInfo></FeedPlanInfo>
+            </PageRightFeedPlanStyle>
             <PageRightFeedBottomStyle>
                 <div className="bottomLeft"></div>
                 <div className="bottomRight">

@@ -27,7 +27,6 @@ export const PageRightFeedPlanStyle = styled.div`
     height: 95px;
     background: #112544;
     border: 1px solid #00FFC6;
-    opacity: 0.5;
 `
 
 export const PageRightFeedBottomStyle = styled.div`

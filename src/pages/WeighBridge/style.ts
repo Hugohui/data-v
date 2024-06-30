@@ -41,6 +41,10 @@ export const PageRightStyle = styled.div`
                     font-size: 40px;
                     color: #FDFDFD;
                     padding: 0 18px;
+                    .Num {
+                        font-size: 40px;
+                        color: #FDFDFD;
+                    }
                     span {
                         font-family: PingFang SC;
                         font-weight: 500;

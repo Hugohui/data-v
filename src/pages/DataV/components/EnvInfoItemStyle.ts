@@ -16,7 +16,7 @@ export const EnvInfoItemStyle = styled.div`
     background-image: url(${envInfoBg});
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    padding-top: 20px;
+    padding-top: 18px;
     padding-left: 8px;
 
     .infoicon {
@@ -26,6 +26,7 @@ export const EnvInfoItemStyle = styled.div`
         background-size: 100% 100%;
         background-position: center center;
         margin: 0 auto;
+        margin-top: 2px;
 
         &.icon-temperature {
             background-image: url(${iconTemperature});
@@ -58,7 +59,12 @@ export const EnvInfoItemStyle = styled.div`
         padding-left: 6px;
         .value{
             color:#fff;
-            font-size: 26px;
+            margin-bottom: 4px;
+            
+            .Num {
+                font-size: 26px;
+                margin-right: 6px;
+            }
             span {
                 font-size: 15px;
             }

@@ -1,14 +1,16 @@
 import styled from "styled-components"
+import mildInfoBg from '../../assets/img/milkInfoBg.png'
 
 export const PageContent = styled.div`
-
 `
 
 export const PageTopStyle = styled.div`
     height: 80px;
-    border: 1px solid #00FFC6;
     display: flex;
     padding: 19px 0;
+    background-image: url(${mildInfoBg});
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 
     .InfoItem {
         flex: 1;

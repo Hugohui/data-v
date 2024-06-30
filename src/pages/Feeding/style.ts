@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import feedingInfoBg from '../../assets/img/feedingInfoBg.png'
+import feedingInfoLineBg from '../../assets/img/feedingInfoLineBg.png'
 
 export const PageContent = styled.div`
   display: flex;
@@ -20,13 +22,15 @@ export const PageLeftStyle = styled.div`
 
 export const PageRightStyle = styled.div`
     flex: 1;
-    padding: 10px;
+    padding: 0 10px;
 `
 
 export const PageRightFeedPlanStyle = styled.div`
-    height: 95px;
-    background: #112544;
-    border: 1px solid #00FFC6;
+    height: 105px;
+    background-image: url(${feedingInfoBg});
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    padding: 5px;
 `
 
 export const PageRightFeedBottomStyle = styled.div`
@@ -34,9 +38,11 @@ export const PageRightFeedBottomStyle = styled.div`
     display: flex;
     .bottomLeft {
         width: 744px;
-        height: 736px;
-        border: 1px solid #00FFC6;
+        height: 740px;
         padding: 26px;
+        background-image: url(${feedingInfoLineBg});
+        background-size: 100% 100%;
+        background-repeat:no-repeat;
         .funnel {
             height: 350px;
         }

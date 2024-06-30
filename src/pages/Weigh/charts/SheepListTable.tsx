@@ -1,6 +1,14 @@
+import { useEffect } from "react"
 import CustomTable from "../../../components/CustomTable"
+import useEvent from "../../../hooks/useEventHook"
 
 export const SheepListTable = () => {
+    const { publish } = useEvent()
+
+    const onItemClick = (item: any, index: any) => {
+        publish("onSheepSelectEmit", item)
+    }
+
     const columns = [
         {
             key: "time",
@@ -62,7 +70,20 @@ export const SheepListTable = () => {
             all: 20
         },
     ]
+
+    useEffect(() => {
+        setTimeout(() => {
+            publish("onSheepSelectEmit", data[0])
+        }, 0)
+    }, [])
+
     return (
-        <CustomTable columns={columns} data={data} hiddenIndex={true}></CustomTable>
+        <CustomTable
+            columns={columns}
+            data={data}
+            hiddenIndex={true}
+            onRowClick={onItemClick}
+            canSelectItem={true}
+        ></CustomTable>
     )
 }

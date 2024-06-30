@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import tableRowSelectedBg from '../assets/img/tableRowSelectedBg.png'
 
 export const TableStyle = styled.div<{$height?: number}>`
     width: 100%;
@@ -16,6 +17,16 @@ export const TableStyle = styled.div<{$height?: number}>`
         height: 50px;
         line-height: 50px;
         vertical-align: middle;
+
+        &.canSelect {
+            cursor: pointer;
+        }
+
+        &.active {
+            background-image: url(${tableRowSelectedBg});
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
     }
 
     thead {

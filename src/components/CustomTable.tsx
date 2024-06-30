@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import { TableStyle } from "./CustomTableStyle"
 
 interface columnsI {
@@ -6,13 +6,23 @@ interface columnsI {
     name: string
 }
 
-interface TableI {
-    columns: columnsI[]
-    data: any[]
-    hiddenIndex?: boolean
+interface TablePropsI {
+    columns: columnsI[];
+    data: any[];
+    hiddenIndex?: Boolean;
+    onRowClick?: Function;
+    canSelectItem?: boolean
+    defaultSelectIndex?: number 
 }
 
-const CustomTable: FC<TableI> = ({ columns, data, hiddenIndex }) => {
+const CustomTable: FC<TablePropsI> = (props) => {
+    const { columns, data, hiddenIndex, onRowClick, canSelectItem, defaultSelectIndex } = props;
+    const [currentSelect, setCurrentSelect] = useState(defaultSelectIndex || 0);
+
+    const rowClick = (row: any, index: any) => {
+        setCurrentSelect(index)
+        onRowClick && onRowClick(row, index)
+    }
 
     return (
         <TableStyle>
@@ -27,7 +37,11 @@ const CustomTable: FC<TableI> = ({ columns, data, hiddenIndex }) => {
                 </thead>
                 <tbody>
                     {data.map((row, index) => (
-                        <tr key={index}>
+                        <tr
+                            key={index}
+                            onClick={() => rowClick(row, index)} 
+                            className={[currentSelect === index && canSelectItem? 'active': '', canSelectItem ? 'canSelect' : ''].join(' ')}
+                        >
                             {!hiddenIndex ? <td key={index}>{index + 1}</td> : ''}
                             {columns.map(column => (
                                 <td key={column.key}>{row[column.key]}</td>

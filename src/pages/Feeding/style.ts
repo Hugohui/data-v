@@ -45,6 +45,7 @@ export const PageRightFeedBottomStyle = styled.div`
         background-repeat:no-repeat;
         .funnel {
             height: 350px;
+            padding-bottom: 20px;
         }
         .planLine {
             padding-top: 30px;

@@ -5,6 +5,7 @@ import { useState } from "react"
 import BlankErrorRateLine from "./charts/BlankErrorRateLine"
 import { FeedPlanInfo } from "./charts/FeedFlanInfo"
 import PlanLine from "./charts/PlanLine"
+import PlanFunnel from "./charts/PlanFunnel"
 
 const testVideoList = [
     {url: ""},
@@ -25,7 +26,9 @@ export const PageRight = () => {
             </PageRightFeedPlanStyle>
             <PageRightFeedBottomStyle>
                 <div className="bottomLeft">
-                    <div className="funnel"></div>
+                    <div className="funnel">
+                        <PlanFunnel></PlanFunnel>
+                    </div>
                     <div className="planLine">
                         <PlanLine></PlanLine>
                     </div>

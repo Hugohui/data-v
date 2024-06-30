@@ -1,24 +1,26 @@
 import useEvent from "../../../hooks/useEventHook"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export const SheepInfo = () => {
     const { subscribe } = useEvent()
+    const [info, setInfo] = useState<any>({})
 
     useEffect(() => {
         subscribe('onSheepSelectEmit', (data: any) => {
-            console.log("======onSheepSelectEmit======", data)
+            console.log("=====data", data)
+            setInfo(data)
         })
     }, [])
 
     return (
         <div className="infoBox">
             <div className="info1">
-                <p>编号: 0021</p>
-                <p>月龄: 3</p>
+                <p>编号: {info.a}</p>
+                <p>月龄: {info.b}</p>
             </div>
             <div className="info2">
-                <p>体高: 90cm</p>
-                <p>体重: 30kg</p>
+                <p>体高: {info.c}cm</p>
+                <p>体重: {info.d}kg</p>
                 <p>体长: 59cm</p>
             </div>
             <div className="info3">

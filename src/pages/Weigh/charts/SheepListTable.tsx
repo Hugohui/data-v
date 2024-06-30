@@ -11,64 +11,36 @@ export const SheepListTable = () => {
 
     const columns = [
         {
-            key: "time",
+            key: "a",
             name: "编号"
         },
         {
-            key: "name",
+            key: "b",
             name: "月龄"
         },
         {
-            key: "all",
+            key: "c",
             name: "体重"
         },
         {
-            key: "all",
+            key: "d",
             name: "称重日期"
         },
     ]
 
     const data = [
         {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
+            d: '2023.04.18',
+            c: '产羔记录',
+            b: 20,
+            a: 20,
         },
         {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
+            d: '2023.04.23',
+            c: '产羔记录22',
+            b: 2,
+            a: 1,
+        }
     ]
 
     useEffect(() => {

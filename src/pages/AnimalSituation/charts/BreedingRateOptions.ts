@@ -1,4 +1,4 @@
-export const dungClearOptions = (options: any) => (
+export const rateOptions = (options: any) => (
   {
     title: {
       text: options.title, // 标题文本

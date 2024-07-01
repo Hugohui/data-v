@@ -1,23 +1,31 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { keepLineOptions } from "./KeepLineOptions"
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
+import { getHalfYearEveryPasturStatics } from '../../../api/AnimalSituation'
+import useInterval from '../../../hooks/useInterval'
 
-interface KeepRatioInfoI {
-    name: string,
-    value: number
+interface OptionsI {
 }
 
-interface KeepRatioI {
-    // data: KeepRatioInfoI[]
-}
-
-const testData = [1020, 230, 1250, 480, 670, 1710, 1830, 823, 945, 367, 589, 667]
-
-const KeepRatio: FC<KeepRatioI> = (options) => {
+const KeepRatio: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState<any>()
+
+    const getData = () => {
+        getHalfYearEveryPasturStatics().then((res) => {
+            if (res.code === 200) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useInterval(getData)
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     return (
         <>

@@ -27,7 +27,6 @@ export const HeaderInfo = () => {
         const intervalId = setInterval(updateDateInfo, 1000);
 
         getWeatherInfo().then((res: any) => {
-            console.log("getWeatherInfo=====", res)
             if (res.code === '200') {
                 console.log("getWeatherInfo=====", res.now)
                 setWeather(res.now)

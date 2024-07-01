@@ -9,6 +9,35 @@ export const getReproductivEvent = (params?: any) => {
     return get('App/BigDataApi/ReproductivEvent', params)
 }
 
+
+/**
+ * 繁殖水平评估
+ * @param params 
+ * @returns 
+ */
+export const getBreedingRate = (params?: any) => {
+    return get('App/BigDataApi/breedingRate', params)
+}
+
+
+/**
+ * 本年存栏统计
+ * @param params 
+ * @returns 
+ */
+export const getHalfYearEveryPasturStatics = (params?: any) => {
+    return get('App/BigDataApi/HalfYearEveryPasturStatics', params)
+}
+
+/**
+ * 本年出栏统计
+ * @param params 
+ * @returns 
+ */
+export const getHalfYearEveryPasturdePartureStatics = (params?: any) => {
+    return get('App/BigDataApi/HalfYearEveryPasturdePartureStatics', params)
+}
+
 /**
  * 测试post方法
  * @param data post参数

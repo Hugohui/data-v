@@ -13,7 +13,7 @@ export const forageYieldOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      data: data.xAxisList,
       axisLine: {
         show: true,
         lineStyle: {
@@ -41,7 +41,7 @@ export const forageYieldOptions = (data: any) => (
     },
     series: [
       {
-        data: data,
+        data: data.DataList.map((item: any) => item.num),
         type: 'line',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 8, // 设置圆形标记的大小

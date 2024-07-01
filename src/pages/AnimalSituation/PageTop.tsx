@@ -1,28 +1,20 @@
 import { PageTopStyle } from "./style";
 import { BorderBox } from "../../components/basic/BorderBox"
 import FattenRatio from "./charts/FattenRatio";
-import DungClear from "./charts/DungClear";
 import { FeedTable } from "./charts/FeedTable";
+import { BreedingRateBox } from "./charts/BreedingRateBox";
 
 export const PageTop = () => {
     return (
         <PageTopStyle>
             <BorderBox title="羊群结构" height="410">
-                <FattenRatio data={[]}></FattenRatio>
+                <FattenRatio></FattenRatio>
             </BorderBox>
             <BorderBox title="繁殖事件统计" height="410">
                 <FeedTable></FeedTable>
             </BorderBox>
             <BorderBox title="繁育水平统计" height="410" className="DungClearBox">
-                <div className="DungClear">
-                    <DungClear title="羔羊成活率" value={60} formatter="{value}%"></DungClear>
-                </div>
-                <div className="DungClear">
-                    <DungClear title="胎间隔" value={80.8} formatter="{value}天" backgroundColor={['#1F5068', '#5595EC', '#2BE6D0']}></DungClear>
-                </div>
-                <div className="DungClear">
-                    <DungClear title="受胎率" value={60} formatter="{value}%" backgroundColor={["#543C1B", "#B8E638", "#F29322"]}></DungClear>
-                </div>
+                <BreedingRateBox></BreedingRateBox>
             </BorderBox>
         </PageTopStyle>
     )

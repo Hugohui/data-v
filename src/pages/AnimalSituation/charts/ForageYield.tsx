@@ -1,19 +1,31 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { forageYieldOptions } from "./ForageYieldOptions"
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
+import { getHalfYearEveryPasturdePartureStatics } from '../../../api/AnimalSituation'
+import useInterval from '../../../hooks/useInterval'
 
 
-interface LineOptionsI {
-    // data: RatioInfoI[]
+interface OptionsI {
 }
 
-
-const testData = [1200, 2000, 1500, 800, 700, 1100, 1300, 230, 405, 670, 890, 607]
-
-const ForageYield: FC<LineOptionsI> = (options) => {
+const ForageYield: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState<any>()
+
+    const getData = () => {
+        getHalfYearEveryPasturdePartureStatics().then((res) => {
+            if (res.code === 200) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useInterval(getData)
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     return (
         <>

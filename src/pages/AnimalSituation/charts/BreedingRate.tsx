@@ -1,6 +1,6 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
-import { dungClearOptions } from "./DungClearOptions"
+import { rateOptions } from "./BreedingRateOptions"
 import { FC, useState } from 'react'
 
 interface RatioI {
@@ -12,11 +12,8 @@ interface RatioI {
 }
 
 
-const DungClear: FC<RatioI> = (options) => {
+const BreedingRate: FC<RatioI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-
-    console.log("========", options)
-
     // const [data, setData] = useState(80)
 
 
@@ -25,7 +22,7 @@ const DungClear: FC<RatioI> = (options) => {
             {(options) ? (
                 <EChartsCommon
                     renderer={renderer}
-                    option={dungClearOptions(options)}
+                    option={rateOptions(options)}
                 />
             ) : (
                 ''
@@ -34,4 +31,4 @@ const DungClear: FC<RatioI> = (options) => {
     )
 }
 
-export default DungClear
+export default BreedingRate

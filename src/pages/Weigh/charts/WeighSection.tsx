@@ -14,9 +14,6 @@ interface RatioI {
 
 const WeighSection: FC<RatioI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-
-    console.log("========", options)
-
     // const [data, setData] = useState(80)
 
 

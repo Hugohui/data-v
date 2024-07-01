@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 
 import { PageCenterStyle, InfoBoxStyle } from "./style"
-import centerPageData from "../../api/mock/centerPageData"
+// import centerPageData from "../../api/mock/centerPageData"
 import { BorderBox } from "../../components/basic/BorderBox"
 import WeighScatter from "./charts/WeighScatter"
 import { SheepInfo } from "./charts/SheepInfo"
@@ -16,7 +16,7 @@ export const PageCenter = () => {
         // if (res.code === ResultEnum.SUCCESS) {
         //     setCenterData(res.data)
         // }
-        setCenterData(centerPageData)
+        // setCenterData(centerPageData)
     }
 
     const toDataV = () => {

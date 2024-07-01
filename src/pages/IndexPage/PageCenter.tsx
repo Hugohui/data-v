@@ -5,7 +5,7 @@ import { PageCenterStyle } from "./style"
 // import { get } from "../../api/http"
 // import { centerPageDataApi } from "../../api/mock"
 // import { ResultEnum } from "../../enums/httpEnum"
-import centerPageData from "../../api/mock/centerPageData"
+// import centerPageData from "../../api/mock/centerPageData"
 import { BorderBox } from "../../components/basic/BorderBox"
 import FeedUsageLine from "./charts/FeedUsageLine"
 
@@ -19,7 +19,7 @@ export const PageCenter = () => {
         // if (res.code === ResultEnum.SUCCESS) {
         //     setCenterData(res.data)
         // }
-        setCenterData(centerPageData)
+        // setCenterData(centerPageData)
     }
 
     const toDataV = () => {

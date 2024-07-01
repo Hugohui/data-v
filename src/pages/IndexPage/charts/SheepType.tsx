@@ -28,7 +28,7 @@ const SheepType: FC<OptionsI> = (options) => {
         })
     }
 
-    useInterval(getData, 2000)
+    useInterval(getData)
 
     useEffect(() => {
         getData()

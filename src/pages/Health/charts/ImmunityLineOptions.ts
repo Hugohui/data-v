@@ -1,10 +1,6 @@
 import * as echarts from 'echarts';
 
-interface lineOptionsI {
-  data: any
-}
-
-export const lineOptions = ({ data }: lineOptionsI) => (
+export const lineOptions = (options: any) => (
   {
     grid:{ // 让图表占满容器
       top:"40px",
@@ -14,7 +10,7 @@ export const lineOptions = ({ data }: lineOptionsI) => (
     },
     xAxis: {
       type: 'category',
-      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      data: options.xAxislist,
       axisLine: {
         show: true,
         lineStyle: {
@@ -44,26 +40,42 @@ export const lineOptions = ({ data }: lineOptionsI) => (
       trigger: 'axis'
     },
     legend: {
-      data: ['免疫一'],
+      data: options.legendData,
       textStyle: {
         color: "#fff"
       }
     },
-    series: [
-      {
-        data: data,
+    series: Object.keys(options.data).map((item) => {
+      return {
+        data: options.data[item],
         type: 'line',
-        name: "免疫一",
-        stack: 'Total',
+        name: item,
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 8, // 设置圆形标记的大小
-        itemStyle: {
-          normal: {
-            color: '#6BD25E', // 设置圆点的填充颜色
-            borderColor: '#6BD25E', // 设置圆点边框颜色
-            // borderWidth: 2 // 设置圆点边框宽度
-          }
-        },
+        // itemStyle: {
+        //   normal: {
+        //     color: '#38D7FF', // 设置圆点的填充颜色
+        //     // borderColor: '#38D7FF', // 设置圆点边框颜色
+        //     // borderWidth: 2 // 设置圆点边框宽度
+        //   }
+        // }
       }
-    ]
+    })
+    // [
+    //   {
+    //     data: data,
+    //     type: 'line',
+    //     name: "免疫一",
+    //     stack: 'Total',
+    //     symbol: 'circle', // 设置标记为圆形
+    //     symbolSize: 8, // 设置圆形标记的大小
+    //     itemStyle: {
+    //       normal: {
+    //         color: '#6BD25E', // 设置圆点的填充颜色
+    //         borderColor: '#6BD25E', // 设置圆点边框颜色
+    //         // borderWidth: 2 // 设置圆点边框宽度
+    //       }
+    //     },
+    //   }
+    // ]
   });

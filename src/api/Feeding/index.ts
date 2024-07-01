@@ -10,10 +10,10 @@ export const testGet = (params: any) => {
 }
 
 /**
- * 测试post方法
+ * 获取料单执行情况
  * @param data post参数
  * @returns 
  */
-export const testPost = (data: any) => {
-    return post('/', data)
+export const getFeedIntakeList = (data?: any) => {
+    return post('App/BigDataApi/getFeedIntakeList', data)
 }

@@ -1,71 +1,48 @@
+import { useEffect, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
+import { getFeedIntakeList } from "../../../api/Feeding"
+import useInterval from "../../../hooks/useInterval"
 
 export const MaterialListTable = () => {
     const columns = [
         {
-            key: "time",
+            key: "Shift",
             name: "班次"
         },
         {
-            key: "name",
+            key: "TrainNumber",
             name: "车次"
         },
         {
-            key: "all",
+            key: "PlannedWeight",
             name: "计划重量"
         },
         {
-            key: "all",
+            key: "ActualWeight",
             name: "实际重量"
         },
         {
-            key: "all",
+            key: "ErrorRate",
             name: "误差量"
         },
     ]
 
-    const data = [
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-    ]
+    const [data, setData] = useState<any>([])
+
+    const getData = () => {
+        getFeedIntakeList().then((res) => {
+            if (res.code === 200) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useInterval(getData);
+
+    useEffect(() => {
+        getData()
+    }, [])
+
     return (
         <CustomTable columns={columns} data={data} hiddenIndex={true}></CustomTable>
     )

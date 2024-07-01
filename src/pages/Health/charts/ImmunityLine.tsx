@@ -1,29 +1,58 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { lineOptions } from "./ImmunityLineOptions"
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
+import useInterval from '../../../hooks/useInterval'
+import { getCowImmuneStatisticsYear } from '../../../api/Health'
 
 
 interface OptionsI {
     // data: KeepRatioInfoI[]
 }
 
-const testData = [1020, 230, 1250, 480, 670, 1710, 1830, 823, 945, 367, 589, 667]
-
 const ImmunityLine: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState(testData)
-    const chartOptions: any = {
-        data
+    const [data, setData] = useState<any>()
+
+    const formatData = (data: any) => {
+        const params: any = {}
+
+        const nameData: any = {}
+        data?.list?.forEach((item: any) => {
+            if(!nameData[item.name]) {
+                nameData[item.name] = []
+            }
+            nameData[item.name].push(item.value)
+        })
+
+        params['legendData'] = Object.keys(nameData)
+        params['data'] = nameData
+        params['xAxislist'] = data.xAxislist
+        
+        return params
     }
+
+    const getData = () => {
+        getCowImmuneStatisticsYear().then((res) => {
+            if (res.code === 200) {
+                setData(formatData(res.data))
+            }
+        })
+    }
+
+    useInterval(getData)
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     return (
         <>
             {(data) ? (
                 <EChartsCommon
                     renderer={renderer}
-                    option={lineOptions(chartOptions)}
+                    option={lineOptions(data)}
                 />
             ) : (
                 ''

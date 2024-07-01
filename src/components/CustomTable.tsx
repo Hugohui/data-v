@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useRef, useState } from "react"
 import { TableStyle } from "./CustomTableStyle"
 
 interface columnsI {
@@ -12,21 +12,57 @@ interface TablePropsI {
     hiddenIndex?: Boolean;
     onRowClick?: Function;
     canSelectItem?: boolean
-    defaultSelectIndex?: number 
+    defaultSelectIndex?: number
+    autoLoop?: boolean
 }
 
 const CustomTable: FC<TablePropsI> = (props) => {
     const { columns, data, hiddenIndex, onRowClick, canSelectItem, defaultSelectIndex } = props;
     const [currentSelect, setCurrentSelect] = useState(defaultSelectIndex || 0);
+    const tableRef = useRef<any>()
+    const tbodyRef = useRef<any>()
 
     const rowClick = (row: any, index: any) => {
         setCurrentSelect(index)
         onRowClick && onRowClick(row, index)
     }
 
+    const scrollTable = () => {
+        if (tbodyRef.current) {
+            // 获取表格的行数
+            const rowCount = tbodyRef.current?.rows.length;
+            const row = tbodyRef.current.getElementsByTagName('tr')[rowCount - 1];
+            tbodyRef.current.insertBefore(row, tbodyRef.current.firstChild);
+        }
+    }
+
+    useEffect(() => {
+        let timer: any = 0;
+        let wheelTimeout: any = 0;
+        if(props.autoLoop) {
+            timer = setInterval(scrollTable, 2000);
+
+            // 鼠标滚轮滚动时清楚滚动效果，滚轮停止2秒后恢复
+            tableRef.current.addEventListener('wheel', () => {
+                if (wheelTimeout) {
+                    clearTimeout(wheelTimeout)
+                }
+                wheelTimeout = setTimeout(() => {
+                    timer = setInterval(scrollTable, 2000)
+                }, 4000)
+                timer && clearInterval(timer)
+            })
+        }
+
+        return () => {
+            timer && clearInterval(timer)
+            wheelTimeout && clearTimeout(wheelTimeout)
+        }
+    }, [])
+
     return (
         <TableStyle>
-            <table>
+            <table ref={tableRef}>
                 <thead>
                     <tr>
                         { !hiddenIndex ? <th key="index">序号</th> : ''}
@@ -35,7 +71,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
                         ))}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody ref={tbodyRef}>
                     {data.map((row, index) => (
                         <tr
                             key={index}

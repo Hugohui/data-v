@@ -30,15 +30,16 @@ export const TableStyle = styled.div<{$height?: number}>`
     }
 
     thead {
-        /* position: sticky;
-        top: 0; */
+        position: sticky;
+        top: -10px;
         font-weight: 500;
         font-size: 15px;
         color: #19FCDE;
-        background-color: rgba(255, 255, 255, 0.05);
+        /* background-color: rgba(255, 255, 255, 0.02); */
+        background-color: #1E2B45;
     }
 
     tr:nth-child(even) {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(255, 255, 255, 0.02);
     }
 `

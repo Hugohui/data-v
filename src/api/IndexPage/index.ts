@@ -5,8 +5,8 @@ import { get, post } from '../http'
  * @param params get参数
  * @returns 
  */
-export const testGet = (params: any) => {
-    return get('/', params)
+export const getHerdStructure = (params?: any) => {
+    return get('/App/BigDataApi/HerdStructure', params)
 }
 
 /**

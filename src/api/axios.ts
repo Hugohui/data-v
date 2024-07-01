@@ -17,7 +17,7 @@ import axios, {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <T = any>(config: AxiosRequestConfig): Promise<MyResponseType<T>>
   }
-  
+
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_PATH,
     timeout: ResultEnum.TIMEOUT

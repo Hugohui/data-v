@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, Suspense } from "react"
 import { HeaderMenu } from "./HeaderMenu"
 import { Footer } from "./Footer"
 import { LayoutStyle, PageStyle } from "../style/globalStyleSet"
@@ -30,7 +30,10 @@ export const BasicLayout: FC<{children: any}> = ({ children }) => {
                 </GoHomeStyle>
 
                 <MainStyle>
-                    { children }
+                    
+                    <Suspense fallback={<span>loading....</span>}>
+                        { children }
+                    </Suspense>
                 </MainStyle>
 
                 <Footer></Footer>

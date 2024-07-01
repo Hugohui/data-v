@@ -37,6 +37,7 @@ export const AnchorPointStyle = styled.div`
         background-repeat: no-repeat;
         background-size: 100% 100%;
         position: absolute;
+        cursor: pointer;
 
         &:nth-child(1) {
             left: 160px;

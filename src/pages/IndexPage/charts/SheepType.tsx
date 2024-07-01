@@ -3,6 +3,7 @@ import EChartsCommon from "../../../components/EChartsCommon"
 import { sheepTypeOptions } from "./SheepTypeOptions"
 import { FC, useEffect, useState } from 'react'
 import { getHerdStructure } from '../../../api/IndexPage'
+import useInterval from '../../../hooks/useInterval'
 
 interface OptionsI {}
 
@@ -26,6 +27,8 @@ const SheepType: FC<OptionsI> = (options) => {
             }
         })
     }
+
+    useInterval(getData, 2000)
 
     useEffect(() => {
         getData()

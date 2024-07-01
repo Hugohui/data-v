@@ -2,7 +2,7 @@ import { useState } from 'react'
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { feedUsageOptions } from "./FeedUsageLineOptions"
-import MonthYearSwitch from '../../../components/MonthYearSwitch'
+// import MonthYearSwitch from '../../../components/MonthYearSwitch'
 
 const testYearData = [934, 1290, 1330, 1320, 1500, 2000, 908]
 const testMonthData = [93, 129, 130, 1020, 600, 290, 668]

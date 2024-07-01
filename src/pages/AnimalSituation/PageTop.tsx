@@ -7,13 +7,13 @@ import { FeedTable } from "./charts/FeedTable";
 export const PageTop = () => {
     return (
         <PageTopStyle>
-            <BorderBox title="育肥水平评估" height="410">
+            <BorderBox title="羊群结构" height="410">
                 <FattenRatio data={[]}></FattenRatio>
             </BorderBox>
-            <BorderBox title="饲喂草料量" height="410">
+            <BorderBox title="繁殖事件统计" height="410">
                 <FeedTable></FeedTable>
             </BorderBox>
-            <BorderBox title="清粪概况" height="410" className="DungClearBox">
+            <BorderBox title="繁育水平统计" height="410" className="DungClearBox">
                 <div className="DungClear">
                     <DungClear title="羔羊成活率" value={60} formatter="{value}%"></DungClear>
                 </div>

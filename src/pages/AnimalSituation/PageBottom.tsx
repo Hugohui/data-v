@@ -9,7 +9,7 @@ export const PageBottom = () => {
             <BorderBox title="存栏统计" height="438" size="large">
                 <KeepLine></KeepLine>
             </BorderBox>
-            <BorderBox title="饲喂草料量" height="438" size="large">
+            <BorderBox title="出栏统计" height="438" size="large">
                 <ForageYield></ForageYield>
             </BorderBox>
         </PageBottomStyle>

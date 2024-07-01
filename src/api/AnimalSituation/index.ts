@@ -1,12 +1,12 @@
 import { get, post } from '../http'
 
 /**
- * 测试get方法
+ * 繁殖事件统计
  * @param params get参数
  * @returns 
  */
-export const testGet = (params: any) => {
-    return get('/', params)
+export const getReproductivEvent = (params?: any) => {
+    return get('App/BigDataApi/ReproductivEvent', params)
 }
 
 /**

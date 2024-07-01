@@ -1,9 +1,12 @@
+import { useEffect, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
+import { getReproductivEvent } from "../../../api/AnimalSituation"
+import useInterval from "../../../hooks/useInterval"
 
 export const FeedTable = () => {
     const columns = [
         {
-            key: "time",
+            key: "dataTime",
             name: "时间"
         },
         {
@@ -11,53 +14,27 @@ export const FeedTable = () => {
             name: "名称"
         },
         {
-            key: "all",
+            key: "Count",
             name: "汇总"
         },
     ]
 
-    const data = [
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-    ]
+    const [data, setData] = useState([])
+
+    const getData = () => {
+        getReproductivEvent().then((res) => {
+            if (res.code === 200) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useInterval(getData)
+
+    useEffect(() => {
+        getData()
+    }, [])
+
     return (
         <CustomTable columns={columns} data={data}></CustomTable>
     )

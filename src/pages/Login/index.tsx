@@ -21,7 +21,7 @@ export const Login = () => {
             PassWord: PassWord.trim()
         }).then((res) => {
             if (res.code === 200) {
-                sessionStorage.setItem(SessionEnum.FARMCODE, res.data.FarmCode)
+                sessionStorage.setItem(SessionEnum.FARMID, res.data.farmID)
                 navigate('/')
             }
         })

@@ -24,7 +24,34 @@ export const getBreedingRealTimeData = (params?: any) => {
  * @returns 
  */
 export const getHerdStructure = (params?: any) => {
-    return get('/App/BigDataApi/HerdStructure', params)
+    return get('App/BigDataApi/HerdStructure', params)
+}
+
+/**
+ * 获取羊群变化趋势
+ * @param params get参数
+ * @returns 
+ */
+export const getMonthSheepHerdsTrend = (params?: any) => {
+    return get('App/BigDataApi/getMonthSheepHerdsTrend', params)
+}
+
+/**
+ * 获取产奶变化趋势
+ * @param params get参数
+ * @returns 
+ */
+export const getMonthMilkHerdsTrend = (params?: any) => {
+    return get('App/BigDataApi/getMonthMilkHerdsTrend', params)
+}
+
+/**
+ * 获取饲料使用情况
+ * @param params get参数
+ * @returns 
+ */
+export const getFeedUsageTrend = (params?: any) => {
+    return get('App/BigDataApi/FeedUsageTrend', params)
 }
 
 /**

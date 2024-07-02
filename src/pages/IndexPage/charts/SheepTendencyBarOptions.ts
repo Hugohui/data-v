@@ -8,10 +8,13 @@ export const sheepTendencyBarOptions = (data: any) => (
       right:"50px",
       bottom:"20px"
     },
+    tooltip: {
+      trigger: 'axis'
+    },
     xAxis: {
       type: 'category',
       name: '月',
-      data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+      data: data?.xAxisList,
       axisLine: {
         show: true,
         lineStyle: {
@@ -27,8 +30,8 @@ export const sheepTendencyBarOptions = (data: any) => (
       type: 'value',
       name: '（只）',
       min: 0, // 设置纵坐标的最小值
-      max: 250, // 设置纵坐标的最大值
-      interval: 50, // 设置纵坐标的间隔
+      max: 1000, // 设置纵坐标的最大值
+      interval: 200, // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,
@@ -43,7 +46,7 @@ export const sheepTendencyBarOptions = (data: any) => (
     },
     series: [
       {
-        data: data,
+        data: data?.ListData?.map((item: any) => item.value || 0),
         type: 'bar',
         barWidth: 8,
         itemStyle: {

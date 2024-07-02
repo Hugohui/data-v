@@ -1,13 +1,13 @@
 import axiosInstance from './axios'
 import { RequestHttpEnum, ContentTypeEnum } from '../enums/httpEnum'
-import { getFarmCode } from '../utils/session'
+import { getFarmID } from '../utils/session'
 
 
 export const get = (url: string, params?: object) => {
   return axiosInstance({
     url: url,
     method: RequestHttpEnum.GET,
-    params: {...params, farmId: getFarmCode()}
+    params: {...params, farmId: getFarmID()}
   })
 }
 
@@ -15,7 +15,7 @@ export const post = (url: string, data?: object, headersType?: string) => {
   return axiosInstance({
     url: url,
     method: RequestHttpEnum.POST,
-    data: {...data, farmId: getFarmCode()},
+    data: {...data, farmId: getFarmID()},
     headers: {
       'Content-Type': headersType || ContentTypeEnum.JSON
     }

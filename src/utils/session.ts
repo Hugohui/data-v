@@ -5,15 +5,15 @@ import { SessionEnum } from '../enums/constantEnum'
  * 获取farmCode
  * @returns 
  */
-export const getFarmCode = () => {
-  return sessionStorage.getItem(SessionEnum.FARMCODE)
+export const getFarmID = () => {
+  return sessionStorage.getItem(SessionEnum.FARMID)
 }
 
 
 /**
  * 判断是否登录，目前是判断session中是否有farmid
- * @returns 
+ * @returns
  */
 export const isLogin = () => {
-    return !!getFarmCode()
+    return !!getFarmID()
 }

@@ -1,14 +1,26 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { milkTendencyBarOptions } from "./MilkTendencyBarOptions"
-import { FC } from 'react'
+import { FC, useState } from 'react'
+import { getMonthMilkHerdsTrend } from '../../../api/IndexPage/index'
+import { useIntervalRequest } from '../../../hooks/useIntervalRequest'
 
-interface MilkTendencyI {
-    data: number[]
-}
+interface OptionsI {}
 
-const MilkTendencyBar: FC<MilkTendencyI> = ({ data }) => {
+const MilkTendencyBar: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
+
+    const [data, setData] = useState<any>()
+
+    const getData = () => {
+        getMonthMilkHerdsTrend().then((res: any) => {
+            if (res.code === 200) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <>

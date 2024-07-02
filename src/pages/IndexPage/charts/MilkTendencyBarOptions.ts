@@ -1,6 +1,6 @@
 import * as echarts from 'echarts';
 
-export const milkTendencyBarOptions = (data: any) => (
+export const milkTendencyBarOptions = (options: any) => (
   {
     grid:{ // 让图表占满容器
       top:"30px",
@@ -8,10 +8,13 @@ export const milkTendencyBarOptions = (data: any) => (
       right:"50px",
       bottom:"20px"
     },
+    tooltip: {
+      trigger: 'axis'
+    },
     xAxis: {
       type: 'category',
       name: '月',
-      data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+      data: options.xAxisList,
       axisLine: {
         show: true,
         lineStyle: {
@@ -43,7 +46,7 @@ export const milkTendencyBarOptions = (data: any) => (
     },
     series: [
       {
-        data: data,
+        data: options?.ListData?.map((item: any) => item.value || 0),
         type: 'bar',
         barWidth: 8,
         itemStyle: {

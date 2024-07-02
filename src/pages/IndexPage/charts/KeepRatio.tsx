@@ -1,19 +1,19 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { keepRatioOptions } from "./KeepRatioOptions"
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 interface KeepRatioInfoI {
     name: string,
     value: number
 }
 
-interface KeepRatioI {
-    data: KeepRatioInfoI[]
-}
+interface OptionsI {}
 
-const KeepRatio: FC<KeepRatioI> = ({ data }) => {
+const KeepRatio: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
+
+    const [data, setData] = useState<any>([])
 
     return (
         <>

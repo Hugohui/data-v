@@ -9,5 +9,5 @@ export enum TimeEnum {
  * @description: 登录之后存储全局农场标识
  */
 export enum SessionEnum {
-    FARMCODE = "FarmCode"
+    FARMID = "farmID"
 }

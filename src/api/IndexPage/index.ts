@@ -55,10 +55,10 @@ export const getFeedUsageTrend = (params?: any) => {
 }
 
 /**
- * 测试post方法
- * @param data post参数
+ * 存栏占比
+ * @param params get参数
  * @returns 
  */
-export const testPost = (data: any) => {
-    return post('/', data)
+export const getSheepHerdsRatio = (params?: any) => {
+    return get('App/BigDataApi/getSheepHerdsRatio', params)
 }

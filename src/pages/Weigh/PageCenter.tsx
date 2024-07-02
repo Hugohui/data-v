@@ -29,7 +29,6 @@ export const PageCenter = () => {
 
     return (
         <PageCenterStyle>
-            {/* <Map mapData={centerData.mapData}></Map> */}
             <InfoBoxStyle>
                 <SheepInfo></SheepInfo>
             </InfoBoxStyle>

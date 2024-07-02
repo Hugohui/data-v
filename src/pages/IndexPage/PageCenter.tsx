@@ -32,7 +32,6 @@ export const PageCenter = () => {
 
     return (
         <PageCenterStyle>
-            {/* <Map mapData={centerData.mapData}></Map> */}
             <div className="enterDialog">
                 <div className="name">陕西省</div>
                 <div className="info">

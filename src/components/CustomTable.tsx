@@ -72,7 +72,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
                     </tr>
                 </thead>
                 <tbody ref={tbodyRef}>
-                    {data.map((row, index) => (
+                    {data?.map((row, index) => (
                         <tr
                             key={index}
                             onClick={() => rowClick(row, index)} 

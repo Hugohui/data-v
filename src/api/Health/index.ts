@@ -26,3 +26,13 @@ export const getCowImmuneStatisticsYear = (data?: any) => {
 export const getSummCompBreedEventsEachPast = (params?: any) => {
     return post('App/BigDataApi/SummCompBreedEventsEachPast', params)
 }
+
+
+/**
+ * 疾病类型占比
+ * @param params 
+ * @returns 
+ */
+export const getNumbeSickSheepRecentOneYear = (params?: any) => {
+    return post('App/BigDataApi/NumbeSickSheepRecentOneYear', params)
+}

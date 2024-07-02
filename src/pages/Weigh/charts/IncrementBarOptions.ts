@@ -8,10 +8,13 @@ export const barOptions = (data: any) => (
       right:"50px",
       bottom:"40px"
     },
+    tooltip: {
+      trigger: 'axis'
+    },
     xAxis: {
       type: 'category',
       // name: '月',
-      data: ['分群1', '分群2', '分群3', '分群4', '分群5', '分群6', '分群7', '分群8', '分群9', '分群10'],
+      data: ['分群1'],
       axisLine: {
         show: true,
         lineStyle: {

@@ -7,21 +7,22 @@ export const SheepInfo = () => {
 
     useEffect(() => {
         subscribe('onSheepSelectEmit', (data: any) => {
-            console.log("=====data", data)
-            setInfo(data)
+            if (data) {
+                setInfo(data)
+            }
         })
     }, [])
 
     return (
         <div className="infoBox">
             <div className="info1">
-                <p>编号: {info.a}</p>
-                <p>月龄: {info.b}</p>
+                <p>编号: {info.CowCode}</p>
+                <p>月龄: {info.monAge}</p>
             </div>
             <div className="info2">
-                <p>体高: {info.c}cm</p>
-                <p>体重: {info.d}kg</p>
-                <p>体长: 59cm</p>
+                <p>体高: {info.Height}cm</p>
+                <p>体重: {info.Weight}kg</p>
+                <p>体长: {info.length_straight}cm</p>
             </div>
             <div className="info3">
                 <p>胸深: 53cm</p>

@@ -2,6 +2,9 @@ import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { feedErrorRateLineOptions } from "./FeedErrorRateLineOptions"
 import { FC, useState } from 'react'
+import { getFeedingErroRatelist } from '@/api/Feeding'
+import { useIntervalRequest } from '@/hooks/useIntervalRequest'
+import { getFarmID } from '@/utils/session'
 
 
 interface OptionsI {
@@ -14,6 +17,16 @@ const FeedErrorRateLine: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
     const [data, setData] = useState(testData)
+
+    const getData = () => {
+        getFeedingErroRatelist().then((res: any) => {
+            if (res?.code === 200) {
+                setData(res?.data?.FeedingErroRatelist)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <>

@@ -2,16 +2,27 @@ import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { scatterOptions } from "./WeighScatterOptions"
 import { FC, useState } from 'react'
+import { getWeightDistribuMapDifferenPastAges } from '@/api/Weigh'
+import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 
 interface OptionsI {
     // data: number[]
 }
 
-const testData = [120, 200, 150, 80, 70, 110, 130, 23, 45]
-
 const WeighScatter: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-    const [data, setData] = useState(testData)
+
+    const [data, setData] = useState<any>({list: []})
+
+    const getData = () => {
+        getWeightDistribuMapDifferenPastAges().then((res: any) => {
+            if (res.code === 200 && res.data) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <>

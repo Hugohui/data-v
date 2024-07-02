@@ -33,18 +33,7 @@ export const funnelOptions = (data: any) => (
         itemStyle: {
           borderColor: null,
         },
-        data: [
-          { value: 60, name: 'Visit' },
-          { value: 40, name: 'Inquiry' },
-          { value: 20, name: 'Order' },
-          { value: 80, name: 'Click' },
-          { value: 100, name: 'Show' },
-          { value: 130, name: 'Show1' },
-          { value: 150, name: 'Show2' },
-          { value: 340, name: 'Show3' },
-          { value: 540, name: 'Show4' },
-          { value: 914, name: 'Show5' },
-        ]
+        data: data
       },
       {
         name: 'Expected',
@@ -73,18 +62,7 @@ export const funnelOptions = (data: any) => (
         itemStyle: {
           borderColor: null,
         },
-        data: [
-          { value: 60, name: 'Visit' },
-          { value: 40, name: 'Inquiry' },
-          { value: 20, name: 'Order' },
-          { value: 80, name: 'Click' },
-          { value: 100, name: 'Show' },
-          { value: 130, name: 'Show1' },
-          { value: 150, name: 'Show2' },
-          { value: 340, name: 'Show3' },
-          { value: 540, name: 'Show4' },
-          { value: 914, name: 'Show5' },
-        ]
+        data: data
       },
       {
         name: 'Expected',
@@ -104,18 +82,7 @@ export const funnelOptions = (data: any) => (
         itemStyle: {
             borderColor: null,
         },
-        data: [
-          { value: 60, name: 'Visit' },
-          { value: 40, name: 'Inquiry' },
-          { value: 20, name: 'Order' },
-          { value: 80, name: 'Click' },
-          { value: 100, name: 'Show' },
-          { value: 130, name: 'Show1' },
-          { value: 150, name: 'Show2' },
-          { value: 340, name: 'Show3' },
-          { value: 540, name: 'Show4' },
-          { value: 914, name: 'Show5' },
-        ]
+        data: data
       },
     ]
   });

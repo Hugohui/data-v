@@ -2,16 +2,26 @@ import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { barOptions } from "./IncrementBarOptions"
 import { FC, useState } from 'react'
+import { getDailyGainDiffGroupDiffPastures } from '@/api/Weigh'
+import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 
 interface OptionsI {
     // data: number[]
 }
 
-const testData = [120, 200, 150, 80, 70, 110, 130, 23, 45]
-
 const IncrementBar: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState<any>()
+
+    const getData = () => {
+        getDailyGainDiffGroupDiffPastures().then((res: any) => {
+            if (res.code === 200 && res.data) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <>

@@ -2,16 +2,31 @@ import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { candlestickOptions } from "./WeighCandlestickOptions"
 import { FC, useState } from 'react'
+import { getLamBirthWeightDistribution } from '@/api/Weigh'
+import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 
 interface OptionsI {
     // data: number[]
 }
 
-const testData = [120, 200, 150, 80, 70, 110, 130, 23, 45]
-
 const WeighCandlestick: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState<any>({})
+
+    const getData = () => {
+        getLamBirthWeightDistribution().then((res: any) => {
+            if (res.code === 200 && res.data) {
+                setData(res.data)
+                // const a = {xAxisList: ["1", "6"], list: [
+                //     {name: 1, value: [233, 400, 200, 33, 45, 67]}, 
+                //     {name: 2, value: [33, 200, 400, 55, 67, 89]},
+                // ]}
+                // setData(a)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <>

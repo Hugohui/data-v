@@ -1,9 +1,8 @@
 import { PageLeftStyle } from "./style"
-import { BorderBox } from "../../components/basic/BorderBox"
+import { BorderBox } from "@/components/basic/BorderBox"
 import KeepRatio from "./charts/KeepRatio"
 import SheepTendencyBar from "./charts/SheepTendencyBar"
-import { RealTimeData } from "./components/RealTimeData"
-
+import { RealTimeData } from "@/pages/IndexPage/components/RealTimeData"
 
 export const PageLeft = () => {
     return (

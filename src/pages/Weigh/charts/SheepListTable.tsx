@@ -1,6 +1,8 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
 import useEvent from "../../../hooks/useEventHook"
+import { getSheepList } from "@/api/Weigh"
+import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 
 export const SheepListTable = () => {
     const { publish } = useEvent()
@@ -11,43 +13,40 @@ export const SheepListTable = () => {
 
     const columns = [
         {
-            key: "a",
+            key: "CowCode",
             name: "编号"
         },
         {
-            key: "b",
+            key: "monAge",
             name: "月龄"
         },
         {
-            key: "c",
+            key: "Weight",
             name: "体重"
         },
         {
-            key: "d",
+            key: "weightDate",
             name: "称重日期"
         },
     ]
 
-    const data = [
-        {
-            d: '2023.04.18',
-            c: '产羔记录',
-            b: 20,
-            a: 20,
-        },
-        {
-            d: '2023.04.23',
-            c: '产羔记录22',
-            b: 2,
-            a: 1,
-        }
-    ]
+    const [data, setData] = useState<any>([])
+
+    const getData = () => {
+        getSheepList().then((res: any) => {
+            if (res.code === 200 && res.data) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     useEffect(() => {
         setTimeout(() => {
             publish("onSheepSelectEmit", data[0])
         }, 0)
-    }, [])
+    }, [data])
 
     return (
         <CustomTable

@@ -7,7 +7,7 @@ export const get = (url: string, params?: object) => {
   return axiosInstance({
     url: url,
     method: RequestHttpEnum.GET,
-    params: {...params, farmId: getFarmID()}
+    params: {...params, farmId: getFarmID(), PastureID: getFarmID()}
   })
 }
 
@@ -15,7 +15,7 @@ export const post = (url: string, data?: object, headersType?: string) => {
   return axiosInstance({
     url: url,
     method: RequestHttpEnum.POST,
-    data: {...data, farmId: getFarmID()},
+    data: {...data, farmId: getFarmID(), PastureID: getFarmID()},
     headers: {
       'Content-Type': headersType || ContentTypeEnum.JSON
     }

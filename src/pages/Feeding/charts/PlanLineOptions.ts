@@ -1,13 +1,13 @@
 import * as echarts from 'echarts';
 
-export const blankErrorRateLineOptions = (data: any) => (
+export const blankErrorRateLineOptions = (options: any) => (
   {
     tooltip: {
       trigger: 'axis'
     },
     grid:{ // 让图表占满容器
       top:"50px",
-      left:"50px",
+      left:"60px",
       right:"20px",
       bottom:"40px"
     },
@@ -18,7 +18,7 @@ export const blankErrorRateLineOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: ['2024-04-23', '2024-04-24', '2024-04-25', '2024-04-26'],
+      data: options.DateArray,
       axisLine: {
         show: true,
         lineStyle: {
@@ -30,8 +30,8 @@ export const blankErrorRateLineOptions = (data: any) => (
       type: 'value',
       name: 'kg',
       min: 0, // 设置纵坐标的最小值
-      max: 2500, // 设置纵坐标的最大值
-      interval: 500, // 设置纵坐标的间隔
+      max: 250000, // 设置纵坐标的最大值
+      interval: 50000, // 设置纵坐标的间隔
       axisLine: {
         show: false,
         lineStyle: {
@@ -46,7 +46,7 @@ export const blankErrorRateLineOptions = (data: any) => (
     },
     series: [
       {
-        data: data,
+        data: options.PlannedWeightArray,
         type: 'line',
         name: "日计划量",
         symbol: 'circle', // 设置标记为圆形
@@ -69,7 +69,7 @@ export const blankErrorRateLineOptions = (data: any) => (
         }
       },
       {
-        data: [1300, 2334, 455, 1006],
+        data: options.ActualWeightArray,
         type: 'line',
         name: "实际加料",
         symbol: 'circle', // 设置标记为圆形
@@ -92,7 +92,7 @@ export const blankErrorRateLineOptions = (data: any) => (
         }
       },
       {
-        data: [300, 234, 905, 806],
+        data: options.DownActualWeightArray,
         type: 'line',
         name: "实际撒料",
         symbol: 'circle', // 设置标记为圆形

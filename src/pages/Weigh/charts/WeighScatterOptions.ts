@@ -6,31 +6,43 @@ export const scatterOptions = (options: any) => (
       right:"60px",
       bottom:"40px"
     },
+    tooltip: {
+      trigger: 'axis'
+    },
     xAxis: {
       name: "月龄",
-      data: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
+      data: options.xAxisList,
       axisLine: {
         show: true,
         lineStyle: {
           color: '#fff'
         }
       },
+      splitLine: {
+        show: false
+      },
     },
     yAxis: [
       {
       name: "体高\n(cm)",
-      // splitLine: false,
+      splitLine: false,
       max: 100,
       axisLine: {
         show: false,
         lineStyle: {
           color: '#fff',
         }
-      }
+      },
       },
       {
         name: "体重\n(kg)",
         type: 'value',
+        // splitLine: false,
+        splitLine: {
+          lineStyle: {
+            width: 0.5
+          }
+        },
         max: 100,
         // offset: 10,
         axisLine: {
@@ -54,17 +66,7 @@ export const scatterOptions = (options: any) => (
         itemStyle:{
           color: '#38D7FF'
         },
-        data: [
-          [10.0, 80],
-          [8.07, 69],
-          [13.0, 75],
-          [9.05, 81],
-          [11.0, 33],
-          [14.0, 66],
-          [13.4, 81],
-          [10.0, 33],
-          [14.0, 96],
-        ],
+        data: options?.list[0]?.value?.map((item:any) => [item.weight, item.height]),
         type: 'scatter'
       },
       {
@@ -74,18 +76,7 @@ export const scatterOptions = (options: any) => (
         itemStyle: {
           color: "#FF697E"
         },
-        data: [
-          [1, 40],
-          [3, 60],
-          [10, 50],
-          [5, 48],
-          [1, 35],
-          [14, 76],
-          [13, 87],
-          [14, 38],
-          [11, 68],
-          [4, 89],
-        ],
+        data: options?.list[1]?.value?.map((item:any) => [item.weight, item.height]),
         type: 'scatter'
       }
     ]

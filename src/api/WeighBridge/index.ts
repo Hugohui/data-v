@@ -10,10 +10,10 @@ export const testGet = (params: any) => {
 }
 
 /**
- * 测试post方法
+ * 除入场记录
  * @param data post参数
  * @returns 
  */
-export const testPost = (data: any) => {
-    return post('/', data)
+export const getWeighbridgeData = (data?: any) => {
+    return post('App/BigDataApi/GetWeighbridgeData', data)
 }

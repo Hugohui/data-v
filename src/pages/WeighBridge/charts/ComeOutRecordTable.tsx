@@ -1,111 +1,34 @@
 import CustomTable from "../../../components/CustomTable"
 
-export const ComeOutRecordTable = () => {
+export const ComeOutRecordTable = ({ data }: any) => {
     const columns = [
         {
-            key: "time",
+            key: "CarNumber",
             name: "车牌号"
         },
         {
-            key: "name",
+            key: "GoodType",
             name: "货品类别"
         },
         {
-            key: "all",
+            key: "WeightDate",
             name: "过磅时间"
         },
         {
-            key: "all",
+            key: "grossWeight",
             name: "毛重"
         },
         {
-            key: "all",
+            key: "tareWeight",
             name: "皮重"
         },
         {
-            key: "all",
+            key: "Weight",
             name: "净重"
         },
     ]
 
-    const data = [
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 20
-        },
-    ]
     return (
-        <CustomTable columns={columns} data={data} hiddenIndex={true}></CustomTable>
+        <CustomTable columns={columns} data={data || []} hiddenIndex={true}></CustomTable>
     )
 }

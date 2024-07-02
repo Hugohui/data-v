@@ -8,18 +8,20 @@ const VideoPlayer = ({ src }: any) => {
     useEffect(() => {
 
         let hls: any;
-        if (Hls.isSupported()) {
-            hls = new Hls()
-            hls.loadSource(src)
-            hls.attachMedia(videoRef.current)
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                videoRef.current.play()
-            })
-        } else if (videoRef.current) {
-            videoRef.current.src = src
-            videoRef.current.addEventListener('loadedmetadata', () => {
-                videoRef.current.play()
-            })
+        if (src) {
+            if (Hls.isSupported()) {
+                hls = new Hls()
+                hls.loadSource(src)
+                hls.attachMedia(videoRef.current)
+                hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    videoRef.current.play()
+                })
+            } else if (videoRef.current) {
+                videoRef.current.src = src
+                videoRef.current.addEventListener('loadedmetadata', () => {
+                    videoRef.current.play()
+                })
+            }
         }
 
 

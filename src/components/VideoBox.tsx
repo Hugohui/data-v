@@ -1,5 +1,7 @@
 import { FC } from "react"
 import { VideoBoxStyle, VideoItemStyle } from "./VideoBoxStyle"
+import VideoPlayer from '@/components/VideoPlayer'
+
 
 interface VideoBoxI {
     height?: string
@@ -9,14 +11,16 @@ interface VideoBoxI {
 }
 
 interface VideoInfoI {
-    url: string,
-    lineCont?: number
+    url?: string,
+    lineCont?: number,
+    VideoLink?: string 
 }
 
 const VideoItem: FC<VideoInfoI> = (item) => {
     return (
         <VideoItemStyle $lineCont={item.lineCont} className="VideoItemStyle">
-            <video src={item.url}></video>
+            {/* <video src={item.url}></video> */}
+            <VideoPlayer src={item.url}></VideoPlayer>
         </VideoItemStyle>
     )
 }
@@ -26,7 +30,7 @@ export const VideoBox: FC<VideoBoxI> = (props) => {
         <VideoBoxStyle $height={props.height} $width={props.width} className="VideoBoxStyle">
             {
                 props.videoList.map((item: VideoInfoI) => {
-                    return <VideoItem lineCont={props.lineCont} url={item.url}></VideoItem>
+                    return <VideoItem lineCont={props.lineCont} url={item.url || item.VideoLink}></VideoItem>
                 })
             }
         </VideoBoxStyle>

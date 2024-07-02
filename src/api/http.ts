@@ -1,10 +1,7 @@
 import axiosInstance from './axios'
 import { RequestHttpEnum, ContentTypeEnum } from '../enums/httpEnum'
-import { SessionEnum } from '../enums/constantEnum'
+import { getFarmCode } from '../utils/session'
 
-const getFarmCode = () => {
-  return sessionStorage.getItem(SessionEnum.FARMCODE)
-}
 
 export const get = (url: string, params?: object) => {
   return axiosInstance({

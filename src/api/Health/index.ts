@@ -17,3 +17,12 @@ export const getQuarantineStatisticsYear = (data?: any) => {
 export const getCowImmuneStatisticsYear = (data?: any) => {
     return post('App/BigDataApi/CowImmuneStatisticsYear', data)
 }
+
+/**
+ * 繁殖事件执行情况
+ * @param params 
+ * @returns 
+ */
+export const getSummCompBreedEventsEachPast = (params?: any) => {
+    return post('App/BigDataApi/SummCompBreedEventsEachPast', params)
+}

@@ -12,7 +12,7 @@ const SheepType: FC<OptionsI> = (options) => {
     const [data, setData] = useState()
 
     const formatData = (data: any) => {
-        return data.map((item: any) => {
+        return data?.map((item: any) => {
             return {
                 name: item.BarnTypeName,
                 value: item.Column1

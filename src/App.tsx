@@ -66,7 +66,7 @@ function App() {
       <Globalstyle></Globalstyle>
       <div ref={scaleRef} >
         {
-          element.props.match.pathname === '/' ? 
+          ['/', '/login'].includes(element.props.match.pathname) ? 
           element :
           <BasicLayout>{element}</BasicLayout>
         }

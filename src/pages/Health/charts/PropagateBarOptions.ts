@@ -14,7 +14,7 @@ export const barOptions = (data: any) => (
     xAxis: {
       type: 'category',
       // name: '月',
-      data: ['早产', '放栓记录', '撤栓记录', '发情配种', '初检登记', '复检登记', '流产登记', '围产记录', '干奶记录', '羔羊断奶'],
+      data: data.xAxislist,
       axisLine: {
         show: true,
         lineStyle: {
@@ -46,7 +46,7 @@ export const barOptions = (data: any) => (
     },
     series: [
       {
-        data: data,
+        data: data.list.map((item: any) => item.value),
         type: 'bar',
         barWidth: 26,
         itemStyle: {

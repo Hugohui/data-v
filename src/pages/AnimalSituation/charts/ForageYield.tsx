@@ -3,8 +3,7 @@ import EChartsCommon from "../../../components/EChartsCommon"
 import { forageYieldOptions } from "./ForageYieldOptions"
 import { FC, useState, useEffect } from 'react'
 import { getHalfYearEveryPasturdePartureStatics } from '../../../api/AnimalSituation'
-import useInterval from '../../../hooks/useInterval'
-
+import { useIntervalRequest } from '../../../hooks/useIntervalRequest'
 
 interface OptionsI {
 }
@@ -21,11 +20,7 @@ const ForageYield: FC<OptionsI> = (options) => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <>

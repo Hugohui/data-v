@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 
-import useInterval from "../../../hooks/useInterval"
 import { InfoItem } from "./InfoItem"
 import { getRealTimeData } from "../../../api/IndexPage"
+import { useIntervalRequest } from "../../../hooks/useIntervalRequest"
 
 
 export const RealTimeData = () => {
@@ -17,11 +17,7 @@ export const RealTimeData = () => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <>

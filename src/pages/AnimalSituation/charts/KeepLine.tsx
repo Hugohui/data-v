@@ -3,7 +3,7 @@ import EChartsCommon from "../../../components/EChartsCommon"
 import { keepLineOptions } from "./KeepLineOptions"
 import { FC, useEffect, useState } from 'react'
 import { getHalfYearEveryPasturStatics } from '../../../api/AnimalSituation'
-import useInterval from '../../../hooks/useInterval'
+import { useIntervalRequest } from '../../../hooks/useIntervalRequest'
 
 interface OptionsI {
 }
@@ -21,11 +21,7 @@ const KeepRatio: FC<OptionsI> = (options) => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <>

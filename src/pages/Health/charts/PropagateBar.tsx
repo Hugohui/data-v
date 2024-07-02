@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { barOptions } from "./PropagateBarOptions"
 import { getSummCompBreedEventsEachPast } from '../../../api/Health'
-import useInterval from '../../../hooks/useInterval'
+import { useIntervalRequest } from '../../../hooks/useIntervalRequest'
 
 interface OptionsI {
     // data: number[]
@@ -22,11 +22,7 @@ const PropagateBar: FC<OptionsI> = (options) => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <>

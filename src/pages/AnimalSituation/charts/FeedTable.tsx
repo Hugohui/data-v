@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
 import { getReproductivEvent } from "../../../api/AnimalSituation"
-import useInterval from "../../../hooks/useInterval"
+import { useIntervalRequest } from "../../../hooks/useIntervalRequest"
 
 export const FeedTable = () => {
     const columns = [
@@ -29,11 +29,7 @@ export const FeedTable = () => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <CustomTable columns={columns} data={data}></CustomTable>

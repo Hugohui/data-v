@@ -1,7 +1,7 @@
-import useInterval from "../../../hooks/useInterval"
 import { InfoItem } from "./InfoItem"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { getBreedingRealTimeData } from "../../../api/IndexPage"
+import { useIntervalRequest } from "../../../hooks/useIntervalRequest"
 
 export const BreedingRealTimeData = () => {
     const [data, setData] = useState<any>({})
@@ -14,11 +14,7 @@ export const BreedingRealTimeData = () => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <>

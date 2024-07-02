@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
 import { getFeedIntakeList } from "../../../api/Feeding"
-import useInterval from "../../../hooks/useInterval"
+import { useIntervalRequest } from "../../../hooks/useIntervalRequest"
 
 export const MaterialListTable = () => {
     const columns = [
@@ -37,11 +37,7 @@ export const MaterialListTable = () => {
         })
     }
 
-    useInterval(getData);
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <CustomTable columns={columns} data={data} hiddenIndex={true}></CustomTable>

@@ -1,9 +1,9 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { lineOptions } from "./QuarantineLineOptions"
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { getQuarantineStatisticsYear } from '../../../api/Health'
-import useInterval from '../../../hooks/useInterval'
+import { useIntervalRequest } from '../../../hooks/useIntervalRequest'
 
 
 interface OptionsI {
@@ -42,11 +42,7 @@ const QuarantineLine: FC<OptionsI> = (options) => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <>

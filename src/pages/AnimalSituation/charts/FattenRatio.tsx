@@ -1,9 +1,9 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { ratioOptions } from "./FattenRatioOptions"
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import { getHerdStructure } from '../../../api/IndexPage'
-import useInterval from '../../../hooks/useInterval'
+import { useIntervalRequest } from '../../../hooks/useIntervalRequest'
 
 interface OptionsI {
 }
@@ -31,12 +31,7 @@ const FattenRatio: FC<OptionsI> = (options) => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
-
+    useIntervalRequest(getData)
 
     return (
         <>

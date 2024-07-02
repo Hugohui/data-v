@@ -1,9 +1,9 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { lineOptions } from "./ImmunityLineOptions"
-import { FC, useState, useEffect } from 'react'
-import useInterval from '../../../hooks/useInterval'
+import { FC, useState } from 'react'
 import { getCowImmuneStatisticsYear } from '../../../api/Health'
+import { useIntervalRequest } from '../../../hooks/useIntervalRequest'
 
 
 interface OptionsI {
@@ -41,11 +41,7 @@ const ImmunityLine: FC<OptionsI> = (options) => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <>

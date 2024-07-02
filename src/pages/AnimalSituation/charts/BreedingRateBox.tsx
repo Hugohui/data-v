@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import BreedingRate from "./BreedingRate"
 import { getBreedingRate } from "../../../api/AnimalSituation"
-import useInterval from "../../../hooks/useInterval"
+import { useIntervalRequest } from "../../../hooks/useIntervalRequest"
 
 export const BreedingRateBox = () => {
     const [data, setData] = useState<any>({})
@@ -14,11 +14,7 @@ export const BreedingRateBox = () => {
         })
     }
 
-    useInterval(getData)
-
-    useEffect(() => {
-        getData()
-    }, [])
+    useIntervalRequest(getData)
 
     return (
         <>

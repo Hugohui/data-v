@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import iconTime from '../assets/img/iconTime.png'
 import iconWeather from '../assets/img/iconTime.png' // 需要切图
+import iconLogout from '../assets/img/icons/iconLogout.png'
 
 export const HeaderInfoStyle = styled.div`
     position: fixed;
@@ -11,7 +12,7 @@ export const HeaderInfoStyle = styled.div`
     line-height: 30px;
     display: flex;
     padding: 0 30px;
-    div {
+    div:not(.logout) {
         flex: 1;
         font-family: PingFang SC;
         font-weight: 400;
@@ -51,6 +52,26 @@ export const HeaderInfoStyle = styled.div`
                 width: 240px;
                 text-align: left;
             }
+        }
+    }
+    .logout {
+        width: 78px;
+        height: 32px;
+        background: #000000;
+        border-radius: 16px;
+        cursor: pointer;
+        line-height: 32px;
+        font-size: 15px;
+        span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-image: url(${iconLogout});
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            vertical-align: top;
+            margin-right: 3px;
+            margin-top: 6px;
         }
     }
 `

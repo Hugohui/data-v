@@ -2,6 +2,8 @@ import { color } from "echarts";
 import { getWeatherInfo } from "../api/headerInfo";
 import { HeaderInfoStyle } from "./HeaderInfoStyle"
 import { useState, useEffect } from 'react';
+import { clearFarmId } from "@/utils/session";
+import { useNavigate } from "react-router-dom";
 
 interface WeatherI {
     text: string; // 天气状况的文字描述，包括阴晴雨雪等天气状态的描述
@@ -17,8 +19,9 @@ export const HeaderInfo = () => {
     });
     const [weather, setWeather] = useState<WeatherI>({text: '', icon: '', temp: ''})
 
+    const navigate = useNavigate()
+
     useEffect(() => {
-        console.log("====getWeatherInfo====")
         const updateDateInfo = () => {
             const now = new Date();
             const dayOfWeek = ['日', '一', '二', '三', '四', '五', '六'][now.getDay()];
@@ -42,6 +45,11 @@ export const HeaderInfo = () => {
     const seconds = formatTime(date.getSeconds());
     const time = `${hours}:${minutes}:${seconds}`;
 
+    const logout = () => {
+        clearFarmId()
+        navigate('/login')
+    }
+
     return (
         <HeaderInfoStyle>
             <div className="weather">
@@ -54,6 +62,10 @@ export const HeaderInfo = () => {
             <div className="time">
                 <span className="icon"></span>
                 <span className="timeNow">{date.getFullYear()}年{date.getMonth() + 1}月{date.getDate()}日 {dayOfWeek} {time}</span>
+            </div>
+            <div className="logout" onClick={logout}>
+                <span></span>
+                退出
             </div>
         </HeaderInfoStyle>
     )

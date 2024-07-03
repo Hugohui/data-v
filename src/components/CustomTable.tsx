@@ -78,9 +78,9 @@ const CustomTable: FC<TablePropsI> = (props) => {
                             onClick={() => rowClick(row, index)} 
                             className={[currentSelect === index && canSelectItem? 'active': '', canSelectItem ? 'canSelect' : ''].join(' ')}
                         >
-                            {!hiddenIndex ? <td key={index}>{index + 1}</td> : ''}
+                            {!hiddenIndex ? <td key={`td_index_${index}`}>{index + 1}</td> : ''}
                             {columns.map(column => (
-                                <td key={column.key}>{row[column.key]}</td>
+                                <td key={`td_${index}_${column.key}`}>{row[column.key]}</td>
                             ))}
                         </tr>
                     ))}

@@ -1,106 +1,44 @@
+import { useState } from "react"
 import CustomTable from "../../../components/CustomTable"
+import { getFattLevelRecent6Months } from "@/api/DataV"
+import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 
 export const EvaluateTable = () => {
     const columns = [
         {
-            key: "time",
+            key: "breedName",
             name: "羊只品种"
         },
         {
-            key: "name",
+            key: "dailyGain",
             name: "饲养天数"
         },
         {
-            key: "all",
+            key: "OutDayList",
             name: "平均出栏体重"
         },
         {
-            key: "all",
+            key: "dailyGain",
             name: "日增重"
         },
         {
-            key: "all",
+            key: "feedConversionRatio",
             name: "料肉比"
         },
     ]
 
-    const data = [
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 1
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 2
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 3
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 4
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 5
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 6
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 7
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 8
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 9
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 10
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 11
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 12
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 13
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 14
-        },
-        {
-            time: '2023.04.18',
-            name: '产羔记录',
-            all: 15
-        },
-    ]
+    const [data, setData] = useState<any>([])
+
+    const getData = () => {
+       getFattLevelRecent6Months().then((res: any) => {
+            if (res.code === 200 && res.data) {
+                setData(res.data)
+            }
+       })
+    }
+
+    useIntervalRequest(getData)
+
     return (
         <CustomTable columns={columns} data={data} hiddenIndex={true}></CustomTable>
     )

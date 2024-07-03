@@ -10,10 +10,10 @@ export const testGet = (params: any) => {
 }
 
 /**
- * 测试post方法
+ * 育肥水平评估
  * @param data post参数
  * @returns 
  */
-export const testPost = (data: any) => {
-    return post('/', data)
+export const getFattLevelRecent6Months = (data?: any) => {
+    return post('App/BigDataApi/FattLevelRecent6Months', data)
 }

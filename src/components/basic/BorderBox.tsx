@@ -1,5 +1,7 @@
 import { FC } from "react"
 import { BorderBoxStyle, BorderBoxHeaderStyle, BorderBoxContentStyle } from './BorderBoxStyle'
+import { ErrorBoundary } from "react-error-boundary";
+import { FallbackComponent } from "../FallbackComponent";
 
 interface BorderBoxI {
     height?: string;
@@ -19,7 +21,11 @@ export const BorderBox: FC<BorderBoxI> = (props) => {
                 { props.title }
                 {props.moreText ? <div className="MoreInfo" onClick={() => {props.onMoreTextClick && props.onMoreTextClick()}}>{props.moreText}</div> : ''}
             </BorderBoxHeaderStyle>
-            <BorderBoxContentStyle className="BoxContent">{ props.children }</BorderBoxContentStyle>
+            <BorderBoxContentStyle className="BoxContent">
+                <ErrorBoundary FallbackComponent={FallbackComponent}>
+                    { props.children }
+                </ErrorBoundary>
+            </BorderBoxContentStyle>
         </BorderBoxStyle>
     )
 }

@@ -29,8 +29,8 @@ export const VideoBox: FC<VideoBoxI> = (props) => {
     return (
         <VideoBoxStyle $height={props.height} $width={props.width} className="VideoBoxStyle">
             {
-                props.videoList.map((item: VideoInfoI) => {
-                    return <VideoItem lineCont={props.lineCont} url={item.url || item.VideoLink}></VideoItem>
+                props.videoList.map((item: VideoInfoI, index: any) => {
+                    return <VideoItem lineCont={props.lineCont} url={item.url || item.VideoLink} key={index}></VideoItem>
                 })
             }
         </VideoBoxStyle>

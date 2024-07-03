@@ -1,5 +1,10 @@
-export const FallbackComponent = () => {
+import { FallbackComponentStyle } from "./FallbackComponentStyle"
+
+export const FallbackComponent = ({error, resetErrorBoundary}: any) => {
+    
     return (
-        <div>出错了</div>
+        <FallbackComponentStyle>
+            抱歉，好像出错了~
+        </FallbackComponentStyle>
     )
 }

@@ -22,7 +22,9 @@ export const BorderBox: FC<BorderBoxI> = (props) => {
                 {props.moreText ? <div className="MoreInfo" onClick={() => {props.onMoreTextClick && props.onMoreTextClick()}}>{props.moreText}</div> : ''}
             </BorderBoxHeaderStyle>
             <BorderBoxContentStyle className="BoxContent">
-                <ErrorBoundary FallbackComponent={FallbackComponent}>
+                <ErrorBoundary FallbackComponent={FallbackComponent} onError={(err) => {
+                    console.log("=====catch error=====", err)
+                }}>
                     { props.children }
                 </ErrorBoundary>
             </BorderBoxContentStyle>

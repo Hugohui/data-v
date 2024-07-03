@@ -4,8 +4,6 @@ import { feedErrorRateLineOptions } from "./FeedErrorRateLineOptions"
 import { FC, useState } from 'react'
 import { getFeedingErroRatelist } from '@/api/Feeding'
 import { useIntervalRequest } from '@/hooks/useIntervalRequest'
-import { getFarmID } from '@/utils/session'
-
 
 interface OptionsI {
     // data: KeepRatioInfoI[]

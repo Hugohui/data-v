@@ -36,7 +36,7 @@ export const MaterialListTable = () => {
             }
         })
     }
-
+    
     useIntervalRequest(getData)
 
     return (

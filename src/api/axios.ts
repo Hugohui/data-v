@@ -34,7 +34,7 @@ axiosInstance.interceptors.request.use(
     return config
   },
   (error: AxiosError) => {
-    Promise.reject(error)
+    return Promise.reject(error)
   }
 )
 
@@ -47,7 +47,7 @@ axiosInstance.interceptors.response.use(
     return Promise.resolve(res.data)
   },
   (err: AxiosResponse) => {
-    // Promise.reject(err)
+    // return Promise.reject(err)
   }
 )
 

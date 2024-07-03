@@ -7,7 +7,9 @@ interface OptionsI {
     // data: number[]
 }
 
-const testData = [120, 200, 150, 80, 70, 110, 130, 23, 45]
+const testData = [120, 200, 150, 80, 70, 110, 130, 23, 45, 120, 200, 
+    150, 80, 70, 110, 130, 23, 45, 150, 80, 70, 110, 130, 23, 45, 120, 200, 
+    150, 80, 70, 110, 130, 23, 45, 120, 200, ]
 
 const FodderBar: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)

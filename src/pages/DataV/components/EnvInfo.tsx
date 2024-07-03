@@ -1,7 +1,22 @@
+import { getEnvironmentalMonitoring } from "@/api/DataV"
 import { EnvInfoItem } from "./EnvInfoItem"
 import { EnvInfoStyle } from "./EnvInfoStyle"
+import { useState } from "react"
+import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 
 export const EnvInfo = () => {
+    const [data, setData] = useState({})
+
+    const getData = () => {
+        getEnvironmentalMonitoring().then((res:any) => {
+            if (res.data) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
+
     return (
         <EnvInfoStyle>
             <EnvInfoItem value="28" label="温度" icon="temperature" unit="°C"></EnvInfoItem>

@@ -2,18 +2,27 @@ import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { lineOptions } from "./MilkYieldLineOptions"
 import { FC, useState } from 'react'
+import { getMilkProduction } from '@/api/DataV'
+import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 
 
 interface OptionsI {
     // data: KeepRatioInfoI[]
 }
-
-const testData = [300, 400, 205, 699]
-
 const MilkYieldLine: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState([])
+
+    const getData = () => {
+        getMilkProduction().then((res: any) => {
+            if (res.data) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <>

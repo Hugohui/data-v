@@ -13,7 +13,7 @@ export const lineOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: ['1月', '2月', '3月', '4月'],
+      data: data?.map((item: any) => item.name),
       axisLine: {
         show: true,
         lineStyle: {

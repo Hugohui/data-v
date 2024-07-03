@@ -1,6 +1,6 @@
 import * as echarts from 'echarts';
 
-export const radarOptions = (data: any) => (
+export const radarOptions = (options: any) => (
   {
     tooltip: {
       trigger: 'axis'
@@ -8,12 +8,12 @@ export const radarOptions = (data: any) => (
     radar: [
       {
         indicator: [
-          { text: '空杯天数', max: 100 },
-          { text: '单产', max: 100 },
-          { text: '羊羔成活率', max: 100 },
-          { text: '初产天数', max: 100 },
-          { text: '上料误差率', max: 100 },
-          { text: '平均泌乳天数', max: 100 }
+          { text: '空杯天数', max: options.EmptyDays },
+          { text: '单产', max: options.perYield },
+          { text: '羊羔成活率', max: options.LambSurvivalRate },
+          { text: '初产天数', max: options.DaysFirstLabor },
+          { text: '上料误差率', max: options.FeedingErroRate },
+          { text: '平均泌乳天数', max: options.avgDriedDay }
         ],
         radius: 60,
         splitNumber: 5,

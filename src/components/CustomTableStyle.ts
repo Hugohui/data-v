@@ -42,4 +42,9 @@ export const TableStyle = styled.div<{$height?: number}>`
     tr:nth-child(even) {
         background-color: rgba(255, 255, 255, 0.02);
     }
+
+    .empty {
+        width: 100%;
+        text-align: center;
+    }
 `

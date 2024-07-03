@@ -13,7 +13,7 @@ export const lineineOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: ['班次一', '班次二', '班次三', '班次四', '班次五'],
+      data: data?.map((item: any) => item.name),
       axisLine: {
         show: true,
         lineStyle: {

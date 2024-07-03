@@ -1,10 +1,6 @@
 import * as echarts from 'echarts';
 
-interface lineOptionsI {
-  data: any
-}
-
-export const lineOptions = ({ data }: lineOptionsI) => (
+export const lineOptions = (data: any) => (
   {
     grid:{ // 让图表占满容器
       top:"40px",
@@ -14,7 +10,7 @@ export const lineOptions = ({ data }: lineOptionsI) => (
     },
     xAxis: {
       type: 'category',
-      data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+      data: data?.map((item: any) => item.month),
       axisLine: {
         show: true,
         lineStyle: {
@@ -45,9 +41,9 @@ export const lineOptions = ({ data }: lineOptionsI) => (
     },
     series: [
       {
-        data: data,
+        data: data?.map((item: any) => item.Yield),
         type: 'line',
-        name: "免疫一",
+        name: "月度产奶量",
         stack: 'Total',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 8, // 设置圆形标记的大小

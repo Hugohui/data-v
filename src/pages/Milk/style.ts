@@ -37,6 +37,9 @@ export const PageTopStyle = styled.div`
             font-size: 32px;
             color: #1DF0BC;
             margin: 0 14px 0 12px;
+            span {
+                vertical-align: middle;
+            }
         }
         .Unit{
             color: #FFF;

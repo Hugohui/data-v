@@ -10,7 +10,6 @@ function App() {
 
   const scaleRef = useRef<HTMLDivElement>(null)
   const element: any = useRoutes(routers);
-  console.log(element)
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   const toggleFullscreen = () => {

@@ -1,16 +1,19 @@
 import { useNavigate } from "react-router-dom"
 import { AnchorPointStyle } from "./AnchorPointStyle"
+import { points } from './points'
 
 export const AnchorPoint = () => {
     const navigate = useNavigate()
 
-    const onPointClick = (index: number) => {
-        navigate(`/dataVDetail?id=${index}`)
+    const onPointClick = (item: any) => {
+        console.log("====onPointClick==", item)
+        // navigate(`/dataVDetail?id=${item.id}`)
     }
+
     return (
         <AnchorPointStyle>
             {
-                (new Array(28).fill(0)).map((_, index) => <div key={index} onClick={() => onPointClick(index)}></div>)
+                points.map((item) => <div key={item.name} onClick={() => onPointClick(item)}></div>)
             }
         </AnchorPointStyle>
     )

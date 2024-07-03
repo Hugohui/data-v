@@ -4,14 +4,17 @@ export const barOptions = (data: any) => (
   {
     grid:{ // 让图表占满容器
       top:"20px",
-      left:"50px",
+      left:"80px",
       right:"30px",
-      bottom:"40px"
+      bottom:"85px"
+    },
+    tooltip: {
+      trigger: 'axis',
+      
     },
     xAxis: {
       type: 'category',
-      // name: '月',
-      data: ['饲料1', '饲料2', '饲料3', '饲料4', '饲料5', '饲料6', '饲料7', '饲料8', '饲料9', '饲料10'],
+      data: data?.map((item: any) => item.name),
       axisLine: {
         show: true,
         lineStyle: {
@@ -28,8 +31,8 @@ export const barOptions = (data: any) => (
       type: 'value',
       // name: '（kg）',
       min: 0, // 设置纵坐标的最小值
-      max: 2500, // 设置纵坐标的最大值
-      interval: 500, // 设置纵坐标的间隔
+      max: 2500000, // 设置纵坐标的最大值
+      interval: 500000, // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,

@@ -10,6 +10,15 @@ export const getVisualDataStatistics = (params?: any) => {
 }
 
 /**
+ * 饲料使用情况
+ * @param params get参数
+ * @returns 
+ */
+export const getFeedUsageTrend = (params?: any) => {
+    return get('App/BigDataApi/FeedUsageTrend', params)
+}
+
+/**
  * 育肥水平评估
  * @param data post参数
  * @returns 

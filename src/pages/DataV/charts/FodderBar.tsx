@@ -2,18 +2,26 @@ import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { barOptions } from "./FodderBarOptions"
 import { FC, useState } from 'react'
+import { getFeedUsageTrend } from '@/api/DataV'
+import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 
 interface OptionsI {
     // data: number[]
 }
 
-const testData = [120, 200, 150, 80, 70, 110, 130, 23, 45, 120, 200, 
-    150, 80, 70, 110, 130, 23, 45, 150, 80, 70, 110, 130, 23, 45, 120, 200, 
-    150, 80, 70, 110, 130, 23, 45, 120, 200, ]
-
 const FodderBar: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState<any>([])
+
+    const getData = () => {
+        getFeedUsageTrend().then((res: any) => {
+            if (res.data) {
+                setData(res.data)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <>

@@ -117,6 +117,7 @@ export const LoginButtonStyle = styled.div`
         background-repeat: no-repeat;
         margin-top: 82px;
         border: none;
+        cursor: pointer;
         &[disabled] {
             cursor: not-allowed;
             opacity: 0.7;

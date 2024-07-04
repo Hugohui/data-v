@@ -6,8 +6,8 @@ export const AnchorPoint = () => {
     const navigate = useNavigate()
 
     const onPointClick = (item: any) => {
-        console.log("====onPointClick==", item)
-        // navigate(`/dataVDetail?id=${item.id}`)
+        // console.log("====onPointClick==", item)
+        navigate(`/dataVDetail?id=${item.id}`)
     }
 
     return (

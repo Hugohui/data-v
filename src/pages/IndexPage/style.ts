@@ -7,22 +7,34 @@ export const PageIndexStyle = styled.div`
     height: 1080px;
     overflow: hidden;
     position: relative;
-    padding: 0 0 50px 0;
+    /* padding: 0 0 50px 0; */
+    /* background-color: red; */
     background-color: rgb(30, 35, 48);
-    background-image: url(${indexPageBg});
+    /* background-image: url(${indexPageBg}); */
     background-size: cover;
     background-repeat: no-repeat;
 `
 
+export const IndexContentStyle = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+`
+
 export const IndexPageContent = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
   margin-top: 15px;
-  padding: 0 30px;
+  padding: 0 30px; */
 `
 
 export const PageLeftStyle = styled.div`
+    position: absolute;
+    left: 30px;
+    top: 126px;
     width: 458px;
     height: auto;
     gap: 6px;
@@ -35,9 +47,14 @@ export const PageLeftStyle = styled.div`
 `
 
 export const PageCenterStyle = styled.div`
+    width: 928px;
+    position: absolute;
+    bottom: 62px;
+    left: 50%;
+    transform: translateX(-50%);
     flex: 1;
     align-items: center;
-    padding: 600px 6px 0 6px;
+    /* padding: 600px 6px 0 6px; */
     .enterDialog {
         position: absolute;
         left: 951px;
@@ -97,6 +114,9 @@ export const PageCenterStyle = styled.div`
 `
 
 export const PageRightStyle = styled.div`
+    position: absolute;
+    top: 126px;
+    right: 30px;
     width: 458px;
     height: auto;
     & > div {

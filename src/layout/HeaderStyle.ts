@@ -15,6 +15,13 @@ export const HeaderStyle  = styled.div<{$menu?: Boolean}>`
     background-repeat: no-repeat;
     background-position: center center;
 
+    ${props => !props.$menu && `
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    `}
+
     ${props => props.$menu && `
         background-image: url(${headerBgMenu});
     `}

@@ -32,7 +32,7 @@ export const PageCenter = () => {
 
     return (
         <PageCenterStyle>
-            <div className="enterDialog">
+            {/* <div className="enterDialog">
                 <div className="name">陕西省</div>
                 <div className="info">
                     <div><span>牧场名称</span>：产投集团</div>
@@ -40,7 +40,7 @@ export const PageCenter = () => {
                     <div><span>地址</span>：陕西省宝鸡市</div>
                 </div>
                 <div className="enter" onClick={toDataV}></div>
-            </div>
+            </div> */}
             <BorderBox title="饲料使用情况" size="large" height="294" className="FeedUsageLine">
                 <FeedUsageLine></FeedUsageLine>
             </BorderBox>

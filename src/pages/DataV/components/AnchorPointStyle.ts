@@ -31,7 +31,9 @@ import point28 from '../img/opint-28.png'
 export const AnchorPointStyle = styled.div`
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
+    left: 490px;
+    top: 150px;
 
     & > div {
         background-repeat: no-repeat;

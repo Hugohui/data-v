@@ -23,6 +23,7 @@ const EChartsCommon = (props: {
   lazyUpdate?: boolean,
   option: OptionType,
   instanceHandle?: (instance: EChartsType) => void
+  onClick?: Function
 }) => {
   const drawDomRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<EChartsType | null>(null);
@@ -66,6 +67,22 @@ const EChartsCommon = (props: {
     setOption(props.option);
     // 监听屏幕缩放，重新绘制 echart 图表
     window.addEventListener('resize', resize);
+    chartRef.current.on('click', (params: any) => {
+      if (params.componentType === 'series') {
+        // 如果点击的是地图系列（series）
+        var pointInPixel = [params.event.offsetX, params.event.offsetY];
+        // pointInPixel 是点击位置的像素坐标
+
+        // 转换为经纬度
+        var pointInGeo = chartRef.current?.convertFromPixel({ seriesIndex: params.seriesIndex }, pointInPixel);
+        // pointInGeo 是点击位置的经纬度坐标，格式为 [longitude, latitude]
+
+        console.log('点击位置的像素坐标:', pointInPixel);
+        console.log('点击位置的经纬度坐标:', pointInGeo);
+        props.onClick && props.onClick({ name: params.name, pointInPixel, pointInGeo })
+      }
+
+    });
   }
 
   const initHandle = () => {

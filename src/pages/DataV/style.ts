@@ -1,12 +1,31 @@
 import styled from "styled-components"
+import dataVPageBg from '@/assets/img/dataVPageBg.png'
+
+export const PageBGStyle = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url(${dataVPageBg});
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+`
 
 export const PageContent = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #14182C;
+    .react-transform-wrapper, .react-transform-component {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 export const PageLeftStyle = styled.div`
+    position: absolute;
+    top: 160px;
+    left: 30px;
     width: 458px;
     height: auto;
 `
@@ -21,6 +40,11 @@ export const PageCenterMainStyle = styled.div`
 `
 
 export const PageCenterInfoStyle = styled.div`
+    position: absolute;
+    bottom: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 943px;
     height: 127px;
     display: flex;
     justify-content: center;
@@ -28,6 +52,9 @@ export const PageCenterInfoStyle = styled.div`
 `
 
 export const PageRightStyle = styled.div`
+    position: absolute;
+    top: 160px;
+    right: 30px;
     width: 458px;
     height: auto;
 `

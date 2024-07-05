@@ -3,7 +3,7 @@ import headerBg from '../assets/img/headerBg.png'
 import headerBgMenu from '../assets/img/headerBgMenu.png'
 import headerTitle from '../assets/img/headerTitle.png'
 
-export const HeaderStyle  = styled.div<{$menu?: Boolean}>`
+export const HeaderStyle  = styled.div<{$menu?: Boolean, $isDataV?: Boolean}>`
     height: 106px;
     /* line-height: 106px; */
     font-size: 36px;
@@ -15,11 +15,12 @@ export const HeaderStyle  = styled.div<{$menu?: Boolean}>`
     background-repeat: no-repeat;
     background-position: center center;
 
-    ${props => !props.$menu && `
+    ${props => (!props.$menu || props.$isDataV) && `
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
+        z-index: 999;
     `}
 
     ${props => props.$menu && `

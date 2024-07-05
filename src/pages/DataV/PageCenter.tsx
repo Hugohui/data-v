@@ -5,9 +5,7 @@ import { PageCenterStyle, PageCenterInfoStyle, PageCenterMainStyle } from "./sty
 export const PageCenter = () => {
     return (
         <PageCenterStyle>
-            <PageCenterMainStyle>
-                <AnchorPoint></AnchorPoint>
-            </PageCenterMainStyle>
+            
             <PageCenterInfoStyle>
                 <OverviewInfo></OverviewInfo>
             </PageCenterInfoStyle>

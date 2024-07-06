@@ -83,6 +83,22 @@ const EChartsCommon = (props: {
       }
 
     });
+
+    // 监听 georoam 事件
+    chartRef.current.on('georoam', function (event: any) {
+      // console.log("========dddd=====", chartRef.current)
+      // chartRef.current?.setOption({
+      //     tooltip: {
+      //         show: false
+      //     }
+      // });
+      // 判断事件类型是否是 dragging 或 scaling
+      // if (event.zoom != null || event.dragging) {
+      //     // 隐藏 tooltip
+      //     // console.log("chartRef.current======", chartRef.current)
+      //     (chartRef.current as any).hideTooltip();
+      // }
+    });
   }
 
   const initHandle = () => {

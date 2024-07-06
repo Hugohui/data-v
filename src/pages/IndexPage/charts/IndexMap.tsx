@@ -11,7 +11,7 @@ export const IndexMap = () => {
 
     const [data, setData] = useState<any>([])
     const [pointInPixel, setPointInPixel] = useState([950, 460])
-    const showEnterRef = useRef(true)
+    const showEnterRef = useRef(false)
     const [showEnterDialog, setShowEnterDialog] = useState(showEnterRef.current)
     
 
@@ -22,9 +22,9 @@ export const IndexMap = () => {
 
     const mapOnClick = ({ pointInPixel }: any) => {
         console.log("====mapOnClick======", pointInPixel, showEnterRef.current)
-        setPointInPixel(pointInPixel)
-        showEnterRef.current = !showEnterRef.current
-        setShowEnterDialog(showEnterRef.current)
+        // setPointInPixel(pointInPixel)
+        // showEnterRef.current = !showEnterRef.current
+        // setShowEnterDialog(showEnterRef.current)
     }
 
     return (

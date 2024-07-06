@@ -4,13 +4,14 @@ import routers from "./router";
 import { previewFitScale } from "./utils/previewScale";
 import { useEffect, useRef, useState } from "react";
 import { BasicLayout } from "./layout/BasicLayout";
+import { useMountedState } from "./hooks/useMountedState";
 
 
 function App() {
-
   const scaleRef = useRef<HTMLDivElement>(null)
   const element: any = useRoutes(routers);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const isMounted = useMountedState()
 
   const toggleFullscreen = () => {
     if (!isFullscreen) {
@@ -39,19 +40,23 @@ function App() {
     }
   };
 
+  const renderEl = () => {
+    return ['/', '/login'].includes(element.props.match.pathname) ? 
+    element :
+    <BasicLayout>{element}</BasicLayout>
+  }
+
   useEffect(() => {
     const { calcRate, windowResize, unWindowResize} = previewFitScale(1920, 1080, scaleRef.current)
     calcRate()
     windowResize()
     document.addEventListener('keydown', handleKeyDown);
 
-    
-
     return () => {
       unWindowResize()
       document.removeEventListener('keydown', handleKeyDown);
     } 
-  })
+  }, [isMounted])
 
 
   return (
@@ -63,11 +68,9 @@ function App() {
     }}>
       {/* 全局样式 */}
       <Globalstyle></Globalstyle>
-      <div ref={scaleRef} >
+      <div ref={scaleRef}>
         {
-          ['/', '/login'].includes(element.props.match.pathname) ? 
-          element :
-          <BasicLayout>{element}</BasicLayout>
+          isMounted && renderEl()
         }
       </div>
       

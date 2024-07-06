@@ -50,10 +50,14 @@ export const PageTopStyle = styled.div`
 
 export const PageMiddleStyle = styled.div`
     margin: 7px 0;
-    display: flex;
     gap: 9px;
-    & > div {
-        flex: 1;
+    display: flex;
+`
+
+export const MilkVideoStyle = styled.div`
+    flex: 1;
+    .VideoBoxStyle {
+        height: 100%;
     }
 `
 

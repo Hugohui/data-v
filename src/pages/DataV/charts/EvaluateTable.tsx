@@ -10,7 +10,7 @@ export const EvaluateTable = () => {
             name: "羊只品种"
         },
         {
-            key: "dailyGain",
+            key: "FeedDays",
             name: "饲养天数"
         },
         {

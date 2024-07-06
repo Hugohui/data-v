@@ -1,3 +1,7 @@
+import indexPageBg from '@/assets/img/mapBg.png';
+let img = document.createElement('img')
+img.src = indexPageBg
+
 var provinceCenter = {
     longitude: 107.26436 + 2.5,
     latitude: 34.12908
@@ -94,12 +98,13 @@ export const mapOptions = (options: any) => (
                         areaColor: '#274881', // 高亮区域的颜色。
                         borderColor: '#94ECFF', // 图形的描边颜色。
                         borderWidth: 2, // 描边线宽。为 0 时无描边。
-                        // opacity: 0.7
+                        // opacity: 0.3
                     },
                 },
                 label: {
                     show: true,
                     color: '#2C3C41',
+                    // color: 'red',
                     fontSize: 16,
                 },
                 itemStyle: {
@@ -107,17 +112,15 @@ export const mapOptions = (options: any) => (
                         // borderWidth: 2,//边际线大小
                         // borderColor: '#263D50',//边界线颜色
                         areaColor: '#171F31', //默认区域颜色
-                        // areaColor: function (params: any) {
-                        //     return {
-                        //         image: 'https://t9.baidu.com/it/u=2905925228,3980349260&fm=193', // 替换为纹理图片的 URL
-                        //         repeat: 'repeat' // 设置纹理重复
-                        //     };
+                        // areaColor: {
+                        //     image: img, // 替换为纹理图片的 URL
+                        //     repeat: 'repeat' // 设置纹理重复
                         // }
-                    },
+                    }
                 },
                 data: [
                     { name: '陕西省', selected:true }
-                ]
+                ],
             }
         ],
     }

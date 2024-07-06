@@ -2,6 +2,7 @@ import { getPastureVideoList } from '@/api/common'
 import { VideoBox } from '@/components/VideoBox'
 import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 import { useState } from 'react'
+import { MilkVideoStyle } from '../style'
 
 export const MilkVideo = () => {
     const [videoList, setVideoList] = useState<any>([])
@@ -19,6 +20,8 @@ export const MilkVideo = () => {
     useIntervalRequest(getData)
 
     return (
-        <VideoBox videoList={videoList} height="374"></VideoBox>
+        <MilkVideoStyle>
+            <VideoBox videoList={videoList} height="374"></VideoBox>
+        </MilkVideoStyle>
     )
 }

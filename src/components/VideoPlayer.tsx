@@ -1,12 +1,11 @@
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, forwardRef, useImperativeHandle } from 'react'
 import Hls from 'hls.js'
 
-const VideoPlayer = ({ src }: any) => {
+const VideoPlayer = forwardRef(({ src }: any, ref) => {
     const videoRef = useRef<any>()
 
     useEffect(() => {
-
         let hls: any;
         if (src) {
             if (Hls.isSupported()) {
@@ -33,9 +32,24 @@ const VideoPlayer = ({ src }: any) => {
 
     }, [src])
 
+    const play = () => {
+        videoRef.current && videoRef.current.play()
+    }
+
+    const pause = () => {
+        videoRef.current && videoRef.current.pause()
+    }
+
+    useImperativeHandle(ref, () => {
+        return {
+            play,
+            pause
+        }
+    })
+
     return (
-        <video ref={videoRef} style={{ width: '100%'}}></video>
+        <video ref={videoRef} autoPlay={false} style={{ width: '100%'}}></video>
     )
-}
+})
 
 export default VideoPlayer

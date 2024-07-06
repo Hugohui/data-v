@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import goHomeBg from '../assets/img/goHomeBg.png'
 import goBackBg from '../assets/img/goBackBg.png'
+import iconCurrentFarm from '../assets/img/icons/iconCurrentFarm.png'
 
 export const CurrentViewStyle =  styled.div<{$isDataV?: Boolean}>`
     text-align: center;
@@ -14,10 +15,22 @@ export const CurrentViewStyle =  styled.div<{$isDataV?: Boolean}>`
         props => props.$isDataV && `
             width: 100%;
             position: absolute;
-            top: 110px;
+            top: 106px;
             left: 0;
             z-index: 999;
         `
+    }
+
+    span {
+        display: inline-block;
+        vertical-align: top;
+        width: 22px;
+        height: 22px;
+        background-image: url(${iconCurrentFarm});
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        margin-top: 3px;
+        margin-right: 5px;
     }
 `
 

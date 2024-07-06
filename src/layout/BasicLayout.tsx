@@ -14,7 +14,10 @@ export const BasicLayout: FC<{children: any}> = ({ children }) => {
             <PageStyle $isDataV={location.pathname === '/dataV'}>
                 <HeaderMenu></HeaderMenu>
 
-                <CurrentViewStyle $isDataV={location.pathname === '/dataV'}>当前牧场：陕西宝鸡第一养殖场</CurrentViewStyle>
+                <CurrentViewStyle $isDataV={location.pathname === '/dataV'}>
+                    <span></span>
+                    当前牧场：陕西宝鸡第一养殖场
+                </CurrentViewStyle>
 
                 {
                     location.pathname === '/dataVDetail' ?

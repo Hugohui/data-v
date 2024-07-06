@@ -1,6 +1,8 @@
 import { PageLeftStyle } from "./style";
 import { VideoBox } from "../../components/VideoBox"
 import { useState } from "react";
+import { getPastureVideoList } from "@/api/common";
+import { useIntervalRequest } from "@/hooks/useIntervalRequest";
 
 const testVideoList = [
     {url: ""},
@@ -10,7 +12,17 @@ const testVideoList = [
 ]
 
 export const PageLeft = () => {
-    const [videoList, SetVideoList] = useState(testVideoList)
+    const [videoList, setVideoList] = useState(testVideoList)
+
+    const getData = () => {
+        getPastureVideoList({}).then((res: any) => {
+            if (res.data) {
+                setVideoList(res.data?.slice(0, 4))
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <PageLeftStyle>

@@ -54,3 +54,13 @@ export const getEnvironmentalMonitoring = (data?: any) => {
 export const getRanchAnnualCreditLevelAssment = (data?: any) => {
     return post('App/BigDataApi/RanchAnnualCreditLevelAssment', data)
 }
+
+
+/**
+ * 圈舍列表
+ * @param params get参数
+ * @returns 
+ */
+export const getListBarns = (params?: any) => {
+    return get('App/BigDataApi/ListBarns', params)
+}

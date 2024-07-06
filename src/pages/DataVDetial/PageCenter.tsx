@@ -1,22 +1,12 @@
-import { useState } from "react"
 import { PageCenterStyle, PageMainInfoStyle } from "./style"
-import { VideoBox } from "../../components/VideoBox"
 import { InfoItem } from "./components/InfoItem"
+import { VideoList } from "./components/VideoList"
+import { useGetParams } from "@/hooks/useGetParams"
 
-const testVideoList = [
-    {url: ""},
-    {url: ""},
-    {url: ""},
-    {url: ""},
-    {url: ""},
-    {url: ""},
-    {url: ""},
-    {url: ""},
-    {url: ""},
-]
 
 export const PageCenter = () => {
-    const [videoList, setVideoList] = useState(testVideoList)
+    const CowBarnID = useGetParams('id')
+
     return (
         <PageCenterStyle>
             <PageMainInfoStyle>
@@ -29,7 +19,7 @@ export const PageCenter = () => {
                 <InfoItem value={13} label="光照LUX" icon="lux"></InfoItem>
                 <InfoItem value={14} label="水质PH" icon="water-ph"></InfoItem>
             </PageMainInfoStyle>
-            <VideoBox videoList={videoList} height="700" lineCont={3}></VideoBox>
+            <VideoList CowBarnID={CowBarnID}></VideoList>
         </PageCenterStyle>
     )
 }

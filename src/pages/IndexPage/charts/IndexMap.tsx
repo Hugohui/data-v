@@ -12,14 +12,22 @@ export const IndexMap = () => {
 
     const [data, setData] = useState<any>([])
     const [pointInPixel, setPointInPixel] = useState([950, 460])
-    const showEnterRef = useRef(true)
-    const [showEnterDialog, setShowEnterDialog] = useState(showEnterRef.current)
+    // const showEnterRef = useRef(true)
+    const [showEnterDialog, setShowEnterDialog] = useState(false)
+
+    const formatData = (data: any = []) => {
+        return data?.map((item: any) => ({
+            name: item.PastureName,
+            coord: [item.Longitude, item.Latitude],
+            data: item
+        }))
+    }
     
 
     const getData = () => {
         getListPastures().then((res: any) => {
             if (res.data) {
-                setData(res.data)
+                setData(formatData(res.data))
             }
         })
     }
@@ -37,7 +45,7 @@ export const IndexMap = () => {
                     renderer={renderer}
                     option={mapOptions(data)}
                     onClick={mapOnClick}
-                    onSelect={() => setShowEnterDialog(true)}
+                    // onSelect={() => setShowEnterDialog(true)}
                     onUnSelect={() => setShowEnterDialog(false)}
                     onDrag={() => setShowEnterDialog(false)}
                     onZoom={() => setShowEnterDialog(false)}

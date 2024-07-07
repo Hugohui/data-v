@@ -7,7 +7,7 @@ var provinceCenter = {
     latitude: 34.12908
 };
 
-export const mapOptions = (options: any) => (
+export const mapOptions = (data: any) => (
     {
         map: 'china',
         center: [provinceCenter.longitude, provinceCenter.latitude], // 设置中心点为省份的中心
@@ -119,8 +119,19 @@ export const mapOptions = (options: any) => (
                     }
                 },
                 data: [
-                    { name: '陕西省', selected:true }
+                    // { name: '陕西省', selected:true }
                 ],
+                markPoint: {
+                    symbol: 'circle', // 标记点形状
+                    symbolSize: 20, // 标记点大小
+                    data,
+                    itemStyle: {
+                        normal: {
+                            color: "#F3DF32",
+                            borderColor: "#01DBE8",
+                        },
+                    },
+                },
             },
         ],
     }

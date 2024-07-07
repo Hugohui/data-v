@@ -24,6 +24,10 @@ const EChartsCommon = (props: {
   option: OptionType,
   instanceHandle?: (instance: EChartsType) => void
   onClick?: Function
+  onUnSelect?: Function
+  onSelect?: Function
+  onDrag?: Function
+  onZoom?: Function
 }) => {
   const drawDomRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<EChartsType | null>(null);
@@ -53,8 +57,11 @@ const EChartsCommon = (props: {
 
   // 初始化组件
   const initChart = (dom: HTMLDivElement | null) => {
+
     if (chartRef.current) return
+
     if (!dom) return
+
     // renderer 用于配置渲染方式 可以是 svg 或者 canvas
     const renderer = props.renderer || 'canvas';
     chartRef.current = echarts.init(dom, null, {
@@ -62,42 +69,53 @@ const EChartsCommon = (props: {
       width: 'auto',
       height: 'auto',
     });
+
     // 执行初始化的任务，例如注册地图
     if (props.instanceHandle) props.instanceHandle(chartRef.current)
+    
+    // 配置项
     setOption(props.option);
+
     // 监听屏幕缩放，重新绘制 echart 图表
     window.addEventListener('resize', resize);
+
+    // 监听点击事件
     chartRef.current.on('click', (params: any) => {
+
+      // 如果点击的是地图系列（series）
       if (params.componentType === 'series') {
-        // 如果点击的是地图系列（series）
-        var pointInPixel = [params.event.offsetX, params.event.offsetY];
+
         // pointInPixel 是点击位置的像素坐标
+        var pointInPixel = [params.event.offsetX, params.event.offsetY];
+        
 
-        // 转换为经纬度
+        // 转换为经纬度，pointInGeo 是点击位置的经纬度坐标，格式为 [longitude, latitude]
         var pointInGeo = chartRef.current?.convertFromPixel({ seriesIndex: params.seriesIndex }, pointInPixel);
-        // pointInGeo 是点击位置的经纬度坐标，格式为 [longitude, latitude]
 
-        console.log('点击位置的像素坐标:', pointInPixel);
-        console.log('点击位置的经纬度坐标:', pointInGeo);
         props.onClick && props.onClick({ name: params.name, pointInPixel, pointInGeo })
       }
 
     });
 
+    // 监听取消选中事件
+    chartRef.current.on('unselect', (params: any) => {
+      props.onUnSelect && props.onUnSelect(params)
+    });
+
+    // 监听选中事件
+    chartRef.current.on('select', (params: any) => {
+      props.onSelect && props.onSelect(params)
+    });
+
     // 监听 georoam 事件
-    chartRef.current.on('georoam', function (event: any) {
-      // console.log("========dddd=====", chartRef.current)
-      // chartRef.current?.setOption({
-      //     tooltip: {
-      //         show: false
-      //     }
-      // });
-      // 判断事件类型是否是 dragging 或 scaling
-      // if (event.zoom != null || event.dragging) {
-      //     // 隐藏 tooltip
-      //     // console.log("chartRef.current======", chartRef.current)
-      //     (chartRef.current as any).hideTooltip();
-      // }
+    chartRef.current.on('georoam', (params: any) => {
+      if (params.zoom != null) {
+        // 缩放事件处理
+        props.onDrag && props.onDrag(params)
+      } else if (params.dx != null && params.dy != null) {
+        // 拖拽事件处理
+        props.onZoom && props.onZoom(params)
+      }
     });
   }
 

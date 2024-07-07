@@ -3,28 +3,31 @@ import useConfigStore from "@/store"
 import { useRef, useState } from "react"
 import { mapOptions } from "./IndexMapOptions"
 import { EnterDialog } from "../components/EnterDialog"
+import { getListPastures } from "@/api/IndexPage"
+import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 
 
 export const IndexMap = () => {
     const renderer = useConfigStore((state) => state.renderer)
-    // const renderer = "svg"
 
     const [data, setData] = useState<any>([])
     const [pointInPixel, setPointInPixel] = useState([950, 460])
-    const showEnterRef = useRef(false)
+    const showEnterRef = useRef(true)
     const [showEnterDialog, setShowEnterDialog] = useState(showEnterRef.current)
     
 
     const getData = () => {
+        getListPastures().then((res: any) => {
+            if (res.data) {
+                setData(res.data)
+            }
+        })
     }
 
-    // useIntervalRequest(getData)
+    useIntervalRequest(getData)
 
     const mapOnClick = ({ pointInPixel }: any) => {
-        console.log("====mapOnClick======", pointInPixel, showEnterRef.current)
-        // setPointInPixel(pointInPixel)
-        // showEnterRef.current = !showEnterRef.current
-        // setShowEnterDialog(showEnterRef.current)
+        setPointInPixel(pointInPixel)
     }
 
     return (
@@ -34,6 +37,10 @@ export const IndexMap = () => {
                     renderer={renderer}
                     option={mapOptions(data)}
                     onClick={mapOnClick}
+                    onSelect={() => setShowEnterDialog(true)}
+                    onUnSelect={() => setShowEnterDialog(false)}
+                    onDrag={() => setShowEnterDialog(false)}
+                    onZoom={() => setShowEnterDialog(false)}
                 />
             ) : (
                 ''

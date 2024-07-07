@@ -4,10 +4,14 @@ import { Footer } from "./Footer"
 import { LayoutStyle, PageStyle } from "../style/globalStyleSet"
 import { CurrentViewStyle, GoHomeStyle, MainStyle, GoBackStyle } from './BasicLayoutStyle'
 import { useLocation, useNavigate } from "react-router-dom"
+import useFarmStore from "@/store/farm"
 
 export const BasicLayout: FC<{children: any}> = ({ children }) => {
     const navigator = useNavigate()
     const location = useLocation()
+
+    const farmInfo = useFarmStore((state) => state.farmInfo)
+    console.log("=====farmInfo=====", farmInfo)
     
     return (
         <LayoutStyle>

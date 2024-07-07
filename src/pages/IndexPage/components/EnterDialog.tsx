@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { EnterDialogStyle } from "./EnterDialogStyle"
 import { FC } from "react"
+import useFarmStore from "@/store/farm"
 
 interface StyleI {
     top?: number
@@ -14,7 +15,10 @@ interface PropsI {
 export const EnterDialog: FC<PropsI> = ({ style }) => {
     const navigate = useNavigate()
 
+    const setFarmInfo = useFarmStore((state) => state.setFarmInfo)
+
     const toDataV = () => {
+        setFarmInfo({ code: "11111" })
         navigate('/dataV')
     }
 

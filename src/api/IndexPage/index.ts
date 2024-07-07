@@ -62,3 +62,13 @@ export const getFeedUsageTrend = (params?: any) => {
 export const getSheepHerdsRatio = (params?: any) => {
     return get('App/BigDataApi/getSheepHerdsRatio', params)
 }
+
+
+/**
+ * 牧场列表
+ * @param params get参数
+ * @returns 
+ */
+export const getListPastures = (params?: any) => {
+    return get('App/BigDataApi/ListPastures', params)
+}

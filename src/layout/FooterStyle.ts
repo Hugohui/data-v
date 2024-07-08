@@ -17,4 +17,5 @@ export const FooterStyle  = styled.div`
     background-size: 984px 50px;
     background-repeat: no-repeat;
     background-position: center center;
+    z-index: 999;
 `

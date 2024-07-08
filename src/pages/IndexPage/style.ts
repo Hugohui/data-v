@@ -37,6 +37,7 @@ export const PageLeftStyle = styled.div`
     width: 458px;
     height: auto;
     gap: 6px;
+    z-index: 999;
     & > div {
         margin-bottom: 6px;
     }
@@ -71,6 +72,7 @@ export const PageRightStyle = styled.div`
     right: 30px;
     width: 458px;
     height: auto;
+    z-index: 999;
     & > div {
         margin-bottom: 6px;
     }

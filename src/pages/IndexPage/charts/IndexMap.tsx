@@ -1,6 +1,6 @@
 import EChartsCommon from "@/components/EChartsCommon"
 import useConfigStore from "@/store"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { mapOptions } from "./IndexMapOptions"
 import { EnterDialog } from "../components/EnterDialog"
 import { getListPastures } from "@/api/IndexPage"
@@ -19,7 +19,7 @@ export const IndexMap = () => {
         return data?.map((item: any) => ({
             name: item.PastureName,
             coord: [item.Longitude, item.Latitude],
-            data: item
+            origin: item
         }))
     }
     
@@ -32,7 +32,11 @@ export const IndexMap = () => {
         })
     }
 
-    useIntervalRequest(getData)
+    useEffect(() => {
+        getData()
+    }, [])
+
+    // useIntervalRequest(getData)
 
     const mapOnClick = ({ pointInPixel }: any) => {
         setPointInPixel(pointInPixel)
@@ -40,7 +44,7 @@ export const IndexMap = () => {
 
     return (
         <>
-            <AMapComponent></AMapComponent>
+            <AMapComponent data={data}></AMapComponent>
         </>
     )
 }

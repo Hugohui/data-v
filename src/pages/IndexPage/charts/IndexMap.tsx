@@ -5,6 +5,7 @@ import { mapOptions } from "./IndexMapOptions"
 import { EnterDialog } from "../components/EnterDialog"
 import { getListPastures } from "@/api/IndexPage"
 import { useIntervalRequest } from "@/hooks/useIntervalRequest"
+import AMapComponent from "@/components/AMapComponent"
 
 
 export const IndexMap = () => {
@@ -39,23 +40,7 @@ export const IndexMap = () => {
 
     return (
         <>
-            {(data) ? (
-                <EChartsCommon
-                    renderer={renderer}
-                    option={mapOptions(data)}
-                    onClick={mapOnClick}
-                    // onSelect={() => setShowEnterDialog(true)}
-                    onUnSelect={() => setShowEnterDialog(false)}
-                    onDrag={() => setShowEnterDialog(false)}
-                    onZoom={() => setShowEnterDialog(false)}
-                />
-            ) : (
-                ''
-            )}
-
-            {
-                showEnterDialog ? <EnterDialog style={{left: pointInPixel[0], top: pointInPixel[1] - 290}}></EnterDialog> : ''
-            }
+            <AMapComponent></AMapComponent>
         </>
     )
 }

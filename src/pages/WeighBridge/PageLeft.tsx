@@ -1,6 +1,6 @@
 import { PageLeftStyle } from "./style";
 import { VideoBox } from "../../components/VideoBox"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getPastureVideoList } from "@/api/common";
 import { useIntervalRequest } from "@/hooks/useIntervalRequest";
 
@@ -22,7 +22,11 @@ export const PageLeft = () => {
         })
     }
 
-    useIntervalRequest(getData)
+    useEffect(() => {
+        getData()
+    }, [])
+
+    // useIntervalRequest(getData)
 
     return (
         <PageLeftStyle>

@@ -1,5 +1,5 @@
-import { useRef } from "react"
-import { VideoCoverStyle, VideoItemStyle } from "./VideoBoxStyle"
+import { useRef, useState } from "react"
+import { VideoItemStyle } from "./VideoBoxStyle"
 import VideoPlayer from "./VideoPlayer"
 
 export interface VideoInfoI {
@@ -12,16 +12,24 @@ export interface VideoInfoI {
 export const VideoItem = ({ lineCont, url, showVideoCover = true}: VideoInfoI) => {
 
     const videoRef = useRef<any>(null)
+    const [isPlay, setIsPlay] = useState(false)
 
-    const onClickVideo = () => {
+    const onStartVideo = (e: any) => {
         videoRef.current && videoRef.current.play()
+        setIsPlay(true)
+        e.stopPropagation();
+    }
+
+    const onPauseVideo = () => {
+        videoRef.current && videoRef.current.pause()
+        setIsPlay(false)
     }
 
     return (
         <VideoItemStyle $lineCont={lineCont} className="VideoItemStyle">
-            <VideoCoverStyle>
-                <span onClick={onClickVideo}></span>
-            </VideoCoverStyle>
+            <div className="VideoCover" onClick={onPauseVideo}>
+                {!isPlay ? <span  onClick={onStartVideo}></span> : ''}
+            </div>
             <VideoPlayer ref={videoRef} src={url}></VideoPlayer>
         </VideoItemStyle>
     )

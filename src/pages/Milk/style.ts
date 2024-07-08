@@ -58,6 +58,9 @@ export const MilkVideoStyle = styled.div`
     flex: 1;
     .VideoBoxStyle {
         height: 100%;
+        .VideoItemStyle {
+            height: 156px;
+        }
     }
 `
 

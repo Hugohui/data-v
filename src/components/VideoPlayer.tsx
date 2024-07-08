@@ -4,16 +4,17 @@ import Hls from 'hls.js'
 
 const VideoPlayer = forwardRef(({ src }: any, ref) => {
     const videoRef = useRef<any>()
-
+    let hlsRef = useRef<any>()
+    const isFirstRef = useRef(true)
     useEffect(() => {
-        let hls: any;
         if (src) {
             if (Hls.isSupported()) {
-                hls = new Hls()
-                hls.loadSource(src)
-                hls.attachMedia(videoRef.current)
-                hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    videoRef.current.play()
+                hlsRef.current = new Hls()
+                hlsRef.current.loadSource(src)
+                hlsRef.current.attachMedia(videoRef.current)
+                hlsRef.current.on(Hls.Events.FRAG_LOADED, () => {
+                    isFirstRef.current && pause()
+                    isFirstRef.current = false
                 })
             } else if (videoRef.current) {
                 videoRef.current.src = src
@@ -23,21 +24,22 @@ const VideoPlayer = forwardRef(({ src }: any, ref) => {
             }
         }
 
-
         return () => {
-            if (hls) {
-                hls.destroy()
+            if (hlsRef.current) {
+                hlsRef.current.destroy()
             }
         }
 
     }, [src])
 
     const play = () => {
+        hlsRef.current && hlsRef.current.startLoad();
         videoRef.current && videoRef.current.play()
     }
 
     const pause = () => {
-        videoRef.current && videoRef.current.pause()
+        videoRef.current && videoRef.current.pause();
+        hlsRef.current && hlsRef.current.stopLoad();
     }
 
     useImperativeHandle(ref, () => {

@@ -12,7 +12,6 @@ export const IndexMap = () => {
 
     const [data, setData] = useState<any>([])
     const [pointInPixel, setPointInPixel] = useState([950, 460])
-    // const showEnterRef = useRef(true)
     const [showEnterDialog, setShowEnterDialog] = useState(false)
 
     const formatData = (data: any = []) => {

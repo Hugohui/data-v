@@ -123,15 +123,22 @@ export const mapOptions = (data: any) => (
                 ],
                 markPoint: {
                     symbol: 'circle', // 标记点形状
-                    symbolSize: 20, // 标记点大小
+                    symbolSize: 10, // 标记点大小
                     data,
                     itemStyle: {
                         normal: {
-                            color: "#F3DF32",
-                            borderColor: "#01DBE8",
+                            color: "#F3DF32"
                         },
                     },
                 },
+                markLine: {
+                    symbol: ['none', 'circle'], // 外圆点的形状，第一个是线的形状，这里设置为'none'
+                    symbolSize: 40, // 外圆点的大小
+                    // data,
+                    itemStyle: {
+                        color: '#01DBE8' // 外圆点的颜色
+                    }
+                }
             },
         ],
     }

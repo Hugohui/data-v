@@ -23,7 +23,7 @@ export const AnchorPoint = () => {
     const getData = () => {
         getListBarns().then((res: any) => {
             if (res.data) {
-                setData(formatFarmMap(res.data[2]?.BarnList))
+                setData(formatFarmMap(res.data))
             }
         })
     }

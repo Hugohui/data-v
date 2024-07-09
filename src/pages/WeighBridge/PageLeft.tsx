@@ -1,36 +1,29 @@
 import { PageLeftStyle } from "./style";
 import { VideoBox } from "../../components/VideoBox"
 import { useEffect, useState } from "react";
-import { getPastureVideoList } from "@/api/common";
-import { useIntervalRequest } from "@/hooks/useIntervalRequest";
-
-const testVideoList = [
-    {url: ""},
-    {url: ""},
-    {url: ""},
-    {url: ""},
-]
+import useEvent from "@/hooks/useEventHook";
 
 export const PageLeft = () => {
-    const [videoList, setVideoList] = useState(testVideoList)
+    const [imageList, setImageList] = useState([])
 
-    const getData = () => {
-        getPastureVideoList({}).then((res: any) => {
-            if (res.data) {
-                setVideoList(res.data?.slice(0, 4))
-            }
-        })
-    }
+    const { subscribe } = useEvent()
 
     useEffect(() => {
-        getData()
+        subscribe('onCarRecordSelectEmit', (item: any) => {
+            setImageList(item?.ImgPath?.split(','))
+        })
     }, [])
-
-    // useIntervalRequest(getData)
 
     return (
         <PageLeftStyle>
-            <VideoBox videoList={videoList}></VideoBox>
+            {/* <VideoBox videoList={imageList}></VideoBox> */}
+            {
+                imageList?.map((item: string) => (
+                    <div>
+                        <img src={item} alt="" />
+                    </div>
+                ))
+            }
         </PageLeftStyle>
     )
 }

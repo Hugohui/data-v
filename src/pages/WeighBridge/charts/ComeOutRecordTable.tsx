@@ -1,6 +1,14 @@
+import { useEffect } from "react"
 import CustomTable from "../../../components/CustomTable"
+import useEvent from "@/hooks/useEventHook"
 
 export const ComeOutRecordTable = ({ data }: any) => {
+    const { publish } = useEvent()
+
+    const onItemClick = (item: any, index: any) => {
+        publish("onCarRecordSelectEmit", item)
+    }
+
     const columns = [
         {
             key: "CarNumber",
@@ -28,7 +36,19 @@ export const ComeOutRecordTable = ({ data }: any) => {
         },
     ]
 
+    useEffect(() => {
+        setTimeout(() => {
+            publish("onCarRecordSelectEmit", data[0])
+        }, 0)
+    }, [data])
+
     return (
-        <CustomTable columns={columns} data={data || []} hiddenIndex={true}></CustomTable>
+        <CustomTable 
+            columns={columns} 
+            data={data || []} 
+            hiddenIndex={true} 
+            canSelectItem={true}
+            onRowClick={onItemClick}
+        ></CustomTable>
     )
 }

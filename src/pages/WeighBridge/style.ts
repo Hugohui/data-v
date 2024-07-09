@@ -8,9 +8,24 @@ export const PageContent = styled.div`
 `
 
 export const PageLeftStyle = styled.div`
-    flex: 1;
+    width: 1216px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
     & > div {
-        height: 100%;
+        width: calc(100%/2 - 20px);
+        height: 50%;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #000;
+        img {
+            width: 100%;
+            height: 100%;
+            /* object-fit: cover; */
+            object-fit: contain;
+        }
     }
 `
 

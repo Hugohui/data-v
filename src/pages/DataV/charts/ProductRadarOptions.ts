@@ -8,12 +8,12 @@ export const radarOptions = (options: any) => (
     radar: [
       {
         indicator: [
-          { text: '空杯天数', max: options.EmptyDays },
-          { text: '单产', max: options.perYield },
-          { text: '羊羔成活率', max: options.LambSurvivalRate },
-          { text: '初产天数', max: options.DaysFirstLabor },
-          { text: '上料误差率', max: options.FeedingErroRate },
-          { text: '平均泌乳天数', max: options.avgDriedDay }
+          { text: '空杯天数', max: 200 },
+          { text: '单产', max: 30 },
+          { text: '羊羔成活率', max: 100 },
+          { text: '初产天数', max: 200 },
+          { text: '上料误差率', max: 100 },
+          { text: '平均泌乳天数', max: 300 }
         ],
         radius: 60,
         splitNumber: 5,
@@ -63,7 +63,14 @@ export const radarOptions = (options: any) => (
         },
         data: [
           {
-            value: [60, 73, 85, 40, 30, 90],
+            value: [
+              options.EmptyDays, 
+              options.perYield, 
+              options.LambSurvivalRate, 
+              options.DaysFirstLabor, 
+              options.FeedingErroRate, 
+              options.avgDriedDay
+            ],
           }
         ]
       },

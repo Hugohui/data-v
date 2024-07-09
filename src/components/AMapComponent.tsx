@@ -4,8 +4,8 @@ import { AmapContainerStyle } from "./AMapComponentStyle";
 import { EnterDialog } from '@/pages/IndexPage/components/EnterDialog';
 import ReactDOMServer from 'react-dom/server'
 import indexEnterDialog from '@/assets/img/indexEnterDialog.png'
-import useFarmStore from "@/store/farm";
 import { useNavigate } from "react-router-dom";
+import { setFarmInfo } from "@/utils/session";
 // import indexPageBg from '@/assets/img/indexPageBg.png'
 
 const style = [
@@ -56,16 +56,6 @@ const AMapComponent = ({ data }: any) => {
         })
 
         search.search("陕西省", (status: any, result: any) => {
-            const bounds = result.districtList[0].boundaries
-            if (bounds) {
-                for (var i = 0; i < bounds.length; i += 1) {//构造MultiPolygon的path
-                    bounds[i] = [bounds[i]]
-                }
-            }
-            addPolygon(AMap, bounds)
-        })
-
-        search.search("北京市", (status: any, result: any) => {
             const bounds = result.districtList[0].boundaries
             if (bounds) {
                 for (var i = 0; i < bounds.length; i += 1) {//构造MultiPolygon的path
@@ -194,7 +184,6 @@ const AMapComponent = ({ data }: any) => {
         })
     }
 
-    const setFarmInfo = useFarmStore((state) => state.setFarmInfo)
     const navigate = useNavigate()
 
     const toDataV = (event: any) => {

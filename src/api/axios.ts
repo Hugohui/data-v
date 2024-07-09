@@ -6,7 +6,7 @@ import axios, {
   AxiosRequestConfig
 } from 'axios'
 import { ResultEnum } from '../enums/httpEnum'
-import { isLogin } from '../utils/session'
+import { getFarmInfo, isLogin } from '../utils/session'
 
 export interface MyResponseType<T> {
   code: ResultEnum
@@ -31,6 +31,15 @@ axiosInstance.interceptors.request.use(
       window.location.href = '/login'
       return config
     }
+
+    if (window.location.pathname !== '/' && window.location.pathname !== '/login') {
+      const farmInfo = getFarmInfo()
+      if (!farmInfo.PastureCode) {
+        window.location.href = '/'
+        return config
+      }
+    }
+
     return config
   },
   (error: AxiosError) => {

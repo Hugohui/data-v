@@ -2,18 +2,28 @@ import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { blankErrorRateLineOptions } from "./BlankErrorRateLineOptions"
 import { FC, useState } from 'react'
+import { getFeedingErroRatelist } from '@/api/Feeding'
+import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 
 
 interface OptionsI {
     // data: KeepRatioInfoI[]
 }
 
-const testData = [3, 4, 5, 6]
-
 const BlankErrorRateLine: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState([])
+
+    const getData = () => {
+        getFeedingErroRatelist ().then((res: any) => {
+            if (res?.code === 200) {
+                setData(res?.data?.FeedingErroRatelist)
+            }
+        })
+    }
+
+    useIntervalRequest(getData)
 
     return (
         <>

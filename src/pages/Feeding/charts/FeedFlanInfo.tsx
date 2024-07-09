@@ -20,7 +20,7 @@ const FeedPlanInfoItem = (info: FeedPlanInfoI) => {
             <div className="main">
                 <div className="label">{info.label}</div>
                 <div className="value">
-                    <CountUp start={0} end={Number(info.value)} duration={1.5} separator=""></CountUp>
+                    <CountUp start={0} end={Number(info.value)} duration={1.5} separator="" decimals={2}></CountUp>
                     <span className="unit">kg</span>
                 </div>
             </div>

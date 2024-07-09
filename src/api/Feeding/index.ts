@@ -26,9 +26,8 @@ export const getFeedIntakeList = (data?: any) => {
  * @returns 
  */
 export const getFeedingErroRatelist = (data?: any) => {
-    return post('App/BigDataApi/getFeedingErroRatelist', data)
+    return post('App/BigDataApi/FeedingErroRate', data)
 }
-
 
 /**
  * 下料误差率
@@ -36,9 +35,8 @@ export const getFeedingErroRatelist = (data?: any) => {
  * @returns 
  */
 export const getBlankingErroRatelist = (data?: any) => {
-    return post('App/BigDataApi/BlankingErroRatelist', data)
+    return post('App/BigDataApi/FeedingErroRate', data)
 }
-
 
 /**
  * 数据统计
@@ -48,7 +46,6 @@ export const getBlankingErroRatelist = (data?: any) => {
 export const getTodayStatisticalData = (data?: any) => {
     return post('App/BigDataApi/getTodayStatisticalData', data)
 }
-
 
 /**
  * 料单折线

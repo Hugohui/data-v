@@ -11,20 +11,19 @@ interface OptionsI {
     // data: KeepRatioInfoI[]
 }
 
-const testData = [3, 4, 5, 6]
-
 const PlanFunnel: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState([])
 
     const formatData = (data: any) => {
-        return data?.map((item: any) => {
+        const res = data?.map((item: any) => {
             return {
                 name: item.FodderName,
-                value: item.FodderPlanWeight
+                value: item.FodderActualWeight
             }
-        }).slice(-15)
+        }).sort((a: any, b: any) => a.value - b.value).slice(-20)
+        return res
     }
 
     const getData = () => {

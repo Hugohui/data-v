@@ -9,12 +9,10 @@ interface OptionsI {
     // data: KeepRatioInfoI[]
 }
 
-const testData = [3, 4, 5, 6]
-
 const FeedErrorRateLine: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState([])
 
     const getData = () => {
         getFeedingErroRatelist().then((res: any) => {

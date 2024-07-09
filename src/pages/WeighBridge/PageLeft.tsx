@@ -10,7 +10,7 @@ export const PageLeft = () => {
 
     useEffect(() => {
         subscribe('onCarRecordSelectEmit', (item: any) => {
-            setImageList(item?.ImgPath?.split(','))
+            setImageList(item?.ImgPath?.split(',').slice(0, 4))
         })
     }, [])
 
@@ -19,7 +19,7 @@ export const PageLeft = () => {
             {/* <VideoBox videoList={imageList}></VideoBox> */}
             {
                 imageList?.map((item: string) => (
-                    <div>
+                    <div key={item}>
                         <img src={item} alt="" />
                     </div>
                 ))

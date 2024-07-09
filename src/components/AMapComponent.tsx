@@ -3,7 +3,7 @@ import AMapLoader from "@amap/amap-jsapi-loader";
 import { AmapContainerStyle } from "./AMapComponentStyle";
 import { EnterDialog } from '@/pages/IndexPage/components/EnterDialog';
 import ReactDOMServer from 'react-dom/server'
-import indexEnterDialog from '@/assets/img/indexEnterDialog.png'
+import mapFlex from '@/assets/img/mapFlex.png'
 import { useNavigate } from "react-router-dom";
 import { setFarmInfo } from "@/utils/session";
 // import indexPageBg from '@/assets/img/indexPageBg.png'
@@ -22,30 +22,34 @@ const AMapComponent = ({ data }: any) => {
     let map: any = null;
 
     const addPolygon = (AMap: any, polygonData: any) => {
-        let polygon = new AMap.Polygon({
-            path: polygonData,
-            fillColor: '#274780',
-            strokeOpacity: 1,
-            fillOpacity: 0.7,
-            strokeColor: '#92E9FF',
-            strokeWeight: 2,
-            // strokeStyle: 'dashed',
-            strokeDasharray: [5, 5],
-        });
-        // polygon.on('mouseover', () => {
-        //     polygon.setOptions({
-        //         fillOpacity: 0.7,
-        //         fillColor: '#7bccc4'
-        //     })
-        // })
-        // polygon.on('mouseout', () => {
-        //     polygon.setOptions({
-        //         fillOpacity: 0.5,
-        //         fillColor: '#ccebc5'
-
-        //     })
-        // })
-        map.add(polygon);
+        try {
+            let polygon = new AMap.Polygon({
+                path: polygonData,
+                fillColor: '#274780',
+                strokeOpacity: 1,
+                fillOpacity: 0.7,
+                strokeColor: '#92E9FF',
+                strokeWeight: 2,
+                // strokeStyle: 'dashed',
+                strokeDasharray: [5, 5],
+            });
+            // polygon.on('mouseover', () => {
+            //     polygon.setOptions({
+            //         fillOpacity: 0.7,
+            //         fillColor: '#7bccc4'
+            //     })
+            // })
+            // polygon.on('mouseout', () => {
+            //     polygon.setOptions({
+            //         fillOpacity: 0.5,
+            //         fillColor: '#ccebc5'
+    
+            //     })
+            // })
+            map.add(polygon);
+        } catch (error) {
+            console.log("addPolygon error", error)
+        }
     }
 
     const createPolygon = (AMap: any) => {
@@ -154,28 +158,22 @@ const AMapComponent = ({ data }: any) => {
 
         // 该demo可模拟水印效果
         var layer = new AMap.TileLayer.Flexible({
-            cacheSize: 30,
-            opacity: 0.3,
+            cacheSize: 200,
+            opacity: 1,
+            tileSize: 128,
             createTile: function (x: any, y: any, z: any, success: any, fail: any) {
-                // if ((x + y) % 3) {
-                //     fail();
-                //     return;
-                // }
-
                 var img = document.createElement('img');
                 img.onload = function () {
                     success(img)
                 };
-                // img.crossOrigin = "anonymous";//3D 的时候添加，同时图片要有跨域头
                 img.onerror = function () {
                     fail()
                 };
-
-                img.src = indexEnterDialog
+                img.src = mapFlex
             }
         });
 
-        return [satellite, disWorld, disCountry]
+        return [satellite, disWorld, disCountry, layer]
     }
 
     const createMarker = (AMap: any) => {
@@ -217,7 +215,7 @@ const AMapComponent = ({ data }: any) => {
                     center: data[0]?.coord,
                     viewMode: '3D',
                     labelzIndex: 130,
-                    zoom: 9.5,
+                    zoom: 6,
                     zooms: [6, 10],
                     cursor: 'pointer',
                     layers: createLayers(AMap)
@@ -242,7 +240,7 @@ const AMapComponent = ({ data }: any) => {
             <div
                 id="amap-container"
                 className="amapContainer"
-                style={{ height: "100%", width: "100%" }}
+                style={{ height: "100%", width: "100%", position: 'relative' }}
             ></div>
         </AmapContainerStyle>
         

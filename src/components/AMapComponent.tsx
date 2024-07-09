@@ -64,6 +64,16 @@ const AMapComponent = ({ data }: any) => {
             }
             addPolygon(AMap, bounds)
         })
+
+        search.search("北京市", (status: any, result: any) => {
+            const bounds = result.districtList[0].boundaries
+            if (bounds) {
+                for (var i = 0; i < bounds.length; i += 1) {//构造MultiPolygon的path
+                    bounds[i] = [bounds[i]]
+                }
+            }
+            addPolygon(AMap, bounds)
+        })
     }
 
     const EnterMarker = ({ info }: any) => {
@@ -84,7 +94,8 @@ const AMapComponent = ({ data }: any) => {
                     right: 0,
                     top: 0,
                     lineHeight: "32px",
-                    padding: "15px 10px 10px 10px"
+                    padding: "15px 10px 10px 10px",
+                    userSelect: 'none'
                 }}>
                     <div><span>牧场名称</span>：{info?.name}</div>
                     <div><span>存栏数</span>：{info?.origin?.cowCount} 只</div>
@@ -214,11 +225,11 @@ const AMapComponent = ({ data }: any) => {
         })
             .then((AMap) => {
                 map = new AMap.Map('amap-container', {
-                    center: data[0].coord,
+                    center: data[0]?.coord,
                     viewMode: '3D',
                     labelzIndex: 130,
                     zoom: 6,
-                    zooms: [3, 8],
+                    zooms: [6, 10],
                     cursor: 'pointer',
                     layers: createLayers(AMap)
                 });

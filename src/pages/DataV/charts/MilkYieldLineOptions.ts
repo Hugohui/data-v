@@ -13,7 +13,7 @@ export const lineOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: data?.map((item: any) => item.name),
+      data: data?.list?.map((item: any) => item.name),
       axisLine: {
         show: true,
         lineStyle: {
@@ -42,7 +42,7 @@ export const lineOptions = (data: any) => (
     },
     series: [
       {
-        data: data,
+        data: data?.list?.map((item: any) => item.value),
         type: 'line',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 4, // 设置圆形标记的大小

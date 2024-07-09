@@ -12,7 +12,7 @@ interface OptionsI {
 const MilkYieldLine: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState({})
 
     const getData = () => {
         getMilkProduction().then((res: any) => {

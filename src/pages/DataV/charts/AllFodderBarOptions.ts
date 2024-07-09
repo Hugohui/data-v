@@ -3,14 +3,13 @@ import * as echarts from 'echarts';
 export const barOptions = (data: any) => (
   {
     grid:{ // 让图表占满容器
-      top:"20px",
+      top:"30px",
       left:"80px",
       right:"30px",
       bottom:"85px"
     },
     tooltip: {
       trigger: 'axis',
-      
     },
     xAxis: {
       type: 'category',
@@ -29,10 +28,10 @@ export const barOptions = (data: any) => (
     },
     yAxis: {
       type: 'value',
-      // name: '（kg）',
+      name: '吨',
       min: 0, // 设置纵坐标的最小值
-      max: 2500000, // 设置纵坐标的最大值
-      interval: 500000, // 设置纵坐标的间隔
+      max: 3000, // 设置纵坐标的最大值
+      interval: 500, // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,

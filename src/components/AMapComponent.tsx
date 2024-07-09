@@ -217,7 +217,7 @@ const AMapComponent = ({ data }: any) => {
                     center: data[0]?.coord,
                     viewMode: '3D',
                     labelzIndex: 130,
-                    zoom: 6,
+                    zoom: 8,
                     zooms: [6, 10],
                     cursor: 'pointer',
                     layers: createLayers(AMap)

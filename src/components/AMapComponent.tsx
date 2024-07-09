@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import AMapLoader from "@amap/amap-jsapi-loader";
 import { AmapContainerStyle } from "./AMapComponentStyle";
+import { EnterDialog } from '@/pages/IndexPage/components/EnterDialog';
+import ReactDOMServer from 'react-dom/server'
+import indexEnterDialog from '@/assets/img/indexEnterDialog.png'
+import useFarmStore from "@/store/farm";
+import { useNavigate } from "react-router-dom";
+// import indexPageBg from '@/assets/img/indexPageBg.png'
 
 const style = [
     {
@@ -13,53 +19,7 @@ const style = [
 ];
 
 const AMapComponent = ({ data }: any) => {
-    console.log("======AMapComponent=====", data)
     let map: any = null;
-
-    //构建自定义信息窗体
-    const createInfoWindow = (title: any, content: any) => {
-        var info = document.createElement("div");
-        info.className = "custom-info input-card content-window-card";
-
-        //可以通过下面的方式修改自定义窗体的宽高
-        info.style.width = "400px";
-        // 定义顶部标题
-        var top = document.createElement("div");
-        var titleD = document.createElement("div");
-        var closeX = document.createElement("img");
-        top.className = "info-top";
-        titleD.innerHTML = title;
-        closeX.src = "https://webapi.amap.com/images/close2.gif";
-        closeX.onclick = closeInfoWindow;
-
-        top.appendChild(titleD);
-        top.appendChild(closeX);
-        info.appendChild(top);
-
-        // 定义中部内容
-        var middle = document.createElement("div");
-        middle.className = "info-middle";
-        middle.style.backgroundColor = 'white';
-        middle.innerHTML = content;
-        info.appendChild(middle);
-
-        // 定义底部内容
-        var bottom = document.createElement("div");
-        bottom.className = "info-bottom";
-        bottom.style.position = 'relative';
-        bottom.style.top = '0px';
-        bottom.style.margin = '0 auto';
-        var sharp = document.createElement("img");
-        sharp.src = "https://webapi.amap.com/images/sharp.png";
-        bottom.appendChild(sharp);
-        info.appendChild(bottom);
-        return info;
-    }
-
-    //关闭信息窗体
-    const closeInfoWindow = () => {
-        map.clearInfoWindow();
-    }
 
     const addPolygon = (AMap: any, polygonData: any) => {
         let polygon = new AMap.Polygon({
@@ -92,7 +52,7 @@ const AMapComponent = ({ data }: any) => {
         const search = new AMap.DistrictSearch({
             subdistrict: 0,
             extensions: 'all',
-            level: "province"
+            level: "city"
         })
 
         search.search("陕西省", (status: any, result: any) => {
@@ -106,32 +66,55 @@ const AMapComponent = ({ data }: any) => {
         })
     }
 
-    const getInfoWindow = (AMap: any) => {
-        //实例化信息窗体
-        let title = '方恒假日酒店<span style="font-size:11px;color:#F00;">价格:318</span>';
-        let content = [];
-        content.push("<img src='http://tpc.googlesyndication.com/simgad/5843493769827749134'>地址：北京市朝阳区阜通东大街6号院3号楼东北8.3公里");
-        content.push("电话：010-64733333");
-        content.push("<a href='https://ditu.amap.com/detail/B000A8URXB?citycode=110105'>详细信息</a>");
-        var infoWindow = new AMap.InfoWindow({
-            isCustom: true,  //使用自定义窗体
-            content: createInfoWindow(title, content.join("<br/>")),
-            offset: new AMap.Pixel(16, -45)
-        });
-        return infoWindow
+    const EnterMarker = ({ info }: any) => {
+        return (
+            <div style={{ 
+                width: "362px", 
+                height: "290px", 
+                backgroundImage: `url(http://112.126.95.138:8600/farmImages/indexEnterDialog.png)`,
+                backgroundSize: '100% 100%',
+                backgroundRepeat: "no-repeat",
+                position: 'relative'
+            }}>
+                <div className="info" style={{
+                    width: "200px",
+                    fontSize: "15px",
+                    color: "#fff",
+                    position: 'absolute',
+                    right: 0,
+                    top: 0,
+                    lineHeight: "32px",
+                    padding: "15px 10px 10px 10px"
+                }}>
+                    <div><span>牧场名称</span>：{info?.name}</div>
+                    <div><span>存栏数</span>：{info?.origin?.cowCount} 只</div>
+                    <div><span>地址</span>：{info?.origin?.address}</div>
+                </div>
+                <div className="enter" id="markerEnter" style={{
+                    width: "160px",
+                    height: "30px",
+                    position: "absolute",
+                    top: "118px",
+                    right: "25px",
+                    cursor: "pointer"
+                }} data-info={JSON.stringify(info?.origin)}></div>
+            </div>
+        )
+    }
+
+    const renderDialog = (info: any) => {
+        const content = ReactDOMServer.renderToString(<EnterMarker info={info}></EnterMarker>)
+        return content
     }
 
     // 添加点
-    const addMarker = (AMap: any, position: any) => {
+    const addMarker = (AMap: any, item: any) => {
         const marker = new AMap.Marker({
             map,
-            position
+            position: item.coord,
+            content: renderDialog(item),
+            offset: new AMap.Pixel(0, -362)
         });
-        const infoWindow = getInfoWindow(AMap)
-        //鼠标点击marker弹出自定义的信息窗体
-        // marker.on('click', function () {
-            infoWindow.open(map, marker.getPosition());
-        // });
     }
 
     const createLayers = (AMap: any) => {
@@ -149,7 +132,7 @@ const AMapComponent = ({ data }: any) => {
                 // 'coastline-stroke': '',
                 // 填充
                 // 'fill': 'rgba(20, 28, 44, 0)'
-                'fill': 'rgba(20, 28, 44, 0.4)'
+                'fill': 'rgba(20, 28, 44, 0)'
             }
         });
 
@@ -168,18 +151,58 @@ const AMapComponent = ({ data }: any) => {
             }
         })
 
+        // 该demo可模拟水印效果
+        var layer = new AMap.TileLayer.Flexible({
+            cacheSize: 30,
+            opacity: 0.3,
+            createTile: function (x: any, y: any, z: any, success: any, fail: any) {
+                // if ((x + y) % 3) {
+                //     fail();
+                //     return;
+                // }
+
+                var img = document.createElement('img');
+                img.onload = function () {
+                    success(img)
+                };
+                // img.crossOrigin = "anonymous";//3D 的时候添加，同时图片要有跨域头
+                img.onerror = function () {
+                    fail()
+                };
+
+                img.src = indexEnterDialog
+            }
+        });
+
         return [satellite, disWorld, disCountry]
     }
 
-    const createMarkerInfoWindow = (AMap: any) => {
-        console.log("createMarkerInfoWindow======", data)
+    const createMarker = (AMap: any) => {
         data?.forEach((item: any) => {
-            addMarker(AMap, item.coord)
+            addMarker(AMap, item)
         })
     }
 
+    const setFarmInfo = useFarmStore((state) => state.setFarmInfo)
+    const navigate = useNavigate()
+
+    const toDataV = (event: any) => {
+        if (event.target.matches("#markerEnter")) {
+            const info = JSON.parse(event?.target?.dataset?.info || '{}')
+            setFarmInfo(info)
+            navigate('/dataV')
+        }
+    }
+
     useEffect(() => {
-        console.log("=====useEffect==", data);
+        const amapContainer = document.getElementById("amap-container")
+        amapContainer?.addEventListener('click', toDataV);
+        return () => {
+            amapContainer?.removeEventListener('click', toDataV);
+        }
+    }, [])
+
+    useEffect(() => {
         (window as any)._AMapSecurityConfig = {
             securityJsCode: "eb2ce8e44cacb71ac13e497dae6efaf2",  // 你申请的安全密钥
         };
@@ -187,11 +210,11 @@ const AMapComponent = ({ data }: any) => {
         AMapLoader.load({
             key: "3393601f6cd8bb12c7ab0fd32c4fbef2", // 申请好的Web端开发者Key，首次调用 load 时必填
             version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
-            plugins: ["AMap.Scale", "AMap.DistrictSearch"], //需要使用的的插件列表，如比例尺'AMap.Scale'，支持添加多个如：['...','...']
+            plugins: ["AMap.Scale", "AMap.DistrictSearch", "AMap.Icon",], //需要使用的的插件列表，如比例尺'AMap.Scale'，支持添加多个如：['...','...']
         })
             .then((AMap) => {
                 map = new AMap.Map('amap-container', {
-                    // center: [116.472804, 39.995725],
+                    center: data[0].coord,
                     viewMode: '3D',
                     labelzIndex: 130,
                     zoom: 6,
@@ -199,8 +222,10 @@ const AMapComponent = ({ data }: any) => {
                     cursor: 'pointer',
                     layers: createLayers(AMap)
                 });
+
                 if (data.length > 0) {
-                    createMarkerInfoWindow(AMap)
+                    createMarker(AMap)
+                    createPolygon(AMap)
                 }
             })
             .catch((e) => {

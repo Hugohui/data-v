@@ -51,7 +51,7 @@ export const funnelOptions = (data: any) => (
           position: "right",
           color: "#fff",
           formatter: (params: any) => {
-            return `${params.percent}%`
+            return `${params.percent || 0}%`
           },
           fontSize: 13
         },

@@ -5,9 +5,13 @@ import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 
 export const EvaluateTable = () => {
     const columns = [
+        // {
+        //     key: "breedName",
+        //     name: "羊只品种"
+        // },
         {
-            key: "breedName",
-            name: "羊只品种"
+            key: "OffSiteDate",
+            name: "离场批次"
         },
         {
             key: "FeedDays",

@@ -24,7 +24,7 @@ export const SheepInfo = () => {
                 <p>体重: {info.Weight}kg</p>
                 <p>体长: {info.length_straight}cm</p>
             </div>
-            <div className="info3">
+            {/* <div className="info3">
                 <p>胸深: 53cm</p>
                 <p>胸宽: 36cm</p>
                 <p>胸围: 29cm</p>
@@ -32,7 +32,7 @@ export const SheepInfo = () => {
             <div className="info4">
                 <p>十字部高: 33cm</p>
                 <p>管围: 30kg</p>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -11,7 +11,7 @@ interface OptionsI {
 
 const AllFodderBar: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-    const [data, setData] = useState<any>([])
+    const [data, setData] = useState<any>({})
 
     const getData = () => {
         getFeedUsageTrend().then((res: any) => {

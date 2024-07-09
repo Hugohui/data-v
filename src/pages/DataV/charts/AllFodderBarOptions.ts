@@ -13,7 +13,7 @@ export const barOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: data?.map((item: any) => item.name),
+      data: data?.ListData?.map((item: any) => item.name),
       axisLine: {
         show: true,
         lineStyle: {
@@ -30,8 +30,8 @@ export const barOptions = (data: any) => (
       type: 'value',
       name: '吨',
       min: 0, // 设置纵坐标的最小值
-      max: 3000, // 设置纵坐标的最大值
-      interval: 500, // 设置纵坐标的间隔
+      max: data?.maxWeight, // 设置纵坐标的最大值
+      interval: data?.maxWeight / 5, // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,
@@ -46,7 +46,7 @@ export const barOptions = (data: any) => (
     },
     series: [
       {
-        data: data,
+        data: data?.ListData?.map((item: any) => item.value),
         type: 'bar',
         barWidth: 12,
         itemStyle: {

@@ -33,6 +33,7 @@ export const VideoItemStyle = styled.div<{$lineCont?: number}>`
         height: 100%;
         object-fit: contain;
         /* filter: brightness(200%); */
+        cursor: pointer;
     }
     ${props => props.$lineCont && `
         width: calc(100% / ${props.$lineCont} - 12px);

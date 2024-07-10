@@ -10,7 +10,7 @@ export const PageLeft = () => {
             <BorderBox title="实时数据" height="294" className="InfoItem">
                 <RealTimeData></RealTimeData>
             </BorderBox>
-            <BorderBox title="各牧场存栏占比" height="294">
+            <BorderBox title="各牧场存栏占比" height="294" className="KeepRatio">
                 <KeepRatio></KeepRatio>
             </BorderBox>
             <BorderBox title="羊群变化趋势" height="294">

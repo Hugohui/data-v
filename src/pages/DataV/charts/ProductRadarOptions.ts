@@ -42,7 +42,8 @@ export const radarOptions = (options: any) => (
         type: 'radar',
         name: "生产性能",
         tooltip: {
-          trigger: 'item'
+          trigger: 'item',
+          position: [10, 10]
         },
         areaStyle: {
           opacity: 0.9,

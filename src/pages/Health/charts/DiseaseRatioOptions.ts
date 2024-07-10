@@ -1,8 +1,11 @@
 export const ratioOptions = (data: any) => (
   {
+    tooltip: {
+      trigger: 'item'
+    },
     series: [
       {
-        name: 'KeepRatio',
+        name: '疾病类型',
         type: 'pie',
         radius: ['40%', '70%'],
         label: {

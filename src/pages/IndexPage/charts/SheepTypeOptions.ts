@@ -1,8 +1,11 @@
 export const sheepTypeOptions = (data: any) => (
   {
+    tooltip: {
+      trigger: 'item'
+    },
     series: [
       {
-        name: 'KeepRatio',
+        name: '羊群类型占比',
         type: 'pie',
         radius: ['40%', '70%'],
         label: {

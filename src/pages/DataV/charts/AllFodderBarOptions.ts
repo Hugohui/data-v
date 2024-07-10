@@ -1,7 +1,13 @@
 import * as echarts from 'echarts';
 
-export const barOptions = (data: any) => (
-  {
+export const barOptions = (options: any) => {
+  const data = options?.ListData?.map((item: any) => item.value) || []
+
+  const xAxis = options?.ListData?.map((item: any) => item.name) || []
+
+  const max = Math.ceil(Math.max(...data) / 100) * 100
+
+  return {
     grid:{ // 让图表占满容器
       top:"30px",
       left:"80px",
@@ -13,7 +19,7 @@ export const barOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: data?.ListData?.map((item: any) => item.name),
+      data: xAxis,
       axisLine: {
         show: true,
         lineStyle: {
@@ -30,8 +36,8 @@ export const barOptions = (data: any) => (
       type: 'value',
       name: '吨',
       min: 0, // 设置纵坐标的最小值
-      max: data?.maxWeight, // 设置纵坐标的最大值
-      interval: data?.maxWeight / 5, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,
@@ -46,7 +52,7 @@ export const barOptions = (data: any) => (
     },
     series: [
       {
-        data: data?.ListData?.map((item: any) => item.value),
+        data,
         type: 'bar',
         barWidth: 12,
         itemStyle: {
@@ -60,4 +66,4 @@ export const barOptions = (data: any) => (
       }
     ]
   }
-);
+};

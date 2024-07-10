@@ -1,7 +1,11 @@
 import * as echarts from 'echarts';
 
-export const barOptions = (data: any) => (
-  {
+export const barOptions = (options: any) => {
+  const xAxis = options?.map((item: any) => item.name) || []
+  const data = options?.map((item: any) => item.value) || []
+  const max = Math.ceil(Math.max(...data) / 100) * 100
+
+  return {
     tooltip: {
       trigger: 'axis'
     },
@@ -14,7 +18,7 @@ export const barOptions = (data: any) => (
     xAxis: {
       type: 'category',
       name: '日',
-      data: data?.map((item: any) => item.name),
+      data: xAxis,
       axisLine: {
         show: true,
         lineStyle: {
@@ -28,10 +32,10 @@ export const barOptions = (data: any) => (
     },
     yAxis: {
       type: 'value',
-      name: '（kg）',
+      name: 'kg',
       min: 0, // 设置纵坐标的最小值
-      max: 250, // 设置纵坐标的最大值
-      interval: 50, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       // splitLine: false,
       axisLine: {
         show: false,
@@ -51,7 +55,7 @@ export const barOptions = (data: any) => (
     },
     series: [
       {
-        data: data,
+        data,
         type: 'bar',
         barWidth: 14,
         itemStyle: {
@@ -64,4 +68,4 @@ export const barOptions = (data: any) => (
       }
     ]
   }
-);
+};

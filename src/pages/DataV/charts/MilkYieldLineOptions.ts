@@ -3,6 +3,10 @@ import * as echarts from 'echarts';
 export const lineOptions = (options: any) => {
   const data = options?.list?.map((item: any) => item.value) || []
 
+  const xAxis = options?.list?.map((item: any) => item.name) || []
+
+  const max = Math.ceil(Math.max(...data) / 100) * 100
+
   return {
     tooltip: {
       trigger: 'axis'
@@ -15,7 +19,7 @@ export const lineOptions = (options: any) => {
     },
     xAxis: {
       type: 'category',
-      data: options?.list?.map((item: any) => item.name),
+      data: xAxis,
       axisLine: {
         show: true,
         lineStyle: {
@@ -27,8 +31,8 @@ export const lineOptions = (options: any) => {
       type: 'value',
       name: 'kg',
       min: 0, // 设置纵坐标的最小值
-      max: Math.max(...data), // 设置纵坐标的最大值
-      interval: Math.max(...data) / 5, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         show: true,
         lineStyle: {

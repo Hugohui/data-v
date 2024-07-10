@@ -1,7 +1,12 @@
 import * as echarts from 'echarts';
 
-export const feedUsageOptions = (options: any) => (
-  {
+export const feedUsageOptions = (options: any) => {
+  const xAxis = options?.ListData?.map((item: any) => item.name) || []
+  const data = options?.ListData?.map((item: any) => item.value || 0) || []
+
+  const max = Math.ceil(Math.max(...data) / 100) * 100
+
+  return {
     tooltip: {
       trigger: 'axis'
     },
@@ -13,7 +18,7 @@ export const feedUsageOptions = (options: any) => (
     },
     xAxis: {
       type: 'category',
-      data: options?.ListData?.map((item: any) => item.name),
+      data: xAxis,
       axisLine: {
         show: true,
         lineStyle: {
@@ -25,8 +30,8 @@ export const feedUsageOptions = (options: any) => (
       type: 'value',
       name: "吨",
       min: 0, // 设置纵坐标的最小值
-      max: options.maxWeight, // 设置纵坐标的最大值
-      interval: options.maxWeight / 5, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         lineStyle: {
           color: '#fff'
@@ -40,7 +45,7 @@ export const feedUsageOptions = (options: any) => (
     },
     series: [
       {
-        data: options?.ListData?.map((item: any) => item.value || 0),
+        data,
         type: 'line',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 4, // 设置圆形标记的大小
@@ -62,4 +67,5 @@ export const feedUsageOptions = (options: any) => (
         }
       }
     ]
-  });
+  }
+};

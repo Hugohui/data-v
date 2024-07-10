@@ -1,7 +1,11 @@
 import * as echarts from 'echarts';
 
-export const lineOptions = (data: any) => (
-  {
+export const lineOptions = (options: any) => {
+  const xAxis = options?.map((item: any) => item.month) || []
+  const data = options?.map((item: any) => item.Yield) || []
+  const max = Math.ceil(Math.max(...data) / 100) * 100
+
+  return {
     grid:{ // 让图表占满容器
       top:"40px",
       left:"80px",
@@ -10,7 +14,7 @@ export const lineOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: data?.map((item: any) => item.month),
+      data: xAxis,
       axisLine: {
         show: true,
         lineStyle: {
@@ -20,10 +24,10 @@ export const lineOptions = (data: any) => (
     },
     yAxis: {
       type: 'value',
-      name: '（Kg）',
+      name: 'kg',
       min: 0, // 设置纵坐标的最小值
-      max: 2500, // 设置纵坐标的最大值
-      interval: 500, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         show: false,
         lineStyle: {
@@ -41,7 +45,7 @@ export const lineOptions = (data: any) => (
     },
     series: [
       {
-        data: data?.map((item: any) => item.Yield),
+        data,
         type: 'line',
         name: "月度产奶量",
         stack: 'Total',
@@ -57,4 +61,5 @@ export const lineOptions = (data: any) => (
         },
       }
     ]
-  });
+  }
+};

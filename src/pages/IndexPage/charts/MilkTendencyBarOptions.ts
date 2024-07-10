@@ -1,7 +1,11 @@
 import * as echarts from 'echarts';
 
-export const milkTendencyBarOptions = (options: any) => (
-  {
+export const milkTendencyBarOptions = (options: any) => {
+  const data = options?.ListData?.map((item: any) => item.value || 0) || []
+
+  const max = Math.ceil(Math.max(...data) / 100) * 100
+
+  return {
     grid:{ // 让图表占满容器
       top:"30px",
       left:"50px",
@@ -28,10 +32,10 @@ export const milkTendencyBarOptions = (options: any) => (
     },
     yAxis: {
       type: 'value',
-      name: '（kg）',
+      name: 'kg',
       min: 0, // 设置纵坐标的最小值
-      max: 250, // 设置纵坐标的最大值
-      interval: 50, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,
@@ -46,7 +50,7 @@ export const milkTendencyBarOptions = (options: any) => (
     },
     series: [
       {
-        data: options?.ListData?.map((item: any) => item.value || 0),
+        data,
         type: 'bar',
         barWidth: 8,
         itemStyle: {
@@ -60,4 +64,4 @@ export const milkTendencyBarOptions = (options: any) => (
       }
     ]
   }
-);
+};

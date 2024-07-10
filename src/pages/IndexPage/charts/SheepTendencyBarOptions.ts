@@ -1,7 +1,11 @@
 import * as echarts from 'echarts';
 
-export const sheepTendencyBarOptions = (data: any) => (
-  {
+export const sheepTendencyBarOptions = (options: any) => {
+  const data = options?.ListData?.map((item: any) => item.value || 0) || []
+
+  const max = Math.ceil(Math.max(...data) / 100) * 100
+
+  return {
     grid:{ // 让图表占满容器
       top:"30px",
       left:"50px",
@@ -14,7 +18,7 @@ export const sheepTendencyBarOptions = (data: any) => (
     xAxis: {
       type: 'category',
       name: '月',
-      data: data?.xAxisList,
+      data: options?.xAxisList,
       axisLine: {
         show: true,
         lineStyle: {
@@ -28,10 +32,10 @@ export const sheepTendencyBarOptions = (data: any) => (
     },
     yAxis: {
       type: 'value',
-      name: '（只）',
+      name: '只',
       min: 0, // 设置纵坐标的最小值
-      max: 1000, // 设置纵坐标的最大值
-      interval: 200, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: Math.round(max / 5), // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,
@@ -46,7 +50,7 @@ export const sheepTendencyBarOptions = (data: any) => (
     },
     series: [
       {
-        data: data?.ListData?.map((item: any) => item.value || 0),
+        data,
         type: 'bar',
         barWidth: 8,
         itemStyle: {
@@ -60,4 +64,4 @@ export const sheepTendencyBarOptions = (data: any) => (
       }
     ]
   }
-);
+};

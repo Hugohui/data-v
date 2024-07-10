@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'PingFang SC', 'DIN';
+    src: url('./source/SourceHanSansCN-VF.ttf') format('truetype'),
+    url('./source//SourceHanSansCN-VF.ttf.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

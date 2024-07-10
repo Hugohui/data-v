@@ -20,6 +20,7 @@ const style = [
 
 const AMapComponent = ({ data }: any) => {
     let map: any = null;
+    const [mapComplete, setMapComplete] = useState(false)
 
     const addPolygon = (AMap: any, polygonData: any) => {
         try {
@@ -156,8 +157,8 @@ const AMapComponent = ({ data }: any) => {
             }
         })
 
-        // 该demo可模拟水印效果
-        var layer = new AMap.TileLayer.Flexible({
+        // 模拟水印效果
+        var flexLayer = new AMap.TileLayer.Flexible({
             cacheSize: 200,
             opacity: 1,
             tileSize: 128,
@@ -173,7 +174,13 @@ const AMapComponent = ({ data }: any) => {
             }
         });
 
-        return [satellite, disWorld, disCountry, layer]
+        // 路网
+        const roadLayer = new AMap.TileLayer.RoadNet({
+            opacity: 0.6,
+            // zooms: [6, 10]
+        })
+
+        return [satellite, disWorld, disCountry, flexLayer, roadLayer]
     }
 
     const createMarker = (AMap: any) => {
@@ -216,10 +223,14 @@ const AMapComponent = ({ data }: any) => {
                     viewMode: '3D',
                     labelzIndex: 130,
                     zoom: 6,
-                    zooms: [6, 10],
+                    zooms: [5, 10],
                     cursor: 'pointer',
                     layers: createLayers(AMap)
                 });
+
+                map.on('complete', () => {
+                    setMapComplete(true)
+                })
 
                 if (data.length > 0) {
                     createMarker(AMap)
@@ -240,8 +251,15 @@ const AMapComponent = ({ data }: any) => {
             <div
                 id="amap-container"
                 className="amapContainer"
-                style={{ height: "100%", width: "100%", position: 'relative' }}
+                style={{ height: "100%", width: "100%", position: 'relative', backgroundColor: 'none' }}
             ></div>
+            {!mapComplete ? <div className="mapLoading">
+                <div className="loading loader">
+                    <div className="loader"></div>
+                    <div>地图加载中...</div>
+                </div>
+                
+            </div> : ''}
         </AmapContainerStyle>
         
     );

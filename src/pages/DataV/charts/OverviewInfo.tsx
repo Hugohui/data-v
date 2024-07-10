@@ -35,13 +35,13 @@ export const OverviewInfo = () => {
             </InfoItemStyle>
             <InfoItemStyle>
                 <p className="Num">
-                    <CountUp start={0} end={data.Yield}></CountUp>
+                    <CountUp start={0} end={data.Yield} decimals={2}></CountUp>
                 </p>
                 <p className="Text">日产奶量（KG）</p>
             </InfoItemStyle>
             <InfoItemStyle>
                 <p className="Num">
-                    <CountUp start={0} end={data.dailyGain}></CountUp>
+                    <CountUp start={0} end={data.dailyGain} decimals={2}></CountUp>
                 </p>
                 <p className="Text">日增重（KG/天）</p>
             </InfoItemStyle>

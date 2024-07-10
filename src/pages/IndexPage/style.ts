@@ -54,7 +54,7 @@ export const PageCenterStyle = styled.div`
     transform: translateX(-50%);
     flex: 1;
     align-items: center;
-    /* padding: 600px 6px 0 6px; */
+    z-index: 998;
 
     .FeedUsageLine {
         .BoxContent {

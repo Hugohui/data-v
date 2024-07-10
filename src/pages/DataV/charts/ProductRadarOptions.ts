@@ -8,12 +8,12 @@ export const radarOptions = (options: any) => (
     radar: [
       {
         indicator: [
-          { text: '空杯天数', max: 200 },
-          { text: '单产', max: 30 },
-          { text: '羊羔成活率', max: 100 },
-          { text: '初产天数', max: 200 },
-          { text: '上料误差率', max: 100 },
-          { text: '平均泌乳天数', max: 300 }
+          { text: '空杯天数', max: 210 },
+          { text: '单产', max: 1000 },
+          { text: '羊羔成活率', max: 90 },
+          { text: '初产天数', max: 390 },
+          { text: '上料误差率', max: 5, min: -5 },
+          { text: '平均泌乳天数', max: 270 }
         ],
         radius: 60,
         splitNumber: 5,

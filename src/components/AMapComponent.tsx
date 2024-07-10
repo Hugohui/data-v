@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import AMapLoader from "@amap/amap-jsapi-loader";
 import { AmapContainerStyle } from "./AMapComponentStyle";
-import { EnterDialog } from '@/pages/IndexPage/components/EnterDialog';
 import ReactDOMServer from 'react-dom/server'
 import mapFlex from '@/assets/img/mapFlex.png'
 import { useNavigate } from "react-router-dom";
 import { setFarmInfo } from "@/utils/session";
-// import indexPageBg from '@/assets/img/indexPageBg.png'
+import iconMapMarker from '@/assets/img/icons/iconMapMarker.png'
 
 const style = [
     {
@@ -72,11 +71,12 @@ const AMapComponent = ({ data }: any) => {
     }
 
     const EnterMarker = ({ info }: any) => {
+        const imgBaseUrl = process.env.REACT_APP_API_PATH
         return (
             <div style={{ 
-                width: "362px", 
-                height: "290px", 
-                backgroundImage: `url(http://112.126.95.138:8600/farmImages/indexEnterDialog.png)`,
+                width: "205px", 
+                height: "169px", 
+                backgroundImage: `url(${imgBaseUrl}/farmImages/indexEnterDialogNew.png)`,
                 backgroundSize: '100% 100%',
                 backgroundRepeat: "no-repeat",
                 position: 'relative'
@@ -104,6 +104,30 @@ const AMapComponent = ({ data }: any) => {
                     right: "25px",
                     cursor: "pointer"
                 }} data-info={JSON.stringify(info?.origin)}></div>
+                <span style={{
+                    width: 0,
+                    height: '60px',
+                    borderLeft: '1px solid #00DDEA',
+                    position: 'absolute',
+                    bottom: '-60px',
+                    left: '55px'
+                }}></span>
+                <span style={{
+                    width: '150px',
+                    height: '0',
+                    borderTop: '1px solid #00DDEA',
+                    position: 'absolute',
+                    bottom: '-60px',
+                    left: '-95px'
+                }}></span>
+                <span style={{
+                    width: 0,
+                    height: '60px',
+                    borderLeft: '1px solid #00DDEA',
+                    position: 'absolute',
+                    bottom: '-120px',
+                    left: '-95px'
+                }}></span>
             </div>
         )
     }
@@ -114,12 +138,34 @@ const AMapComponent = ({ data }: any) => {
     }
 
     // 添加点
-    const addMarker = (AMap: any, item: any) => {
+    const addMarker = (AMap: any, item: any, index: number) => {
+        var infoWindow = new AMap.InfoWindow({
+            isCustom: true,  //使用自定义窗体
+            content: renderDialog(item),
+            offset: new AMap.Pixel(210, -120)
+        });
+
+        var icon = new AMap.Icon({
+            size: new AMap.Size(20, 20), // 图标所用的大小
+            image: iconMapMarker, // 图标的URL
+            imageSize: new AMap.Size(20, 20) // 图标所用的大小
+        });
         const marker = new AMap.Marker({
             map,
             position: item.coord,
-            content: renderDialog(item),
-            offset: new AMap.Pixel(0, -362)
+            icon
+        });
+        // 默认展示第一个信息窗
+        if (index === 0) {
+            infoWindow.open(map, marker.getPosition());
+        }
+        //鼠标点击marker切换信息窗体
+        marker.on('click', function () {
+            if (infoWindow.getIsOpen()) {
+                infoWindow.close()
+            } else {
+                infoWindow.open(map, marker.getPosition());
+            }
         });
     }
 
@@ -180,12 +226,12 @@ const AMapComponent = ({ data }: any) => {
             // zooms: [6, 10]
         })
 
-        return [satellite, disWorld, disCountry, flexLayer, roadLayer]
+        return [satellite, flexLayer, roadLayer]
     }
 
     const createMarker = (AMap: any) => {
-        data?.forEach((item: any) => {
-            addMarker(AMap, item)
+        data?.forEach((item: any, index: number) => {
+            addMarker(AMap, item, index)
         })
     }
 

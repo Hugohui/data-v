@@ -47,6 +47,7 @@ export const LoginInputStyle = styled.div`
         background-color: #F3F5F9;
         border-radius: 8px;
         margin-bottom: 45px;
+        overflow: hidden;
         &:last-child {
             margin-bottom: 0;
         }

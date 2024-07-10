@@ -66,4 +66,8 @@ export const Globalstyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+  input:-internal-autofill-selected {
+    box-shadow: inset 0 0 0 1000px #F3F5F9 !important; // 改变了背景色
+    /* -webkit-text-fill-color: #c0aefa; // 改变了字体颜色 */
+  }
 `;

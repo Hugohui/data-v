@@ -9,6 +9,13 @@ export const TableStyle = styled.div<{$height?: number}>`
     font-family: PingFang SC;
     overflow-y: auto;
 
+    -ms-overflow-style: none;  /* 对于IE和Edge */
+    scrollbar-width: none;  /* 对于Firefox */
+    &::-webkit-scrollbar {
+        display: none; /* 对于Webkit浏览器 */
+    }
+
+
     table {
         width: 100%;
     }

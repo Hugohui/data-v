@@ -1,7 +1,9 @@
 import * as echarts from 'echarts';
 
-export const lineOptions = (data: any) => (
-  {
+export const lineOptions = (options: any) => {
+  const data = options?.list?.map((item: any) => item.value) || []
+
+  return {
     tooltip: {
       trigger: 'axis'
     },
@@ -13,7 +15,7 @@ export const lineOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: data?.list?.map((item: any) => item.name),
+      data: options?.list?.map((item: any) => item.name),
       axisLine: {
         show: true,
         lineStyle: {
@@ -23,10 +25,10 @@ export const lineOptions = (data: any) => (
     },
     yAxis: {
       type: 'value',
-      // name: '%',
+      name: 'kg',
       min: 0, // 设置纵坐标的最小值
-      max: 2000, // 设置纵坐标的最大值
-      interval: 500, // 设置纵坐标的间隔
+      max: Math.max(...data), // 设置纵坐标的最大值
+      interval: Math.max(...data) / 5, // 设置纵坐标的间隔
       axisLine: {
         show: true,
         lineStyle: {
@@ -42,7 +44,7 @@ export const lineOptions = (data: any) => (
     },
     series: [
       {
-        data: data?.list?.map((item: any) => item.value),
+        data,
         type: 'line',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 4, // 设置圆形标记的大小
@@ -64,4 +66,5 @@ export const lineOptions = (data: any) => (
         }
       }
     ]
-  });
+  }
+};

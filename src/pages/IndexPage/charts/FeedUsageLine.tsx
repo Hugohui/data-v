@@ -9,7 +9,7 @@ import { useIntervalRequest } from '../../../hooks/useIntervalRequest'
 const FeedUsageLine = () => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState<any>([])
+    const [data, setData] = useState<any>({})
 
     const getData = () => {
         getFeedUsageTrend({

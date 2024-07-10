@@ -60,7 +60,7 @@ export const AmapContainerStyle = styled.div`
     &::before {
         content: " ";
         display: inline-block;
-        height: 120px;
+        height: 365px;
         width: 100%;
         position: absolute;
         left: 0;

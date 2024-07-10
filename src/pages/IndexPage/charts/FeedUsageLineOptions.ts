@@ -1,19 +1,19 @@
 import * as echarts from 'echarts';
 
-export const feedUsageOptions = (data: any) => (
+export const feedUsageOptions = (options: any) => (
   {
     tooltip: {
       trigger: 'axis'
     },
     grid:{ // 让图表占满容器
-      top:"10px",
+      top:"30px",
       left:"80px",
       right:"40px",
       bottom:"20px"
     },
     xAxis: {
       type: 'category',
-      data: data?.map((item: any) => item.name),
+      data: options?.ListData?.map((item: any) => item.name),
       axisLine: {
         show: true,
         lineStyle: {
@@ -23,9 +23,10 @@ export const feedUsageOptions = (data: any) => (
     },
     yAxis: {
       type: 'value',
+      name: "吨",
       min: 0, // 设置纵坐标的最小值
-      max: 500000, // 设置纵坐标的最大值
-      interval: 100000, // 设置纵坐标的间隔
+      max: options.maxWeight, // 设置纵坐标的最大值
+      interval: options.maxWeight / 5, // 设置纵坐标的间隔
       axisLine: {
         lineStyle: {
           color: '#fff'
@@ -39,7 +40,7 @@ export const feedUsageOptions = (data: any) => (
     },
     series: [
       {
-        data: data?.map((item: any) => item.value || 0),
+        data: options?.ListData?.map((item: any) => item.value || 0),
         type: 'line',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 4, // 设置圆形标记的大小

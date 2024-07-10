@@ -1,15 +1,21 @@
 import * as echarts from 'echarts';
 
-export const blankErrorRateLineOptions = (options: any) => (
-  {
+export const blankErrorRateLineOptions = (options: any) => {
+  const max = Math.ceil(
+    Math.max(
+      ...[...options?.PlannedWeightArray || [], ...options?.ActualWeightArray || [], ...options.DownActualWeightArray || []]
+    ) / 10000
+  ) * 10000;
+
+  return {
     tooltip: {
       trigger: 'axis'
     },
-    grid:{ // 让图表占满容器
-      top:"50px",
-      left:"60px",
-      right:"20px",
-      bottom:"40px"
+    grid: { // 让图表占满容器
+      top: "50px",
+      left: "60px",
+      right: "20px",
+      bottom: "40px"
     },
     legend: {
       textStyle: {
@@ -30,8 +36,8 @@ export const blankErrorRateLineOptions = (options: any) => (
       type: 'value',
       name: 'kg',
       min: 0, // 设置纵坐标的最小值
-      max: 250000, // 设置纵坐标的最大值
-      interval: 50000, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         show: false,
         lineStyle: {
@@ -115,4 +121,5 @@ export const blankErrorRateLineOptions = (options: any) => (
         }
       }
     ]
-  });
+  }
+};

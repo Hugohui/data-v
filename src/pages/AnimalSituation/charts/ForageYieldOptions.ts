@@ -1,7 +1,10 @@
 import * as echarts from 'echarts';
 
-export const forageYieldOptions = (data: any) => (
-  {
+export const forageYieldOptions = (options: any) => {
+  const xAxis = options?.xAxisList || []
+  const data = options?.DataList.map((item: any) => item.num) || []
+  const max = Math.ceil(Math.max(...data) / 100) * 100
+  return {
     tooltip: {
       trigger: 'axis'
     },
@@ -13,7 +16,7 @@ export const forageYieldOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: data.xAxisList,
+      data: xAxis,
       axisLine: {
         show: true,
         lineStyle: {
@@ -25,8 +28,8 @@ export const forageYieldOptions = (data: any) => (
       type: 'value',
       name: '（只）',
       min: 0, // 设置纵坐标的最小值
-      max: 3000, // 设置纵坐标的最大值
-      interval: 500, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         show: true,
         lineStyle: {
@@ -41,7 +44,7 @@ export const forageYieldOptions = (data: any) => (
     },
     series: [
       {
-        data: data.DataList.map((item: any) => item.num),
+        data,
         type: 'line',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 8, // 设置圆形标记的大小
@@ -63,4 +66,5 @@ export const forageYieldOptions = (data: any) => (
         }
       }
     ]
-  });
+  }
+};

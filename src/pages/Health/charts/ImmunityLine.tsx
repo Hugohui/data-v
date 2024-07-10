@@ -19,16 +19,19 @@ const ImmunityLine: FC<OptionsI> = (options) => {
         const params: any = {}
 
         const nameData: any = {}
+        let max = 0
         data?.list?.forEach((item: any) => {
             if(!nameData[item.name]) {
                 nameData[item.name] = []
             }
             nameData[item.name].push(item.value)
+            max = Math.max(max, item.value)
         })
 
         params['legendData'] = Object.keys(nameData)
         params['data'] = nameData
         params['xAxislist'] = data.xAxislist
+        params['max'] = max
         
         return params
     }

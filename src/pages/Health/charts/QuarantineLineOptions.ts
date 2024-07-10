@@ -1,7 +1,9 @@
 import * as echarts from 'echarts';
 
-export const lineOptions = (options: any) => (
-  {
+export const lineOptions = (options: any) => {
+  console.log("==lineOptions===", options)
+  const max = Math.ceil(options.max / 100) * 100
+  return {
     tooltip: {
       trigger: 'axis'
     },
@@ -23,10 +25,10 @@ export const lineOptions = (options: any) => (
     },
     yAxis: {
       type: 'value',
-      name: '（只）',
+      name: '只',
       min: 0, // 设置纵坐标的最小值
-      max: 3000, // 设置纵坐标的最大值
-      interval: 500, // 设置纵坐标的间隔
+      max: max, // 设置纵坐标的最大值
+      interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         show: true,
         lineStyle: {
@@ -61,4 +63,5 @@ export const lineOptions = (options: any) => (
         // }
       }
     })
-  });
+  }
+};

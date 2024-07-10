@@ -14,18 +14,10 @@ interface RatioI {
     // data: RatioInfoI[]
 }
 
-const testData = [
-    { value: 1048, name: '子宫炎' },
-    { value: 735, name: '肺炎' },
-    { value: 345, name: '腹泻' },
-    { value: 456, name: '肠炎' },
-    { value: 123, name: '感冒' },
-]
-
 const DiseaseRatio: FC<RatioI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState(testData)
+    const [data, setData] = useState([])
 
     const getData = () => {
         getNumbeSickSheepRecentOneYear().then((res: any) => {

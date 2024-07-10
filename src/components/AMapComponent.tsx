@@ -7,16 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { setFarmInfo } from "@/utils/session";
 import iconMapMarker from '@/assets/img/icons/iconMapMarker.png'
 
-const style = [
-    {
-        "featureType": "all",
-        "elementType": "all",
-        "stylers": {
-            "color": "#000000" // 将背景色设置为黑色
-        }
-    }
-];
-
 const AMapComponent = ({ data }: any) => {
     let map: any = null;
     const [mapComplete, setMapComplete] = useState(false)
@@ -33,25 +23,14 @@ const AMapComponent = ({ data }: any) => {
                 // strokeStyle: 'dashed',
                 strokeDasharray: [5, 5],
             });
-            // polygon.on('mouseover', () => {
-            //     polygon.setOptions({
-            //         fillOpacity: 0.7,
-            //         fillColor: '#7bccc4'
-            //     })
-            // })
-            // polygon.on('mouseout', () => {
-            //     polygon.setOptions({
-            //         fillOpacity: 0.5,
-            //         fillColor: '#ccebc5'
-    
-            //     })
-            // })
             map.add(polygon);
         } catch (error) {
             console.log("addPolygon error", error)
         }
     }
 
+
+    // 省份高亮
     const createPolygon = (AMap: any) => {
         const search = new AMap.DistrictSearch({
             subdistrict: 0,
@@ -59,14 +38,22 @@ const AMapComponent = ({ data }: any) => {
             level: "city"
         })
 
-        search.search("陕西省", (status: any, result: any) => {
-            const bounds = result.districtList[0].boundaries
-            if (bounds) {
-                for (var i = 0; i < bounds.length; i += 1) {//构造MultiPolygon的path
-                    bounds[i] = [bounds[i]]
+        const provinceList: any = []
+        data?.forEach((item: any) => {
+
+            const province = item?.origin?.ProvinceName
+            if (provinceList.includes(province)) return;
+            provinceList.push(province)
+
+            search.search(province, (status: any, result: any) => {
+                const bounds = result.districtList[0].boundaries
+                if (bounds) {
+                    for (var i = 0; i < bounds.length; i += 1) {//构造MultiPolygon的path
+                        bounds[i] = [bounds[i]]
+                    }
                 }
-            }
-            addPolygon(AMap, bounds)
+                addPolygon(AMap, bounds)
+            })
         })
     }
 

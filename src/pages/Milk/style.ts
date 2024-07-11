@@ -49,7 +49,7 @@ export const PageTopStyle = styled.div`
 `
 
 export const PageMiddleStyle = styled.div`
-    margin: 7px 0;
+    margin: 9px 0;
     gap: 9px;
     display: flex;
 `

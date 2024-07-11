@@ -18,6 +18,7 @@ export const PageCenterStyle = styled.div`
     padding: 0 13px;
 
     .VideoBoxStyle {
+        height: 700px;
         gap: 13px;
         margin-top: 8px;
         .VideoItemStyle {

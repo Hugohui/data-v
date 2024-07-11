@@ -12,13 +12,12 @@ interface VideoBoxI {
 
 export const VideoBox: FC<VideoBoxI> = (props) => {
     return (
-        props.videoList.length > 0 ?
         <VideoBoxStyle $height={props.height} $width={props.width} className="VideoBoxStyle">
             {
-                props.videoList.map((item: VideoInfoI, index: any) => {
+                props?.videoList?.map((item: VideoInfoI, index: any) => {
                     return <VideoItem lineCont={props.lineCont} url={item.url || item.VideoLink} key={index}></VideoItem>
                 })
             }
-        </VideoBoxStyle> : <></>
+        </VideoBoxStyle>
     )
 }

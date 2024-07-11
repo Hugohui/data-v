@@ -39,7 +39,7 @@ export const Login = () => {
                     <div>
                         <span className="icon icon-password"></span>
                         <input type={showPassword ? 'text' : 'password'} placeholder="请输入密码" onChange={(e) => setPassword(e.target.value)} />
-                        <span className={['icon icon-eye', !showPassword ? 'close' : ''].join(' ')} onClick={toggleEye}></span>
+                        <span className={['icon icon-eye', showPassword ? 'close' : ''].join(' ')} onClick={toggleEye}></span>
                     </div>
                 </LoginInputStyle>
                 <LoginButtonStyle>

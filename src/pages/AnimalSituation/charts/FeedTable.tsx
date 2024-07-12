@@ -19,7 +19,7 @@ export const FeedTable = () => {
         },
     ]
 
-    const [data, setData] = useState([])
+    const [data, setData] = useState<any>([])
 
     const getData = () => {
         getReproductivEvent().then((res) => {

@@ -30,6 +30,8 @@ const CustomTable: FC<TablePropsI> = (props) => {
     const wheelTimeoutRef = useRef<any>()
     const timerRef = useRef<any>()
     const currentSelectRef = useRef<any>(0)
+    const scrollTopRef = useRef<any>(0)
+    const onePageCount = useRef<any>(0)
     
 
     const rowClick = (row: any, index: any) => {
@@ -42,20 +44,45 @@ const CustomTable: FC<TablePropsI> = (props) => {
     const scrollTable = () => {
         if (!tbodyRef.current) return;
 
+        // 如果列表超过一页，选中状态始终第一个，轮播数据
         if (tableViewRef.current.scrollHeight > tableViewRef.current.clientHeight) {
-            // 如果列表超过一页，选中状态始终第一个，轮播数据
-            originTableData.current?.push(originTableData.current?.splice(0,1)[0])
-            const currentData = JSON.parse(JSON.stringify(originTableData.current))
-            setTableData(currentData)
-            onRowClick && onRowClick(currentData[currentSelectRef.current], currentSelectRef.current)
-        } else {
-            // 如果列表不超过一页，则切换选中状态
+            // originTableData.current?.push(originTableData.current?.splice(0,1)[0])
+            // const currentData = JSON.parse(JSON.stringify(originTableData.current))
+            // setTableData(currentData)
+            // onRowClick && onRowClick(currentData[currentSelectRef.current], currentSelectRef.current)
+            const maxScroll = tableViewRef.current.scrollHeight - tableViewRef.current.clientHeight;
+            if (scrollTopRef.current >  maxScroll || maxScroll - scrollTopRef.current < 50) {
+                if (!canSelectItem) {
+                    scrollTopRef.current = 0
+                    tableViewRef.current.scrollTop = 0
+                } else {
+                    // 如果是可选择的，有选择样式的，需要滚动到最后一个
+                    if (currentSelectRef.current < Math.floor(tableViewRef.current.scrollHeight / 50) - 2) {
+                        currentSelectRef.current++
+                    } else {
+                        currentSelectRef.current = 0
+                        scrollTopRef.current = 0
+                        tableViewRef.current.scrollTop = 0
+                    }
+                }
+            } else {
+                scrollTopRef.current = scrollTopRef.current + 50
+                currentSelectRef.current++
+                tableViewRef.current.scrollTo({
+                    top: scrollTopRef.current, behavior: 'smooth'
+                })
+            }
+            if (canSelectItem) {
+                onRowClick && onRowClick(data[currentSelectRef.current], currentSelectRef.current)
+                setCurrentSelect(currentSelectRef.current)
+            }
+        } else { // 如果列表不超过一页，则切换选中状态
             if (currentSelectRef.current >= data.length - 1) {
                 currentSelectRef.current = 0
             } else {
                 currentSelectRef.current++
             }
-            onRowClick && onRowClick(data[currentSelect], currentSelect)
+            onRowClick && onRowClick(data[currentSelectRef.current], currentSelectRef.current)
             setCurrentSelect(currentSelectRef.current)
         }
     }

@@ -38,7 +38,7 @@ export const TableStyle = styled.div<{$height?: number}>`
 
     thead {
         position: sticky;
-        top: -10px;
+        top: 0;
         font-weight: 500;
         font-size: 15px;
         color: #19FCDE;

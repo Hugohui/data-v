@@ -17,7 +17,7 @@ interface TablePropsI {
 }
 
 const CustomTable: FC<TablePropsI> = (props) => {
-    const { columns, data, hiddenIndex, onRowClick, canSelectItem, defaultSelectIndex } = props;
+    const { columns, data, hiddenIndex, onRowClick, canSelectItem, defaultSelectIndex, autoLoop=true } = props;
     const [currentSelect, setCurrentSelect] = useState(defaultSelectIndex || 0);
     const tableRef = useRef<any>()
     const tbodyRef = useRef<any>()
@@ -39,7 +39,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
     useEffect(() => {
         let timer: any = 0;
         let wheelTimeout: any = 0;
-        if(props.autoLoop) {
+        if(autoLoop) {
             timer = setInterval(scrollTable, 2000);
 
             // 鼠标滚轮滚动时清楚滚动效果，滚轮停止2秒后恢复

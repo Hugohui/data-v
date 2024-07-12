@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import dataVPageBg from '@/assets/img/dataVPageBg.png'
+// import dataVPageBg from '@/assets/img/dataVPageBg.png'
+import dataVPageBg from '@/assets/img/dataVPageBg.jpg'
 
 export const PageBGStyle = styled.div`
     width: 100%;

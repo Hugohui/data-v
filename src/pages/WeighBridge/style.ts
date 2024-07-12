@@ -12,11 +12,11 @@ export const PageLeftStyle = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
+    padding: 20px 0 20px 20px;
     background: rgba(0, 0, 0, 0.2);
     & > div {
         width: calc(100%/2 - 20px);
-        height: 50%;
+        height: calc(100% / 2 - 10px);
         border-radius: 8px;
         overflow: hidden;
         background-color: #000;

@@ -2,10 +2,7 @@ import styled from "styled-components";
 import iconVideoPlay from '@/assets/img/icons/iconVideoPlay.png'
 
 export const VideoBoxStyle = styled.div<{$height?: string, $width?: string}>`
-    background: #000000;
-    opacity: 0.2;
-    /* width: 530px; */
-    /* height: 362px; */
+    background: rgba(0, 0, 0, 0.2);
     padding: 8px;
 
     /* ${props => props.$width && `
@@ -26,8 +23,9 @@ export const VideoItemStyle = styled.div<{$lineCont?: number}>`
     position: relative;
     width: calc(100% / 2 - 12px);
     /* height: 165px; */
-    /* background-color: #fff; */
+    background-color: #000;
     border-radius: 4px;
+    overflow: hidden;
     video {
         width: 100%;
         height: 100%;

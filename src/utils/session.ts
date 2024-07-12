@@ -6,7 +6,7 @@ import { SessionEnum } from '../enums/constantEnum'
  * @returns 
  */
 export const getFarmID = () => {
-  return sessionStorage.getItem(SessionEnum.FARMID)
+  return Number(sessionStorage.getItem(SessionEnum.FARMID))
 }
 
 /**

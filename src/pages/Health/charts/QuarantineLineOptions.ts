@@ -1,7 +1,6 @@
 import * as echarts from 'echarts';
 
 export const lineOptions = (options: any) => {
-  console.log("==lineOptions===", options)
   const max = Math.ceil(options.max / 100) * 100
   return {
     tooltip: {

@@ -3,7 +3,8 @@ import { RequestHttpEnum, ContentTypeEnum } from '../enums/httpEnum'
 import { getFarmID, getFarmInfo } from '../utils/session'
 
 const farmID = () => {
-  if (window.location.pathname === '/') {
+  const pathname = process.env.REACT_APP_ROUTER_MODEL === 'HashRouter' ? window.location.hash : window.location.pathname;
+  if (pathname === '/' || pathname === '' || pathname === '#/') {
     return getFarmID()
   } else {
     const farmInfo = getFarmInfo()

@@ -31,11 +31,11 @@ axiosInstance.interceptors.request.use(
       window.location.href = process.env.REACT_APP_ROUTER_MODEL === 'HashRouter' ? '/#/login' : '/login'
       return config
     }
-
-    if (window.location.pathname !== '/' && window.location.pathname !== '/login') {
+    const pathname = process.env.REACT_APP_ROUTER_MODEL === 'HashRouter' ? window.location.hash : window.location.pathname;
+    if (pathname !== '/' && pathname !== '/login' && pathname != '' && pathname != '#/' && pathname != '#/login') {
       const farmInfo = getFarmInfo()
       if (!farmInfo.PastureCode) {
-        window.location.href = '/'
+        window.location.href = process.env.REACT_APP_ROUTER_MODEL === 'HashRouter' ? '#/' : '/'
         return config
       }
     }

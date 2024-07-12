@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const Router =  process.env.REACT_APP_ROUTER_MODEL == 'HashRouter' ? HashRouter : BrowserRouter;
+const Router =  process.env.REACT_APP_ROUTER_MODEL === 'HashRouter' ? HashRouter : BrowserRouter;
 
 root.render(
   <React.StrictMode>

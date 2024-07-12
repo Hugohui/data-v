@@ -172,7 +172,7 @@ export const sectionOptions = (options: any) => (
         },
         data: [
           {
-            value: options.value
+            value: options.value || 0
           },
         ]
       },

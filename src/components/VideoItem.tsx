@@ -12,7 +12,7 @@ export interface VideoInfoI {
 export const VideoItem = ({ lineCont, url, showVideoCover = true}: VideoInfoI) => {
 
     const videoRef = useRef<any>(null)
-    const [isPlay, setIsPlay] = useState(false)
+    const [isPlay, setIsPlay] = useState(true)
 
     const onStartVideo = (e: any) => {
         videoRef.current && videoRef.current.play()

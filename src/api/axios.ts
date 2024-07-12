@@ -28,7 +28,7 @@ axiosInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     // 请求前判断是否登录（是否有farmid）
     if (config?.url !== 'App/User/CheckLogin' && !isLogin()) {
-      window.location.href = process.env.REACT_APP_ROUTER_MODEL == 'HashRouter' ? '/#/login' : '/login'
+      window.location.href = process.env.REACT_APP_ROUTER_MODEL === 'HashRouter' ? '/#/login' : '/login'
       return config
     }
 

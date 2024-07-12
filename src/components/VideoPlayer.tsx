@@ -2,7 +2,7 @@
 import { useRef, useEffect, forwardRef, useImperativeHandle } from 'react'
 import Hls from 'hls.js'
 
-const VideoPlayer = forwardRef(({ src }: any, ref) => {
+const VideoPlayer = forwardRef(({ src, autoPlay=true }: any, ref) => {
     const videoRef = useRef<any>()
     let hlsRef = useRef<any>()
     const isFirstRef = useRef(true)
@@ -13,7 +13,9 @@ const VideoPlayer = forwardRef(({ src }: any, ref) => {
                 hlsRef.current.loadSource(src)
                 hlsRef.current.attachMedia(videoRef.current)
                 hlsRef.current.on(Hls.Events.FRAG_LOADED, () => {
-                    isFirstRef.current && pause()
+                    if (!autoPlay) {
+                        isFirstRef.current && pause()
+                    }
                     isFirstRef.current = false
                 })
             } else if (videoRef.current) {
@@ -50,7 +52,7 @@ const VideoPlayer = forwardRef(({ src }: any, ref) => {
     })
 
     return (
-        <video ref={videoRef} autoPlay={false} style={{ width: '100%'}}></video>
+        <video ref={videoRef} autoPlay={autoPlay} style={{ width: '100%'}}></video>
     )
 })
 

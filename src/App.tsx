@@ -35,7 +35,6 @@ function App() {
   const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
       // 在这里处理F11按键按下的事件
-      console.log('F11 key is down');
       toggleFullscreen()
     }
   };

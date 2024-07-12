@@ -26,7 +26,7 @@ export const candlestickOptions = (options: any) => (
     // ],
     xAxis: {
       type: 'category',
-      name: "月",
+      name: "月龄",
       // min: 0,
       // max: 12,
       data: options.xAxisList,

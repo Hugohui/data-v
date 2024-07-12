@@ -1,5 +1,7 @@
 import { FC, useEffect, useRef, useState } from "react"
 import { TableStyle } from "./CustomTableStyle"
+import { isNode } from "@/utils/dom";
+import { useMountedState } from "@/hooks/useMountedState";
 
 interface columnsI {
     key: string
@@ -18,50 +20,78 @@ interface TablePropsI {
 
 const CustomTable: FC<TablePropsI> = (props) => {
     const { columns, data, hiddenIndex, onRowClick, canSelectItem, defaultSelectIndex, autoLoop=true } = props;
-    const [currentSelect, setCurrentSelect] = useState(defaultSelectIndex || 0);
+    let [currentSelect, setCurrentSelect] = useState(defaultSelectIndex || 0);
     const tableRef = useRef<any>()
     const tbodyRef = useRef<any>()
+    const tableViewRef= useRef<any>()
+    const isMounted = useMountedState()
+    const originTableData = useRef<any>([])
+    const [tableData, setTableData] = useState<any>([])
+    const wheelTimeoutRef = useRef<any>()
+    const timerRef = useRef<any>()
+    const currentSelectRef = useRef<any>(0)
+    
 
     const rowClick = (row: any, index: any) => {
+        resetInterval()
         setCurrentSelect(index)
+        currentSelectRef.current = index
         onRowClick && onRowClick(row, index)
     }
 
     const scrollTable = () => {
-        if (tbodyRef.current) {
-            // 获取表格的行数
-            const rowCount = tbodyRef.current?.rows.length;
-            const row = tbodyRef.current.getElementsByTagName('tr')[rowCount - 1];
-            tbodyRef.current.insertBefore(row, tbodyRef.current.firstChild);
+        if (!tbodyRef.current) return;
+
+        if (tableViewRef.current.scrollHeight > tableViewRef.current.clientHeight) {
+            // 如果列表超过一页，选中状态始终第一个，轮播数据
+            originTableData.current?.push(originTableData.current?.splice(0,1)[0])
+            const currentData = JSON.parse(JSON.stringify(originTableData.current))
+            setTableData(currentData)
+            onRowClick && onRowClick(currentData[currentSelectRef.current], currentSelectRef.current)
+        } else {
+            // 如果列表不超过一页，则切换选中状态
+            if (currentSelectRef.current >= data.length - 1) {
+                currentSelectRef.current = 0
+            } else {
+                currentSelectRef.current++
+            }
+            onRowClick && onRowClick(data[currentSelect], currentSelect)
+            setCurrentSelect(currentSelectRef.current)
         }
     }
 
-    useEffect(() => {
-        let timer: any = 0;
-        let wheelTimeout: any = 0;
-        if(autoLoop) {
-            timer = setInterval(scrollTable, 2000);
+    const resetInterval = () => {
+        if (wheelTimeoutRef.current) {
+            clearTimeout(wheelTimeoutRef.current)
+        }
+        wheelTimeoutRef.current = setTimeout(() => {
+            timerRef.current = setInterval(scrollTable, 3000)
+        }, 6000)
+        timerRef.current && clearInterval(timerRef.current)
+    }
 
-            // 鼠标滚轮滚动时清楚滚动效果，滚轮停止2秒后恢复
-            tableRef.current.addEventListener('wheel', () => {
-                if (wheelTimeout) {
-                    clearTimeout(wheelTimeout)
-                }
-                wheelTimeout = setTimeout(() => {
-                    timer = setInterval(scrollTable, 2000)
-                }, 4000)
-                timer && clearInterval(timer)
-            })
+    useEffect(() => {
+        if (isMounted && data.length > 0) {
+            originTableData.current = JSON.parse(JSON.stringify(data));
+            setTableData(data);
+            if(autoLoop) {
+                timerRef.current = setInterval(scrollTable, 3000);
+
+                // 鼠标滚轮滚动时清楚滚动效果，滚轮停止6秒后恢复
+                tableRef.current.addEventListener('wheel', () => {
+                    resetInterval()
+                })
+            }
         }
 
         return () => {
-            timer && clearInterval(timer)
-            wheelTimeout && clearTimeout(wheelTimeout)
+            timerRef.current && clearInterval(timerRef.current)
+            wheelTimeoutRef.current && clearTimeout(wheelTimeoutRef.current)
         }
-    }, [])
+    }, [isMounted, data])
 
     return (
-        <TableStyle>
+        <TableStyle ref={tableViewRef}>
             <table ref={tableRef}>
                 <thead>
                     <tr>
@@ -72,7 +102,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
                     </tr>
                 </thead>
                 <tbody ref={tbodyRef}>
-                    {data?.map((row, index) => (
+                    {tableData?.map((row: any, index: number) => (
                         <tr
                             key={index}
                             onClick={() => rowClick(row, index)} 

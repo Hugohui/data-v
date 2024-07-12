@@ -35,7 +35,7 @@ export const SheepListTable = () => {
     const getData = () => {
         getSheepList().then((res: any) => {
             if (res.code === 200 && res.data) {
-                setData(res.data)
+                setData([...res.data, ...res.data])
             }
         })
     }

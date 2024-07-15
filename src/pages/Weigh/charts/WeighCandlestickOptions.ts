@@ -36,7 +36,7 @@ export const candlestickOptions = (options: any) => {
     ],
     xAxis: {
       type: 'category',
-      name: "月龄",
+      name: "月",
       // min: 0,
       // max: 12,
       data: options.xAxisList,
@@ -57,7 +57,7 @@ export const candlestickOptions = (options: any) => {
       type: 'value',
       name: 'kg',
       min: 0,
-      max: 500,
+      max: 10,
       splitLine: false,
       axisLine: {
         show: false,

@@ -21,46 +21,6 @@ export const mapOptions = (data: any) => (
         tooltip: {
             triggerOn: 'click',
             enterable: true,
-            formatter: function(params: any, ticket: any, callback: any) {
-                console.log(params)
-                let content = {
-                    area: 1,
-                    areaName: params.name
-                }
-                // let result = that.$axios({
-                //     method: 'get',
-                //     url: that.getMapCompany,
-                //     params: content
-                // }).then(res => {
-                //     console.log(params, content, 'log')
-                // })
-                // var tipHtml = `
-                //     <div className="enterDialog" style="postion: absolute;left: 100px;">
-                //         <div className="name">${params.name}</div>
-                //         <div className="info">
-                //             <div><span>牧场名称</span>：产投集团</div>
-                //             <div><span>存栏数</span>：5000只</div>
-                //             <div><span>地址</span>：</div>
-                //         </div>
-                //         <div className="enter" onClick={toDataV}></div>
-                //     </div>
-                // `;
-
-                // tipHtml = '<div style="width:200px;height:200px;background:rgba(22,80,158,0.8);border:1px solid rgba(7,166,255,0.7)">'
-                // +'<div style="width:100%;height:40px;line-height:40px;border-bottom:2px solid rgba(7,166,255,0.7);margin-bottom:10px;">'
-                // +'<span style="margin-left:10px;color:#fff;font-size:16px;">'+ params.name +'</span>'+'</div>'
-                // +'<div>'
-                // +'<p style="color:#fff;font-size:12px;">'+'<i style="display:inline-block;width:8px;height:8px;background:#16d6ff;margin:0 8px">'+'</i>'
-                // +'公司数量：'+'<span style="color:#f48225;margin:0 6px;">'+3+'</span>'+'个'+'</p>'
-                // +'<p style="color:#fff;font-size:12px;">'+'<i style="display:inline-block;width:8px;height:8px;background:#16d6ff;margin:0 8px">'+'</i>'
-                // +'被考核主体数量'+'<span style="color:#f4e925;margin:0 6px;">'+4+'</span>'+'个'+'</p>'
-                // +'</div>'+'</div>';
-                // return tipHtml;
-
-                // return result;
-                 
-                 
-            }
         },
         series: [
             {

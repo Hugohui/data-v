@@ -1,6 +1,5 @@
 export const candlestickOptions = (options: any) => {
   const source = options?.list?.map((item: any) => item.value) || []
-  console.log("======candlestickOptions======", source)
   return {
     grid:{ // 让图表占满容器
       top:"40px",

@@ -82,8 +82,6 @@ const EChartsCommon = (props: {
     // 监听点击事件
     chartRef.current.on('click', (params: any) => {
 
-      console.log("========", params)
-
       // 如果点击的是地图系列（series）
       if (params.componentType === 'series') {
 

@@ -32,7 +32,6 @@ const AllFodderBar: FC<OptionsI> = ({dataType = ''}) => {
     useIntervalRequest(getData)
 
     const onChange = (value: string) => {
-        console.log("===onChange===", value)
         hasChange.current = true
         if (value === 'year') {
             setDataType(undefined)

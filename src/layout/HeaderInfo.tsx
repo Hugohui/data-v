@@ -31,7 +31,6 @@ export const HeaderInfo = () => {
 
         getWeatherInfo().then((res: any) => {
             if (res.code === '200') {
-                console.log("getWeatherInfo=====", res.now)
                 setWeather(res.now)
             }
         })

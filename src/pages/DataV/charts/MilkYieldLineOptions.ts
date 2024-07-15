@@ -14,11 +14,12 @@ export const lineOptions = (options: any) => {
     grid:{ // 让图表占满容器
       top:"30px",
       left:"50px",
-      right:"30px",
+      right:"35px",
       bottom:"30px"
     },
     xAxis: {
       type: 'category',
+      name: options.xUnit,
       data: xAxis,
       axisLine: {
         show: true,

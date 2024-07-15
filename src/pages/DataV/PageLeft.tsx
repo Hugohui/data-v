@@ -1,19 +1,28 @@
 import { PageLeftStyle } from "./style"
 import { BorderBox } from "../../components/basic/BorderBox"
 import Dialog from "../../components/basic/Dialog"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { EvaluateTable } from "./charts/EvaluateTable"
 import FodderBar from "./charts/FodderBar"
 import ClearDungBarLine from "./charts/ClearDungBarLine"
 import AllFodderBar from "./charts/AllFodderBar"
+import useEvent from "@/hooks/useEventHook"
 
 export const PageLeft = () => {
     const [showDialog, setShowDialog] = useState(false)
+    const [dataVFodderDataType, setDataVFodderDataType] = useState<any>('')
+    const { subscribe } = useEvent()
+
+    useEffect(() => {
+        subscribe('onDataVFodderMonthYearSwitch', (value: string) => {
+            setDataVFodderDataType(value)
+        })
+    }, [])
 
     return (
         <PageLeftStyle>
             <Dialog title="全部饲喂草料量" show={showDialog} setShow={setShowDialog}>
-                <AllFodderBar></AllFodderBar>
+                <AllFodderBar dataType={dataVFodderDataType}></AllFodderBar>
             </Dialog>
 
             <BorderBox title="育肥水平评估">

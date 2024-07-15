@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const MonthYearSwitchStyle = styled.div`
-    /* position: relative;
+    position: absolute;
     top: 6px;
-    right: 25px; */
+    right: 25px;
     color: #fff;
     text-align: right;
     padding-right: 30px;
     margin-top: 6px;
     /* display: flex; */
+    z-index: 99;
 `
 
-export const SwitchItem = styled.div<{isActive: Boolean}>`
+export const SwitchItem = styled.div<{isactive: boolean}>`
     height: 24px;
     width: 46px;
     text-align: center;
@@ -27,7 +28,7 @@ export const SwitchItem = styled.div<{isActive: Boolean}>`
     cursor: pointer;
     display: inline-block;
 
-    ${props => props.isActive && `
+    ${props => props.isactive && `
         background: #214A4D;
         border: 1px solid #19D9AE;
         color: #69FFDC;

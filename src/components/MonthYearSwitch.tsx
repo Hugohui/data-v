@@ -7,7 +7,7 @@ interface ParamsI {
 }
 
 const MonthYearSwitch: FC<ParamsI> = (props) => {
-    const [active, setActive] = useState(props.active)
+    const [active, setActive] = useState<any>(props.active)
 
     const switchActive = (value: string) => {
         setActive(value)
@@ -15,11 +15,11 @@ const MonthYearSwitch: FC<ParamsI> = (props) => {
     }
 
     return (
-        <MonthYearSwitchStyle>
-            <SwitchItem isActive={active === 'month'}>
+        <MonthYearSwitchStyle className="monthYearSwitch">
+            <SwitchItem isactive={active === 'month' ? active : undefined}>
                 <div onClick={() => switchActive('month')}>月</div>
             </SwitchItem>
-            <SwitchItem isActive={active === 'year'}>
+            <SwitchItem isactive={active === 'year' ? active : undefined}>
                 <div onClick={() => switchActive('year')}>年</div>
             </SwitchItem>
         </MonthYearSwitchStyle>

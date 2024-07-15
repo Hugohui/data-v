@@ -11,6 +11,7 @@ export const lineOptions = (options: any) => {
     },
     xAxis: {
       type: 'category',
+      name: '月',
       data: options.xAxislist,
       axisLine: {
         show: true,

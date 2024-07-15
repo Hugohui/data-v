@@ -1,7 +1,7 @@
 import * as echarts from 'echarts';
 
 export const keepLineOptions = (options: any) => {
-  const data = options?.DataList[0]?.value?.map((item: any) => item[1]) || []
+  const data = options?.ListData?.map((item: any) => item.value) || []
   const xAxis = options?.xAxisList || []
   const max = Math.ceil(Math.max(...data) / 100) * 100
   return {
@@ -16,6 +16,7 @@ export const keepLineOptions = (options: any) => {
     },
     xAxis: {
       type: 'category',
+      name: "月",
       data: xAxis,
       axisLine: {
         show: true,

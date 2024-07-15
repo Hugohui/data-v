@@ -26,7 +26,7 @@ export const getBreedingRate = (params?: any) => {
  * @returns 
  */
 export const getHalfYearEveryPasturStatics = (params?: any) => {
-    return get('App/BigDataApi/HalfYearEveryPasturStatics', params)
+    return get('App/BigDataApi/getMonthSheepHerdsTrend', params)
 }
 
 /**

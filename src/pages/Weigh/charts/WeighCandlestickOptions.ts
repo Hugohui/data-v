@@ -1,5 +1,7 @@
-export const candlestickOptions = (options: any) => (
-  {
+export const candlestickOptions = (options: any) => {
+  const source = options?.list?.map((item: any) => item.value) || []
+  console.log("======candlestickOptions======", source)
+  return {
     grid:{ // 让图表占满容器
       top:"40px",
       left:"50px",
@@ -7,23 +9,31 @@ export const candlestickOptions = (options: any) => (
       bottom:"40px"
     },
     tooltip: {
-      trigger: 'axis'
+      trigger: 'axis',
+      formatter: function (params: any) {
+        var data = params[0]?.data;
+        return '最小值: ' + data[1] + '<br/>' +
+               '第一四分位数: ' + data[2] + '<br/>' +
+               '中位数: ' + data[3] + '<br/>' +
+               '第三四分位数: ' + data[4] + '<br/>' +
+               '最大值: ' + data[5];
+    }
     },
-    // dataset: [
-    //   {
-    //     // prettier-ignore
-    //     source: options.source
-    //   },
-    //   {
-    //     transform: {
-    //       type: 'boxplot'
-    //     }
-    //   },
-    //   {
-    //     fromDatasetIndex: 1,
-    //     fromTransformResult: 1
-    //   }
-    // ],
+    dataset: [
+      {
+        // prettier-ignore
+        source
+      },
+      {
+        transform: {
+          type: 'boxplot'
+        }
+      },
+      {
+        fromDatasetIndex: 1,
+        fromTransformResult: 1
+      }
+    ],
     xAxis: {
       type: 'category',
       name: "月龄",
@@ -68,8 +78,8 @@ export const candlestickOptions = (options: any) => (
           borderColor0: '#54ea92',
           borderColorDoji: null,
         },
-        data: options.list,
+        // data: options.list,
       }
     ]
   }
-);
+};

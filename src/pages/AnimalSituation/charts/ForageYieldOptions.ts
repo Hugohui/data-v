@@ -16,6 +16,7 @@ export const forageYieldOptions = (options: any) => {
     },
     xAxis: {
       type: 'category',
+      name: "月",
       data: xAxis,
       axisLine: {
         show: true,

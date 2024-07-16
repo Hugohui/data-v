@@ -3,7 +3,7 @@ import * as echarts from 'echarts';
 export const forageYieldOptions = (options: any) => {
   const xAxis = options?.xAxisList || []
   const data = options?.DataList.map((item: any) => item.num) || []
-  const max = Math.ceil(Math.max(...data) / 100) * 100
+  const max = options.yAxis || Math.ceil(Math.max(...data) / 100) * 100
   return {
     tooltip: {
       trigger: 'axis'
@@ -30,7 +30,7 @@ export const forageYieldOptions = (options: any) => {
       name: '（只）',
       min: 0, // 设置纵坐标的最小值
       max: max, // 设置纵坐标的最大值
-      interval: max / 5, // 设置纵坐标的间隔
+      // interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         show: true,
         lineStyle: {

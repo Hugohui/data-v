@@ -1,6 +1,6 @@
 import * as echarts from 'echarts';
 
-export const feedErrorRateLineOptions = (data: any) => (
+export const feedErrorRateLineOptions = (options: any) => (
   {
     tooltip: {
       trigger: 'axis'
@@ -13,7 +13,7 @@ export const feedErrorRateLineOptions = (data: any) => (
     },
     xAxis: {
       type: 'category',
-      data: data?.map((item: any) => item.shift),
+      data: options?.FeedingErroRatelist?.map((item: any) => item.shift),
       axisLine: {
         show: true,
         lineStyle: {
@@ -25,7 +25,7 @@ export const feedErrorRateLineOptions = (data: any) => (
       type: 'value',
       name: '%',
       min: -100, // 设置纵坐标的最小值
-      max: 100, // 设置纵坐标的最大值
+      max: options.upyAxis, // 设置纵坐标的最大值
       interval: 50, // 设置纵坐标的间隔
       axisLine: {
         show: true,
@@ -41,7 +41,7 @@ export const feedErrorRateLineOptions = (data: any) => (
     },
     series: [
       {
-        data: data?.map((item: any) => item.ErroRate),
+        data: options?.FeedingErroRatelist?.map((item: any) => item.ErroRate),
         type: 'line',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 4, // 设置圆形标记的大小

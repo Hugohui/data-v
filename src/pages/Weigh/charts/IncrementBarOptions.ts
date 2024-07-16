@@ -1,8 +1,8 @@
 import * as echarts from 'echarts';
 
 export const barOptions = (options: any) => {
-  const xAxis = options?.map((item: any) => item.name) || []
-  const data = options?.map((item: any) => item.value) || []
+  const xAxis = options?.list?.map((item: any) => item.name) || []
+  const data = options?.list?.map((item: any) => item.value) || []
   const max = Math.ceil(Math.max(...data) / 100) * 100
 
   return {
@@ -33,9 +33,9 @@ export const barOptions = (options: any) => {
     yAxis: {
       type: 'value',
       name: 'kg',
-      min: 0, // 设置纵坐标的最小值
-      max: max, // 设置纵坐标的最大值
-      interval: max / 5, // 设置纵坐标的间隔
+      min: options.yAxisLow || 0, // 设置纵坐标的最小值
+      max: options.yAxisHaigh || max, // 设置纵坐标的最大值
+      // interval: max / 5, // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,
@@ -54,7 +54,7 @@ export const barOptions = (options: any) => {
         type: 'bar',
         barWidth: 19,
         itemStyle: {
-          borderRadius: [6, 6, 0, 0],
+          // borderRadius: [6, 6, 0, 0],
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
             { offset: 0, color: '#F4DF31' },
             { offset: 1, color: '#E5DB3F' },

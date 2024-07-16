@@ -27,8 +27,8 @@ export const lineOptions = (options: any) => {
       type: 'value',
       name: '只',
       min: 0, // 设置纵坐标的最小值
-      max: max, // 设置纵坐标的最大值
-      interval: max / 5, // 设置纵坐标的间隔
+      max: options.max || max, // 设置纵坐标的最大值
+      // interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         show: true,
         lineStyle: {

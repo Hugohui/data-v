@@ -17,7 +17,7 @@ const FeedErrorRateLine: FC<OptionsI> = (options) => {
     const getData = () => {
         getFeedingErroRatelist().then((res: any) => {
             if (res?.code === 200) {
-                setData(res?.data?.FeedingErroRatelist)
+                setData(res?.data)
             }
         })
     }

@@ -5,7 +5,7 @@ export const lineOptions = (options: any) => {
 
   const xAxis = options?.list?.map((item: any) => item.name) || []
 
-  const max = Math.ceil(Math.max(...data) / 100) * 100
+  const max = options.yAxis || Math.ceil(Math.max(...data) / 100) * 100
 
   return {
     tooltip: {
@@ -33,7 +33,7 @@ export const lineOptions = (options: any) => {
       name: '吨',
       min: 0, // 设置纵坐标的最小值
       max: max, // 设置纵坐标的最大值
-      interval: max / 5, // 设置纵坐标的间隔
+      // interval: max / 5, // 设置纵坐标的间隔
       axisLine: {
         show: true,
         lineStyle: {

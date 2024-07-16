@@ -11,7 +11,7 @@ export const scatterOptions = (options: any) => (
     },
     xAxis: {
       name: "月龄",
-      data: options.xAxisList,
+      data: options?.xAxisList?.map((item: any)=> Number(item)) || [],
       axisLine: {
         show: true,
         lineStyle: {
@@ -26,6 +26,7 @@ export const scatterOptions = (options: any) => (
       {
       name: "体高\n(cm)",
       splitLine: false,
+      // max: options.yAxisHaighHeight,
       max: 100,
       axisLine: {
         show: false,
@@ -43,7 +44,7 @@ export const scatterOptions = (options: any) => (
             width: 0.5
           }
         },
-        max: 100,
+        max: 230,
         // offset: 10,
         axisLine: {
           show: false,
@@ -66,7 +67,7 @@ export const scatterOptions = (options: any) => (
         itemStyle:{
           color: '#38D7FF'
         },
-        data: options?.list[0]?.value?.map((item:any) => [item.weight, item.height]),
+        data: options?.list?.map((item:any) => [item.name, item?.value?.height || 0]),
         type: 'scatter'
       },
       {
@@ -76,7 +77,7 @@ export const scatterOptions = (options: any) => (
         itemStyle: {
           color: "#FF697E"
         },
-        data: options?.list[1]?.value?.map((item:any) => [item.weight, item.height]),
+        data: options?.list?.map((item:any) => [item.name, item?.value?.weight || 0]),
         type: 'scatter'
       }
     ]

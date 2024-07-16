@@ -32,7 +32,7 @@ const QuarantineLine: FC<OptionsI> = (options) => {
         params['legendData'] = Object.keys(nameData)
         params['data'] = nameData
         params['xAxislist'] = data.xAxislist
-        params['max'] = max
+        params['max'] = data.yAxisNum || max
         
         return params
     }

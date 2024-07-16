@@ -7,11 +7,11 @@ export const scatterOptions = (options: any) => (
       bottom:"40px"
     },
     tooltip: {
-      trigger: 'axis'
+      trigger: 'item'
     },
     xAxis: {
       name: "月龄",
-      data: options?.xAxisList?.map((item: any)=> Number(item)) || [],
+      // data: options?.xAxisList?.map((item: any)=> Number(item)) || [],
       axisLine: {
         show: true,
         lineStyle: {
@@ -44,7 +44,7 @@ export const scatterOptions = (options: any) => (
             width: 0.5
           }
         },
-        max: 230,
+        max: options.yAxisHaighWeight || 330,
         // offset: 10,
         axisLine: {
           show: false,

@@ -24,8 +24,8 @@ export const feedErrorRateLineOptions = (options: any) => (
     yAxis: {
       type: 'value',
       name: '%',
-      min: -100, // 设置纵坐标的最小值
-      max: options.upyAxis, // 设置纵坐标的最大值
+      min: options?.upyMinAxis || -100, // 设置纵坐标的最小值
+      max: options?.upyMaxAxis || 100, // 设置纵坐标的最大值
       interval: 50, // 设置纵坐标的间隔
       axisLine: {
         show: true,

@@ -11,11 +11,11 @@ export const candlestickOptions = (options: any) => {
       trigger: 'axis',
       formatter: function (params: any) {
         var data = params[0]?.data;
-        return '最小值: ' + data[1] + '<br/>' +
+        return '下边界: ' + data[1] + '<br/>' +
                '第一四分位数: ' + data[2] + '<br/>' +
                '中位数: ' + data[3] + '<br/>' +
                '第三四分位数: ' + data[4] + '<br/>' +
-               '最大值: ' + data[5];
+               '上边界: ' + data[5];
     }
     },
     dataset: [
@@ -25,7 +25,12 @@ export const candlestickOptions = (options: any) => {
       },
       {
         transform: {
-          type: 'boxplot'
+          type: 'boxplot',
+          config:{ 
+            itemNameFormatter: (params: any) => {
+              return options?.xAxisList[params.value]
+            }
+          }
         }
       },
       {
@@ -38,7 +43,7 @@ export const candlestickOptions = (options: any) => {
       name: "月",
       // min: 0,
       // max: 12,
-      data: options.xAxisList,
+      // data: options.xAxisList,
       splitArea: {
         show: false
       },
@@ -59,7 +64,7 @@ export const candlestickOptions = (options: any) => {
       max: 10,
       splitLine: false,
       axisLine: {
-        show: false,
+        show: true,
         lineStyle: {
           color: '#fff'
         }

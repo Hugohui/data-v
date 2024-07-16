@@ -17,10 +17,9 @@ const WeighCandlestick: FC<OptionsI> = (options) => {
         getLamBirthWeightDistribution().then((res: any) => {
             if (res.code === 200 && res.data) {
                 setData(res.data)
-                // const a = {xAxisList: ["1", "2", "6"], list: [
-                //     {name: "1", value: [233, 400, 200, 33, 45, 67, 455]}, 
-                //     {name: "2", value: [33, 200, 400, 55, 67, 89, 234]},
-                //     {name: "3", value: [323, 20, 400, 155, 367, 189, 456]},
+                // const a = {xAxisList: ["2024-4", "2024-6"], list: [
+                //     {name: "2024-4", value: [5, 6, 10]}, 
+                //     {name: "2024-6", value: [7, 5, 9, 6, 7, 10, 6]},
                 // ]}
                 // setData(a)
             }

@@ -13,7 +13,7 @@ export const blankErrorRateLineOptions = (options: any) => (
     },
     xAxis: {
       type: 'category',
-      data: options?.FeedingErroRatelist?.map((item: any) => item.shift),
+      data: options?.BlankingErroRatelist?.map((item: any) => item.shift),
       axisLine: {
         show: true,
         lineStyle: {
@@ -26,7 +26,7 @@ export const blankErrorRateLineOptions = (options: any) => (
       name: '%',
       min: options.deMinyAxis || -100, // 设置纵坐标的最小值
       max: options.deMaxyAxis || 100, // 设置纵坐标的最大值
-      interval: 50, // 设置纵坐标的间隔
+      // interval: 50, // 设置纵坐标的间隔
       axisLine: {
         show: true,
         lineStyle: {
@@ -41,7 +41,7 @@ export const blankErrorRateLineOptions = (options: any) => (
     },
     series: [
       {
-        data: options?.FeedingErroRatelist?.map((item: any) => item.ErroRate),
+        data: options?.BlankingErroRatelist?.map((item: any) => item.ErroRate),
         type: 'line',
         symbol: 'circle', // 设置标记为圆形
         symbolSize: 4, // 设置圆形标记的大小

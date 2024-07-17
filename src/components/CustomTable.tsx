@@ -37,6 +37,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
     const rowClick = (row: any, index: any) => {
         resetInterval()
         setCurrentSelect(index)
+        scrollTopRef.current = tableViewRef.current.scrollTop
         currentSelectRef.current = index
         onRowClick && onRowClick(row, index)
     }

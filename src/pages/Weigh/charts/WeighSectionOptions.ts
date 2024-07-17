@@ -167,7 +167,10 @@ export const sectionOptions = (options: any) => (
           fontSize: 22,
           fontFamily: 'Pixel LCD7',
           fontWeight: 'bolder',
-          formatter: options.formatter || '{value}%', // %文字大小调整
+          formatter: (value: any) => {
+            if (!value) return '--'
+            return `${value}%`
+          },
           color: '#fff'
         },
         data: [

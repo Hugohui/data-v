@@ -7,15 +7,13 @@ interface RatioI {
     // data: RatioInfoI[]
     title: string
     value: number
-    formatter: string
+    unit: string
     backgroundColor?: string[] // 颜色数组，0 背景色 1 开始色 2 结束色
 }
 
 
 const BreedingRate: FC<RatioI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-    // const [data, setData] = useState(80)
-
 
     return (
         <>

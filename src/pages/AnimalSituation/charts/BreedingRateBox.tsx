@@ -19,13 +19,13 @@ export const BreedingRateBox = () => {
     return (
         <>
             <div className="DungClear">
-                <BreedingRate title="羔羊成活率" value={data.LambSurvivalRate || 0} formatter="{value}%"></BreedingRate>
+                <BreedingRate title="羔羊成活率" value={data.LambSurvivalRate || 0} unit="%"></BreedingRate>
             </div>
             <div className="DungClear">
-                <BreedingRate title="胎间隔" value={data.FetalSeptum || 0} formatter="{value}天" backgroundColor={['#1F5068', '#5595EC', '#2BE6D0']}></BreedingRate>
+                <BreedingRate title="胎间隔" value={data.FetalSeptum || 0} unit="天" backgroundColor={['#1F5068', '#5595EC', '#2BE6D0']}></BreedingRate>
             </div>
             <div className="DungClear">
-                <BreedingRate title="受胎率" value={data.pregnancyRate || 0} formatter="{value}%" backgroundColor={["#543C1B", "#B8E638", "#F29322"]}></BreedingRate>
+                <BreedingRate title="受胎率" value={data.pregnancyRate || 0} unit="%" backgroundColor={["#543C1B", "#B8E638", "#F29322"]}></BreedingRate>
             </div>
         </>
     )

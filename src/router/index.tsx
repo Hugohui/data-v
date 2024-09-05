@@ -2,6 +2,7 @@ import { AnimalSituation } from "../pages/AnimalSituation"
 import { Feeding } from "../pages/Feeding"
 import { Health } from "../pages/Health"
 import { Weigh } from "../pages/Weigh"
+import { SheepDetail } from "../pages/SheepDetail"
 import { Milk } from "../pages/Milk"
 import { WeighBridge } from "../pages/WeighBridge"
 import { DataV } from "../pages/DataV"
@@ -36,7 +37,7 @@ const routers = [
     {
         path: '/weigh',
         element: <Weigh />,
-    }, 
+    },
     // 奶厅监测
     {
         path: '/milk',
@@ -58,6 +59,11 @@ const routers = [
         path: '/dataVDetail',
         element: <DataVDetial />,
     }, 
+    // 养只详情
+    {
+        path: '/sheepDetail',
+        element: <SheepDetail />,
+    },
     {
         path: '/login',
         element: <Login />

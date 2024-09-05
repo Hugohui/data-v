@@ -7,20 +7,23 @@ interface BorderBoxI {
     height?: string;
     width?: string;
     size?: string;
-    title: string;
+    title?: string;
     children?: any;
     className?: string
     moreText?: string
     onMoreTextClick?: Function
+    hideTitle?: boolean
 }
 
 export const BorderBox: FC<BorderBoxI> = (props) => {
     return (
         <BorderBoxStyle $height={props.height} $width={props.width} $size={props.size} className={props.className}>
-            <BorderBoxHeaderStyle className="BoxHeader" $size={props.size}>
-                { props.title }
-                {props.moreText ? <div className="MoreInfo" onClick={() => {props.onMoreTextClick && props.onMoreTextClick()}}>{props.moreText}</div> : ''}
-            </BorderBoxHeaderStyle>
+            { !props.hideTitle ?
+                <BorderBoxHeaderStyle className="BoxHeader" $size={props.size}>
+                    { props.title }
+                    {props.moreText ? <div className="MoreInfo" onClick={() => {props.onMoreTextClick && props.onMoreTextClick()}}>{props.moreText}</div> : ''}
+                </BorderBoxHeaderStyle> : ''
+            }
             <BorderBoxContentStyle className="BoxContent">
                 <ErrorBoundary FallbackComponent={FallbackComponent} onError={(err) => {
                     console.log("=====catch error=====", err)

@@ -32,7 +32,7 @@ export const processMontBodyAgeLineOptions = (options: any) => {
         name: 'kg',
         min: 0, // 设置纵坐标的最小值
         max: options.maxWeight, // 设置纵坐标的最大值
-        interval: options.maxWeight / 5, // 设置纵坐标的间隔
+        interval: Math.ceil(options.maxWeight / 5), // 设置纵坐标的间隔
         axisLine: {
           show: false,
           lineStyle: {
@@ -50,7 +50,7 @@ export const processMontBodyAgeLineOptions = (options: any) => {
         name: 'cm',
         min: 0, // 设置纵坐标的最小值
         max: options.maxHeight, // 设置纵坐标的最大值
-        interval: options.maxHeight / 5, // 设置纵坐标的间隔
+        interval: Math.ceil(options.maxHeight / 5), // 设置纵坐标的间隔
         axisLine: {
           show: false,
           lineStyle: {

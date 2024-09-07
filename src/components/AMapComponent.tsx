@@ -58,7 +58,9 @@ const AMapComponent = ({ data }: any) => {
     }
 
     const EnterMarker = ({ info }: any) => {
-        const imgBaseUrl = process.env.REACT_APP_API_PATH
+        // const imgBaseUrl = process.env.REACT_APP_API_PATH
+        const imgBaseUrl = 'http://112.126.95.138:8600'
+        
         return (
             <div style={{ 
                 width: "205px", 

@@ -11,11 +11,9 @@ export const candlestickOptions = (options: any) => {
       trigger: 'axis',
       formatter: function (params: any) {
         var data = params[0]?.data;
-        return '下边界: ' + data[1] + '<br/>' +
-               '第一四分位数: ' + data[2] + '<br/>' +
+        return '最大值: ' + data[1] + '<br/>' +
                '中位数: ' + data[3] + '<br/>' +
-               '第三四分位数: ' + data[4] + '<br/>' +
-               '上边界: ' + data[5];
+               '最小值: ' + data[5];
     }
     },
     dataset: [
@@ -82,7 +80,11 @@ export const candlestickOptions = (options: any) => {
           borderColor0: '#54ea92',
           borderColorDoji: null,
         },
-        // data: options.list,
+      },
+      {
+        name: "outlier",
+        type: "scatter",
+        datasetIndex: 2
       }
     ]
   }

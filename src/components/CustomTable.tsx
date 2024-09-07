@@ -16,10 +16,11 @@ interface TablePropsI {
     canSelectItem?: boolean
     defaultSelectIndex?: number
     autoLoop?: boolean
+    loopDelayTime?: number
 }
 
 const CustomTable: FC<TablePropsI> = (props) => {
-    const { columns, data, hiddenIndex, onRowClick, canSelectItem, defaultSelectIndex, autoLoop=true } = props;
+    const { columns, data, hiddenIndex, onRowClick, canSelectItem, defaultSelectIndex, autoLoop=true, loopDelayTime=3000 } = props;
     let [currentSelect, setCurrentSelect] = useState(defaultSelectIndex || 0);
     const tableRef = useRef<any>()
     const tbodyRef = useRef<any>()
@@ -93,7 +94,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
             clearTimeout(wheelTimeoutRef.current)
         }
         wheelTimeoutRef.current = setTimeout(() => {
-            timerRef.current = setInterval(scrollTable, 3000)
+            timerRef.current = setInterval(scrollTable, loopDelayTime)
         }, 6000)
         timerRef.current && clearInterval(timerRef.current)
     }
@@ -103,7 +104,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
             originTableData.current = JSON.parse(JSON.stringify(data));
             setTableData(data);
             if(autoLoop) {
-                timerRef.current = setInterval(scrollTable, 3000);
+                timerRef.current = setInterval(scrollTable, loopDelayTime);
 
                 // 鼠标滚轮滚动时清楚滚动效果，滚轮停止6秒后恢复
                 tableRef.current.addEventListener('wheel', () => {

@@ -11,7 +11,7 @@ export const AnchorPoint = () => {
     const [data, setData] = useState<any>({})
 
     const onPointClick = (item: any) => {
-        data[item.name] && navigate(`/dataVDetail?id=${data[item.name]}`)
+        data[item.name] && navigate(`/sheepDetail?id=${data[item.name]}`)
     }
 
     const formatFarmMap = (data: any) => {

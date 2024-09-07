@@ -15,7 +15,7 @@ export const ComeOutRecordTable = ({ data }: any) => {
             name: "车牌号"
         },
         {
-            key: "GoodType",
+            key: "GoodTypeName",
             name: "货品类别"
         },
         {

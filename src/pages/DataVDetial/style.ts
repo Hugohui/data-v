@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import DataVInfoItem from '../../assets/img/dataVInfoItem.png'
 
 export const PageContent = styled.div`
   display: flex;

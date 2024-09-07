@@ -1,16 +1,16 @@
 import { PageLeftStyle } from "./style"
 import { BorderBox } from "../../components/basic/BorderBox"
-// import { SheepListTable } from "./charts/SheepListTable"
-import WeighCandlestick from "./charts/WeighCandlestick"
+import { SheepInfoCard } from "./charts/SheepInfoCard"
+import { FamlyDataCard } from "./charts/FamlyDataCard"
 
 export const PageLeft = () => {
     return (
         <PageLeftStyle>
-            <BorderBox title="羊只卡片" height="428">
-                {/* <SheepListTable></SheepListTable> */}
+            <BorderBox title="羊只卡片" height="378">
+                <SheepInfoCard></SheepInfoCard>
             </BorderBox>
-            <BorderBox title="羊只谱系" height="428">
-                <WeighCandlestick></WeighCandlestick>
+            <BorderBox title="羊只谱系" height="480">
+                <FamlyDataCard></FamlyDataCard>
             </BorderBox>
         </PageLeftStyle>
     )

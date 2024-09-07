@@ -5,34 +5,15 @@ import { PageCenterStyle, InfoBoxStyle } from "./style"
 // import centerPageData from "../../api/mock/centerPageData"
 import { BorderBox } from "../../components/basic/BorderBox"
 import { SheepListTable } from "./charts/SheepListTable"
-import { SheepInfo } from "./charts/SheepInfo"
+import { SheepInfoProgrss } from "./charts/SheepInfoProgrss"
 
 export const PageCenter = () => {
-    const navigate = useNavigate()
-    const [centerData, setCenterData] = useState<{mapData?: any}>({})
-
-    const fetchMapData = async () => {
-        // const res = await get(centerPageDataApi)
-        // if (res.code === ResultEnum.SUCCESS) {
-        //     setCenterData(res.data)
-        // }
-        // setCenterData(centerPageData)
-    }
-
-    const toDataV = () => {
-        navigate('/dataV')
-    }
-
-    useEffect(() => {
-        fetchMapData()
-    }, [])
-
     return (
         <PageCenterStyle>
             <InfoBoxStyle>
-                <SheepInfo></SheepInfo>
+                <SheepInfoProgrss></SheepInfoProgrss>
             </InfoBoxStyle>
-            <BorderBox hideTitle={true} height="428">
+            <BorderBox hideTitle={true} height="350" className="SheepListTable">
                 <SheepListTable></SheepListTable>
             </BorderBox>
         </PageCenterStyle>

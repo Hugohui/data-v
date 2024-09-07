@@ -1,41 +1,55 @@
 import { useEffect, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
 import useEvent from "../../../hooks/useEventHook"
-import { getSheepList } from "@/api/Weigh"
+import { getBaseCowInfoByBarn } from "@/api/SheepDetail"
 import { useIntervalRequest } from "@/hooks/useIntervalRequest"
+import { useGetParams } from "@/hooks/useGetParams"
 
 export const SheepListTable = () => {
     const { publish } = useEvent()
+    const CowBarnID = useGetParams('id')
 
     const onItemClick = (item: any, index: any) => {
-        publish("onSheepSelectEmit", item)
+        publish("onSheepDetailSelectEmit", item)
     }
 
     const columns = [
         {
             key: "CowCode",
-            name: "编号"
+            name: "羊只编号"
         },
         {
-            key: "monAge",
+            key: "EarTagCode",
+            name: "耳标号"
+        },
+        {
+            key: "CowSex",
+            name: "性别"
+        },
+        {
+            key: "monthAge",
             name: "月龄"
         },
         {
-            key: "Weight",
-            name: "体重"
+            key: "BreedName",
+            name: "品种"
         },
         {
-            key: "weightDate",
-            name: "称重日期"
+            key: "HealthState",
+            name: "健康状况"
         },
     ]
 
     const [data, setData] = useState<any>([])
 
     const getData = () => {
-        getSheepList().then((res: any) => {
+        getBaseCowInfoByBarn({
+            CowBarnID: Number(CowBarnID),
+            Pages: 1
+        }).then((res: any) => {
             if (res.code === 200 && res.data) {
                 setData(res.data)
+                publish("onSheepDetailSelectEmit", res?.data?.[0])
             }
         })
     }
@@ -55,6 +69,7 @@ export const SheepListTable = () => {
             hiddenIndex={true}
             onRowClick={onItemClick}
             canSelectItem={true}
+            loopDelayTime={5000}
         ></CustomTable>
     )
 }

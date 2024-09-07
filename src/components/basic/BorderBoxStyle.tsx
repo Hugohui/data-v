@@ -90,11 +90,16 @@ export const BorderBoxHeaderStyle = styled.div<BorderBoxStyleI>`
     }
 `
 
-export const BorderBoxContentStyle = styled.div`
+export const BorderBoxContentStyle = styled.div<{hidetitle?: string}>`
     position: relative;
     width: 100%;
     height: calc(100% - 65px);
     padding: 10px;
     overflow: hidden;
+    ${
+        props => props.hidetitle === 'true' && `
+            height: 100%;
+        `
+    }
 `
 

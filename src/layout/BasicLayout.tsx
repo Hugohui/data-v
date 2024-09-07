@@ -23,7 +23,7 @@ export const BasicLayout: FC<{children: any}> = ({ children }) => {
                 </CurrentViewStyle>
 
                 {
-                    location.pathname === '/dataVDetail' ?
+                    location.pathname === '/sheepDetail' ?
                     <GoBackStyle>
                         <div onClick={() => navigator(-1)}></div>
                     </GoBackStyle> : ''

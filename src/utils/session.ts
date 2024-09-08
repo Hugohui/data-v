@@ -48,3 +48,27 @@ export const removeFarmInfo = () => {
 export const isLogin = () => {
     return !!getFarmID()
 }
+
+/**
+ * 设置当前羊舍
+ * @param info 
+ */
+export const setSheepRoomInfo = (info: any = {}) => {
+  sessionStorage.setItem(SessionEnum.SHEEP_ROOM_INFO, JSON.stringify(info))
+}
+
+/**
+ * 获取当前羊舍
+ * @param info 
+ */
+export const getSheepRoomInfo = () => {
+  return JSON.parse(sessionStorage.getItem(SessionEnum.SHEEP_ROOM_INFO) || '{}')
+}
+
+/**
+ * 删除当前羊舍
+ * @returns 
+ */
+export const removeSheepRoomInfo = () => {
+  return sessionStorage.removeItem(SessionEnum.SHEEP_ROOM_INFO)
+}

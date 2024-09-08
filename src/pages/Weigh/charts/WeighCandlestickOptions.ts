@@ -8,12 +8,18 @@ export const candlestickOptions = (options: any) => {
       bottom:"40px"
     },
     tooltip: {
-      trigger: 'axis',
+      trigger: 'item',
       formatter: function (params: any) {
-        var data = params[0]?.data;
-        return '最大值: ' + data[1] + '<br/>' +
+        console.log("=====d=======fff=====", params)
+        var data = params?.data;
+        if (params?.seriesName === 'outlier') {
+          console.log("=====d======", data[1])
+          return `越界值：${data[1]}`
+        } else {
+          return '最大值: ' + data[5] + '<br/>' +
                '中位数: ' + data[3] + '<br/>' +
-               '最小值: ' + data[5];
+               '最小值: ' + data[1];
+        }
     }
     },
     dataset: [

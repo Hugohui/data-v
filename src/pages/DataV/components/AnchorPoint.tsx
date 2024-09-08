@@ -4,6 +4,7 @@ import { points } from './points'
 import { getListBarns } from "@/api/DataV"
 import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 import { useState } from "react"
+import { setSheepRoomInfo } from "@/utils/session"
 
 export const AnchorPoint = () => {
     const navigate = useNavigate()
@@ -12,6 +13,7 @@ export const AnchorPoint = () => {
 
     const onPointClick = (item: any) => {
         data[item.name] && navigate(`/sheepDetail?id=${data[item.name]}`)
+        setSheepRoomInfo(item)
     }
 
     const formatFarmMap = (data: any) => {

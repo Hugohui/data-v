@@ -30,7 +30,6 @@ export const SheepInfoProgrss = () => {
 
     useEffect(() => {
         subscribe('onSheepDetailSelectEmit', (data: any) => {
-            console.log("=====d=====onSheepDetailSelectEmit=", data)
             if (data) {
                 setInfo(data)
             }

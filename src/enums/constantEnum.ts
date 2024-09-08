@@ -11,5 +11,6 @@ export enum TimeEnum {
  */
 export enum SessionEnum {
     FARMID = "farmID",
-    FARMINFO = "farmInfo"
+    FARMINFO = "farmInfo",
+    SHEEP_ROOM_INFO = "SheepRoomInfo"
 }

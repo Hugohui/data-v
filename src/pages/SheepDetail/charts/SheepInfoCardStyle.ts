@@ -12,7 +12,7 @@ export const CardLeftStyle = styled.div`
         margin-bottom: 25px;
         span {
             padding: 2px 10px;
-            font-size: 12px;
+            /* font-size: 14px; */
             color: #fff;
             border-radius: 2px;
             vertical-align: top;

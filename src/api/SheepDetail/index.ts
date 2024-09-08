@@ -26,3 +26,13 @@ export const getProcessMontBodyAgeSheep = (data?: any) => {
 export const getProcessCurrentState = (data?: any) => {
     return post('App/BigDataApi/ProcessCurrentState', data)
 }
+
+
+/**
+ * 饲喂曲线
+ * @param data post参数
+ * @returns 
+ */
+export const getFeedingCurve = (data?: any) => {
+    return post('App/BigDataApi/FeedingCurve', data)
+}

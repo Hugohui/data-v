@@ -1,8 +1,8 @@
 import { FC, useState, useEffect } from 'react'
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
-import { processMontBodyAgeLineOptions } from "./ProcessMontBodyAgeLineOptions"
-import { getProcessMontBodyAgeSheep } from '@/api/SheepDetail'
+import { sheepFeedLineOptions } from "./SheepFeedLineOptions"
+import { getFeedingCurve } from '@/api/SheepDetail'
 import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 import useEvent from '@/hooks/useEventHook'
 
@@ -11,7 +11,7 @@ interface OptionsI {
     // data: KeepRatioInfoI[]
 }
 
-const ProcessMontBodyAgeLine: FC<OptionsI> = (options) => {
+const SheepFeedLine: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
 
     const { subscribe } = useEvent()
@@ -19,9 +19,8 @@ const ProcessMontBodyAgeLine: FC<OptionsI> = (options) => {
     const [data, setData] = useState<any>({})
 
     const getData = () => {
-        getProcessMontBodyAgeSheep({
-            EarTagCode: info.EarTagCode,
-            BirthDate: info.BirthDate,
+        getFeedingCurve({
+            CowGuid: info.CowGuid,
         }).then((res: any) => {
             if (res.code === 200 && res.data) {
                 setData(res.data)
@@ -39,14 +38,14 @@ const ProcessMontBodyAgeLine: FC<OptionsI> = (options) => {
 
     useEffect(() => {
         getData();
-    }, [info.EarTagCode])
+    }, [info.CowGuid])
 
     return (
         <>
             {(data) ? (
                 <EChartsCommon
                     renderer={renderer}
-                    option={processMontBodyAgeLineOptions(data)}
+                    option={sheepFeedLineOptions(data)}
                 />
             ) : (
                 ''
@@ -55,4 +54,4 @@ const ProcessMontBodyAgeLine: FC<OptionsI> = (options) => {
     )
 }
 
-export default ProcessMontBodyAgeLine
+export default SheepFeedLine

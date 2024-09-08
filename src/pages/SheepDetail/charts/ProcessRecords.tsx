@@ -11,7 +11,7 @@ export const ProcessRecords = () => {
     useEffect(() => {
         subscribe('onSheepDetailSelectEmit', (data: any) => {
             if (data) {
-                setRecords(data?.processRecords)
+                setRecords(JSON.parse(JSON.stringify(data?.processRecords))?.reverse())
             }
         })
     }, [])

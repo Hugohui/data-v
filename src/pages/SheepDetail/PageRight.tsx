@@ -23,7 +23,7 @@ export const PageRight = () => {
             </BorderBox>
             {
                 isLamb ? 
-                <BorderBox title="喂养曲线" height="350">
+                <BorderBox title="饲喂曲线" height="350">
                     <SheepFeedLine></SheepFeedLine>
                 </BorderBox> :
                 <BorderBox title="月龄体态过程" height="350">

@@ -10,10 +10,8 @@ export const candlestickOptions = (options: any) => {
     tooltip: {
       trigger: 'item',
       formatter: function (params: any) {
-        console.log("=====d=======fff=====", params)
         var data = params?.data;
         if (params?.seriesName === 'outlier') {
-          console.log("=====d======", data[1])
           return `越界值：${data[1]}`
         } else {
           return '最大值: ' + data[5] + '<br/>' +

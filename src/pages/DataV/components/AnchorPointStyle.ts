@@ -34,6 +34,7 @@ export const AnchorPointStyle = styled.div`
     position: absolute;
     left: 490px;
     top: 150px;
+    z-index: 99;
 
     & > div {
         background-repeat: no-repeat;

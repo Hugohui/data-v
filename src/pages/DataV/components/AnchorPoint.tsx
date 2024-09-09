@@ -33,7 +33,7 @@ export const AnchorPoint = () => {
     useIntervalRequest(getData)
 
     return (
-        <AnchorPointStyle>
+        <AnchorPointStyle className="AnchorPointStyle">
             {
                 points.map((item) => <div key={item.name} onClick={() => onPointClick(item)}></div>)
             }

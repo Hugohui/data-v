@@ -5,7 +5,7 @@ import dataVPageBg from '@/assets/img/dataVPageBg.jpg'
 export const PageBGStyle = styled.div`
     width: 100%;
     height: 100%;
-    background-image: url(${dataVPageBg});
+    /* background-image: url(${dataVPageBg}); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
 `

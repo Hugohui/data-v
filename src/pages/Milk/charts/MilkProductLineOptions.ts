@@ -46,25 +46,33 @@ export const lineineOptions = (options: any) => {
     series: [
       {
         data: data,
-        type: 'line',
-        symbol: 'circle', // 设置标记为圆形
-        symbolSize: 4, // 设置圆形标记的大小
+        type: 'bar',
+        barWidth: 14,
         itemStyle: {
-          normal: {
-            color: '#B243FF', // 设置圆点的填充颜色
-            borderColor: '#B243FF', // 设置圆点边框颜色
-            // borderWidth: 2 // 设置圆点边框宽度
-          }
+          borderRadius: [2, 2, 0, 0],
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: '#B243FF' },
+            { offset: 1, color: '#B243FF' },
+          ])
         },
-        areaStyle: { // 添加区域样式
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-            offset: 0,
-            color: 'rgba(178, 67, 255, 0.8)' // 渐变颜色，起始颜色
-          }, {
-            offset: 1,
-            color: 'rgba(178, 67, 255, 0)' // 渐变颜色，结束颜色
-          }])
-        }
+        // symbol: 'circle', // 设置标记为圆形
+        // symbolSize: 4, // 设置圆形标记的大小
+      //   itemStyle: {
+      //     normal: {
+      //       color: '#B243FF', // 设置圆点的填充颜色
+      //       borderColor: '#B243FF', // 设置圆点边框颜色
+      //       // borderWidth: 2 // 设置圆点边框宽度
+      //     }
+      //   },
+      //   areaStyle: { // 添加区域样式
+      //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+      //       offset: 0,
+      //       color: 'rgba(178, 67, 255, 0.8)' // 渐变颜色，起始颜色
+      //     }, {
+      //       offset: 1,
+      //       color: 'rgba(178, 67, 255, 0)' // 渐变颜色，结束颜色
+      //     }])
+      //   }
       }
     ]
   }

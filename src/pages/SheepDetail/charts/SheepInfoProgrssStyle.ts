@@ -1,31 +1,15 @@
 import styled from "styled-components";
+import sheepDetailCurrentSheepInfo from '../../../assets/img/sheepDetailCurrentSheepInfo.png'
+import iconCurrentSheep from '../../../assets/img/icons/iconCurrentSheep.png'
+import iconCurrentSheepMilk from '../../../assets/img/icons/iconCurrentSheepMilk.png'
 
 export const SheepInfoProgrssStyle = styled.div`
     margin: 0 auto;
-    width: 560px;
-    height: 35px;
-    border: 2px solid #00A6BE;
-    background-color: #002F78;
-    border-radius: 18px;
-    position: relative;
-    padding: 2px;
-    .textWrap {
-        position: absolute;
-        left: 0;
-        bottom: -30px;
-        width: 100%;
-        color: #fff;
-        display: flex;
-        & > div {
-            text-align: right;
-            flex: 1;
-            font-size: 16px;
-            font-weight: bold;
-            &:first-child {
-                text-align: left;
-            }
-        }
-    }
+    width: 830px;
+    height: 101px;
+    background-image: url(${sheepDetailCurrentSheepInfo});
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 `
 
 export const ProgrssStyle = styled.div<{progress?: Number}>`
@@ -37,5 +21,59 @@ export const ProgrssStyle = styled.div<{progress?: Number}>`
         props => props?.progress && `
             width: ${props?.progress}%;
         `
+    }
+`
+
+export const FeedFlanInfoStyle = styled.div`
+    color: #fff;
+    display: flex;
+    padding: 17px 0;
+`
+
+export const FeedPlanInfoItemStyle = styled.div`
+    flex: 1;
+    height: 61px;
+    border-left: 1px solid #267F7E;
+    padding-left: 23px;
+    font-family: PingFang SC;
+    display: flex;
+    &:first-child {
+        border: none;
+    }
+    .icon {
+        width: 50px;
+        height: 52px;
+        margin-top: 4px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        &.icon-current-sheep {
+            background-image: url(${iconCurrentSheep})
+        }
+        &.icon-current-sheep-milk {
+            background-image: url(${iconCurrentSheepMilk})
+        }
+    }
+    .main {
+        flex: 1;
+        padding-left: 24px;
+        .label {
+            height: 16px;
+            font-weight: 400;
+            font-size: 16px;
+            color: #FDFDFD;
+        }
+        .value {
+            margin-top: 12px;
+            font-family: DIN;
+            font-weight: bold;
+            font-size: 32px;
+            color: #1DF0BC;
+            .unit {
+                font-weight: bold;
+                font-size: 18px;
+                color: #FFFFFF;
+                margin-left: 12px;
+            }
+        }
     }
 `

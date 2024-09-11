@@ -12,7 +12,7 @@ export const DialogStyle = styled.div`
     background-color: rgba(0,0,0,.4);
 `
 
-export const DialogBoxStyle = styled.div`
+export const DialogBoxStyle = styled.div<{width?: number}>`
     width: 1108px;
     height: 568px;
     position: absolute;
@@ -23,6 +23,11 @@ export const DialogBoxStyle = styled.div`
     background-image: url(${dialogContentBg});
     background-size: 100% 100%;
     background-repeat: no-repeat;
+
+    ${ props => props.width && `
+        width: ${props.width}px;
+        margin-left: ${-props.width / 2}px;
+    `}
 `
 
 export const DialogHeaderStyle = styled.div`

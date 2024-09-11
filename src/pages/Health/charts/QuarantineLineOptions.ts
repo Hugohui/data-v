@@ -50,10 +50,14 @@ export const lineOptions = (options: any) => {
     series: Object.keys(options.data).map((item) => {
       return {
         data: options.data[item],
-        type: 'line',
+        type: 'bar',
         name: item,
-        symbol: 'circle', // 设置标记为圆形
-        symbolSize: 8, // 设置圆形标记的大小
+        barWidth: 26,
+        itemStyle: {
+          borderRadius: [8, 8, 0, 0],
+        }
+        // symbol: 'circle', // 设置标记为圆形
+        // symbolSize: 8, // 设置圆形标记的大小
         // itemStyle: {
         //   normal: {
         //     color: '#38D7FF', // 设置圆点的填充颜色

@@ -22,11 +22,11 @@ export const RealTimeData = () => {
     return (
         <>
             <InfoItem label="总存栏数（只）" value={data.totalStock}></InfoItem>
-            <InfoItem label="昨日产奶（kg）" value={data.milkProductionYesterday}></InfoItem>
+            <InfoItem label="累计产奶（吨）" value={data.milkProductionALL}></InfoItem>
             <InfoItem label="泌乳羊只（只）" value={data.lactatingSheep}></InfoItem>
-            <InfoItem label="昨日出栏（只）" value={data.offSiteYesterday}></InfoItem>
-            <InfoItem label="昨日新增（只）" value={data.enteredYesterday}></InfoItem>
-            <InfoItem label="怀孕羊只（只）" value={data.pregnantSheep}></InfoItem>
+            <InfoItem label="累计出栏（只）" value={data.offSiteALL}></InfoItem>
+            <InfoItem label="累计新增（只）" value={data.enteredALL}></InfoItem>
+            <InfoItem label="累计怀孕（只）" value={data.pregnantALLSheep}></InfoItem>
         </>
     )
 }

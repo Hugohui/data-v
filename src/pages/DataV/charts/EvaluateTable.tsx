@@ -11,7 +11,7 @@ export const EvaluateTable = () => {
         // },
         {
             key: "OffSiteDate",
-            name: "离场批次"
+            name: "养殖批次"
         },
         {
             key: "FeedDays",
@@ -19,7 +19,7 @@ export const EvaluateTable = () => {
         },
         {
             key: "AvgOffsiteWeight",
-            name: "平均出栏体重"
+            name: "平均体重"
         },
         {
             key: "dailyGain",

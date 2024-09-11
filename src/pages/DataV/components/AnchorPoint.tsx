@@ -5,9 +5,27 @@ import { getListBarns } from "@/api/DataV"
 import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 import { useState } from "react"
 import { setSheepRoomInfo } from "@/utils/session"
+import VideoPlayer from "@/components/VideoPlayer"
 
 export const AnchorPoint = () => {
     const navigate = useNavigate()
+    // const [hovered, setHovered] = useState(false);
+    const [pointsData, setPointsData] = useState<any>(points)
+ 
+    const handleMouseEnter = (item: any, index: any) => {
+        if (data[item.name]) {
+            pointsData[index].hovered = true
+            setPointsData([...pointsData])
+        }
+    };
+    
+    const handleMouseLeave = (item: any, index: any) => {
+        if (data[item.name]) { 
+            pointsData[index].hovered = false
+            setPointsData([...pointsData])
+        }
+    };
+
 
     const [data, setData] = useState<any>({})
 
@@ -35,7 +53,18 @@ export const AnchorPoint = () => {
     return (
         <AnchorPointStyle className="AnchorPointStyle">
             {
-                points.map((item) => <div key={item.name} onClick={() => onPointClick(item)}></div>)
+                pointsData.map((item: any, index: number) => <div key={item.name} onMouseEnter={() => {
+                    handleMouseEnter(item, index)
+                }} onMouseLeave={() => {
+                    handleMouseLeave(item, index)
+                }}>
+                    {item.hovered && (
+                        <div className="videoHover">
+                            <VideoPlayer src={data?.[item.name]?.videlLst?.VideoLink}></VideoPlayer>
+                            <span onClick={() => onPointClick(item)}>点击进入</span>
+                        </div>
+                    )}
+                </div>)
             }
         </AnchorPointStyle>
     )

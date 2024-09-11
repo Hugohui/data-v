@@ -42,6 +42,32 @@ export const AnchorPointStyle = styled.div`
         position: absolute;
         cursor: pointer;
 
+        .videoHover {
+            position: absolute;
+            left: 60px;
+            top: 10px;
+            width: 400px;
+            height: 280px;
+            background-color: #122F44;
+            z-index: 100;
+            border-radius: 18px;
+            padding: 10px;
+            text-align: center;
+            opacity: 0.9;
+            video {
+                background-color: #000;
+                margin-bottom: 30px;
+            }
+            span {
+                padding: 6px 12px;
+                background-color: #23827B;
+                border-radius: 3px;
+                cursor: pointer;
+                color: #fff;
+                font-weight: bolder;
+            }
+        }
+
         &:nth-child(1) {
             left: 160px;
             top: 25px;

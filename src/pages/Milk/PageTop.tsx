@@ -3,10 +3,12 @@ import { PageTopStyle } from "./style";
 import CountUp from "react-countup";
 import { useState } from "react";
 import { useIntervalRequest } from "@/hooks/useIntervalRequest";
+import useEvent from "@/hooks/useEventHook";
 
 const countDuration = 1
 
 export const PageTop = () => {
+    const { publish } = useEvent()
     const [data, setData] = useState<any>({})
 
     const getData = () => {
@@ -18,6 +20,10 @@ export const PageTop = () => {
     }
 
     useIntervalRequest(getData)
+
+    const onInfoClick = () => {
+        publish("onMilkProductLineClick", {})
+    }
 
     return (
         <PageTopStyle>
@@ -42,7 +48,7 @@ export const PageTop = () => {
                 </div>
                 <div className="Unit">kg</div>
             </div>
-            <div className="InfoItem">
+            <div className="InfoItem canClick" onClick={onInfoClick}>
                 昨日平均产奶量
                 <div className="Num">
                     <CountUp start={0} end={data.avgMilk} duration={countDuration} separator="" decimals={2}></CountUp>

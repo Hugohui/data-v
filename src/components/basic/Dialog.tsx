@@ -7,7 +7,8 @@ interface DialogI {
     title?: string
     show: boolean
     setShow: Function
-    children: any
+    children: any,
+    width?: number
 }
 
 const Dialog = (props: DialogI) => {
@@ -29,7 +30,7 @@ const Dialog = (props: DialogI) => {
     const DialogBox = () => {
         return createPortal(
             (<DialogStyle className="DialogStyle">
-                <DialogBoxStyle ref={scaleRef}>
+                <DialogBoxStyle ref={scaleRef} width={props.width}>
                     <DialogHeaderStyle>
                         {props.title}
                         <div className="close" onClick={() => props.setShow(false)}></div>

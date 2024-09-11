@@ -32,7 +32,7 @@ export const EnvInfo = () => {
             <EnvInfoItem value={data['水槽温度']} label="水槽温度" icon="tank-temperature" unit="°C"></EnvInfoItem>
             <EnvInfoItem value={data['二氧化碳']} label="二氧化碳" icon="co2" unit="%"></EnvInfoItem>
             <EnvInfoItem value={data['光照']} label="光照" icon="lux" unit="LUX"></EnvInfoItem>
-            <EnvInfoItem value={data['水质']} label="水质" icon="water-ph" unit="PH"></EnvInfoItem>
+            <EnvInfoItem value={data['氨气']} label="氨气" icon="nh3-ppm" unit="PPM"></EnvInfoItem>
         </EnvInfoStyle>
     )
 }

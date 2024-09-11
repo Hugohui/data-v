@@ -24,26 +24,20 @@ export const scatterOptions = (options: any) => (
     },
     yAxis: [
       {
-        name: "体重\n(kg)",
-        type: 'value',
-        // splitLine: false,
-        splitLine: {
-          lineStyle: {
-            width: 0.5
-          }
-        },
-        max: options.yAxisHaighWeight || 330,
-        // offset: 10,
-        axisLine: {
-          show: false,
-          lineStyle: {
-            color: '#fff',
-          }
-        },
-      }
+      name: "体高\n(cm)",
+      splitLine: false,
+      // max: options.yAxisHaighHeight,
+      max: 100,
+      axisLine: {
+        show: false,
+        lineStyle: {
+          color: '#fff',
+        }
+      },
+      },
     ],
     legend: {
-      data: ['体重'],
+      data: ['体高'],
       textStyle: {
         color: "#fff"
       }
@@ -51,11 +45,11 @@ export const scatterOptions = (options: any) => (
     series: [
       {
         symbolSize: 20,
-        name: "体重",
-        itemStyle: {
-          color: "#FF697E"
+        name: "体高",
+        itemStyle:{
+          color: '#38D7FF'
         },
-        data: options?.list?.map((item:any) => [item.name, item?.value?.weight || 0]),
+        data: options?.list?.map((item:any) => [item.name, item?.value?.height || 0]),
         type: 'scatter'
       }
     ]

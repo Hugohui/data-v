@@ -13,7 +13,7 @@ export const PageLeft = () => {
             <BorderBox title="各牧场存栏占比" height="294" className="KeepRatio">
                 <KeepRatio></KeepRatio>
             </BorderBox>
-            <BorderBox title="羊群变化趋势" height="294">
+            <BorderBox title="羊群存栏变化趋势" height="294">
                 <SheepTendencyBar></SheepTendencyBar>
             </BorderBox>
         </PageLeftStyle>

@@ -2,7 +2,7 @@ import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
 import { barOptions } from "./FodderBarOptions"
 import { FC, useEffect, useRef, useState } from 'react'
-import { getFeedUsageTrend } from '@/api/DataV'
+import { getForageFeeding } from '@/api/DataV'
 import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 import MonthYearSwitch from '@/components/MonthYearSwitch'
 import useEvent from '@/hooks/useEventHook'
@@ -18,11 +18,11 @@ const FodderBar: FC<OptionsI> = (options) => {
 
     let hasChange = useRef<boolean>(false);
     const [data, setData] = useState<any>({})
-    const [dataType, setDataType] = useState<any>()
+    // const [dataType, setDataType] = useState<any>()
 
     const getData = () => {
-        getFeedUsageTrend({
-            type: dataType
+        getForageFeeding({
+            // type: dataType
         }).then((res: any) => {
             if (res.data) {
                 setData(res.data)
@@ -32,26 +32,26 @@ const FodderBar: FC<OptionsI> = (options) => {
 
     useIntervalRequest(getData)
 
-    const onChange = (value: string) => {
-        hasChange.current = true
-        if (value === 'year') {
-            setDataType(undefined)
-        } else {
-            setDataType('month')
-        }
-        publish('onDataVFodderMonthYearSwitch', value)
-    }
+    // const onChange = (value: string) => {
+    //     hasChange.current = true
+    //     if (value === 'year') {
+    //         setDataType(undefined)
+    //     } else {
+    //         setDataType('month')
+    //     }
+    //     publish('onDataVFodderMonthYearSwitch', value)
+    // }
 
-    useEffect(() => {
-        if (hasChange.current) {
-            getData()
-        }
-    }, [dataType])
+    // useEffect(() => {
+    //     if (hasChange.current) {
+    //         getData()
+    //     }
+    // }, [dataType])
     
 
     return (
         <>
-            <MonthYearSwitch active='year' onChange={onChange}></MonthYearSwitch>
+            {/* <MonthYearSwitch active='year' onChange={onChange}></MonthYearSwitch> */}
             {(data) ? (
                 <EChartsCommon
                     renderer={renderer}

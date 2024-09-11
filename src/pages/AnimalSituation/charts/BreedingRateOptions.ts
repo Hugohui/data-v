@@ -3,10 +3,10 @@ export const rateOptions = (options: any) => (
     title: {
       text: options.title, // 标题文本
       left: 'center', // 水平位置，居中
-      top: '72%', // 垂直位置
+      top: '85%', // 垂直位置
       textStyle: { // 文本样式
         color: '#FFF', // 文本颜色
-        fontSize: 18, // 文本字体大小
+        fontSize: 12, // 文本字体大小
       },
     },
     series: [
@@ -164,7 +164,7 @@ export const rateOptions = (options: any) => (
           width: '60%',
           borderRadius: 8,
           offsetCenter: [0, 0],
-          fontSize: 22,
+          fontSize: 14,
           fontFamily: 'Pixel LCD7',
           fontWeight: 'bolder',
           formatter: (value: any) => {

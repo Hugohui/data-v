@@ -4,6 +4,7 @@ import { lineineOptions } from "./MilkProductLineOptions"
 import { FC, useState } from 'react'
 import { getTrendChartMilkProductPerShift } from '@/api/Milk'
 import { useIntervalRequest } from '@/hooks/useIntervalRequest'
+import useEvent from '@/hooks/useEventHook'
 
 
 interface OptionsI {
@@ -12,9 +13,10 @@ interface OptionsI {
 
 
 const MilkProductLine: FC<OptionsI> = (options) => {
+    const { publish } = useEvent()
     const renderer = useConfigStore((state) => state.renderer)
 
-    const [data, setData] = useState<any>([])
+    const [data, setData] = useState<any>()
 
     const getData = () => {
         getTrendChartMilkProductPerShift().then((res: any) => {
@@ -26,12 +28,20 @@ const MilkProductLine: FC<OptionsI> = (options) => {
 
     useIntervalRequest(getData)
 
+    const onChartClick = (params: any) => {
+        const dataIndex = params?.params?.dataIndex
+        const clickItem = data[dataIndex]
+        console.log("=====d======", clickItem)
+        publish("onMilkProductLineClick", clickItem)
+    }
+
     return (
         <>
             {(data) ? (
                 <EChartsCommon
                     renderer={renderer}
                     option={lineineOptions(data)}
+                    onClick={onChartClick}
                 />
             ) : (
                 ''

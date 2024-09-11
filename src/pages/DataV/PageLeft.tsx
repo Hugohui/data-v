@@ -25,10 +25,10 @@ export const PageLeft = () => {
                 <AllFodderBar dataType={dataVFodderDataType}></AllFodderBar>
             </Dialog>
 
-            <BorderBox title="育肥水平评估">
+            <BorderBox title="育成羊生长指数评估">
                 <EvaluateTable></EvaluateTable>
             </BorderBox>
-            <BorderBox title="饲喂草料量" moreText="全部饲料数据" onMoreTextClick={() => setShowDialog(true)}>
+            <BorderBox title="月度饲料消耗量" moreText="全部" onMoreTextClick={() => setShowDialog(true)}>
                 <FodderBar></FodderBar>
             </BorderBox>
             <BorderBox title="清粪概况">

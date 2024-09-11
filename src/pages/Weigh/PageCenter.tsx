@@ -32,7 +32,7 @@ export const PageCenter = () => {
             <InfoBoxStyle>
                 <SheepInfo></SheepInfo>
             </InfoBoxStyle>
-            <BorderBox title="各月龄身高体重散点图" height="428">
+            <BorderBox title="各月龄体重散点图" height="428">
                 <WeighScatter></WeighScatter>
             </BorderBox>
         </PageCenterStyle>

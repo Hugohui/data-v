@@ -1,9 +1,22 @@
 import * as echarts from 'echarts';
 
 export const sheepTendencyBarOptions = (options: any) => {
-  const data = options?.ListData?.map((item: any) => item.value || 0) || []
+  const typeData = options?.ListData?.[0]?.typeData;
 
-  const max = Math.ceil(Math.max(...data) / 100) * 100
+  const series: any = []
+  typeData?.forEach((item: any) => {
+    const data: any = []
+    options?.ListData?.forEach((i: any) => {
+      data.push(i?.typeData?.find((t: any) => t.typeName === item.typeName)?.SheepCount)
+    })
+    series.push({
+      name: item.typeName,
+      type: 'bar',
+      stack: 'total',
+      barWidth: 8,
+      data
+    })
+  });
 
   return {
     grid:{ // 让图表占满容器
@@ -34,8 +47,8 @@ export const sheepTendencyBarOptions = (options: any) => {
       type: 'value',
       name: '只',
       min: 0, // 设置纵坐标的最小值
-      max: max, // 设置纵坐标的最大值
-      interval: Math.round(max / 5), // 设置纵坐标的间隔
+      max: options?.yAxis, // 设置纵坐标的最大值
+      interval: Math.round(options?.yAxis / 5), // 设置纵坐标的间隔
       splitLine: false,
       axisLine: {
         show: true,
@@ -48,20 +61,20 @@ export const sheepTendencyBarOptions = (options: any) => {
         fontWeight: 400
       }
     },
-    series: [
-      {
-        data,
-        type: 'bar',
-        barWidth: 8,
-        itemStyle: {
-          borderRadius: [4, 4, 0, 0],
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: '#F4DF31' },
-            { offset: 1, color: '#E5DB3F' },
-            
-          ])
-        },
-      }
-    ]
+    series
+    // [
+    //   {
+    //     data,
+    //     type: 'bar',
+    //     barWidth: 8,
+    //     itemStyle: {
+    //       borderRadius: [4, 4, 0, 0],
+    //       color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+    //         { offset: 0, color: '#F4DF31' },
+    //         { offset: 1, color: '#E5DB3F' },
+    //       ])
+    //     },
+    //   }
+    // ]
   }
 };

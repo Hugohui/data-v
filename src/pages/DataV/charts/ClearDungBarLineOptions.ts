@@ -19,7 +19,7 @@ export const barOptions = (data: any) => (
     xAxis: [
       {
         type: 'category',
-        boundaryGap: true,
+        boundaryGap: [0, 0.01],
         axisLine: {
           lineStyle: {
             color: '#fff'
@@ -35,7 +35,7 @@ export const barOptions = (data: any) => (
       },
       {
         type: 'category',
-        boundaryGap: true,
+        boundaryGap: [0, 0.01],
         axisTick: {
           show: false // 确保这里是true
         },
@@ -89,25 +89,21 @@ export const barOptions = (data: any) => (
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
             { offset: 0, color: '#FFCA2B' },
             { offset: 1, color: '#E5E04F' },
-
           ])
         },
       },
       {
         name: '总用时',
-        type: 'line',
+        type: 'bar',
         data: [12, 3, 4, 12, 14, 10],
-        xAxisIndex: 1,
-        yAxisIndex: 1,
-        symbol: 'circle', // 设置标记为圆形
-        symbolSize: 3, // 设置圆形标记的大小
+        barWidth: 15,
         itemStyle: {
-          normal: {
-            color: '#E34768', // 设置圆点的填充颜色
-            borderColor: '#E34768', // 设置圆点边框颜色
-            borderWidth: 3 // 设置圆点边框宽度
-          }
-        }
+          borderRadius: [1, 1, 0, 0],
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: '#E34768' },
+            { offset: 1, color: '#A34768' },
+          ])
+        },
       }
     ]
   }

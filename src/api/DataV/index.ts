@@ -17,6 +17,14 @@ export const getVisualDataStatistics = (params?: any) => {
 export const getFeedUsageTrend = (params?: any) => {
     return get('App/BigDataApi/FeedUsageTrend', params)
 }
+/**
+ * 饲喂用草料（月度饲料）
+ * @param params get参数
+ * @returns 
+ */
+export const getForageFeeding = (params?: any) => {
+    return get('App/BigDataApi/ForageFeeding', params)
+}
 
 /**
  * 育肥水平评估

@@ -24,7 +24,6 @@ export const InfoBoxStyle = styled.div`
     background-size: 562px 355px;
     background-position: 73px 150px;
     background-repeat: no-repeat;
-    padding-top: 30px;
 `
 
 export const PageRightStyle = styled.div`

@@ -18,12 +18,12 @@ export const BreedingRealTimeData = () => {
 
     return (
         <>
-            <InfoItem label="昨日配种（只）" value={data.countBreedingYesterday}></InfoItem>
-            <InfoItem label="昨日产羔（只）" value={data.countLambingYesterday}></InfoItem>
-            <InfoItem label="昨日干奶（只）" value={data.countDriedMilkYesterday}></InfoItem>
-            <InfoItem label="昨日断奶（只）" value={data.countWeanedInfoYesterday}></InfoItem>
-            <InfoItem label="昨日妊检（只）" value={data.countPrenatalCheckupYesterday}></InfoItem>
-            <InfoItem label="禁配羊只（只）" value={data.countContraindicatedYesterday}></InfoItem>
+            <InfoItem label="配种（只）" value={data.countBreedingALL}></InfoItem>
+            <InfoItem label="产羔（只）" value={data.countLambingALL}></InfoItem>
+            {/* <InfoItem label="干奶（只）" value={data.countDriedMilkYesterday}></InfoItem> */}
+            <InfoItem label="断奶（只）" value={data.countWeanedInfoALL}></InfoItem>
+            <InfoItem label="妊检（只）" value={data.countPrenatalALL}></InfoItem>
+            <InfoItem label="禁配羊只（只）" value={data.countContraindicatedALL}></InfoItem>
         </>
     )
 }

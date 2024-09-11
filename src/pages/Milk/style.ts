@@ -23,6 +23,10 @@ export const PageTopStyle = styled.div`
         color: #FDFDFD;
         padding-left: 30px;
 
+        &.canClick {
+            cursor: pointer;
+        }
+
         &:first-child {
             border: none;
         }

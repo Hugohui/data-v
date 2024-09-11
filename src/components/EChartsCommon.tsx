@@ -92,7 +92,7 @@ const EChartsCommon = (props: {
         // 转换为经纬度，pointInGeo 是点击位置的经纬度坐标，格式为 [longitude, latitude]
         var pointInGeo = chartRef.current?.convertFromPixel({ seriesIndex: params.seriesIndex }, pointInPixel);
 
-        props.onClick && props.onClick({ name: params.name, pointInPixel, pointInGeo })
+        props.onClick && props.onClick({ name: params.name, pointInPixel, pointInGeo, params })
       }
 
     });

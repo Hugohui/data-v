@@ -37,6 +37,10 @@ export const PageBG = () => {
         };
     
         (window as any).lottie.loadAnimation(params);
+
+        return () => {
+          (window as any)?.lottie && (window as any)?.lottie?.destroy()
+        }
     }, [])
 
     return (
@@ -46,12 +50,8 @@ export const PageBG = () => {
             minScale={0.6}
         >
             <TransformComponent>
-                {/* <LoadScript url="./pageSvg/pageBGSvg.js"></LoadScript> */}
-                {/* <div id="lottie">
-                    <AnchorPoint></AnchorPoint>
-                </div> */}
+                <AnchorPoint></AnchorPoint>
                 <PageBGStyle id="lottie">
-                    <AnchorPoint></AnchorPoint>
                 </PageBGStyle>
             </TransformComponent>
       </TransformWrapper>

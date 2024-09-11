@@ -54,3 +54,12 @@ export const getDailyTotalMilkVolumStaticEachPast = (data?: any) => {
 export const getStatistiDailyMilkProducEachPasture = (data?: any) => {
     return post('App/BigDataApi/StatistiDailyMilkProducEachPasture', data)
 }
+
+/**
+ * 产奶羊只列表
+ * @param params get参数
+ * @returns 
+ */
+export const getListDairyProducingSheep = (params: any) => {
+    return get('App/BigDataApi/ListDairyProducingSheep', params)
+}

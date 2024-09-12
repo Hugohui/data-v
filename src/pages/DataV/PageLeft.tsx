@@ -21,7 +21,7 @@ export const PageLeft = () => {
 
     return (
         <PageLeftStyle>
-            <Dialog title="全部饲喂草料量" show={showDialog} setShow={setShowDialog}>
+            <Dialog title="月度饲料消耗量" show={showDialog} setShow={setShowDialog}>
                 <AllFodderBar dataType={dataVFodderDataType}></AllFodderBar>
             </Dialog>
 

@@ -12,6 +12,7 @@ export const barOptions = (options: any) => {
       name: item?.name,
       type: 'bar',
       stack: 'total',
+      barWidth: 16,
       data: d
     }
   })
@@ -33,7 +34,7 @@ export const barOptions = (options: any) => {
         type: 'slider',
         realtime: true,
         start: 0,
-        end: 30,
+        end: 60,
         height: 40
       }
     ],

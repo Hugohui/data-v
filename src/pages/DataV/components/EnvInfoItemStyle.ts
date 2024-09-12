@@ -9,6 +9,20 @@ import iconNH3PPM from '../../../assets/img/icons/iconNH3PPM.png'
 import iconLux from '../../../assets/img/icons/iconLux.png'
 import iconWaterPH from '../../../assets/img/icons/iconWaterPH.png'
 
+import iconTemperatureRed from '../../../assets/img/icons/iconTemperatureRed.png'
+import iconHumidnessRed from '../../../assets/img/icons/iconHumidnessRed.png'
+import iconTankTemperatureRed from '../../../assets/img/icons/iconTankTemperatureRed.png'
+import iconCO2Red from '../../../assets/img/icons/iconCO2Red.png'
+import iconNH3PPMRed from '../../../assets/img/icons/iconNH3PPMRed.png'
+import iconLuxRed from '../../../assets/img/icons/iconLuxRed.png'
+
+import iconTemperatureYellow from '../../../assets/img/icons/iconTemperatureYellow.png'
+import iconHumidnessYellow from '../../../assets/img/icons/iconHumidnessYellow.png'
+import iconTankTemperatureYellow from '../../../assets/img/icons/iconTankTemperatureYellow.png'
+import iconCO2Yellow from '../../../assets/img/icons/iconCO2Yellow.png'
+import iconNH3PPMYellow from '../../../assets/img/icons/iconNH3PPMYellow.png'
+import iconLuxYellow from '../../../assets/img/icons/iconLuxYellow.png'
+
 export const EnvInfoItemStyle = styled.div`
     display: flex;
     width: 130px;
@@ -29,28 +43,48 @@ export const EnvInfoItemStyle = styled.div`
         margin-top: 2px;
 
         &.icon-temperature {
-            background-image: url(${iconTemperature});
+            &.default {background-image: url(${iconTemperature});}
+            &.warning {background-image: url(${iconTemperatureYellow});}
+            &.error {background-image: url(${iconTemperatureRed});}
+            
         }
         &.icon-humidness {
-            background-image: url(${iconHumidness});
+            &.default {background-image: url(${iconHumidness});}
+            &.warning {background-image: url(${iconHumidnessYellow});}
+            &.error {background-image: url(${iconHumidnessRed});}
+            
         }
         &.icon-tank-temperature {
-            background-image: url(${iconTankTemperature});
+            &.default {background-image: url(${iconTankTemperature});}
+            &.warning {background-image: url(${iconTankTemperatureYellow});}
+            &.error {background-image: url(${iconTankTemperatureRed});}
+            
         }
         &.icon-co2 {
-            background-image: url(${iconCO2});
+            &.default {background-image: url(${iconCO2});}
+            &.warning {background-image: url(${iconCO2Yellow});}
+            &.error {background-image: url(${iconCO2Red});}
+            
         }
         &.icon-thi {
-            background-image: url(${iconTHI});
+            &.default {background-image: url(${iconTHI});}
+            
         }
         &.icon-nh3-ppm {
-            background-image: url(${iconNH3PPM});
+            &.default {background-image: url(${iconNH3PPM});}
+            &.warning {background-image: url(${iconNH3PPMYellow});}
+            &.error {background-image: url(${iconNH3PPMRed});}
+            
         }
         &.icon-lux {
-            background-image: url(${iconLux});
+            &.default {background-image: url(${iconLux});}
+            &.warning {background-image: url(${iconLuxYellow});}
+            &.error {background-image: url(${iconLuxRed});}
+            
         }
         &.icon-water-ph {
-            background-image: url(${iconWaterPH});
+            &.default {background-image: url(${iconWaterPH});}
+            
         }
     }
 
@@ -64,6 +98,12 @@ export const EnvInfoItemStyle = styled.div`
             .Num {
                 font-size: 26px;
                 margin-right: 6px;
+                &.error {
+                    color: #F56E6E;
+                }
+                &.warning {
+                    color: #F7CF24;
+                }
             }
             span {
                 font-size: 15px;

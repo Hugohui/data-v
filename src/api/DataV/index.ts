@@ -49,8 +49,11 @@ export const getMilkProduction = (data?: any) => {
  * @param data post参数
  * @returns 
  */
+// export const getEnvironmentalMonitoring = (data?: any) => {
+//     return post('App/BigDataApi/environmentalMonitoring', data)
+// }
 export const getEnvironmentalMonitoring = (data?: any) => {
-    return post('App/BigDataApi/environmentalMonitoring', data)
+    return post('App/BigDataApi/AliEnvironmentalMonitoring', data)
 }
 
 
@@ -71,4 +74,23 @@ export const getRanchAnnualCreditLevelAssment = (data?: any) => {
  */
 export const getListBarns = (params?: any) => {
     return get('App/BigDataApi/ListBarns', params)
+}
+
+
+/**
+ * 环控设备列表
+ * @param params get参数
+ * @returns 
+ */
+export const getEnvironmentalDevice = (data?: any) => {
+    return post('App/BigDataApi/environmentalDevice', data)
+}
+
+/**
+ * 温湿度数据
+ * @param params get参数
+ * @returns 
+ */
+export const getAliEnvironmentalMonitoring = (data?: any) => {
+    return post('App/BigDataApi/AliEnvironmentalMonitoring', data)
 }

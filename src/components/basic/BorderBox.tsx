@@ -13,6 +13,7 @@ interface BorderBoxI {
     moreText?: string
     onMoreTextClick?: Function
     hideTitle?: boolean
+    toolBar?: any
 }
 
 export const BorderBox: FC<BorderBoxI> = (props) => {
@@ -20,8 +21,10 @@ export const BorderBox: FC<BorderBoxI> = (props) => {
         <BorderBoxStyle $height={props.height} $width={props.width} $size={props.size} className={props.className}>
             { !props.hideTitle ?
                 <BorderBoxHeaderStyle className="BoxHeader" $size={props.size}>
-                    { props.title }
+                    <div>{ props.title }</div>
                     {props.moreText ? <div className="MoreInfo" onClick={() => {props.onMoreTextClick && props.onMoreTextClick()}}>{props.moreText}</div> : ''}
+                    {props.toolBar ? <div className="toolBar">{props.toolBar}</div> : ''}
+                    
                 </BorderBoxHeaderStyle> : ''
             }
             <BorderBoxContentStyle className="BoxContent" hidetitle={props?.hideTitle?.toString()}>

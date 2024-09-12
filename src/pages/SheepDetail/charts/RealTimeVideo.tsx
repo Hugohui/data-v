@@ -11,7 +11,7 @@ export const RealTimeVideo = () => {
         subscribe('onSheepDetailSelectEmit', (data: any) => {
             if (data) {
                 setVideoList(data.vidLst)
-                // setVideoList([{url: ''}])
+                // setVideoList([{url: ''}, {url: ''}])
             }
         })
     }, [])

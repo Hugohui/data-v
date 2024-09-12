@@ -57,6 +57,7 @@ export const BorderBoxHeaderStyle = styled.div<BorderBoxStyleI>`
     background-size: 95% 25px;
     background-position: 15px 32px;
     position: relative;
+    display: flex;
 
     ${props => props.$size && props.$size === 'large' && `
         background-image: url(${boxHeaderLargeBg});
@@ -87,6 +88,12 @@ export const BorderBoxHeaderStyle = styled.div<BorderBoxStyleI>`
             right: 25px;
             top: 22px;
         }
+    }
+
+    .toolBar {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
     }
 `
 

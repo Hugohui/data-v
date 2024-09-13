@@ -19,7 +19,7 @@ export const PageRight = () => {
 
     return (
         <PageRightStyle>
-            <BorderBox title="过程记录" height="505" className="GaugeBox">
+            <BorderBox title="生长档案" height="505" className="GaugeBox">
                 <ProcessRecords></ProcessRecords>
             </BorderBox>
             {

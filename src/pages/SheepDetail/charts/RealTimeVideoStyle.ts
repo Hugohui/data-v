@@ -5,7 +5,33 @@ export const RealTimeVideoStyle = styled.div`
         background:none;
         justify-content: space-around;
         .VideoItemStyle {
-            height: 142px;
+            height: 100%;
+        }
+    }
+
+    &.videoList_1 {
+        height: 100%;
+        .VideoBoxStyle {
+            height: 100%;
+            background: none;
+            justify-content: space-around;
+            .VideoItemStyle {
+                height: 100%;
+                /* width: 100%; */
+                width: 328px;
+            }
+        }
+    }
+
+    &.videoList_2 {
+        height: 100%;
+        .VideoBoxStyle {
+            height: 100%;
+            background: none;
+            justify-content: space-around;
+            .VideoItemStyle {
+                height: 100%;
+            }
         }
     }
 `

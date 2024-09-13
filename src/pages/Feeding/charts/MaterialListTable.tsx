@@ -22,6 +22,10 @@ export const MaterialListTable = () => {
             name: "实际重量"
         },
         {
+            key: "ChargeRatio",
+            name: "精粗料比"
+        },
+        {
             key: "ErrorRate",
             name: "误差量"
         },

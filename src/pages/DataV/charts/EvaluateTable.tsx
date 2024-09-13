@@ -18,7 +18,7 @@ export const EvaluateTable = () => {
             name: "饲养天数"
         },
         {
-            key: "AvgOffsiteWeight",
+            key: "AvgWeight",
             name: "平均体重"
         },
         {

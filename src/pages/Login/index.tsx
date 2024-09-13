@@ -3,6 +3,7 @@ import { LoginStyle, LoginHeaderStyle, LoginBoxStyle, LoginInputStyle, LoginButt
 import { checkLogin } from "../../api/Login"
 import { useNavigate } from "react-router-dom"
 import { SessionEnum } from '../../enums/constantEnum'
+import { setFarmInfo } from "@/utils/session";
 
 export const Login = () => {
     const navigate = useNavigate()
@@ -22,7 +23,18 @@ export const Login = () => {
         }).then((res) => {
             if (res.code === 200) {
                 sessionStorage.setItem(SessionEnum.FARMID, res.data.farmID)
-                navigate('/')
+                // navigate('/')
+                const info = {
+                    "PastureName": "产投新场",
+                    "PastureCode": 3123,
+                    "Longitude": "109.18643744727943",
+                    "Latitude": "34.75726044025601",
+                    "ProvinceName": "陕西省",
+                    "address": "陕西省渭南市富平县",
+                    "cowCount": 91
+                }
+                setFarmInfo(res.data?.PastureInfo || info)
+                navigate('/dataV')
             }
         })
     }

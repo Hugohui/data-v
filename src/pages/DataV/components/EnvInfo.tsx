@@ -20,8 +20,9 @@ export const EnvInfo = ({ deviceInfo }: any) => {
     }
 
     const getData = () => {
+        if (!deviceInfo?.DeviceName) return;
         getEnvironmentalMonitoring({
-            DeviceName: deviceInfo.DeviceName
+            DeviceName: deviceInfo?.DeviceName
         }).then((res:any) => {
             if (res.data) {
                 setData(formatData(res.data))
@@ -31,13 +32,13 @@ export const EnvInfo = ({ deviceInfo }: any) => {
 
     useEffect(() => {
         getData()
-    }, [deviceInfo.bldName])
+    }, [deviceInfo?.bldName])
 
     useIntervalRequest(getData)
 
     return (
         <EnvInfoStyle>
-            <EnvInfoItem value={data?.['温度']?.value} status={data?.['温度']?.status} label="温度" icon="temperature" unit="°C"></EnvInfoItem>
+            <EnvInfoItem value={data?.['温度']?.value} status={data?.['温度']?.status} decimals={1} label="温度" icon="temperature" unit="°C"></EnvInfoItem>
             <EnvInfoItem value={data?.['湿度']?.value} status={data?.['湿度']?.status} label="湿度" icon="humidness" unit="%"></EnvInfoItem>
             <EnvInfoItem value={data?.['水槽温度']?.value} status={data?.['水槽温度']?.status} label="水槽温度" icon="tank-temperature" unit="°C"></EnvInfoItem>
             <EnvInfoItem value={data?.['二氧化碳']?.value} status={data?.['二氧化碳']?.status} label="二氧化碳" icon="co2" unit="%"></EnvInfoItem>

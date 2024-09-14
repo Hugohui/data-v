@@ -47,7 +47,7 @@ export const AnchorPointStyle = styled.div`
             left: 60px;
             top: 10px;
             width: 400px;
-            height: 280px;
+            height: 300px;
             background-color: #122F44;
             z-index: 100;
             border-radius: 18px;

@@ -6,7 +6,7 @@ import { getM3u8VideoStream } from '@/api/common'
 const getM3u8VideoStreamUrl = async (url: string) => {
     let res: any = ''
     try {
-        res =  await getM3u8VideoStream(url)
+        res = url.endsWith('.mp4') ? url : await getM3u8VideoStream(url)
     } catch (error: any) {
         console.log("======getM3u8VideoStream error====", error)
     }
@@ -22,7 +22,7 @@ const VideoPlayer = forwardRef(({ src, autoPlay=true }: any, ref) => {
         if (src) {
             const streamUrl = await getM3u8VideoStreamUrl(src)
             if (!streamUrl) return;
-            if (Hls.isSupported()) {
+            if (Hls.isSupported() && !src.endsWith('.mp4')) {
                 hlsRef.current = new Hls()
                 hlsRef.current.loadSource(streamUrl)
                 hlsRef.current.attachMedia(videoRef.current)
@@ -34,6 +34,7 @@ const VideoPlayer = forwardRef(({ src, autoPlay=true }: any, ref) => {
                 })
             } else if (videoRef.current) {
                 videoRef.current.src = streamUrl
+                videoRef.current.muted = true
                 videoRef.current.addEventListener('loadedmetadata', () => {
                     videoRef.current.play()
                 })

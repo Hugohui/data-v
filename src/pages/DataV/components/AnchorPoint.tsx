@@ -36,7 +36,7 @@ export const AnchorPoint = () => {
 
     const formatFarmMap = (data: any) => {
         const farmMap: any = {}
-        data?.forEach((item: any) => farmMap[item.BarnName] = item.BarnCode)
+        data?.forEach((item: any) => farmMap[item.BarnName] = item)
         return farmMap
     }
 

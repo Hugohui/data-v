@@ -23,7 +23,8 @@ export const MaterialListTable = () => {
         },
         {
             key: "ChargeRatio",
-            name: "精粗料比"
+            name: "精粗料比",
+            unit: "%"
         },
         {
             key: "ErrorRate",

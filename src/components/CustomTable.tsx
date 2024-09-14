@@ -6,6 +6,7 @@ import { useMountedState } from "@/hooks/useMountedState";
 interface columnsI {
     key: string
     name: string
+    unit?: string
 }
 
 interface TablePropsI {
@@ -139,7 +140,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
                         >
                             {!hiddenIndex ? <td key={`td_index_${index}`}>{index + 1}</td> : ''}
                             {columns.map(column => (
-                                <td key={`td_${index}_${column.key}`}>{row[column.key]}</td>
+                                <td key={`td_${index}_${column.key}`}>{row[column.key]}{column.unit}</td>
                             ))}
                         </tr>
                     ))}

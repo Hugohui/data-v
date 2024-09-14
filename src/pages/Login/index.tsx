@@ -23,18 +23,14 @@ export const Login = () => {
         }).then((res) => {
             if (res.code === 200) {
                 sessionStorage.setItem(SessionEnum.FARMID, res.data.farmID)
-                // navigate('/')
-                const info = {
-                    "PastureName": "产投新场",
-                    "PastureCode": 3123,
-                    "Longitude": "109.18643744727943",
-                    "Latitude": "34.75726044025601",
-                    "ProvinceName": "陕西省",
-                    "address": "陕西省渭南市富平县",
-                    "cowCount": 91
+                const pastureInfoList = res?.data?.pastureInfoList;
+                const toInfo = pastureInfoList.find((item: any) => item.DemonstrationRanch)
+                if (toInfo) {
+                    setFarmInfo(toInfo)
+                    navigate('/dataV')
+                } else {
+                    navigate('/')
                 }
-                setFarmInfo(res.data?.PastureInfo || info)
-                navigate('/dataV')
             }
         })
     }

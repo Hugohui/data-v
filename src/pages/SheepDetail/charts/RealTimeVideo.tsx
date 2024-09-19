@@ -10,7 +10,7 @@ export const RealTimeVideo = () => {
     useEffect(() => {
         subscribe('onSheepDetailSelectEmit', (data: any) => {
             if (data) {
-                setVideoList(data.vidLst)
+                setVideoList(data?.vidLst?.map((item: any) => ({url: item})))
                 // setVideoList([{url: 'rtsp://admin:123456@192.168.2.126:554/mpeg4'}])
                 // setVideoList([{url: ''}, {url: ''}])
             }

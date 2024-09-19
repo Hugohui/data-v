@@ -30,13 +30,15 @@ export const AnchorPoint = () => {
     const [data, setData] = useState<any>({})
 
     const onPointClick = (item: any) => {
-        data[item.name] && navigate(`/sheepDetail?id=${data[item.name]}`)
+        data[item.name] && navigate(`/sheepDetail?id=${data[item.name].BarnCode}`)
         setSheepRoomInfo(item)
     }
 
     const formatFarmMap = (data: any) => {
         const farmMap: any = {}
-        data?.forEach((item: any) => farmMap[item.BarnName] = item)
+        data?.forEach((item: any) => {
+            farmMap[item.BarnName] = item
+        })
         return farmMap
     }
 
@@ -53,7 +55,9 @@ export const AnchorPoint = () => {
     return (
         <AnchorPointStyle className="AnchorPointStyle">
             {
-                pointsData.map((item: any, index: number) => <div key={item.name} onMouseEnter={() => {
+                pointsData.map((item: any, index: number) => <div 
+                className={[data?.[item.name]?.status].join(' ')}
+                key={item.name} onMouseEnter={() => {
                     handleMouseEnter(item, index)
                 }} onMouseLeave={() => {
                     handleMouseLeave(item, index)

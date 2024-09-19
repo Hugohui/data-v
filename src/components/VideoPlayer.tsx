@@ -35,8 +35,8 @@ const VideoPlayer = forwardRef(({ src, autoPlay=true }: any, ref) => {
             } else if (videoRef.current) {
                 videoRef.current.src = streamUrl
                 videoRef.current.muted = true
-                videoRef.current.addEventListener('loadedmetadata', () => {
-                    videoRef.current.play()
+                videoRef?.current?.addEventListener('loadedmetadata', () => {
+                    videoRef?.current?.play()
                 })
             }
         }

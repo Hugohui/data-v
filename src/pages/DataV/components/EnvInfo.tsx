@@ -13,7 +13,6 @@ export const EnvInfo = ({ deviceInfo }: any) => {
             res[item.name] = {
                 value: item.value,
                 status: item.status
-                // status: 'warning'
             }
         })
         return res

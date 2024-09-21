@@ -20,18 +20,18 @@ export const SheepInfo = () => {
                 <p>月龄: {info.monAge}</p>
             </div>
             <div className="info2">
-                <p>体高: {info.Height}cm</p>
-                <p>体重: {info.Weight}kg</p>
-                <p>体长: {info.length_straight}cm</p>
+                <p>体高: {info.Height !== null ? `${info.Height}cm` : '--'}</p>
+                <p>体重: {info.Weight !== null ? `${info.Weight}kg` : '--'}</p>
+                <p>体长: {info.length_straight !== null ? `${info.length_straight}cm` : '--'}</p>
             </div>
             <div className="info3">
-                <p>胸深: 53cm</p>
-                <p>胸宽: 36cm</p>
-                <p>胸围: 29cm</p>
+                <p>胸深: {info.chestDepth !== null ? `${info.chestDepth}cm` : '--' }</p>
+                <p>胸宽: {info.chestBreadth !== null ? `${info.chestBreadth}cm` : '--'}</p>
+                <p>胸围: {info.circum_chest !== null ? `${info.circum_chest}cm` : '--'}</p>
             </div>
             <div className="info4">
-                <p>十字部高: 33cm</p>
-                <p>管围: 30kg</p>
+                <p>十字部高: {info.width_waist !== null ? `${info.width_waist}cm` : '--'}</p>
+                <p>管围: {info.circumference !== null ? `${info.circumference}cm` : '--'}</p>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import * as echarts from 'echarts';
 
-export const barOptions = (data: any) => (
-  {
+export const barOptions = (options: any) => {
+  return {
     grid:{ // 让图表占满容器
       top:"40px",
       left:"50px",
@@ -31,7 +31,7 @@ export const barOptions = (data: any) => (
         axisLabel: {
           show: true // 确保这里是true
         },
-        data: ['基础母羊舍', '泌乳2舍', '泌乳3舍', '泌乳4舍', '泌乳5舍']
+        data: options?.xAxisList
       },
       {
         type: 'category',
@@ -42,14 +42,14 @@ export const barOptions = (data: any) => (
         axisLabel: {
           show: false // 确保这里是true
         },
-        data: ['基础母羊舍', '泌乳2舍', '泌乳3舍', '泌乳4舍', '泌乳5舍']
+        data: options?.xAxisList
       }
     ],
     yAxis: [
       {
         type: 'value',
         scale: true,
-        max: 250,
+        max: options?.MaxyAxisTimes,
         min: 0,
         boundaryGap: [0.2, 0.2],
         splitLine: false,
@@ -63,7 +63,7 @@ export const barOptions = (data: any) => (
       {
         type: 'value',
         scale: true,
-        max: 20,
+        max: options?.MaxyAxisTotalTime,
         min: 0,
         boundaryGap: [0.2, 0.2],
         axisLine: {
@@ -82,7 +82,7 @@ export const barOptions = (data: any) => (
       {
         name: '清粪次数',
         type: 'bar',
-        data: [120, 23, 45, 230, 256, 456],
+        data: options?.ManureRemovalTimesList,
         barWidth: 15,
         itemStyle: {
           borderRadius: [1, 1, 0, 0],
@@ -95,7 +95,7 @@ export const barOptions = (data: any) => (
       {
         name: '总用时',
         type: 'bar',
-        data: [12, 3, 4, 12, 14, 10],
+        data: options?.ManureRemovalTotalTimeList,
         barWidth: 15,
         itemStyle: {
           borderRadius: [1, 1, 0, 0],
@@ -107,4 +107,4 @@ export const barOptions = (data: any) => (
       }
     ]
   }
-);
+};

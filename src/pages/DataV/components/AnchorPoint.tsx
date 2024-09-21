@@ -38,6 +38,16 @@ export const AnchorPoint = () => {
         const farmMap: any = {}
         data?.forEach((item: any) => {
             farmMap[item.BarnName] = item
+
+            const errorItem = item?.DeviceList?.find((i: any) => i.status === 'error');
+            if (errorItem) {
+                item.status = 'error'
+                return
+            };
+            const warningItem = item?.DeviceList?.find((i: any) => i.status === 'warning');
+            if (warningItem) {
+                item.status = 'warning'
+            };
         })
         return farmMap
     }

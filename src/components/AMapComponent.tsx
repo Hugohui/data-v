@@ -229,7 +229,6 @@ const AMapComponent = ({ data }: any) => {
     const toDataV = (event: any) => {
         if (event.target.matches("#markerEnter")) {
             const info = JSON.parse(event?.target?.dataset?.info || '{}')
-            console.log("=====d=====", info)
             setFarmInfo(info)
             navigate('/dataV')
         }

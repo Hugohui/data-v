@@ -31,7 +31,6 @@ const MilkProductLine: FC<OptionsI> = (options) => {
     const onChartClick = (params: any) => {
         const dataIndex = params?.params?.dataIndex
         const clickItem = data[dataIndex]
-        console.log("=====d======", clickItem)
         publish("onMilkProductLineClick", clickItem)
     }
 

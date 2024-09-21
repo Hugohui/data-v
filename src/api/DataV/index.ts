@@ -27,6 +27,14 @@ export const getForageFeeding = (params?: any) => {
 }
 
 /**
+ * 清粪概况
+ * @param params get参数
+ * @returns 
+ */
+export const getGeneralSituatManureRemoval = (params?: any) => {
+    return get('App/BigDataApi/GeneralSituatManureRemoval', params)
+}
+/**
  * 育肥水平评估
  * @param data post参数
  * @returns 

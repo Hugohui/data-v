@@ -80,3 +80,15 @@ export const PageRightStyle = styled.div`
         margin-bottom: 0;
     }
 `
+
+
+export const EnterPastureStyle = styled.div`
+    width: 400px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    background-color: #1DF0BC;
+    margin: 0 auto;
+    cursor: pointer;
+`

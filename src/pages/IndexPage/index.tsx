@@ -1,6 +1,6 @@
 import { IndexLayout } from './layout'
 import { LayoutStyle } from "../../style/globalStyleSet"
-import { PageIndexStyle, IndexContentStyle } from './style'
+import { PageIndexStyle, IndexContentStyle, EnterPastureStyle } from './style'
 import { HeaderIndex } from '../../layout/HeaderIndex'
 import { Footer } from '../../layout/Footer'
 import { IndexMap } from './charts/IndexMap'
@@ -11,11 +11,14 @@ import Dialog from '@/components/basic/Dialog'
 import { useEffect, useState } from 'react'
 import SheePedigree from './charts/SheePedigree'
 import useEvent from '@/hooks/useEventHook'
+import { setFarmInfo } from '@/utils/session'
+import { useNavigate } from 'react-router-dom'
 
 export const IndexPage = () => {
     const [showSheePedigree, setShowSheePedigree] = useState(false)
     const { subscribe } = useEvent()
     const [sheePedigree, setSheePedigree] = useState<any>({})
+    const navigate = useNavigate()
 
     useEffect(() => {
         subscribe('onMapScaleGraphClick', (data: any) => {
@@ -26,11 +29,17 @@ export const IndexPage = () => {
         })
     }, [])
 
+    const toDetail = () => {
+        setFarmInfo(sheePedigree)
+        navigate('/dataV')
+    }
+
     return (
         <LayoutStyle>
             <PageIndexStyle>
                 <Dialog title={sheePedigree?.PastureName} show={showSheePedigree} setShow={setShowSheePedigree}>
                     <SheePedigree farmId={sheePedigree?.PastureCode}></SheePedigree>
+                    <EnterPastureStyle onClick={toDetail}>点击进入</EnterPastureStyle>
                 </Dialog>
 
                 <IndexMap></IndexMap>

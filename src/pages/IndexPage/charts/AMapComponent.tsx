@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AMapLoader from "@amap/amap-jsapi-loader";
 import { AmapContainerStyle } from "./AMapComponentStyle";
 import ReactDOMServer from 'react-dom/server'
@@ -15,6 +15,7 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
     let map: any = null;
     const [mapComplete, setMapComplete] = useState(false)
     const { publish } = useEvent()
+    const currentInfoWindow = useRef<any>(null)
 
     const addPolygon = (AMap: any, polygonData: any) => {
         try {
@@ -195,6 +196,7 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
         if (index === 0) {
             infoWindow.open(map, marker.getPosition());
             renderECharts(item?.origin?.PastureCode);
+            currentInfoWindow.current = infoWindow
         }
         //鼠标点击marker切换信息窗体
         marker.on('click', function () {
@@ -203,6 +205,7 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
             } else {
                 infoWindow.open(map, marker.getPosition());
                 renderECharts(item?.origin?.PastureCode);
+                currentInfoWindow.current = infoWindow
             }
         });
     }
@@ -253,6 +256,9 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
         if (event.target.matches("#scaleGraph")) {
             const info = JSON.parse(event?.target?.dataset?.info || '{}')
             publish('onMapScaleGraphClick', info)
+            if (currentInfoWindow?.current?.getIsOpen()) {
+                currentInfoWindow?.current?.close()
+            }
         }
     }
 

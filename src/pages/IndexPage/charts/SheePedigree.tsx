@@ -22,8 +22,10 @@ const SheePedigree: FC<{ farmId: any }> = ({ farmId }) => {
   }, [farmId])
 
   return (
-    <>
-      {(pedigreeData) ? (
+    <div style={{
+      height: 'calc(100% - 30px)'
+    }}>
+      {(pedigreeData && !isLoading) ? (
         <EChartsCommon
           renderer={renderer}
           option={sheePedigreeOptions(pedigreeData)}
@@ -41,7 +43,7 @@ const SheePedigree: FC<{ farmId: any }> = ({ farmId }) => {
           数据加载中...
         </div>) : ''
       }
-    </>
+    </div>
   )
 }
 

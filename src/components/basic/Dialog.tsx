@@ -20,8 +20,6 @@ const Dialog = (props: DialogI) => {
         calcRate()
         windowResize()
     
-        
-    
         return () => {
           unWindowResize()
         } 
@@ -33,7 +31,7 @@ const Dialog = (props: DialogI) => {
                 <DialogBoxStyle ref={scaleRef} width={props.width}>
                     <DialogHeaderStyle>
                         {props.title}
-                        <div className="close" onClick={() => props.setShow(false)}></div>
+                        <div className="close" title="关闭" onClick={() => props.setShow(false)}></div>
                     </DialogHeaderStyle>
                     <DialogContentStyle>
                         {props.children}

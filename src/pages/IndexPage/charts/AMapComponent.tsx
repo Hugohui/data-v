@@ -6,10 +6,15 @@ import mapFlex from '@/assets/img/mapFlex.png'
 import { useNavigate } from "react-router-dom";
 import { setFarmInfo } from "@/utils/session";
 import iconMapMarker from '@/assets/img/icons/iconMapMarker.png'
+import * as echarts from 'echarts';
+import { sheePedigreeOptions } from "./SheePedigreeOptions";
+import { getSheePedigree } from "@/api/IndexPage";
+import useEvent from "@/hooks/useEventHook";
 
-const AMapComponent = ({ data }: any) => {
+const AMapComponent = ({ data, pedigreeData }: any) => {
     let map: any = null;
     const [mapComplete, setMapComplete] = useState(false)
+    const { publish } = useEvent()
 
     const addPolygon = (AMap: any, polygonData: any) => {
         try {
@@ -28,7 +33,6 @@ const AMapComponent = ({ data }: any) => {
             console.log("addPolygon error", error)
         }
     }
-
 
     // 省份高亮
     const createPolygon = (AMap: any) => {
@@ -57,68 +61,100 @@ const AMapComponent = ({ data }: any) => {
         })
     }
 
-    const EnterMarker = ({ info }: any) => {
-        // const imgBaseUrl = process.env.REACT_APP_API_PATH
-        const imgBaseUrl = 'http://112.126.95.138:8600'
-        
+    const EnterMarker = ({ info }: any) => {     
         return (
-            <div style={{ 
-                width: "205px", 
-                height: "169px", 
-                backgroundImage: `url(${imgBaseUrl}/farmImages/indexEnterDialogNew.png)`,
+            <div 
+                className="SheePedigreeBg"
+                style={{ 
+                width: "435px", 
+                height: "439px",
                 backgroundSize: '100% 100%',
                 backgroundRepeat: "no-repeat",
                 position: 'relative'
             }}>
-                <div className="info" style={{
-                    width: "200px",
-                    fontSize: "15px",
+                <div id="graphLoading" style={{
+                    textAlign: "center",
+                    color: "#fff",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                }}>数据加载中...</div>
+                
+                <div style={{
+                    height: "60px",
+                    lineHeight: "60px",
+                    textAlign: "center",
+                    fontSize: "20px",
+                    color: "#fff",
+                    fontWeight: "bolder",
+                    position: "relative",
+                }}>
+                    {info.name}
+
+                    <span style={{
+                        position: "absolute",
+                        right: "10px",
+                        top: "15px",
+                        width: "30px",
+                        height: "30px",
+                        cursor: "pointer"
+                    }} title="放大" id="scaleGraph" data-info={JSON.stringify(info?.origin)}></span>
+                </div>
+
+                <div className="info" id="markerEchart" style={{
+                    width: "435px",
+                    height: "340px",
+                    // fontSize: "15px",
                     color: "#fff",
                     position: 'absolute',
                     right: 0,
-                    top: 0,
+                    top: "50px",
                     lineHeight: "32px",
                     padding: "15px 10px 10px 10px",
                     userSelect: 'none'
                 }}>
-                    <div><span>牧场名称</span>：{info?.name}</div>
+                    {/* <div><span>牧场名称</span>：{info?.name}</div>
                     <div><span>存栏数</span>：{info?.origin?.cowCount} 只</div>
-                    <div><span>地址</span>：{info?.origin?.address}</div>
+                    <div><span>地址</span>：{info?.origin?.address}</div> */}
                 </div>
+
                 <div className="enter" id="markerEnter" style={{
-                    width: "160px",
+                    width: "90%",
                     height: "30px",
                     position: "absolute",
-                    top: "118px",
+                    bottom: "23px",
                     right: "25px",
                     cursor: "pointer"
                 }} data-info={JSON.stringify(info?.origin)}></div>
-                <span style={{
-                    width: 0,
-                    height: '60px',
-                    borderLeft: '1px solid #00DDEA',
-                    position: 'absolute',
-                    bottom: '-60px',
-                    left: '55px'
-                }}></span>
+
                 <span style={{
                     width: '150px',
                     height: '0',
                     borderTop: '1px solid #00DDEA',
                     position: 'absolute',
-                    bottom: '-60px',
-                    left: '-95px'
+                    bottom: '110px',
+                    left: '-150px'
                 }}></span>
                 <span style={{
                     width: 0,
                     height: '60px',
                     borderLeft: '1px solid #00DDEA',
                     position: 'absolute',
-                    bottom: '-120px',
-                    left: '-95px'
+                    bottom: '50px',
+                    left: '-150px'
                 }}></span>
             </div>
         )
+    }
+
+    /**
+     * 关系图数据加载中 loading
+     * @param lading 
+     */
+    const setGraphLoading = (lading: boolean) => {
+        const graphLoading: any = document.getElementById('graphLoading')
+        graphLoading.style.display = lading ? 'block' : 'none'
     }
 
     const renderDialog = (info: any) => {
@@ -126,12 +162,23 @@ const AMapComponent = ({ data }: any) => {
         return content
     }
 
+    const renderECharts = async (farmId: any) => {
+        setGraphLoading(true)
+        const markerEchart = echarts.init(document.getElementById('markerEchart'))
+        const res = await getSheePedigree({
+            farmId
+        })
+        setGraphLoading(false)
+        const options = sheePedigreeOptions(res.data)
+        markerEchart.setOption(options)
+    }
+
     // 添加点
     const addMarker = (AMap: any, item: any, index: number) => {
         var infoWindow = new AMap.InfoWindow({
             isCustom: true,  //使用自定义窗体
             content: renderDialog(item),
-            offset: new AMap.Pixel(210, -120)
+            offset: new AMap.Pixel(378, 50),
         });
 
         var icon = new AMap.Icon({
@@ -147,6 +194,7 @@ const AMapComponent = ({ data }: any) => {
         // 默认展示第一个信息窗
         if (index === 0) {
             infoWindow.open(map, marker.getPosition());
+            renderECharts(item?.origin?.PastureCode);
         }
         //鼠标点击marker切换信息窗体
         marker.on('click', function () {
@@ -154,6 +202,7 @@ const AMapComponent = ({ data }: any) => {
                 infoWindow.close()
             } else {
                 infoWindow.open(map, marker.getPosition());
+                renderECharts(item?.origin?.PastureCode);
             }
         });
     }
@@ -161,36 +210,6 @@ const AMapComponent = ({ data }: any) => {
     const createLayers = (AMap: any) => {
         // 卫星图
         let satellite = new AMap.TileLayer.Satellite()
-
-        // 绘制世界地图国家轮廓
-        let disWorld = new AMap.DistrictLayer.World({
-            zIndex: 5,
-            styles: {
-                // 颜色格式: #RRGGBB、rgba()、rgb()、[r, g, b, a]
-                // 国境线
-                // 'nation-stroke': "",
-                // 海岸线
-                // 'coastline-stroke': '',
-                // 填充
-                // 'fill': 'rgba(20, 28, 44, 0)'
-                'fill': 'rgba(20, 28, 44, 0)'
-            }
-        });
-
-        // 绘制中国行政区
-        let disCountry = new AMap.DistrictLayer.Country({
-            zIndex: 10,
-            depth: 1,
-            // rejectMapMask: true,
-            styles: {
-                "stroke-width": 2,
-                'nation-stroke': "", // 国境线
-                'coastline-stroke': '', // 海岸线
-                'province-stroke': 'RGBA(40, 71, 94, 1)', // 省线
-                'city-stroke': 'RGBA(40, 71, 94, 0.3)', // 市线
-                fill: "rgba(0, 0, 0, 0)",
-            }
-        })
 
         // 模拟水印效果
         var flexLayer = new AMap.TileLayer.Flexible({
@@ -212,7 +231,6 @@ const AMapComponent = ({ data }: any) => {
         // 路网
         const roadLayer = new AMap.TileLayer.RoadNet({
             opacity: 0.6,
-            // zooms: [6, 10]
         })
 
         return [satellite, flexLayer, roadLayer]
@@ -231,6 +249,10 @@ const AMapComponent = ({ data }: any) => {
             const info = JSON.parse(event?.target?.dataset?.info || '{}')
             setFarmInfo(info)
             navigate('/dataV')
+        }
+        if (event.target.matches("#scaleGraph")) {
+            const info = JSON.parse(event?.target?.dataset?.info || '{}')
+            publish('onMapScaleGraphClick', info)
         }
     }
 
@@ -253,8 +275,9 @@ const AMapComponent = ({ data }: any) => {
             plugins: ["AMap.Scale", "AMap.DistrictSearch", "AMap.Icon",], //需要使用的的插件列表，如比例尺'AMap.Scale'，支持添加多个如：['...','...']
         })
             .then((AMap) => {
+                console.log("====data[0]?.coord", data[0]?.coord)
                 map = new AMap.Map('amap-container', {
-                    center: data[0]?.coord,
+                    center: [Number(data[0]?.coord[0]) + 3, Number(data[0]?.coord[1])],
                     viewMode: '3D',
                     labelzIndex: 130,
                     zoom: 6,
@@ -279,7 +302,7 @@ const AMapComponent = ({ data }: any) => {
         return () => {
             map?.destroy();
         };
-    }, [data]);
+    }, [data, pedigreeData]);
 
     return (
         <AmapContainerStyle>
@@ -293,7 +316,6 @@ const AMapComponent = ({ data }: any) => {
                     <div className="loader"></div>
                     <div>地图加载中...</div>
                 </div>
-                
             </div> : ''}
         </AmapContainerStyle>
         

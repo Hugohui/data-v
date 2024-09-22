@@ -72,3 +72,12 @@ export const getSheepHerdsRatio = (params?: any) => {
 export const getListPastures = (params?: any) => {
     return get('App/BigDataApi/ListPastures', params)
 }
+
+/**
+ * 整场谱系
+ * @param params get参数
+ * @returns 
+ */
+export const getSheePedigree = (data?: any) => {
+    return post('App/BigDataApi/SheePedigree', data)
+}

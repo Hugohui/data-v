@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react"
-import { getListPastures } from "@/api/IndexPage"
-import AMapComponent from "@/components/AMapComponent"
-
+import { getListPastures, getSheePedigree } from "@/api/IndexPage"
+import AMapComponent from "./AMapComponent"
 
 export const IndexMap = () => {
     const [data, setData] = useState<any>([])
-
+    
     const formatData = (data: any = []) => {
         return data?.map((item: any) => ({
             name: item.PastureName,

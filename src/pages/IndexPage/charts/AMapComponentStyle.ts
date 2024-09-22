@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import SheePedigreeBg from '@/assets/img/SheePedigreeBg.png'
 
 export const AmapContainerStyle = styled.div`
     width: 100%;
     height: 100%;
     position: relative;
+
+    .SheePedigreeBg {
+        background-image: url(${SheePedigreeBg});
+    }
 
     .mapLoading {
         width: 100%;

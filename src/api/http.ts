@@ -20,11 +20,11 @@ export const get = (url: string, params?: object) => {
   })
 }
 
-export const post = (url: string, data?: object, headersType?: string) => {
+export const post = (url: string, data?: any, headersType?: string) => {
   return axiosInstance({
     url: url,
     method: RequestHttpEnum.POST,
-    data: {...data, farmId: farmID(), PastureID: farmID()},
+    data: {...data, farmId: data?.farmId || farmID(), PastureID: data?.farmId || farmID()},
     headers: {
       'Content-Type': headersType || ContentTypeEnum.JSON
     }

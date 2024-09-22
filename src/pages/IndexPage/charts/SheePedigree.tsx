@@ -4,7 +4,7 @@ import EChartsCommon from "../../../components/EChartsCommon"
 import { sheePedigreeOptions } from "./SheePedigreeOptions"
 import { getSheePedigree } from '@/api/IndexPage'
 
-const SheePedigree: FC<{ farmId: any }> = ({ farmId }) => {
+const SheePedigree: FC<{ farmId: any, rangeOption?: any }> = ({ farmId, rangeOption = {} }) => {
   const renderer = useConfigStore((state) => state.renderer);
   const [pedigreeData, setPedigreeData] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(false)
@@ -28,7 +28,7 @@ const SheePedigree: FC<{ farmId: any }> = ({ farmId }) => {
       {(pedigreeData && !isLoading) ? (
         <EChartsCommon
           renderer={renderer}
-          option={sheePedigreeOptions(pedigreeData)}
+          option={sheePedigreeOptions(pedigreeData, rangeOption)}
         />
       ) :
 

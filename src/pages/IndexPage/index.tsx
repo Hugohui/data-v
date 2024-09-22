@@ -19,6 +19,12 @@ export const IndexPage = () => {
     const { subscribe } = useEvent()
     const [sheePedigree, setSheePedigree] = useState<any>({})
     const navigate = useNavigate()
+    const rangeOption = {
+        center1: [100, 200],
+        center2: [600, 200],
+        radius1: 200,
+        radius2: 200
+    }
 
     useEffect(() => {
         subscribe('onMapScaleGraphClick', (data: any) => {
@@ -38,7 +44,7 @@ export const IndexPage = () => {
         <LayoutStyle>
             <PageIndexStyle>
                 <Dialog title={sheePedigree?.PastureName} show={showSheePedigree} setShow={setShowSheePedigree}>
-                    <SheePedigree farmId={sheePedigree?.PastureCode}></SheePedigree>
+                    <SheePedigree farmId={sheePedigree?.PastureCode} rangeOption={rangeOption}></SheePedigree>
                     <EnterPastureStyle onClick={toDetail}>点击进入</EnterPastureStyle>
                 </Dialog>
 

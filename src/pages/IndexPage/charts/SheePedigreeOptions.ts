@@ -27,7 +27,7 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
             ];
             color = '#5B7CF7'
         } else {
-            let r = radius1 * radiusScale;
+            let r = radius2 * radiusScale;
             pos = [
                 center2[0] + r * Math.cos(angle),
                 center2[1] + r * Math.sin(angle)
@@ -50,9 +50,9 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
 
   // 设置两个圆的中心点和半径
   var center1 = [100, 100];
-  var center2 = [400, 400];
-  var radius1 = 200;
-  var radius2 = 200;
+  var center2 = [500, 300];
+  var radius1 = 500;
+  var radius2 = 500;
   
   const nodes = calculatePositions(
     rangeOption?.center1 || center1, 
@@ -64,10 +64,10 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
   return {
     tooltip: {},
     grid:{ // 让图表占满容器
-      top:"30px",
-      left:"80px",
-      right:"40px",
-      bottom:"20px"
+      top: "0px",
+      left: "0px",
+      right: "0px",
+      bottom: "0px"
     },
     series: [
       {

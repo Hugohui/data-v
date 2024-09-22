@@ -16,6 +16,7 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
     const [mapComplete, setMapComplete] = useState(false)
     const { publish } = useEvent()
     const currentInfoWindow = useRef<any>(null)
+    const optionsMapRef = useRef<any>({})
 
     const addPolygon = (AMap: any, polygonData: any) => {
         try {
@@ -164,14 +165,18 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
     }
 
     const renderECharts = async (farmId: any) => {
-        setGraphLoading(true)
         const markerEchart = echarts.init(document.getElementById('markerEchart'))
-        const res = await getSheePedigree({
-            farmId
-        })
-        setGraphLoading(false)
-        const options = sheePedigreeOptions(res.data)
-        markerEchart.setOption(options)
+        markerEchart.clear()
+        if (!optionsMapRef?.current?.[farmId]) {
+            setGraphLoading(true)
+            const res = await getSheePedigree({
+                farmId
+            })
+            setGraphLoading(false)
+            optionsMapRef.current[farmId] = res.data
+        }
+        const options = sheePedigreeOptions(optionsMapRef?.current?.[farmId])
+        markerEchart.setOption(options, true)
     }
 
     // 添加点

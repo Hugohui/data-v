@@ -20,10 +20,10 @@ export const IndexPage = () => {
     const [sheePedigree, setSheePedigree] = useState<any>({})
     const navigate = useNavigate()
     const rangeOption = {
-        center1: [100, 200],
-        center2: [600, 200],
-        radius1: 200,
-        radius2: 200
+        center1: [0, 200],
+        center2: [1000, 200],
+        radius1: 400,
+        radius2: 400
     }
 
     useEffect(() => {

@@ -58,7 +58,6 @@ export const PageCenterStyle = styled.div`
 
     .FeedUsageLine {
         .BoxContent {
-            
             .default-chart {
                 /* height: calc(100% - 24px) !important; */
             }
@@ -84,11 +83,10 @@ export const PageRightStyle = styled.div`
 
 export const EnterPastureStyle = styled.div`
     width: 400px;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     font-size: 14px;
-    background-color: #1DF0BC;
     margin: 0 auto;
     cursor: pointer;
 `

@@ -6,9 +6,11 @@ import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 import { useState } from "react"
 import { setSheepRoomInfo } from "@/utils/session"
 import VideoPlayer from "@/components/VideoPlayer"
+import useEvent from "@/hooks/useEventHook"
 
 export const AnchorPoint = () => {
     const navigate = useNavigate()
+    const { publish } = useEvent()
     // const [hovered, setHovered] = useState(false);
     const [pointsData, setPointsData] = useState<any>(points)
  
@@ -16,6 +18,7 @@ export const AnchorPoint = () => {
         if (data[item.name]) {
             pointsData[index].hovered = true
             setPointsData([...pointsData])
+            publish('onDataVPointMouseEnter', data?.[pointsData?.[index]?.name])
         }
     };
     

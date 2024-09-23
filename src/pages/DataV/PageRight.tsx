@@ -5,6 +5,7 @@ import ProductRadar from "./charts/ProductRadar"
 import { EnvInfo } from "./components/EnvInfo"
 import { useEffect, useRef, useState } from "react"
 import { getEnvironmentalDevice } from "@/api/DataV"
+import useEvent from "@/hooks/useEventHook"
 
 
 export const PageRight = () => {
@@ -13,6 +14,7 @@ export const PageRight = () => {
     const seletOptionsRef = useRef<any>(null)
     const [roomList, setRoomList] = useState([])
     const [currentRoom, setCurrentRoom] = useState<any>({})
+    const { subscribe } = useEvent()
 
     const hideSelect = (e: any) => {
         if (seletRef.current && !seletRef.current.contains(e.target) && seletOptionsRef.current && !seletOptionsRef.current.contains(e.target)) {
@@ -26,6 +28,15 @@ export const PageRight = () => {
             if (res.data) {
                 setRoomList(res.data)
                 setCurrentRoom(res?.data?.[0])
+            }
+        })
+
+        subscribe('onDataVPointMouseEnter', (data: any) => {
+            if (data.BarnName !== undefined && data.DeviceName !== undefined) {
+                setCurrentRoom({
+                    bldName: data.BarnName,
+                    DeviceName: data.DeviceName,
+                })
             }
         })
 

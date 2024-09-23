@@ -13,6 +13,7 @@ import SheePedigree from './charts/SheePedigree'
 import useEvent from '@/hooks/useEventHook'
 import { setFarmInfo } from '@/utils/session'
 import { useNavigate } from 'react-router-dom'
+import sheePedigreeBgFull from '@/assets/img/SheePedigreeBgFull.png'
 
 export const IndexPage = () => {
     const [showSheePedigree, setShowSheePedigree] = useState(false)
@@ -20,10 +21,11 @@ export const IndexPage = () => {
     const [sheePedigree, setSheePedigree] = useState<any>({})
     const navigate = useNavigate()
     const rangeOption = {
-        center1: [0, 200],
-        center2: [1000, 200],
-        radius1: 400,
-        radius2: 400
+        radius: 400,
+        center1: [50, 50],
+        center2: [1600, 50],
+        center3: [50, 400],
+        center4: [1600, 400]
     }
 
     useEffect(() => {
@@ -43,9 +45,17 @@ export const IndexPage = () => {
     return (
         <LayoutStyle>
             <PageIndexStyle>
-                <Dialog title={sheePedigree?.PastureName} show={showSheePedigree} setShow={setShowSheePedigree}>
+                <Dialog 
+                    width={1167}
+                    height={710}
+                    title={sheePedigree?.PastureName} 
+                    show={showSheePedigree} setShow={setShowSheePedigree}
+                    backgroundImag={sheePedigreeBgFull}
+                    titleAlign="center"
+                    titleFontSize={24}
+                >
                     <SheePedigree farmId={sheePedigree?.PastureCode} rangeOption={rangeOption}></SheePedigree>
-                    <EnterPastureStyle onClick={toDetail}>点击进入</EnterPastureStyle>
+                    <EnterPastureStyle onClick={toDetail}></EnterPastureStyle>
                 </Dialog>
 
                 <IndexMap></IndexMap>

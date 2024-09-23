@@ -8,7 +8,11 @@ interface DialogI {
     show: boolean
     setShow: Function
     children: any,
-    width?: number
+    width?: number,
+    height?: number,
+    backgroundImag?: any,
+    titleAlign?: any,
+    titleFontSize?: any
 }
 
 const Dialog = (props: DialogI) => {
@@ -28,8 +32,12 @@ const Dialog = (props: DialogI) => {
     const DialogBox = () => {
         return createPortal(
             (<DialogStyle className="DialogStyle">
-                <DialogBoxStyle ref={scaleRef} width={props.width}>
-                    <DialogHeaderStyle>
+                <DialogBoxStyle ref={scaleRef} 
+                    width={props.width} 
+                    height={props.height} 
+                    backgroundImag={props.backgroundImag}
+                >
+                    <DialogHeaderStyle titleAlign={props.titleAlign} titleFontSize={props.titleFontSize}>
                         {props.title}
                         <div className="close" title="关闭" onClick={() => props.setShow(false)}></div>
                     </DialogHeaderStyle>

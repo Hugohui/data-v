@@ -12,7 +12,11 @@ export const DialogStyle = styled.div`
     background-color: rgba(0,0,0,.4);
 `
 
-export const DialogBoxStyle = styled.div<{width?: number}>`
+export const DialogBoxStyle = styled.div<{
+    width?: number, 
+    height?: number, 
+    backgroundImag?: any
+}>`
     width: 1108px;
     height: 568px;
     position: absolute;
@@ -28,9 +32,18 @@ export const DialogBoxStyle = styled.div<{width?: number}>`
         width: ${props.width}px;
         margin-left: ${-props.width / 2}px;
     `}
+
+    ${ props => props.height && `
+        height: ${props.height}px;
+        margin-top: ${-props.height / 2}px;
+    `}
+
+    ${ props => props.backgroundImag && `
+        background-image: url(${props.backgroundImag});
+    `}
 `
 
-export const DialogHeaderStyle = styled.div`
+export const DialogHeaderStyle = styled.div<{titleAlign?: string, titleFontSize?: number}>`
     height: 70px;
     line-height: 70px;
     font-family: PingFang SC;
@@ -39,6 +52,18 @@ export const DialogHeaderStyle = styled.div`
     color: #FFFFFF;
     padding-left: 40px;
     position: relative;
+
+    ${
+        props => props.titleAlign && `
+            text-align: ${props.titleAlign};
+        `
+    }
+
+    ${
+        props => props.titleFontSize && `
+            font-size: ${props.titleFontSize}px;
+        `
+    }
 
     .close {
         position: absolute;

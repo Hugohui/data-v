@@ -50,9 +50,9 @@ export const IndexPage = () => {
                     height={710}
                     title={sheePedigree?.PastureName} 
                     show={showSheePedigree} setShow={setShowSheePedigree}
-                    backgroundImag={sheePedigreeBgFull}
-                    titleAlign="center"
-                    titleFontSize={24}
+                    backgroundimag={sheePedigreeBgFull}
+                    title_align="center"
+                    title_font_size={24}
                 >
                     <SheePedigree farmId={sheePedigree?.PastureCode} rangeOption={rangeOption}></SheePedigree>
                     <EnterPastureStyle onClick={toDetail}></EnterPastureStyle>

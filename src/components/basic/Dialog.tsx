@@ -10,9 +10,9 @@ interface DialogI {
     children: any,
     width?: number,
     height?: number,
-    backgroundImag?: any,
-    titleAlign?: any,
-    titleFontSize?: any
+    backgroundimag?: any,
+    title_align?: any,
+    title_font_size?: any
 }
 
 const Dialog = (props: DialogI) => {
@@ -35,13 +35,13 @@ const Dialog = (props: DialogI) => {
                 <DialogBoxStyle ref={scaleRef} 
                     width={props.width} 
                     height={props.height} 
-                    backgroundImag={props.backgroundImag}
+                    backgroundimag={props.backgroundimag}
                 >
-                    <DialogHeaderStyle titleAlign={props.titleAlign} titleFontSize={props.titleFontSize}>
+                    <DialogHeaderStyle title_align={props.title_align} title_font_size={props.title_font_size}>
                         {props.title}
                         <div className="close" title="关闭" onClick={() => props.setShow(false)}></div>
                     </DialogHeaderStyle>
-                    <DialogContentStyle>
+                    <DialogContentStyle className="DialogContentStyle">
                         {props.children}
                     </DialogContentStyle>
                 </DialogBoxStyle>

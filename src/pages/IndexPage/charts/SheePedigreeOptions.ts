@@ -105,11 +105,16 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
       right: "0px",
       bottom: "0px"
     },
+    // legend: [
+    //   {
+    //     data: categories
+    //   }
+    // ],
     series: [
       {
         type: 'graph',
         legendHoverLink: false,
-        layout: 'none',
+        layout: 'force',
         data: nodes,
         links: options.linksList,
         categories,
@@ -119,8 +124,19 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
         },
         lineStyle: {
           color: 'source',
-          curveness: 0.3
+          curveness: 0.3,
+          opacity: 0.5
         },
+        emphasis: {
+          focus: 'adjacency',
+          lineStyle: {
+            width: 10
+          }
+        },
+        force: {
+          repulsion: 500,
+          edgeLength: 100
+        }
       }
     ]
   }

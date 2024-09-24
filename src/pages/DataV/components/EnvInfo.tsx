@@ -38,11 +38,11 @@ export const EnvInfo = ({ deviceInfo }: any) => {
     return (
         <EnvInfoStyle>
             <EnvInfoItem value={data?.['温度']?.value} status={data?.['温度']?.status} decimals={1} label="温度" icon="temperature" unit="°C"></EnvInfoItem>
-            <EnvInfoItem value={data?.['湿度']?.value} status={data?.['湿度']?.status} label="湿度" icon="humidness" unit="%"></EnvInfoItem>
-            <EnvInfoItem value={data?.['水槽温度']?.value} status={data?.['水槽温度']?.status} label="水槽温度" icon="tank-temperature" unit="°C"></EnvInfoItem>
-            <EnvInfoItem value={data?.['二氧化碳']?.value} status={data?.['二氧化碳']?.status} label="二氧化碳" icon="co2" unit="%"></EnvInfoItem>
-            <EnvInfoItem value={data?.['光照']?.value} status={data?.['光照']?.status} label="光照" icon="lux" unit="LUX"></EnvInfoItem>
-            <EnvInfoItem value={data?.['氨气']?.value} status={data?.['氨气']?.status} label="氨气" icon="nh3-ppm" unit="PPM"></EnvInfoItem>
+            <EnvInfoItem value={data?.['湿度']?.value} status={data?.['湿度']?.status} decimals={1} label="湿度" icon="humidness" unit="%"></EnvInfoItem>
+            <EnvInfoItem value={data?.['水槽温度']?.value} status={data?.['水槽温度']?.status} decimals={1} label="水槽温度" icon="tank-temperature" unit="°C"></EnvInfoItem>
+            <EnvInfoItem value={data?.['二氧化碳']?.value} status={data?.['二氧化碳']?.status} decimals={1} label="二氧化碳" icon="co2" unit="%"></EnvInfoItem>
+            <EnvInfoItem value={data?.['光照']?.value} status={data?.['光照']?.status} decimals={1} label="光照" icon="lux" unit="LUX"></EnvInfoItem>
+            <EnvInfoItem value={data?.['氨气']?.value} status={data?.['氨气']?.status} decimals={1} label="氨气" icon="nh3-ppm" unit="PPM"></EnvInfoItem>
         </EnvInfoStyle>
     )
 }

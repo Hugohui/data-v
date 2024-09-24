@@ -66,8 +66,8 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
                 color,
                 borderColor: color
               },
-              x: pos[0],
-              y: pos[1]
+              // x: pos[0],
+              // y: pos[1]
           });
         }
         
@@ -119,6 +119,7 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
         links: options.linksList,
         categories,
         roam: true,
+        // edgeSymbol: ['circle', 'arrow'],
         itemStyle: {
           opacity: 0.5
         },
@@ -134,8 +135,9 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
           }
         },
         force: {
-          repulsion: 500,
-          edgeLength: 100
+          repulsion: 30,
+          edgeLength: 30,
+          gravity: 0.15
         }
       }
     ]

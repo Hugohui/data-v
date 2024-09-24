@@ -12,12 +12,6 @@ export const PageIndexStyle = styled.div`
     /* background-image: url(${indexPageBg}); */
     background-size: cover;
     background-repeat: no-repeat;
-
-    .DialogStyle {
-        .DialogContentStyle {
-            padding: 0 0 30px 0;
-        }
-    }
 `
 
 export const IndexContentStyle = styled.div`

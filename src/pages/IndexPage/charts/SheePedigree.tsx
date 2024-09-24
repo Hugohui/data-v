@@ -12,7 +12,8 @@ const SheePedigree: FC<{ farmId: any, rangeOption?: any }> = ({ farmId, rangeOpt
   useEffect(() => {
     setIsLoading(true)
     getSheePedigree({
-      farmId
+      farmId,
+      type: "more"
     }).then((res: any) => {
       setIsLoading(false)
       if (res.data) {

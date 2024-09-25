@@ -105,34 +105,40 @@ export const sheePedigreeOptions = (options: any, rangeOption: any = {}) => {
       right: "0px",
       bottom: "0px"
     },
-    // legend: [
-    //   {
-    //     data: categories
-    //   }
-    // ],
     series: [
       {
         type: 'graph',
         legendHoverLink: false,
         layout: 'force',
         data: nodes,
-        links: options.linksList,
+        links: options?.linksList,
         categories,
         roam: true,
-        // edgeSymbol: ['circle', 'arrow'],
         itemStyle: {
           opacity: 0.5
         },
         lineStyle: {
           color: 'source',
           curveness: 0.3,
-          opacity: 0.5
+          opacity: 0.5,
+          // width: 2
         },
         emphasis: {
           focus: 'adjacency',
           lineStyle: {
-            width: 10
-          }
+            width: 8,
+            opacity: 1,
+          },
+          labelStyle: {
+            color: 'red'
+          },
+          itemStyle: {
+            // color: 'red'
+            // opacity: 1
+           },
+           edgeLabel: {
+            // show: true
+           }
         },
         force: {
           repulsion: 30,

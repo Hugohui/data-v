@@ -1,5 +1,7 @@
-export const scatterOptions = (options: any) => (
-  {
+export const scatterOptions = (options: any) => {
+  console.log(Math.min(options?.xAxisList?.map((item: any) => Number(item)) || []));
+  
+  return {
     grid:{ // 让图表占满容器
       top:"60px",
       left:"60px",
@@ -11,7 +13,6 @@ export const scatterOptions = (options: any) => (
     },
     xAxis: {
       name: "月龄",
-      // data: options?.xAxisList?.map((item: any)=> Number(item)) || [],
       axisLine: {
         show: true,
         lineStyle: {
@@ -26,15 +27,17 @@ export const scatterOptions = (options: any) => (
       {
         name: "体重\n(kg)",
         type: 'value',
-        // splitLine: false,
+        position: 'left',
+        alignTicks: 'value',
         splitLine: {
+          position: 'left',
           lineStyle: {
             width: 0.5
           }
         },
         max: options.yAxisHaighWeight || 330,
-        // offset: 10,
         axisLine: {
+          onZero: false,
           show: false,
           lineStyle: {
             color: '#fff',
@@ -60,4 +63,4 @@ export const scatterOptions = (options: any) => (
       }
     ]
   }
-);
+};

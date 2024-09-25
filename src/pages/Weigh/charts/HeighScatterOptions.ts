@@ -1,17 +1,17 @@
-export const scatterOptions = (options: any) => (
-  {
-    grid:{ // 让图表占满容器
-      top:"60px",
-      left:"60px",
-      right:"60px",
-      bottom:"40px"
+export const scatterOptions = (options: any) => {
+  const min = Math.min(...(options?.xAxisList?.map((item: any) => Number(item)) || []))
+  return {
+    grid: { // 让图表占满容器
+      top: "60px",
+      left: "60px",
+      right: "60px",
+      bottom: "40px"
     },
     tooltip: {
       trigger: 'item'
     },
     xAxis: {
       name: "月龄",
-      // data: options?.xAxisList?.map((item: any)=> Number(item)) || [],
       axisLine: {
         show: true,
         lineStyle: {
@@ -24,16 +24,17 @@ export const scatterOptions = (options: any) => (
     },
     yAxis: [
       {
-      name: "体高\n(cm)",
-      splitLine: false,
-      // max: options.yAxisHaighHeight,
-      max: 100,
-      axisLine: {
-        show: false,
-        lineStyle: {
-          color: '#fff',
-        }
-      },
+        name: "体高\n(cm)",
+        splitLine: false,
+        max: options.yAxisHaighHeight,
+        position: 'left',
+        axisLine: {
+          onZero: false,
+          show: false,
+          lineStyle: {
+            color: '#fff',
+          }
+        },
       },
     ],
     legend: {
@@ -46,12 +47,12 @@ export const scatterOptions = (options: any) => (
       {
         symbolSize: 20,
         name: "体高",
-        itemStyle:{
+        itemStyle: {
           color: '#38D7FF'
         },
-        data: options?.list?.map((item:any) => [item.name, item?.value?.height || 0]),
+        data: options?.list?.map((item: any) => [item.name, item?.value?.height || 0]),
         type: 'scatter'
       }
     ]
   }
-);
+};

@@ -30,7 +30,7 @@ export const getLamBirthWeightDistribution = (data?: any) => {
 }
 
 /**
- * 升高体重散点图
+ * 身高体重散点图
  * @param data post参数
  * @returns 
  */

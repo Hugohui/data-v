@@ -1,8 +1,8 @@
 import useConfigStore from '../../../store/index'
 import EChartsCommon from "../../../components/EChartsCommon"
-import { lineOptions } from "./MilkYieldLineOptions"
+import { lineOptions } from "./MilkProductSheepLineOptions"
 import { FC, useState } from 'react'
-import { getGroupMonthTotalMilkProStatistics } from '@/api/Milk'
+import { getTrendChartMilkProductPerShift } from '@/api/Milk'
 import { useIntervalRequest } from '@/hooks/useIntervalRequest'
 import useEvent from '@/hooks/useEventHook'
 
@@ -11,27 +11,28 @@ interface OptionsI {
     // data: KeepRatioInfoI[]
 }
 
-const MilkYieldLine: FC<OptionsI> = (options) => {
-    const renderer = useConfigStore((state) => state.renderer)
-    const { publish } = useEvent()
 
-    const [data, setData] = useState<any>([])
+const MilkProductLine: FC<OptionsI> = (options) => {
+    const { publish } = useEvent()
+    const renderer = useConfigStore((state) => state.renderer)
+
+    const [data, setData] = useState<any>()
 
     const getData = () => {
-        getGroupMonthTotalMilkProStatistics().then((res: any) => {
-            console.log("=======res.data=====", res.data)
-            if (res.data) {
+        getTrendChartMilkProductPerShift().then((res: any) => {
+            if ( res.data ) {
                 setData(res.data)
             }
         })
     }
 
-    const onChartClick = (params: any) => {
-        // const dataIndex = params?.params?.dataIndex
-        publish("onMilkMonthProductLineClick", {month: params.name})
-    }
-
     useIntervalRequest(getData)
+
+    const onChartClick = (params: any) => {
+        const dataIndex = params?.params?.dataIndex
+        const clickItem = data[dataIndex]
+        publish("onMilkProductLineClick", clickItem)
+    }
 
     return (
         <>
@@ -48,4 +49,4 @@ const MilkYieldLine: FC<OptionsI> = (options) => {
     )
 }
 
-export default MilkYieldLine
+export default MilkProductLine

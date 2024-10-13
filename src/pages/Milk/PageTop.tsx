@@ -27,21 +27,21 @@ export const PageTop = () => {
 
     return (
         <PageTopStyle>
-            <div className="InfoItem">
+            <div className="InfoItem canClick" onClick={onInfoClick}>
                 昨日上厅羊
                 <div className="Num">
                     <CountUp start={0} end={data.totalCount} duration={countDuration} separator="" decimals={2}></CountUp>
                 </div>
                 <div className="Unit">只</div>
             </div>
-            <div className="InfoItem">
+            <div className="InfoItem canClick" onClick={onInfoClick}>
                 昨日总产奶量
                 <div className="Num">
                     <CountUp start={0} end={data.totalMilk} duration={countDuration} separator="" decimals={2}></CountUp>
                 </div>
                 <div className="Unit">kg</div>
             </div>
-            <div className="InfoItem">
+            <div className="InfoItem canClick" onClick={onInfoClick}>
                 昨日最高产奶量
                 <div className="Num">
                     <CountUp start={0} end={data.maxMilk} duration={countDuration} separator="" decimals={2}></CountUp>

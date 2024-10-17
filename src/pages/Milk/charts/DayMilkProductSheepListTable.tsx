@@ -4,7 +4,7 @@ import useEvent from "../../../hooks/useEventHook"
 import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 import { getListDairyProducingSheep } from "@/api/Milk"
 
-export const SheepMonthListTable = ({ info }: any) => {
+export const DayMilkProductSheepListTable = () => {
     const { publish } = useEvent()
     const sortRef = useRef('desc')
 
@@ -28,10 +28,8 @@ export const SheepMonthListTable = ({ info }: any) => {
 
     const getData = () => {
         getListDairyProducingSheep({
-            TimeModel: '月',
-            sort: sortRef.current,
-            month: info.month,
-            CowCode: info.CowCode
+            TimeModel: '日',
+            sort: sortRef.current
         }).then((res: any) => {
             if (res.code === 200 && res.data) {
                 setData(res.data)
@@ -51,10 +49,6 @@ export const SheepMonthListTable = ({ info }: any) => {
             publish("onSheepSelectEmit", data[0])
         }, 0)
     }, [data])
-
-    // useEffect(() => {
-    //     getData()
-    // }, [info.CowCode])
 
     return (
         <CustomTable

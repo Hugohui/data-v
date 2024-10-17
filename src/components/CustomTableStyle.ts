@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import tableRowSelectedBg from '../assets/img/tableRowSelectedBg.png'
+import descIcon from '../assets/img/icons/desc.png'
+import ascIcon from '../assets/img/icons/asc.png'
 
 export const TableStyle = styled.div<{$height?: number}>`
     width: 100%;
@@ -44,6 +46,25 @@ export const TableStyle = styled.div<{$height?: number}>`
         color: #19FCDE;
         /* background-color: rgba(255, 255, 255, 0.02); */
         background-color: #1E2B45;
+
+        th.sort {
+            cursor: pointer;
+        }
+
+        .tr-sort {
+            display: inline-block;
+            width: 12px;
+            height: 14px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            margin-left: 3px;
+            &.desc {
+                background-image: url(${descIcon});
+            }
+            &.asc {
+                background-image: url(${ascIcon});
+            }
+        }
     }
 
     tr:nth-child(even) {

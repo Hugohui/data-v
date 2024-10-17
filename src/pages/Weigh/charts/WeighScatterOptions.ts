@@ -1,6 +1,4 @@
 export const scatterOptions = (options: any) => {
-  console.log(Math.min(options?.xAxisList?.map((item: any) => Number(item)) || []));
-  
   return {
     grid:{ // 让图表占满容器
       top:"60px",

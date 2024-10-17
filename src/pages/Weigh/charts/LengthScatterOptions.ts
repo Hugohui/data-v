@@ -1,10 +1,12 @@
 export const scatterOptions = (options: any) => {
+  console.log(Math.min(options?.xAxisList?.map((item: any) => Number(item)) || []));
+  
   return {
-    grid: { // 让图表占满容器
-      top: "60px",
-      left: "60px",
-      right: "60px",
-      bottom: "40px"
+    grid:{ // 让图表占满容器
+      top:"60px",
+      left:"60px",
+      right:"60px",
+      bottom:"40px"
     },
     tooltip: {
       trigger: 'item'
@@ -23,10 +25,17 @@ export const scatterOptions = (options: any) => {
     },
     yAxis: [
       {
-        name: "体高\n(cm)",
-        splitLine: false,
-        max: options.yAxisHaighHeight,
+        name: "体长\n(cm)",
+        type: 'value',
         position: 'left',
+        alignTicks: 'value',
+        splitLine: {
+          position: 'left',
+          lineStyle: {
+            width: 0.5
+          }
+        },
+        max: options.yAxisHaighWeight || 330,
         axisLine: {
           onZero: false,
           show: false,
@@ -34,10 +43,10 @@ export const scatterOptions = (options: any) => {
             color: '#fff',
           }
         },
-      },
+      }
     ],
     legend: {
-      data: ['体高'],
+      data: ['体长'],
       textStyle: {
         color: "#fff"
       }
@@ -45,11 +54,11 @@ export const scatterOptions = (options: any) => {
     series: [
       {
         symbolSize: 20,
-        name: "体高",
+        name: "体长",
         itemStyle: {
-          color: '#38D7FF'
+          color: "#38D7FF"
         },
-        data: options?.list?.map((item: any) => [item.name, item?.value?.height || 0]),
+        data: options?.list?.map((item:any) => [item.name, item?.value?.weight || 0]),
         type: 'scatter'
       }
     ]

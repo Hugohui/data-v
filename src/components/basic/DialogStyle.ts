@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import dialogContentBg from '../../assets/img/dialogContentBg.png'
 import iconClose from '../../assets/img/icons/iconClose.png'
+import searchIcon from '../../assets/img/icons/search.png'
 
 export const DialogStyle = styled.div`
     position: fixed;
@@ -10,6 +11,51 @@ export const DialogStyle = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.4);
+
+    .search {
+        width: 185px;
+        display: flex;
+        position: absolute;
+        top: 18px;
+        right: 60px;
+        height: 28px;
+        border-radius: 14px;
+        background-color: #112544;
+        overflow: hidden;
+        input {
+            flex: 1;
+            display: inline-block;
+            height: 28px;
+            line-height: 28px;
+            padding: 2px 10px;
+            border: none;
+            background-color: transparent;
+            color: #FFFFFF;
+            font-size: 14px;
+            &:focus, &:focus-visible{
+                border: none;
+                box-shadow: none;
+                outline: none;
+            }
+            &::placeholder {
+                font-size: 14px;
+            }
+            &:-internal-autofill-selected {
+                box-shadow: none !important; // 改变了背景色
+                /* -webkit-text-fill-color: #c0aefa; // 改变了字体颜色 */
+            }
+        }
+        .searchIcon{
+            display: inline-block;
+            width: 40px;
+            height: 16px;
+            background-image: url(${searchIcon});
+            background-size: 16px 100%;
+            background-repeat: no-repeat;
+            margin-top: 6px;
+            cursor: pointer;
+        }
+    }
 `
 
 export const DialogBoxStyle = styled.div<{

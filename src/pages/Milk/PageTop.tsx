@@ -22,7 +22,7 @@ export const PageTop = () => {
     useIntervalRequest(getData)
 
     const onInfoClick = () => {
-        publish("onMilkProductLineClick", {})
+        publish("onMilkProductClick")
     }
 
     return (

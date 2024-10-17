@@ -1,27 +1,30 @@
 import { FC, useEffect, useRef, useState } from "react"
 import { TableStyle } from "./CustomTableStyle"
-import { isNode } from "@/utils/dom";
 import { useMountedState } from "@/hooks/useMountedState";
 
 interface columnsI {
     key: string
     name: string
     unit?: string
+    sort?: string
 }
 
 interface TablePropsI {
-    columns: columnsI[];
-    data: any[];
-    hiddenIndex?: Boolean;
-    onRowClick?: Function;
+    columns: columnsI[]
+    data: any[]
+    hiddenIndex?: Boolean
+    onRowClick?: Function
     canSelectItem?: boolean
     defaultSelectIndex?: number
     autoLoop?: boolean
     loopDelayTime?: number
+    onSort?: Function
 }
 
 const CustomTable: FC<TablePropsI> = (props) => {
-    const { columns, data, hiddenIndex, onRowClick, canSelectItem, defaultSelectIndex, autoLoop=true, loopDelayTime=3000 } = props;
+    const { columns, data, hiddenIndex, onRowClick, canSelectItem, 
+        defaultSelectIndex, autoLoop=true, loopDelayTime=3000, onSort } = props;
+    const [newColumns, setNewColumns] = useState(columns);
     let [currentSelect, setCurrentSelect] = useState(defaultSelectIndex || 0);
     const tableRef = useRef<any>()
     const tbodyRef = useRef<any>()
@@ -33,7 +36,6 @@ const CustomTable: FC<TablePropsI> = (props) => {
     const timerRef = useRef<any>()
     const currentSelectRef = useRef<any>(0)
     const scrollTopRef = useRef<any>(0)
-    const onePageCount = useRef<any>(0)
     
 
     const rowClick = (row: any, index: any) => {
@@ -44,15 +46,22 @@ const CustomTable: FC<TablePropsI> = (props) => {
         onRowClick && onRowClick(row, index)
     }
 
+    const onColumnThClick = (row: any, index: any) => {
+        const newCol: any = newColumns.map((item: any, ind) => {
+            if (ind === index && item.sort) {
+                item.sort = item.sort === 'desc' ? 'asc' : 'desc'
+            }
+            return item
+        })
+        setNewColumns(newCol)
+        onSort && onSort(row)
+    }
+
     const scrollTable = () => {
         if (!tbodyRef.current) return;
 
         // 如果列表超过一页，选中状态始终第一个，轮播数据
         if (tableViewRef.current.scrollHeight > tableViewRef.current.clientHeight) {
-            // originTableData.current?.push(originTableData.current?.splice(0,1)[0])
-            // const currentData = JSON.parse(JSON.stringify(originTableData.current))
-            // setTableData(currentData)
-            // onRowClick && onRowClick(currentData[currentSelectRef.current], currentSelectRef.current)
             const maxScroll = tableViewRef.current.scrollHeight - tableViewRef.current.clientHeight;
             if (scrollTopRef.current >  maxScroll || maxScroll - scrollTopRef.current < 50) {
                 if (!canSelectItem) {
@@ -126,8 +135,17 @@ const CustomTable: FC<TablePropsI> = (props) => {
                 <thead>
                     <tr>
                         { !hiddenIndex ? <th key="index">序号</th> : ''}
-                        {columns.map(column => (
-                            <th key={column.key}>{column.name}</th>
+                        {newColumns.map((column, index) => (
+                            <th 
+                                key={column.key} 
+                                className={[column.sort ? 'sort' : ''].join(' ')}
+                                onClick={() => onColumnThClick(column, index)}
+                            >
+                                {column.name}
+                                {
+                                    column.sort ? <span className={['tr-sort', column.sort].join(' ')}></span> : ''
+                                }
+                            </th>
                         ))}
                     </tr>
                 </thead>
@@ -139,7 +157,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
                             className={[currentSelect === index && canSelectItem? 'active': '', canSelectItem ? 'canSelect' : ''].join(' ')}
                         >
                             {!hiddenIndex ? <td key={`td_index_${index}`}>{index + 1}</td> : ''}
-                            {columns.map(column => (
+                            {newColumns.map(column => (
                                 <td key={`td_${index}_${column.key}`}>{row[column.key]}{column.unit}</td>
                             ))}
                         </tr>

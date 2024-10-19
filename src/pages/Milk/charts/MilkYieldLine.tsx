@@ -19,7 +19,6 @@ const MilkYieldLine: FC<OptionsI> = (options) => {
 
     const getData = () => {
         getGroupMonthTotalMilkProStatistics().then((res: any) => {
-            console.log("=======res.data=====", res.data)
             if (res.data) {
                 setData(res.data)
             }
@@ -27,7 +26,6 @@ const MilkYieldLine: FC<OptionsI> = (options) => {
     }
 
     const onChartClick = (params: any) => {
-        // const dataIndex = params?.params?.dataIndex
         publish("onMilkMonthProductLineClick", {month: params.name})
     }
 

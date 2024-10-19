@@ -2,13 +2,12 @@ import React, { useEffect, useImperativeHandle, useRef, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
 import useEvent from "../../../hooks/useEventHook"
 import { useIntervalRequest } from "@/hooks/useIntervalRequest"
-import { getListDairyProducingSheep } from "@/api/Milk"
+import { getSheepMilkProdDatAnaStatiBarList } from "@/api/Milk"
 
-export const SheepMonthListTable = React.forwardRef(({ info }: any, ref) => {
+export const AnalysisSheepListTable = React.forwardRef(({ info }: any, ref) => {
     const { publish } = useEvent()
-    const sortRef = useRef('desc')
-    const [data, setData] = useState<any>([])
     const cowCodeRef = useRef<any>()
+    const sortRef = useRef('desc')
 
     const columns = [
         {
@@ -26,12 +25,13 @@ export const SheepMonthListTable = React.forwardRef(({ info }: any, ref) => {
         },
     ]
 
+    const [data, setData] = useState<any>([])
+
     const getData = () => {
-        getListDairyProducingSheep({
-            TimeModel: '月',
+        getSheepMilkProdDatAnaStatiBarList({
+            ...info,
+            CowCode: cowCodeRef.current,
             sort: sortRef.current,
-            month: info.month,
-            CowCode: cowCodeRef.current
         }).then((res: any) => {
             if (res.code === 200 && res.data) {
                 setData(res.data)
@@ -53,12 +53,18 @@ export const SheepMonthListTable = React.forwardRef(({ info }: any, ref) => {
         getData()
     }
 
+    const onRowClick = (data: any) => {
+        publish('onAnalysisSheepTableClick', data)
+    }
+
     return (
         <CustomTable
             columns={columns}
             data={data}
             autoLoop={false}
             onSort={onTableSort}
+            onRowClick={onRowClick}
+            // canSelectItem={true}
         ></CustomTable>
     )
 })

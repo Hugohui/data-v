@@ -56,6 +56,33 @@ export const getStatistiDailyMilkProducEachPasture = (data?: any) => {
 }
 
 /**
+ * 羊只产奶数据分析与统计-柱状图
+ * @param data post参数
+ * @returns 
+ */
+export const getSheepMilkProdDatAnaStatiBar = (data?: any) => {
+    return post('App/BigDataApi/SheepMilkProdDatAnaStatiBar', data)
+}
+
+/**
+ * 羊只产奶数据分析与统计-羊只列表
+ * @param data post参数
+ * @returns 
+ */
+export const getSheepMilkProdDatAnaStatiBarList = (data?: any) => {
+    return post('App/BigDataApi/SheepMilkProdDatAnaStatiBarList', data)
+}
+
+/**
+ * 羊只产奶曲线
+ * @param data post参数
+ * @returns 
+ */
+export const getSheepMilkProdDatAnaStatiListLine = (data?: any) => {
+    return post('App/BigDataApi/SheepMilkProdDatAnaStatiListLine', data)
+}
+
+/**
  * 产奶羊只列表
  * @param params get参数
  * @returns 

@@ -44,22 +44,12 @@ export const DayMilkProductSheepListTable = () => {
         getData()
     }
 
-    useEffect(() => {
-        setTimeout(() => {
-            publish("onSheepSelectEmit", data[0])
-        }, 0)
-    }, [data])
-
     return (
         <CustomTable
             columns={columns}
             data={data}
             autoLoop={false}
             onSort={onTableSort}
-            // hiddenIndex={true}
-            // onRowClick={onItemClick}
-            // canSelectItem={true}
-            // loopDelayTime={5000}
         ></CustomTable>
     )
 }

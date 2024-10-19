@@ -37,21 +37,11 @@ export const SheepListTable = ({ info }: any) => {
 
     useIntervalRequest(getData)
 
-    useEffect(() => {
-        setTimeout(() => {
-            publish("onSheepSelectEmit", data[0])
-        }, 0)
-    }, [data])
-
     return (
         <CustomTable
             columns={columns}
             data={data}
             autoLoop={false}
-            // hiddenIndex={true}
-            // onRowClick={onItemClick}
-            // canSelectItem={true}
-            // loopDelayTime={5000}
         ></CustomTable>
     )
 }

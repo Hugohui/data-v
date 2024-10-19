@@ -28,10 +28,10 @@ export const SheepMonthListTable = React.forwardRef(({ info }: any, ref) => {
 
     const getData = () => {
         getListDairyProducingSheep({
-            TimeModel: '月',
+            TimeModel: 'MONTH',
             sort: sortRef.current,
-            month: info.month,
-            CowCode: cowCodeRef.current
+            dateTimeStr: info.month,
+            CowCode: cowCodeRef.current,
         }).then((res: any) => {
             if (res.code === 200 && res.data) {
                 setData(res.data)

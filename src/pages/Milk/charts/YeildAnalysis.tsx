@@ -28,12 +28,14 @@ const YeildAnalysis: FC<OptionsI> = (options) => {
     useIntervalRequest(getData)
 
     const onChartClick = (params: any) => {
-        const AvgMilkYield = dataRef.current?.avgMilkLists?.find((item: any) => item.name == params.name)?.value
-        publish("onAnalysisSheepBarClick", {
-            day: params.params.name,
-            Conditions: params.params.seriesName === '高于' ? "gt" : "lt",
-            AvgMilkYield
-        })
+        if (params?.params?.seriesIndex !== 2) {
+            const AvgMilkYield = dataRef.current?.avgMilkLists?.find((item: any) => item.name == params.name)?.value
+            publish("onAnalysisSheepBarClick", {
+                day: params.params.name,
+                Conditions: params.params.seriesIndex === 1 ? "gt" : "lt",
+                AvgMilkYield
+            })
+        }
     }
 
     return (

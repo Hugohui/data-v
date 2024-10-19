@@ -112,7 +112,6 @@ const CustomTable: FC<TablePropsI> = (props) => {
     useEffect(() => {
         if (isMounted && data.length > 0) {
             originTableData.current = JSON.parse(JSON.stringify(data));
-            setTableData(data);
             if(autoLoop) {
                 timerRef.current = setInterval(scrollTable, loopDelayTime);
 
@@ -122,6 +121,7 @@ const CustomTable: FC<TablePropsI> = (props) => {
                 })
             }
         }
+        setTableData(data);
 
         return () => {
             timerRef.current && clearInterval(timerRef.current)

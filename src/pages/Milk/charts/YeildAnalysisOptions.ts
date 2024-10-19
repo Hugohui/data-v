@@ -16,7 +16,10 @@ export const barOptions = (options: any) => {
       bottom:"40px"
     },
     legend: {
-      data: ['低于', '高于', '平均产奶量']
+      data: ['低于', '高于', '平均产奶量'],
+      textStyle: {
+        color: '#fff'
+      }
     },
     xAxis: {
       type: 'category',

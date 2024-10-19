@@ -28,7 +28,7 @@ export const DayMilkProductSheepListTable = () => {
 
     const getData = () => {
         getListDairyProducingSheep({
-            TimeModel: '日',
+            TimeModel: 'DAY',
             sort: sortRef.current
         }).then((res: any) => {
             if (res.code === 200 && res.data) {

@@ -1,5 +1,5 @@
 export const scatterOptions = (options: any) => {
-  console.log(Math.min(options?.xAxisList?.map((item: any) => Number(item)) || []));
+  const max = Math.max(...(options?.list?.map((item: any) => item?.value?.length_straight || 0))) || 20
   
   return {
     grid:{ // 让图表占满容器
@@ -35,7 +35,8 @@ export const scatterOptions = (options: any) => {
             width: 0.5
           }
         },
-        max: options.yAxisHaighWeight || 330,
+        max,
+        interval: max / 5,
         axisLine: {
           onZero: false,
           show: false,
@@ -58,7 +59,7 @@ export const scatterOptions = (options: any) => {
         itemStyle: {
           color: "#38D7FF"
         },
-        data: options?.list?.map((item:any) => [item.name, item?.value?.weight || 0]),
+        data: options?.list?.map((item:any) => [item.name, item?.value?.length_straight || 0]),
         type: 'scatter'
       }
     ]

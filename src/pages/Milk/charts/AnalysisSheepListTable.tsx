@@ -44,6 +44,7 @@ export const AnalysisSheepListTable = React.forwardRef(({ info }: any, ref) => {
     useImperativeHandle(ref, () => ({
         queryByParams: (params: any) => {
             cowCodeRef.current = params.CowCode || undefined
+            setData([])
             getData()
         }
     }))

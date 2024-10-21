@@ -9,7 +9,8 @@ export const scatterOptions = (options: any) => {
       bottom:"40px"
     },
     tooltip: {
-      trigger: 'item'
+      trigger: 'item',
+      // formatter: ' {c0}<br />{b1}: {c1}'
     },
     xAxis: {
       name: "月龄",

@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useImperativeHandle, useRef, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
-import useEvent from "../../../hooks/useEventHook"
 import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 import { getListDairyProducingSheep } from "@/api/Milk"
 
-export const DayMilkProductSheepListTable = () => {
-    const { publish } = useEvent()
+export const DayMilkProductSheepListTable = React.forwardRef(({}: any, ref) => {
     const sortRef = useRef('desc')
+    const cowCodeRef = useRef<any>()
 
     const columns = [
         {
@@ -29,7 +28,8 @@ export const DayMilkProductSheepListTable = () => {
     const getData = () => {
         getListDairyProducingSheep({
             TimeModel: 'DAY',
-            sort: sortRef.current
+            sort: sortRef.current,
+            CowCode: cowCodeRef.current,
         }).then((res: any) => {
             if (res.code === 200 && res.data) {
                 setData(res.data)
@@ -38,6 +38,13 @@ export const DayMilkProductSheepListTable = () => {
     }
 
     useIntervalRequest(getData)
+
+    useImperativeHandle(ref, () => ({
+        queryByParams: (params: any) => {
+            cowCodeRef.current = params.CowCode || undefined
+            getData()
+        }
+    }))
 
     const onTableSort = (data: any) => {
         sortRef.current = data.sort
@@ -52,4 +59,4 @@ export const DayMilkProductSheepListTable = () => {
             onSort={onTableSort}
         ></CustomTable>
     )
-}
+})

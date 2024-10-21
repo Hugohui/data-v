@@ -1,11 +1,9 @@
-import React, { useEffect, useImperativeHandle, useRef, useState } from "react"
+import React, { useImperativeHandle, useRef, useState } from "react"
 import CustomTable from "../../../components/CustomTable"
-import useEvent from "../../../hooks/useEventHook"
 import { useIntervalRequest } from "@/hooks/useIntervalRequest"
 import { getListDairyProducingSheep } from "@/api/Milk"
 
 export const SheepMonthListTable = React.forwardRef(({ info }: any, ref) => {
-    const { publish } = useEvent()
     const sortRef = useRef('desc')
     const [data, setData] = useState<any>([])
     const cowCodeRef = useRef<any>()

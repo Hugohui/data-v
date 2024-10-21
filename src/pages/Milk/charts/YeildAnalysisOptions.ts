@@ -38,7 +38,7 @@ export const barOptions = (options: any) => {
     yAxis: [
       {
         type: 'value',
-        name: '养只数（只）',
+        name: '羊只数（只）',
         min: 0, // 设置纵坐标的最小值
         max: maxSheepNum,
         interval: Math.ceil(maxSheepNum / 5),

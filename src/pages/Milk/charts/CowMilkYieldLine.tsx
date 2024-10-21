@@ -17,7 +17,7 @@ const CowMilkYieldLine: FC<OptionsI> = ({ info }) => {
     const renderer = useConfigStore((state) => state.renderer)
 
     const [data, setData] = useState<any>([])
-    const [dataType, setDataType] = useState<any>()
+    const [dataType, setDataType] = useState<any>('month')
     let hasChange = useRef<boolean>(false);
 
     const getData = () => {
@@ -46,7 +46,7 @@ const CowMilkYieldLine: FC<OptionsI> = ({ info }) => {
 
     return (
         <div style={{ position: 'relative', width: '100%', height: '100%'}}>
-            <MonthYearSwitch active='year' onChange={onChange}></MonthYearSwitch>
+            <MonthYearSwitch active='month' onChange={onChange}></MonthYearSwitch>
             {(data) ? (
                 <EChartsCommon
                     renderer={renderer}

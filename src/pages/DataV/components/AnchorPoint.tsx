@@ -78,7 +78,7 @@ export const AnchorPoint = () => {
                     {item.hovered && (
                         <div className="videoHover">
                             <VideoPlayer src={data?.[item.name]?.videlLst?.VideoLink}></VideoPlayer>
-                            <span onClick={() => onPointClick(item)}>点击进入</span>
+                            <span onClick={() => onPointClick(item)}>家系图</span>
                         </div>
                     )}
                 </div>)

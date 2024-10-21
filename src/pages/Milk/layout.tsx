@@ -20,7 +20,9 @@ export const MilkLayout = () => {
     const [showCodeDialog, setShowCodeDialog] = useState(false)
     const [sheepInfo, setSheepInfo] = useState<any>()
     const [cowMilkYieldLineParams, setCowMilkYieldLineParams] = useState<any>()
+    const dayTableRef = useRef<any>(null)
     const monthTableRef = useRef<any>(null)
+    const shiftTableRef = useRef<any>(null)
     const analysisTableRef = useRef<any>(null)
     
 
@@ -70,8 +72,19 @@ export const MilkLayout = () => {
     return (
         <PageContent>
             {/* 日产奶量 */}
-            <Dialog title="日产奶量羊只列表" width={800} show={showDayMilkDialog} setShow={setShowDayMilkDialog}>
-                <DayMilkProductSheepListTable></DayMilkProductSheepListTable>
+            <Dialog 
+                title="日产奶量羊只列表" 
+                width={800} 
+                show={showDayMilkDialog} 
+                setShow={setShowDayMilkDialog}
+                search={{
+                    placeholder: '羊只编号',
+                    onSearch: (data: any) => {
+                        dayTableRef.current && dayTableRef.current.queryByParams({CowCode: data})
+                    }
+                }}
+            >
+                <DayMilkProductSheepListTable ref={dayTableRef}></DayMilkProductSheepListTable>
             </Dialog>
 
             {/* 月产奶量弹窗 */}
@@ -90,13 +103,24 @@ export const MilkLayout = () => {
             </Dialog>
 
             {/* 班次日产奶量 */}
-            <Dialog title="日产奶量羊只列表" width={800} show={showDialog} setShow={setShowDialog}>
-                <SheepListTable info={sheepInfo}></SheepListTable>
+            <Dialog 
+                title="日产奶量羊只列表" 
+                width={800} 
+                show={showDialog} 
+                setShow={setShowDialog}
+                search={{
+                    placeholder: '羊只编号',
+                    onSearch: (data: any) => {
+                        shiftTableRef.current && shiftTableRef.current.queryByParams({CowCode: data})
+                    }
+                }}
+            >
+                <SheepListTable info={sheepInfo} ref={shiftTableRef}></SheepListTable>
             </Dialog>
 
             {/* 产奶养只列表 */}
             <Dialog 
-                title="产奶养只列表" 
+                title="产奶羊只列表" 
                 width={800} 
                 show={showAnalysisDialog} 
                 setShow={setShowAnalysisDialog}
@@ -112,7 +136,7 @@ export const MilkLayout = () => {
 
             {/* 产奶养只列表 */}
             <Dialog
-                title="编号羊只产奶曲线"
+                title={`编号${cowMilkYieldLineParams.CowCode}羊只产奶曲线`}
                 width={1000}
                 show={showCodeDialog}
                 setShow={setShowCodeDialog}

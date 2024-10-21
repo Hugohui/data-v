@@ -24,6 +24,7 @@ export const DialogStyle = styled.div`
         overflow: hidden;
         input {
             flex: 1;
+            box-sizing: border-box;
             display: inline-block;
             height: 28px;
             line-height: 28px;

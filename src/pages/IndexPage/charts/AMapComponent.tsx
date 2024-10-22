@@ -124,24 +124,26 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
                 <div className="enter" id="markerEnter" style={{
                     width: "90%",
                     height: "30px",
+                    lineHeight: "30px",
                     position: "absolute",
                     bottom: "23px",
                     right: "25px",
-                    cursor: "pointer"
-                }} data-info={JSON.stringify(info?.origin)}></div>
+                    cursor: "pointer",
+                    textAlign: "center",
+                }} data-info={JSON.stringify(info?.origin)}>家系图</div>
 
                 <span style={{
                     width: '150px',
-                    height: '0',
-                    borderTop: '1px solid #00DDEA',
+                    height: '1PX',
+                    borderTop: '1PX solid #00DDEA',
                     position: 'absolute',
                     bottom: '110px',
                     left: '-150px'
                 }}></span>
                 <span style={{
-                    width: 0,
+                    width: '1PX',
                     height: '60px',
-                    borderLeft: '1px solid #00DDEA',
+                    borderLeft: '1PX solid #00DDEA',
                     position: 'absolute',
                     bottom: '50px',
                     left: '-150px'

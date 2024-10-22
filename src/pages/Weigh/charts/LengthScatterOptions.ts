@@ -10,7 +10,9 @@ export const scatterOptions = (options: any) => {
     },
     tooltip: {
       trigger: 'item',
-      // formatter: ' {c0}<br />{b1}: {c1}'
+      formatter: (param: any) => {
+        return `体长<br />${param?.data?.[2]}: ${param?.data?.[1]} cm`
+      }
     },
     xAxis: {
       name: "月龄",
@@ -60,7 +62,7 @@ export const scatterOptions = (options: any) => {
         itemStyle: {
           color: "#38D7FF"
         },
-        data: options?.list?.map((item:any) => [item.name, item?.value?.length_straight || 0]),
+        data: options?.list?.map((item:any) => [item.name, item?.value?.length_straight || 0, item?.value?.CowCode]),
         type: 'scatter'
       }
     ]

@@ -12,16 +12,11 @@ interface OptionsI {
 
 const LengthScatter: FC<OptionsI> = (options) => {
     const renderer = useConfigStore((state) => state.renderer)
-    const { subscribe } = useEvent()
 
     const [data, setData] = useState<any>({list: []})
-    const infoRef = useRef<any>({})
-    const [CowCode, setCowCode] = useState();
 
     const getData = () => {
-        getWeightDistribuMapDifferenPastAges({
-            CowCode: infoRef.current.CowCode
-        }).then((res: any) => {
+        getWeightDistribuMapDifferenPastAges().then((res: any) => {
             if (res.code === 200 && res.data) {
                 setData(res.data)
             }
@@ -30,22 +25,12 @@ const LengthScatter: FC<OptionsI> = (options) => {
 
     useIntervalRequest(getData)
 
-    useEffect(() => {
-        subscribe('onSheepSelectEmit', (data: any) => {
-            if (data) {
-                infoRef.current = data
-                setCowCode(data.CowCode)
-                getData()
-            }
-        })
-    }, [])
-
     return (
         <>
             {(data) ? (
                 <EChartsCommon
                     renderer={renderer}
-                    option={scatterOptions({...data, CowCode})}
+                    option={scatterOptions(data)}
                 />
             ) : (
                 ''

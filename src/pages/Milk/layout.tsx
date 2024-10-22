@@ -19,7 +19,7 @@ export const MilkLayout = () => {
     const [showAnalysisDialog, setShowAnalysisDialog] = useState(false)
     const [showCodeDialog, setShowCodeDialog] = useState(false)
     const [sheepInfo, setSheepInfo] = useState<any>()
-    const [cowMilkYieldLineParams, setCowMilkYieldLineParams] = useState<any>()
+    const [cowMilkYieldLineParams, setCowMilkYieldLineParams] = useState<any>({})
     const dayTableRef = useRef<any>(null)
     const monthTableRef = useRef<any>(null)
     const shiftTableRef = useRef<any>(null)
@@ -136,7 +136,7 @@ export const MilkLayout = () => {
 
             {/* 产奶养只列表 */}
             <Dialog
-                title={`编号${cowMilkYieldLineParams.CowCode}羊只产奶曲线`}
+                title={`编号${cowMilkYieldLineParams?.CowCode}羊只产奶曲线`}
                 width={1000}
                 show={showCodeDialog}
                 setShow={setShowCodeDialog}

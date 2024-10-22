@@ -158,7 +158,9 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
      */
     const setGraphLoading = (lading: boolean) => {
         const graphLoading: any = document.getElementById('graphLoading')
-        graphLoading.style.display = lading ? 'block' : 'none'
+        if (graphLoading) {
+            graphLoading.style.display = lading ? 'block' : 'none'
+        }
     }
 
     const renderDialog = (info: any) => {
@@ -270,6 +272,7 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
     }
 
     useEffect(() => {
+        setGraphLoading(false)
         const amapContainer = document.getElementById("amap-container")
         amapContainer?.addEventListener('click', toDataV);
         return () => {

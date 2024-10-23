@@ -8,14 +8,14 @@ export const lineOptions = (options: any) => {
 
   return {
     grid:{ // 让图表占满容器
-      top:"60px",
+      top:"40px",
       left:"80px",
       right:"40px",
       bottom:"40px"
     },
     xAxis: {
       type: 'category',
-      name: options.xUnit,
+      // name: options.xUnit,
       data: xAxis,
       axisLine: {
         show: true,

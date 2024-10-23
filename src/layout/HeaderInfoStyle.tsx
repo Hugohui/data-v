@@ -49,7 +49,7 @@ export const HeaderInfoStyle = styled.div`
             }
             .timeNow {
                 display: inline-block;
-                width: 240px;
+                width: 270px;
                 text-align: left;
             }
         }

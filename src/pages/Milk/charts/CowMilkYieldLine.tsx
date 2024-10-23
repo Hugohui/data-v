@@ -46,7 +46,7 @@ const CowMilkYieldLine: FC<OptionsI> = ({ info }) => {
 
     return (
         <div style={{ position: 'relative', width: '100%', height: '100%'}}>
-            <MonthYearSwitch active='month' onChange={onChange}></MonthYearSwitch>
+            {/* <MonthYearSwitch active='month' onChange={onChange}></MonthYearSwitch> */}
             {(data) ? (
                 <EChartsCommon
                     renderer={renderer}

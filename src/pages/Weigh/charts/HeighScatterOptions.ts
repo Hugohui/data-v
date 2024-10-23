@@ -9,7 +9,7 @@ export const scatterOptions = (options: any) => {
     tooltip: {
       trigger: 'item',
       formatter: (param: any) => {
-        return `体高<br />${param?.data?.[2]}: ${param?.data?.[1]} cm`
+        return `羊只编号：${param?.data?.[2]}<br />体高: ${param?.data?.[1]} cm`
       }
     },
     xAxis: {

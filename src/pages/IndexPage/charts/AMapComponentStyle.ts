@@ -7,7 +7,81 @@ export const AmapContainerStyle = styled.div`
     position: relative;
 
     .SheePedigreeBg {
+        width: 435px;
+        height: 439px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        position: relative;
         background-image: url(${SheePedigreeBg});
+    }
+
+    .enter {
+        width: 90%;
+        height: 30px;
+        line-height: 30px;
+        position: absolute;
+        bottom: 23px;
+        right: 25px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .info {
+        width: 435px;
+        height: 340px;
+        color: #fff;
+        position: absolute;
+        right: 0;
+        top: 50px;
+        line-height: 32px;
+        padding: 15px 10px 10px 10px;
+        user-select: none;
+    }
+
+    .header {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        font-size: 20px;
+        color: #fff;
+        font-weight: bolder;
+        position: relative;
+    }
+
+    .graphLoading {
+        text-align: center;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .fullSpan {
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .topLine {
+        width: 150px;
+        height: 1PX;
+        border-top: 1PX solid #00DDEA;
+        position: absolute;
+        bottom: 110px;
+        left: -150px;
+    }
+
+    .leftLine {
+        width: 1PX;
+        height: 60px;
+        border-left: 1PX solid #00DDEA;
+        position: absolute;
+        bottom: 50px;
+        left: -150px;
     }
 
     .mapLoading {

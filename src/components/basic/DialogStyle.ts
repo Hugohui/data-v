@@ -23,12 +23,11 @@ export const DialogStyle = styled.div`
         background-color: #112544;
         overflow: hidden;
         input {
-            flex: 1;
             box-sizing: border-box;
             display: inline-block;
             height: 28px;
             line-height: 28px;
-            padding: 2px 10px;
+            padding: 2px 30px 2px 10px;
             border: none;
             background-color: transparent;
             color: #FFFFFF;
@@ -47,8 +46,11 @@ export const DialogStyle = styled.div`
             }
         }
         .searchIcon{
+            position: absolute;
+            right: 10px;
+            top: 0;
             display: inline-block;
-            width: 40px;
+            width: 16px;
             height: 16px;
             background-image: url(${searchIcon});
             background-size: 16px 100%;

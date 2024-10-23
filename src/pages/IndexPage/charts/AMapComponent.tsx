@@ -67,87 +67,18 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
         return (
             <div 
                 className="SheePedigreeBg"
-                style={{ 
-                width: "435px", 
-                height: "439px",
-                backgroundSize: '100% 100%',
-                backgroundRepeat: "no-repeat",
-                position: 'relative'
-            }}>
-                <div id="graphLoading" style={{
-                    textAlign: "center",
-                    color: "#fff",
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                }}>数据加载中...</div>
-                
-                <div style={{
-                    height: "60px",
-                    lineHeight: "60px",
-                    textAlign: "center",
-                    fontSize: "20px",
-                    color: "#fff",
-                    fontWeight: "bolder",
-                    position: "relative",
-                }}>
+            >
+                <div className="graphLoading" id="graphLoading">数据加载中...</div>
+                <div className="header">
                     {info.name}
-
-                    <span style={{
-                        position: "absolute",
-                        right: "10px",
-                        top: "15px",
-                        width: "30px",
-                        height: "30px",
-                        cursor: "pointer"
-                    }} title="放大" id="scaleGraph" data-info={JSON.stringify(info?.origin)}></span>
+                    <span className="fullSpan" title="放大" id="scaleGraph" data-info={JSON.stringify(info?.origin)}></span>
                 </div>
 
-                <div className="info" id="markerEchart" style={{
-                    width: "435px",
-                    height: "340px",
-                    // fontSize: "15px",
-                    color: "#fff",
-                    position: 'absolute',
-                    right: 0,
-                    top: "50px",
-                    lineHeight: "32px",
-                    padding: "15px 10px 10px 10px",
-                    userSelect: 'none'
-                }}>
-                    {/* <div><span>牧场名称</span>：{info?.name}</div>
-                    <div><span>存栏数</span>：{info?.origin?.cowCount} 只</div>
-                    <div><span>地址</span>：{info?.origin?.address}</div> */}
-                </div>
+                <div className="info" id="markerEchart"></div>
 
-                <div className="enter" id="markerEnter" style={{
-                    width: "90%",
-                    height: "30px",
-                    lineHeight: "30px",
-                    position: "absolute",
-                    bottom: "23px",
-                    right: "25px",
-                    cursor: "pointer",
-                    textAlign: "center",
-                }} data-info={JSON.stringify(info?.origin)}>家系图</div>
-
-                <span style={{
-                    width: '150px',
-                    height: '1PX',
-                    borderTop: '1PX solid #00DDEA',
-                    position: 'absolute',
-                    bottom: '110px',
-                    left: '-150px'
-                }}></span>
-                <span style={{
-                    width: '1PX',
-                    height: '60px',
-                    borderLeft: '1PX solid #00DDEA',
-                    position: 'absolute',
-                    bottom: '50px',
-                    left: '-150px'
-                }}></span>
+                <div className="enter" id="markerEnter" data-info={JSON.stringify(info?.origin)}>家系图</div>
+                <span className="topLine"></span>
+                <span className="leftLine"></span>
             </div>
         )
     }
@@ -291,7 +222,6 @@ const AMapComponent = ({ data, pedigreeData }: any) => {
             plugins: ["AMap.Scale", "AMap.DistrictSearch", "AMap.Icon",], //需要使用的的插件列表，如比例尺'AMap.Scale'，支持添加多个如：['...','...']
         })
             .then((AMap) => {
-                console.log("====data[0]?.coord", data[0]?.coord)
                 map = new AMap.Map('amap-container', {
                     center: [Number(data[0]?.coord[0]) + 3, Number(data[0]?.coord[1])],
                     viewMode: '3D',

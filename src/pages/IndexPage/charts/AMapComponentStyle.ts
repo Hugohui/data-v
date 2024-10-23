@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import SheePedigreeBg from '@/assets/img/SheePedigreeBg.png'
+import IndexPageMapLeftLine from '@/assets/img/IndexPageMapLeftLine.png'
+import IndexPageMapTopLine from '@/assets/img/IndexPageMapTopLine.png'
 
 export const AmapContainerStyle = styled.div`
     width: 100%;
@@ -73,6 +75,7 @@ export const AmapContainerStyle = styled.div`
         position: absolute;
         bottom: 110px;
         left: -150px;
+        background-image: url(${IndexPageMapTopLine});
     }
 
     .leftLine {
@@ -82,6 +85,7 @@ export const AmapContainerStyle = styled.div`
         position: absolute;
         bottom: 50px;
         left: -150px;
+        background-image: url(${IndexPageMapLeftLine});
     }
 
     .mapLoading {

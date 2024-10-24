@@ -1,3 +1,5 @@
+import { isEmpty } from "@/utils/util"
+
 export const scatterOptions = (options: any) => {
   return {
     grid:{ // 让图表占满容器
@@ -9,7 +11,7 @@ export const scatterOptions = (options: any) => {
     tooltip: {
       trigger: 'item',
       formatter: (param: any) => {
-        return `羊只编号：${param?.data?.[2]}<br />体重：${param?.data?.[1]} kg`
+        return `羊只编号：${param?.data?.[2]}<br />体重：${ isEmpty(param?.data?.[1]) ? '--' : param?.data?.[1] + 'kg' }`
       }
     },
     xAxis: {
@@ -59,7 +61,7 @@ export const scatterOptions = (options: any) => {
         itemStyle: {
           color: "#FF697E"
         },
-        data: options?.list?.map((item:any) => [item.name, item?.value?.weight || 0, item?.value?.CowCode]),
+        data: options?.list?.map((item:any) => [item.name, isEmpty(item?.value?.weight) ? 0 : item?.value?.weight, item?.value?.CowCode]),
         type: 'scatter'
       }
     ]
